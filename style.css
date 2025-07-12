@@ -45,6 +45,27 @@ nav {
   flex-direction: column;
   overflow: hidden;
 }
+
+.navcenter{
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  overflow: hidden;
+  gap: 32px;
+  height: 2vw;
+}
+
+.navCenterHover:hover{
+  margin-top: -2.9vw;
+  transition: all 0.3s;
+}
+
+.navCenterHover p{
+  font-size: 2vw;
+  cursor: pointer;
+
+}
+
 .navRightHover:hover {
   margin-top: -2.9vw;
   transition: all 0.3s;
