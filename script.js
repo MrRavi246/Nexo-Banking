@@ -122,5 +122,7 @@ function GSAP() {
     }
     page1();
   }
+
 }
 GSAP();
+
