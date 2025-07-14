@@ -6,7 +6,7 @@ function lenis() {
     lerp: 0.5,
     smoothTouch: true,
     touchMultiplier: 2,
-    duration: 1.5,
+    duration: 0.5,
   });
 
   // Listen for the scroll event and log the event data
@@ -62,7 +62,7 @@ function GSAP() {
           trigger: ".page1",
           start: "50% 50%",
           end: "200% -50%",
-          scrub: 3,
+          scrub: 2,
           pin: `.page1`,
         },
       });
