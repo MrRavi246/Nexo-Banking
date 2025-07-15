@@ -189,6 +189,7 @@ nav {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-top: 10vw;
 }
 
 .container .top {
@@ -197,6 +198,12 @@ nav {
   justify-content: start;
   flex-direction: column;
   line-height: 8vw;
+}
+.container .bottom {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .top h1 {
@@ -209,6 +216,10 @@ h1 span {
 
 .pg2bottomleft {
   width: calc(100% / 3);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .squre1 {
@@ -229,3 +240,25 @@ h1 span {
   width: calc(100%/3);
   height: 100%;
 }
+.pg2bottomRight {
+  width: calc(100%/3);
+  height: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+  gap: 1vw;
+}
+
+.OpenACCBTN{
+  padding: 0.6vw 1vw;
+  border-radius: 2vw;
+  background-color: #eb7ef2;
+  cursor: pointer;
+}
+.pg2BTN{
+  padding: 0.6vw 1vw;
+  border-radius: 2vw;
+  cursor: pointer;
+}
+

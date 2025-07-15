@@ -61,7 +61,7 @@ function GSAP() {
         scrollTrigger: {
           trigger: ".page1",
           start: "50% 50%",
-          end: "200% -50%",
+          end: "250% -50%",
           scrub: 2,
           pin: `.page1`,
         },
