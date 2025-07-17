@@ -16,7 +16,6 @@ body {
   font-family: teko;
   background-color: black;
   color: white;
-  perspective: 200px;
 }
 
 main {
@@ -26,16 +25,17 @@ main {
 }
 
 nav {
-  width: 100vw;
-  height: 2vw;
+  width: 100%;
+  height: 4vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 999;
-  background: rgba(0, 0, 0, 0.7);
+  z-index: 99;
+  mix-blend-mode: difference;
+  padding: 0 4vw;
 }
 
 .navRight {
@@ -65,7 +65,7 @@ nav {
 }
 
 .navCenterHover p {
-  font-size: 1.2vw;
+  font-size: 2vw;
   cursor: pointer;
 }
 
@@ -291,10 +291,23 @@ h1 span {
 /* page3 */
 
 .page3{
-  height: 100vh;
+  height: 155vh;
+  width: 100%;
+  position: relative;
+  padding: 0 4vw;
+  
+}
+
+.rowContaier{
   width: 100%;
   position: relative;
 }
 
+.row{
+  height: 30vh;
+  width: 100%;
+  border-bottom: 1px solid grey;
+  
+}
 
 
