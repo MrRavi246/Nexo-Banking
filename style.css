@@ -38,18 +38,21 @@ nav {
 }
 
 .navRight {
+  width: calc(100%/2);
   height: 2vw;
   display: flex;
   align-items: center;
-  justify-content: start;
-  flex-direction: column;
+  justify-content: end;
+  gap: 0.5vw;
   overflow: hidden;
 }
 
-.navcenter {
+.navcenter{
+  width: calc(100%/2);
+  /* background-color: #ffffff73; */
   display: flex;
   align-items: start;
-  justify-content: center;
+  justify-content: space-between;
   overflow: hidden;
   gap: 32px;
   height: 2vw;
@@ -65,19 +68,42 @@ nav {
   cursor: pointer;
 }
 
-.navRightHover:hover {
-  margin-top: -2.9vw;
-  transition: all 0.3s;
-}
-.navRightHover:nth-child(1) {
-  font-size: 2vw;
-  cursor: pointer;
-  color: white;
-}
 
-.navRight p span {
+.navcenter p span {
   color: #eb7ef2;
 }
+
+.signin{
+  padding: 1vw 2vw;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2vw;
+  transition: all .3s;
+}
+.signin:hover{
+  border-radius: 2vw;
+  color: #eb7ef2;
+  border-color: #eb7ef2;
+  font-size: 1.3vw;
+}
+.acc_btn:hover{
+  border-radius: 2vw;
+  color: #eb7ef2;
+  border-color: #eb7ef2;
+  font-size: 1.3vw;
+}
+.acc_btn{
+  padding: 1vw 1vw;
+  font-size: 1.2vw;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  transition: all .3s;
+}
+
 
 /* loader */
 
@@ -262,3 +288,10 @@ h1 span {
   cursor: pointer;
 }
 
+/* page3 */
+
+.page3{
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
