@@ -16,25 +16,26 @@ body {
   font-family: teko;
   background-color: black;
   color: white;
+  perspective: 200px;
 }
 
 main {
-  width: 100%;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* navbar */
-
 nav {
-  width: 100%;
+  width: 100vw;
+  height: 2vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: fixed;
   top: 0;
-  color: white;
-  padding: 32px;
-  mix-blend-mode: difference;
-  z-index: 99;
+  left: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .navRight {
@@ -49,7 +50,6 @@ nav {
 
 .navcenter{
   width: calc(100%/2);
-  /* background-color: #ffffff73; */
   display: flex;
   align-items: start;
   justify-content: space-between;
@@ -61,13 +61,13 @@ nav {
 .navCenterHover:hover {
   margin-top: -2.9vw;
   transition: all 0.3s;
+  color: #eb7ef2;
 }
 
 .navCenterHover p {
-  font-size: 2vw;
+  font-size: 1.2vw;
   cursor: pointer;
 }
-
 
 .navcenter p span {
   color: #eb7ef2;
@@ -86,13 +86,13 @@ nav {
   border-radius: 2vw;
   color: #eb7ef2;
   border-color: #eb7ef2;
-  font-size: 1.3vw;
+  scale: 0.9;
 }
 .acc_btn:hover{
   border-radius: 2vw;
   color: #eb7ef2;
   border-color: #eb7ef2;
-  font-size: 1.3vw;
+  scale: 0.9;
 }
 .acc_btn{
   padding: 1vw 1vw;
@@ -103,7 +103,6 @@ nav {
   cursor: pointer;
   transition: all .3s;
 }
-
 
 /* loader */
 
@@ -288,6 +287,7 @@ h1 span {
   cursor: pointer;
 }
 
+
 /* page3 */
 
 .page3{
@@ -295,3 +295,6 @@ h1 span {
   width: 100%;
   position: relative;
 }
+
+
+
