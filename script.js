@@ -15,24 +15,26 @@ function lenis() {
 lenis();
 
 // to remove right click
-document.addEventListener("contextmenu",function(e){
-  e.preventDefault()
-},false)
+document.addEventListener(
+  "contextmenu",
+  function (e) {
+    e.preventDefault();
+  },
+  false
+);
 
 function GSAP() {
   if (window.gsap && window.ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
     function loader() {
-
       // to remove scrollbar
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
 
       let split = SplitText.create(".con", { type: "chars" });
 
       let tl = gsap.timeline();
 
-    
       tl.from(split.chars, {
         duration: 0.8,
         y: 100,
@@ -121,8 +123,21 @@ function GSAP() {
       );
     }
     page1();
-  }
 
+    function page3(){
+      
+    gsap.to(".page3", {
+      backgroundColor: `white`,
+      color: `black`,
+      duration: 1,
+      scrollTrigger: {
+        trigger: `.page3`,
+        start: "-80% 10%",
+        scrub: 2,
+      },
+    });
+    }
+    page3()
+  }
 }
 GSAP();
-
