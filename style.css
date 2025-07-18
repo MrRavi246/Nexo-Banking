@@ -16,7 +16,6 @@ body {
   font-family: teko;
   background-color: black;
   color: white;
-  /* overflow-x: hidden; */
 }
 
 main {
@@ -67,12 +66,29 @@ nav {
   color: #eb7ef2;
 }
 
-.navCenterHover a {
+
+.navLeft{
+  width: calc(100%/2);
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  overflow: hidden;
+  gap: 32px;
+  height: 2vw;
+}
+
+.navLeftHover:hover {
+  margin-top: -2.9vw;
+  transition: all 0.3s;
+  color: #eb7ef2;
+}
+
+.navCenterHover,.navLeftHover a {
   font-size: 2vw;
   cursor: pointer;
 }
 
-.navcenter a span {
+.navLeft a span {
   color: #eb7ef2;
 }
 
