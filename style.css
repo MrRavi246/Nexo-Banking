@@ -41,7 +41,7 @@ nav {
 }
 
 .navRight {
-  width: calc(100%/2);
+  width: calc(100%/3);
   height: 2vw;
   display: flex;
   align-items: center;
@@ -49,9 +49,18 @@ nav {
   gap: 0.5vw;
   overflow: hidden;
 }
+.navLeft{
+  width: calc(100%/3);
+  height: 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0.5vw;
+  overflow: hidden;
+}
 
 .navcenter{
-  width: calc(100%/2);
+  width: calc(100%/3);
   display: flex;
   align-items: start;
   justify-content: space-between;
@@ -66,24 +75,24 @@ nav {
   color: #eb7ef2;
 }
 
-
-.navLeft{
-  width: calc(100%/2);
-  display: flex;
-  align-items: start;
-  justify-content: start;
-  overflow: hidden;
-  gap: 32px;
-  height: 2vw;
+.navLeftHover{
+  padding: 1vw 2vw;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  font-size: 2vw;
+  transition: all .3s;
 }
-
-.navLeftHover:hover {
-  margin-top: -2.9vw;
-  transition: all 0.3s;
+.navLeftHover:hover{
+  border-radius: 4vw;
   color: #eb7ef2;
+  border-color: #eb7ef2;
+  scale: 0.9;
 }
 
-.navCenterHover,.navLeftHover a {
+
+.navCenterHover a {
   font-size: 2vw;
   cursor: pointer;
 }
@@ -307,15 +316,50 @@ h1 span {
   cursor: pointer;
 }
 
+.pg2bottomCneterImg1{
+  /* background-color: #fff; */
+  position: relative;
+  transform: rotate(-80deg);
+  scale: 0.8;
+  margin-top: -3vw;
+  transition: all 0.5s;
+}
+.pg2bottomCneterImg2{
+  /* background-color: #fff; */
+  position: absolute;
+  transform: rotate(120deg);
+  scale: 0.8;
+  margin-top: -20vw;
+  transition: all 0.3s;
+}
+.pg2bottomCneterImg1:hover{
+  cursor: pointer;
+  scale: 0.9;
+  z-index: 2;
+  transform: rotate(0deg);
+}
+.pg2bottomCneterImg2:hover{
+  cursor: pointer;
+  scale: 0.9;
+  z-index: 2;
+  transform: rotate(0deg);
+}
+
+.pg2bottomCneterImg1,.pg2bottomCneterImg2 img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 
 /* page3 */
 
 .page3{
-  height: 155vh;
+  height: 170vh;
   width: 100%;
   position: relative;
   padding: 5vw 4vw;
-  
+  overflow: hidden;
 }
 
 .rowContaier{
@@ -339,4 +383,16 @@ h1 span {
   font-size: 25vw;
   letter-spacing: 4vw;
   text-transform: uppercase;
+}
+.rowContent{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* page4 */
+.page4{
+  height: 100vh;
+  width: 100%;
+  position: relative;
 }
