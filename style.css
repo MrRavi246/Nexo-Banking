@@ -67,12 +67,12 @@ nav {
   color: #eb7ef2;
 }
 
-.navCenterHover p {
+.navCenterHover a {
   font-size: 2vw;
   cursor: pointer;
 }
 
-.navcenter p span {
+.navcenter a span {
   color: #eb7ef2;
 }
 
@@ -276,6 +276,7 @@ h1 span {
   justify-content: start;
   flex-direction: column;
   gap: 1vw;
+  font-family: trip sans;
 }
 
 .OpenACCBTN{
@@ -323,5 +324,4 @@ h1 span {
   letter-spacing: 4vw;
   text-transform: uppercase;
 }
-
 

@@ -131,9 +131,11 @@ function GSAP() {
       color: `black`,
       duration: 1,
       scrollTrigger: {
-        trigger: `.page3`,
-        start: "-80% 10%",
+        trigger: `.page2`,
+        start: "80% 10%",
+        end:"100% 50%",
         scrub: 2,
+        markers:true
       },
     });
     }
