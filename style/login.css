@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html,
@@ -69,7 +70,7 @@ body {
 
 }
 
-.right-side .form-header p {
+.right-side .form-header .form-description {
     font-size: 1.2rem;
     color: #0F0F10;
 }
