@@ -38,6 +38,7 @@ nav {
   padding: 0 4vw;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+  
 }
 
 .navRight {
@@ -95,10 +96,17 @@ nav {
 .navCenterHover a {
   font-size: 2vw;
   cursor: pointer;
+  text-decoration: none;
+}
+
+.navLeft a{
+  text-decoration: none;
+  color: white;
 }
 
 .navLeft a span {
   color: #eb7ef2;
+  text-decoration: none;
 }
 
 .signin{
