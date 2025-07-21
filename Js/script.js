@@ -137,8 +137,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
       }
       page1();
 
-    
-
       function page3() {
         gsap.to(".page3", {
           backgroundColor: `white`,
