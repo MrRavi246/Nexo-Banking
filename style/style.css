@@ -38,6 +38,7 @@ nav {
   padding: 0 4vw;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px); 
+  color: white;
 }
 
 .navRight {
@@ -81,27 +82,29 @@ nav {
   background-color: transparent;
   color: white;
   cursor: pointer;
-  font-size: 2vw;
+  font-size: 2.2vw;
   transition: all .3s;
 }
+.navLeft a{
+  text-decoration: none;
+  color: white;
+}
 .navLeftHover:hover{
-  border-radius: 4vw;
+  border-radius: 5vw;
   color: #eb7ef2;
   border-color: #eb7ef2;
   scale: 0.9;
 }
-
-
+.navLeftHover a:hover{
+  color: #eb7ef2;
+}
 .navCenterHover a {
   font-size: 2vw;
   cursor: pointer;
   text-decoration: none;
 }
 
-.navLeft a{
-  text-decoration: none;
-  color: white;
-}
+
 
 .navLeft a span {
   color: #eb7ef2;
@@ -324,7 +327,6 @@ h1 span {
 }
 
 .pg2bottomCneterImg1{
-  /* background-color: #fff; */
   position: relative;
   transform: rotate(-80deg);
   scale: 0.8;
@@ -332,13 +334,14 @@ h1 span {
   transition: all 0.5s;
 }
 .pg2bottomCneterImg2{
-  /* background-color: #fff; */
   position: absolute;
   transform: rotate(120deg);
   scale: 0.8;
   margin-top: -20vw;
   transition: all 0.3s;
+  padding: 2vw;
 }
+
 .pg2bottomCneterImg1:hover{
   cursor: pointer;
   scale: 0.9;

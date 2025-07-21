@@ -23,25 +23,25 @@ document.addEventListener(
   false
 );
 
- // use a script tag or an external JS file
- document.addEventListener("DOMContentLoaded", (event) => {
+// use a script tag or an external JS file
+document.addEventListener("DOMContentLoaded", (event) => {
   // gsap code here!
 
   function GSAP() {
     if (window.gsap && window.ScrollTrigger) {
       gsap.registerPlugin(ScrollTrigger, SplitText);
-  
+
       function loader() {
         // to remove scrollbar
         document.body.style.overflow = "hidden";
-  
+
         let split = SplitText.create(".con", { type: "chars" });
-  
+
         let tl = gsap.timeline();
 
-        tl.to("main",{
-          display:'none'
-        })        
+        tl.to("main", {
+          display: "none",
+        });
 
         tl.from(split.chars, {
           duration: 0.8,
@@ -49,28 +49,28 @@ document.addEventListener(
           autoAlpha: 0,
           stagger: 0.2,
         });
-  
+
         tl.to(split.chars, {
           duration: 0.8,
           y: -100,
           autoAlpha: 0,
           stagger: 0.2,
         });
-  
+
         tl.to(".loader", {
-          duration: 1,
+          duration: 0.5,
           autoAlpha: 0,
           display: "none",
           backgroundColor: `rgba(0, 0, 0, 0.77)`,
         });
 
-        tl.to("main",{
-          display:'block',
-          delay:-0.5
-        })        
+        tl.to("main", {
+          display: "block",
+          delay: -0.7,
+        });
       }
       loader();
-  
+
       function page1() {
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -81,7 +81,7 @@ document.addEventListener(
             pin: `.page1`,
           },
         });
-  
+
         tl.to(
           ".content",
           {
@@ -104,7 +104,7 @@ document.addEventListener(
           },
           "<"
         );
-  
+
         tl.to(
           ".imgrow3",
           {
@@ -136,23 +136,24 @@ document.addEventListener(
         );
       }
       page1();
-  
-      function page3(){
-        
-      gsap.to(".page3", {
-        backgroundColor: `white`,
-        color: `black`,
-        duration: 1,
-        scrollTrigger: {
-          trigger: `.page2`,
-          start: "90% 10%",
-          end:"100% 50%",
-          scrub: 3,
-        },
-      });
+
+    
+
+      function page3() {
+        gsap.to(".page3", {
+          backgroundColor: `white`,
+          color: `black`,
+          duration: 1,
+          scrollTrigger: {
+            trigger: `.page2`,
+            start: "90% 10%",
+            end: "100% 50%",
+            scrub: 3,
+          },
+        });
       }
-      page3()
+      page3();
     }
   }
   GSAP();
- });
+});
