@@ -38,7 +38,11 @@ document.addEventListener(
         let split = SplitText.create(".con", { type: "chars" });
   
         let tl = gsap.timeline();
-  
+
+        tl.to("main",{
+          display:'none'
+        })        
+
         tl.from(split.chars, {
           duration: 0.8,
           y: 100,
@@ -59,6 +63,11 @@ document.addEventListener(
           display: "none",
           backgroundColor: `rgba(0, 0, 0, 0.77)`,
         });
+
+        tl.to("main",{
+          display:'block',
+          delay:-0.5
+        })        
       }
       loader();
   
