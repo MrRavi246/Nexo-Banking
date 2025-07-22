@@ -259,6 +259,7 @@ nav {
   justify-content: start;
   flex-direction: column;
   line-height: 8vw;
+  mix-blend-mode: lighten;
 }
 .container .bottom {
   width: 100%;
@@ -327,31 +328,33 @@ h1 span {
 .pg2bottomCneterImg1 {
   position: relative;
   transform: rotate(-80deg);
-  scale: 0.8;
+  scale: 0.6;
   margin-top: -3vw;
   transition: all 0.5s;
+  z-index: -1;
+  opacity: 0.9;
 }
 .pg2bottomCneterImg2 {
   position: absolute;
   transform: rotate(120deg);
-  scale: 0.8;
+  scale: 0.7;
   margin-top: -20vw;
   transition: all 0.3s;
   padding: 2vw;
+  z-index: -1;
+}
+.pg2bottomCneterImg3 {
+  position: absolute;
+  transform: rotate(244deg);
+  scale: 0.6;
+  margin-top: -25vw;
+  margin-left: -5vw;
+  transition: all 0.3s;
+  padding: 2vw;
+  z-index: -2;
+  opacity: 0.8;
 }
 
-.pg2bottomCneterImg1:hover {
-  cursor: pointer;
-  scale: 0.9;
-  z-index: 2;
-  transform: rotate(0deg);
-}
-.pg2bottomCneterImg2:hover {
-  cursor: pointer;
-  scale: 0.9;
-  z-index: 2;
-  transform: rotate(0deg);
-}
 
 .pg2bottomCneterImg1,
 .pg2bottomCneterImg2 img {
