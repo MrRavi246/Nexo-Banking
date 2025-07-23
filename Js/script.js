@@ -26,7 +26,6 @@ document.addEventListener(
 // use a script tag or an external JS file
 document.addEventListener("DOMContentLoaded", (event) => {
   // gsap code here!
-
   function GSAP() {
     if (window.gsap && window.ScrollTrigger) {
       gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -156,24 +155,64 @@ document.addEventListener("DOMContentLoaded", (event) => {
   GSAP();
 });
 
+// function middleware() {
+  
+//   function authMiddleware(next) {
+//     const user =
+//       localStorage.getItem("isLoggedIn") === "true"
+//         ? {
+//             account_number: localStorage.getItem("account_number"),
+//           }
+//         : null;
 
+//     if (user) {
+//       console.log("User is authenticated:", user);
+//       mainApp();
+//       // next();
+//     } else {
+//       alert("Unauthorized!");
+//       window.location.href = "Pages/login.html";
+//       localStorage.clear();
+//     }
+//   }
 
-function middleware(){
+//   function mainApp() {
+//     console.log("User is allowed, app running...");
+//   }
+
+//   authMiddleware(mainApp);
+// }
+
+function middleware() {
   function authMiddleware(next) {
-    const account_number = localStorage.getItem("account_number");
-    if (account_number) {
-      next();
+    const user =
+      localStorage.getItem("isLoggedIn") === "true"
+        ? { account_number: localStorage.getItem("account_number") }
+        : null;
+  
+    if (user) {
+      console.log("User is authenticated:", user);
+      next(user);
+      localStorage.clear(); // Clear localStorage after authentication check
     } else {
       alert("Unauthorized!");
+      localStorage.clear();
       window.location.href = "Pages/login.html";
     }
   }
   
-  function mainApp() {
-    console.log("User is allowed, app running...");
+
+
+  function mainApp(user) {
+    console.log("User is allowed, app running with:", user);
   }
   
-  authMiddleware(mainApp);  
+  function middleware() {
+    authMiddleware(mainApp);
+  }
+  
+  middleware();
+  
 }
 
-middleware()
+middleware();
