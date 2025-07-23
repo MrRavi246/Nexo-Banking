@@ -155,3 +155,25 @@ document.addEventListener("DOMContentLoaded", (event) => {
   }
   GSAP();
 });
+
+
+
+function middleware(){
+  function authMiddleware(next) {
+    const account_number = localStorage.getItem("account_number");
+    if (account_number) {
+      next();
+    } else {
+      alert("Unauthorized!");
+      window.location.href = "Pages/login.html";
+    }
+  }
+  
+  function mainApp() {
+    console.log("User is allowed, app running...");
+  }
+  
+  authMiddleware(mainApp);  
+}
+
+middleware()

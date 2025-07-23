@@ -1,34 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/login.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/login.css" />
     <title>Nexo - LoginPage</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="left-side">
-            <img src="../media/BG PNG.png" alt="">
-            <p>All your cards, account and <br>saving in one place</p>
-        </div>
-        <div class="right-side">
-            <form action="#" method="POST">
-                <div class="form-header">
-                    <h2>Login</h2>
-                    <p class="form-description">Enter Credentials provided by bank’s offecials</p>
-                </div>
-                <div>
-                    <label for="account_number">Account Number</label><br>
-                    <input type="text" id="account_number" name="account_number" required>
-                </div>
-                <div>
-                    <label for="password">Password:</label><br>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit">Login</button>
-            </form>
-        </div>
+      <div class="left-side">
+        <img src="../media/BG PNG.png" alt="" />
+        <p>All your cards, account and <br />saving in one place</p>
+      </div>
+      <div class="right-side">
+        <!-- <form action="../index.html" method="POST">  -->
+        <form onsubmit="login(event)" method="POST">
+          <div class="form-header">
+            <h2>Login</h2>
+            <p class="form-description">
+              Enter Credentials provided by bank’s offecials
+            </p>
+          </div>
+          <div>
+            <label for="account_number">Account Number</label><br />
+            <input
+              type="text"
+              id="account_number"
+              name="account_number"
+              required
+            />
+          </div>
+          <div>
+            <label for="password">Password:</label><br />
+            <input type="password" id="password" name="password" required />
+          </div>
+          <!-- <input type="button" value="Login" onclick="login()" class="button" /> -->
+          <!-- <button type="submit" onclick="login()">Submit</button> -->
+          <button type="submit" class="button">Login</button>
+        </form>
+      </div>
     </div>
-</body>
+    <!-- <script src="../Js/login.js"></script> -->
+    <script>
+      const USER = {
+        username: "admin",
+        password: "1234",
+      };
+
+      function login(e) {
+        const enteredUser = document.getElementById("account_number").value;
+        const enteredPass = document.getElementById("password").value;
+        console.log("enteredUser:", enteredUser);
+        if (enteredUser === USER.username && enteredPass === USER.password) {
+          e.preventDefault();
+
+          localStorage.setItem("isLoggedIn", "true");
+          localStorage.setItem("account_number", enteredUser);
+
+          window.location.href = "../index.html";
+        } else if (
+          enteredUser === "" ||
+          enteredPass === "" ||
+          enteredUser !== USER.account_number ||
+          enteredPass !== USER.password
+        ) {
+          e.preventDefault();
+          const errorEl = document.createElement("p");
+          errorEl.innerText = "Invalid account_number or password.";
+          errorEl.style.color = "red";
+          document.querySelector(".right-side").appendChild(errorEl);
+        } else {
+          //   errorEl.innerText = "Invalid account_number or password.";
+          console.error("Error");
+          e.preventDefault();
+          const errorEl = document.createElement("p");
+          errorEl.innerText = "Invalid account_number or password.";
+          errorEl.style.color = "red";
+          document.querySelector(".right-side").appendChild(errorEl);
+        }
+      }
+    </script>
+  </body>
 </html>
