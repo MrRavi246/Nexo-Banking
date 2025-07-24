@@ -21,7 +21,7 @@ body {
 main {
   width: 100vw;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 nav {
@@ -459,3 +459,4 @@ h1 span {
   width: 100%;
   position: relative;
 }
+
