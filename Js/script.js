@@ -15,13 +15,13 @@ function lenis() {
 lenis();
 
 // to remove right click
-document.addEventListener(
-  "contextmenu",
-  function (e) {
-    e.preventDefault();
-  },
-  false
-);
+// document.addEventListener(
+//   "contextmenu",
+//   function (e) {
+//     e.preventDefault();
+//   },
+//   false
+// );
 
 // function middleware() {
 
@@ -68,7 +68,6 @@ function middleware() {
       // alert("Unauthorized!");
       // localStorage.clear();
       // window.location.href = "Pages/login.html";
-
       Toastify({
         text: "Unauthorized! Redirecting to login...",
         duration: 3000,
@@ -94,47 +93,47 @@ function middleware() {
       function GSAP() {
         if (window.gsap && window.ScrollTrigger) {
           gsap.registerPlugin(ScrollTrigger, SplitText);
-
+    
           function loader() {
             // to remove scrollbar
             document.body.style.overflow = "hidden";
-
+    
             let split = SplitText.create(".con", { type: "chars" });
-
+    
             let tl = gsap.timeline();
-
+    
             tl.to("main", {
               display: "none",
             });
-
+    
             tl.from(split.chars, {
               duration: 0.8,
               y: 100,
               autoAlpha: 0,
               stagger: 0.2,
             });
-
+    
             tl.to(split.chars, {
               duration: 0.8,
               y: -100,
               autoAlpha: 0,
               stagger: 0.2,
             });
-
+    
             tl.to(".loader", {
               duration: 0.5,
               autoAlpha: 0,
               display: "none",
               backgroundColor: `rgba(0, 0, 0, 0.77)`,
             });
-
+    
             tl.to("main", {
               display: "block",
               delay: -0.7,
             });
           }
           loader();
-
+    
           function page1() {
             const tl = gsap.timeline({
               scrollTrigger: {
@@ -145,7 +144,7 @@ function middleware() {
                 pin: `.page1`,
               },
             });
-
+    
             tl.to(
               ".content",
               {
@@ -168,7 +167,7 @@ function middleware() {
               },
               "<"
             );
-
+    
             tl.to(
               ".imgrow3",
               {
@@ -200,7 +199,7 @@ function middleware() {
             );
           }
           page1();
-
+    
           function page3() {
             gsap.to(".page3", {
               backgroundColor: `white`,
@@ -215,7 +214,7 @@ function middleware() {
             });
           }
           page3();
-
+    
           function page4() {}
           page4();
         }
@@ -232,3 +231,5 @@ function middleware() {
 }
 
 middleware();
+
+

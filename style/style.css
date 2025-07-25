@@ -355,7 +355,6 @@ h1 span {
   opacity: 0.8;
 }
 
-
 .pg2bottomCneterImg1,
 .pg2bottomCneterImg2 img {
   height: 100%;
@@ -450,7 +449,6 @@ h1 span {
   justify-content: center;
   font-size: 4vw;
   color: #eb7ef2;
-  
 }
 
 /* page4 */
@@ -459,4 +457,28 @@ h1 span {
   width: 100%;
   position: relative;
 }
+.page4 .right{
+  height: 100%;
+  width: calc(100%/2);
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0vw 5vw;
+  line-height: 8vw;
+}
 
+.page4 .right h1{
+  font-size: 10vw;
+}
+
+.pg4round{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 9vw;
+  width: 10vw;
+  border: 1px solid white;
+  border-radius: 50%;
+  font-size: 4vw;
+}
