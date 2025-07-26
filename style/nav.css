@@ -57,6 +57,10 @@ nav a {
   color: #eb7ef2;
 }
 
+.navCenterHover a:hover {
+  color: #eb7ef2;
+}
+
 .navLeftHover {
   padding: 1vw 2vw;
   border: 1px solid white;
