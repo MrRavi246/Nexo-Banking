@@ -1,3 +1,6 @@
+// Clear any existing authentication data
+localStorage.clear();
+
 function lenis() {
   // Initialize Lenis
   const lenis = new Lenis({
@@ -51,39 +54,39 @@ lenis();
 //   authMiddleware(mainApp);
 // }
 
-function middleware() {
-  function authMiddleware(next) {
-    const user =
-      localStorage.getItem("isLoggedIn") === "true"
-        ? { account_number: localStorage.getItem("account_number") }
-        : null;
+// function middleware() {
+//   function authMiddleware(next) {
+//     const user =
+//       localStorage.getItem("isLoggedIn") === "true"
+//         ? { account_number: localStorage.getItem("account_number") }
+//         : null;
 
-    if (user) {
-      console.log("User is authenticated:", user);
-      next(user);
-      setTimeout(() => {
-        localStorage.clear(); // Clear localStorage after authentication check
-      }, 9000);
-    } else {
-      // alert("Unauthorized!");
-      // localStorage.clear();
-      // window.location.href = "Pages/login.html";
-      Toastify({
-        text: "Unauthorized! Redirecting to login...",
-        duration: 3000,
-        close: true,
-        gravity: "top", // top or bottom
-        position: "right", // left, center or right
-        backgroundColor: "#ff5f5f",
-        stopOnFocus: true,
-      }).showToast();
+//     if (user) {
+//       console.log("User is authenticated:", user);
+//       next(user);
+//       setTimeout(() => {
+//         localStorage.clear(); // Clear localStorage after authentication check
+//       }, 9000);
+//     } else {
+//       // alert("Unauthorized!");
+//       // localStorage.clear();
+//       // window.location.href = "Pages/login.html";
+//       Toastify({
+//         text: "Unauthorized! Redirecting to login...",
+//         duration: 3000,
+//         close: true,
+//         gravity: "top", // top or bottom
+//         position: "right", // left, center or right
+//         backgroundColor: "#ff5f5f",
+//         stopOnFocus: true,
+//       }).showToast();
 
-      setTimeout(() => {
-        localStorage.clear();
-        window.location.href = "Pages/login.html";
-      }, 2000);
-    }
-  }
+//       setTimeout(() => {
+//         localStorage.clear();
+//         window.location.href = "Pages/login.html";
+//       }, 2000);
+//     }
+//   }
 
   function mainApp(user) {
     console.log("User is allowed, app running with:", user);
@@ -220,7 +223,7 @@ function middleware() {
         }
       }
       GSAP();
-    });    
+    });
   }
 
   function middleware() {
@@ -231,3 +234,5 @@ function middleware() {
 }
 
 middleware();
+
+

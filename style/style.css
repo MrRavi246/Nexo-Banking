@@ -2,6 +2,7 @@
   font-family: teko;
   src: url(../media/Teko-Regular.ttf);
 }
+
 * {
   padding: 0;
   margin: 0;
@@ -24,121 +25,6 @@ main {
   overflow: hidden;
 }
 
-nav {
-  width: 100%;
-  height: 4vw;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 90;
-  mix-blend-mode: difference;
-  padding: 0 4vw;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  color: white;
-}
-
-.navRight {
-  width: calc(100% / 3);
-  height: 2vw;
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  gap: 0.5vw;
-  overflow: hidden;
-}
-.navLeft {
-  width: calc(100% / 3);
-  height: 2vw;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  gap: 0.5vw;
-  overflow: hidden;
-}
-
-.navcenter {
-  width: calc(100% / 3);
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  overflow: hidden;
-  gap: 32px;
-  height: 2vw;
-}
-
-.navCenterHover:hover {
-  margin-top: -2.9vw;
-  transition: all 0.3s;
-  color: #eb7ef2;
-}
-
-.navLeftHover {
-  padding: 1vw 2vw;
-  border: 1px solid white;
-  background-color: transparent;
-  color: white;
-  cursor: pointer;
-  font-size: 2.2vw;
-  transition: all 0.3s;
-}
-.navLeft a {
-  text-decoration: none;
-  color: white;
-}
-.navLeftHover:hover {
-  border-radius: 5vw;
-  color: #eb7ef2;
-  border-color: #eb7ef2;
-  scale: 0.9;
-}
-.navLeftHover a:hover {
-  color: #eb7ef2;
-}
-.navCenterHover a {
-  font-size: 2vw;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.navLeft a span {
-  color: #eb7ef2;
-  text-decoration: none;
-}
-
-.signin {
-  padding: 1vw 2vw;
-  border: 1px solid white;
-  background-color: transparent;
-  color: white;
-  cursor: pointer;
-  font-size: 1.2vw;
-  transition: all 0.3s;
-}
-.signin:hover {
-  border-radius: 2vw;
-  color: #eb7ef2;
-  border-color: #eb7ef2;
-  scale: 0.9;
-}
-.acc_btn:hover {
-  border-radius: 2vw;
-  color: #eb7ef2;
-  border-color: #eb7ef2;
-  scale: 0.9;
-}
-.acc_btn {
-  padding: 1vw 1vw;
-  font-size: 1.2vw;
-  border: 1px solid white;
-  background-color: transparent;
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s;
-}
 
 /* loader */
 
@@ -160,7 +46,7 @@ nav {
   overflow: hidden;
 }
 
-.con > h1 {
+.con>h1 {
   font-size: 10vw;
   text-transform: uppercase;
   line-height: 8vw;
@@ -175,6 +61,7 @@ nav {
   background: black;
   overflow: hidden;
 }
+
 .content {
   display: flex;
   align-items: center;
@@ -185,6 +72,7 @@ nav {
   scale: 1.3;
   transform: translateX(-14%);
 }
+
 .imgrow1,
 .imgrow2,
 .imgrow3,
@@ -207,6 +95,7 @@ nav {
   overflow: hidden;
   border-radius: 10px;
 }
+
 .imgcontainer img {
   width: 100%;
   object-fit: cover;
@@ -227,6 +116,7 @@ nav {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
+
 .herotext h3 {
   color: white;
   font-size: 10vw;
@@ -261,6 +151,7 @@ nav {
   line-height: 8vw;
   mix-blend-mode: lighten;
 }
+
 .container .bottom {
   width: 100%;
   display: flex;
@@ -272,6 +163,7 @@ nav {
   font-size: 8vw;
   font-weight: 400;
 }
+
 h1 span {
   color: #eb7ef2;
 }
@@ -302,6 +194,7 @@ h1 span {
   width: calc(100% / 3);
   height: 100%;
 }
+
 .pg2bottomRight {
   width: calc(100% / 3);
   height: 100%;
@@ -319,6 +212,7 @@ h1 span {
   background-color: #eb7ef2;
   cursor: pointer;
 }
+
 .pg2BTN {
   padding: 0.6vw 1vw;
   border-radius: 2vw;
@@ -334,6 +228,7 @@ h1 span {
   z-index: -1;
   opacity: 0.9;
 }
+
 .pg2bottomCneterImg2 {
   position: absolute;
   transform: rotate(120deg);
@@ -343,6 +238,7 @@ h1 span {
   padding: 2vw;
   z-index: -1;
 }
+
 .pg2bottomCneterImg3 {
   position: absolute;
   transform: rotate(244deg);
@@ -395,6 +291,7 @@ h1 span {
   letter-spacing: 4vw;
   text-transform: uppercase;
 }
+
 .rowContent {
   height: 100%;
   width: 100%;
@@ -403,9 +300,11 @@ h1 span {
   justify-content: space-between;
   gap: 2vw;
 }
+
 .rowC1 {
   width: calc(100% / 4);
 }
+
 .number {
   border: 1px solid black;
   border-radius: 2vw;
@@ -416,6 +315,7 @@ h1 span {
   justify-content: center;
   color: #eb7ef2;
 }
+
 .rowCtext {
   height: 100%;
   width: 45%;
@@ -427,6 +327,7 @@ h1 span {
   justify-content: center;
   flex-direction: column;
 }
+
 .rowCDescribtion {
   height: 100%;
   width: 26%;
@@ -460,7 +361,7 @@ h1 span {
   align-items: center;
   justify-content: center;
 }
-.page4 .right {
+.page4 .right{
   height: 100%;
   width: calc(100% / 2);
   display: flex;
