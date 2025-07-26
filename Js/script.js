@@ -3,10 +3,10 @@ function lenis() {
   const lenis = new Lenis({
     autoRaf: true,
     smoothWheel: true,
-    lerp: 0.5,
+    lerp: 1,
     smoothTouch: true,
     touchMultiplier: 2,
-    duration: 0.5,
+    duration: 3,
   });
 
   // Listen for the scroll event and log the event data
@@ -220,7 +220,7 @@ function middleware() {
         }
       }
       GSAP();
-    });
+    });    
   }
 
   function middleware() {
@@ -231,5 +231,3 @@ function middleware() {
 }
 
 middleware();
-
-
