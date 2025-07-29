@@ -144,7 +144,7 @@ main {
 }
 
 .scroll-down h4{
-  font-size: 1.5vw;
+  font-size: 1.3vw;
 }
 
 .scroll-p{
@@ -161,6 +161,13 @@ main {
   background-color: #fff;
 }
 
+.gradient{
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+  position: absolute;
+  z-index: 4;
+}
 /* page2 */
 
 .page2 {

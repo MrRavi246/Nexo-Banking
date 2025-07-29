@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         );
         tl.to(".scrolling",{
           width: "100%",
-      },'<')
+      },"<")
       }
       page1();
 
@@ -227,8 +227,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
           opacity:"0",
       }, 'sct-4')
       tl4.to(".cir-part-4",{
-          marginLeft:"80vw",
-          rotate: 360
+          marginLeft:"70vw",
+          rotate: 360,
+          duration:1
       }, 'sct-4')
       }
       page4();
