@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../style/nav.css">
+  <link rel="stylesheet" href="../style/dashboard.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>NEXO Dashboard - Your Banking Overview</title>
+</head>
+
+<body>
+  <!-- Dashboard Navbar -->
+  <nav class="dashboard-nav">
+    <div class="nav-left">
+      <div class="logo">
+        <a href="../index.html"><span>N</span>exo</a>
+      </div>
+    </div>
+    <div class="nav-center">
+      <div class="search-bar">
+        <i class="ri-search-line"></i>
+        <input type="text" placeholder="Search transactions, contacts...">
+      </div>
+    </div>
+    <div class="nav-right">
+      <div class="nav-icons">
+        <div class="nav-icon">
+          <i class="ri-notification-3-line"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        <div class="nav-icon">
+          <i class="ri-mail-line"></i>
+          <span class="notification-badge">7</span>
+        </div>
+        <div class="nav-icon">
+          <i class="ri-settings-3-line"></i>
+        </div>
+      </div>
+      <div class="user-profile">
+        <img src="../media/user-avatar.jpg" alt="User Avatar" class="avatar">
+        <div class="user-info">
+          <span class="username">John Doe</span>
+          <span class="user-type">Premium Member</span>
+        </div>
+        <i class="ri-arrow-down-s-line"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard Sidebar -->
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <div class="sidebar-menu">
+        <div class="menu-item active">
+          <i class="ri-dashboard-3-line"></i>
+          <span>Dashboard</span>
+        </div>
+        <div class="menu-item">
+          <i class="ri-bank-card-line"></i>
+          <span>Accounts</span>
+          <div class="submenu">
+            <div class="submenu-item">Checking</div>
+            <div class="submenu-item">Savings</div>
+            <div class="submenu-item">Credit Cards</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <i class="ri-exchange-line"></i>
+          <span>Transactions</span>
+        </div>
+        <div class="menu-item">
+          <i class="ri-send-plane-line"></i>
+          <span>Transfer Money</span>
+        </div>
+        <div class="menu-item">
+          <i class="ri-bill-line"></i>
+          <span>Pay Bills</span>
+        </div>
+        <div class="menu-item">
+          <i class="ri-line-chart-line"></i>
+          <span>Investments</span>
+        </div>
+        <div class="menu-item">
+          <i class="ri-hand-coin-line"></i>
+          <span>Loans</span>
+        </div>
+        <div class="menu-item">
+          <i class="ri-pie-chart-line"></i>
+          <span>Analytics</span>
+        </div>
+        <div class="menu-item">
+          <i class="ri-customer-service-2-line"></i>
+          <span>Support</span>
+        </div>
+      </div>
+      
+      <div class="sidebar-footer">
+        <div class="menu-item">
+          <i class="ri-logout-box-line"></i>
+          <span>Logout</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Dashboard Content -->
+    <main class="dashboard-main">
+      <!-- Dashboard Header -->
+      <div class="dashboard-header">
+        <!-- User Profile -->
+        <div class="user-profile">
+          <div class="profile-image">
+            <img src="../media/user-avatar.jpg" alt="User Profile" id="profileImage">
+          </div>
+          <div class="profile-info">
+            <h1>Welcome back, Alex!</h1>
+            <p>Here's your financial overview for today</p>
+          </div>
+          <div class="profile-notifications">
+            <button class="notification-btn">
+              <i class="ri-notification-3-line"></i>
+              <span class="notification-badge">3</span>
+            </button>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button class="btn-primary">
+            <i class="ri-add-line"></i>
+            Quick Transfer
+          </button>
+          <button class="btn-secondary">
+            <i class="ri-download-line"></i>
+            Download Report
+          </button>
+        </div>
+      </div>
+
+      <!-- Account Summary Cards -->
+      <div class="account-summary">
+        <div class="summary-card total-balance">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="ri-wallet-3-line"></i>
+            </div>
+            <div class="card-menu">
+              <i class="ri-more-line"></i>
+            </div>
+          </div>
+          <div class="card-content">
+            <h3>Total Balance</h3>
+            <div class="balance-amount">$47,582.50</div>
+            <div class="balance-change positive">
+              <i class="ri-arrow-up-line"></i>
+              +2.5% from last month
+            </div>
+          </div>
+        </div>
+
+        <div class="summary-card checking">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="ri-bank-card-line"></i>
+            </div>
+            <div class="card-menu">
+              <i class="ri-more-line"></i>
+            </div>
+          </div>
+          <div class="card-content">
+            <h3>Checking Account</h3>
+            <div class="balance-amount">$12,450.75</div>
+            <div class="account-number">**** 4892</div>
+          </div>
+        </div>
+
+        <div class="summary-card savings">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="ri-piggy-bank-line"></i>
+            </div>
+            <div class="card-menu">
+              <i class="ri-more-line"></i>
+            </div>
+          </div>
+          <div class="card-content">
+            <h3>Savings Account</h3>
+            <div class="balance-amount">$28,750.00</div>
+            <div class="interest-rate">2.5% APY</div>
+          </div>
+        </div>
+
+        <div class="summary-card credit">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="ri-credit-card-line"></i>
+            </div>
+            <div class="card-menu">
+              <i class="ri-more-line"></i>
+            </div>
+          </div>
+          <div class="card-content">
+            <h3>Credit Card</h3>
+            <div class="balance-amount">$6,381.75</div>
+            <div class="credit-limit">$15,000 limit</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard Content Grid -->
+      <div class="dashboard-grid">
+        <!-- Spending Overview Chart -->
+        <div class="dashboard-widget spending-chart">
+          <div class="widget-header">
+            <h3>Spending Overview</h3>
+            <div class="widget-controls">
+              <select class="time-filter">
+                <option>This Month</option>
+                <option>Last Month</option>
+                <option>Last 3 Months</option>
+              </select>
+            </div>
+          </div>
+          <div class="widget-content">
+            <div class="chart-container">
+              <canvas id="spendingChart"></canvas>
+            </div>
+            <div class="spending-categories">
+              <div class="category-item">
+                <div class="category-color food"></div>
+                <span>Food & Dining</span>
+                <span class="amount">$1,245</span>
+              </div>
+              <div class="category-item">
+                <div class="category-color shopping"></div>
+                <span>Shopping</span>
+                <span class="amount">$890</span>
+              </div>
+              <div class="category-item">
+                <div class="category-color transport"></div>
+                <span>Transportation</span>
+                <span class="amount">$456</span>
+              </div>
+              <div class="category-item">
+                <div class="category-color bills"></div>
+                <span>Bills & Utilities</span>
+                <span class="amount">$2,100</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Transactions -->
+        <div class="dashboard-widget transactions">
+          <div class="widget-header">
+            <h3>Recent Transactions</h3>
+            <a href="#" class="view-all">View All</a>
+          </div>
+          <div class="widget-content">
+            <div class="transaction-list">
+              <div class="transaction-item">
+                <div class="transaction-icon amazon">
+                  <i class="ri-shopping-bag-line"></i>
+                </div>
+                <div class="transaction-details">
+                  <div class="transaction-title">Amazon Purchase</div>
+                  <div class="transaction-date">Today, 2:30 PM</div>
+                </div>
+                <div class="transaction-amount negative">-$89.99</div>
+              </div>
+
+              <div class="transaction-item">
+                <div class="transaction-icon gas">
+                  <i class="ri-gas-station-line"></i>
+                </div>
+                <div class="transaction-details">
+                  <div class="transaction-title">Shell Gas Station</div>
+                  <div class="transaction-date">Yesterday, 8:15 AM</div>
+                </div>
+                <div class="transaction-amount negative">-$45.20</div>
+              </div>
+
+              <div class="transaction-item">
+                <div class="transaction-icon salary">
+                  <i class="ri-arrow-down-line"></i>
+                </div>
+                <div class="transaction-details">
+                  <div class="transaction-title">Salary Deposit</div>
+                  <div class="transaction-date">2 days ago</div>
+                </div>
+                <div class="transaction-amount positive">+$3,500.00</div>
+              </div>
+
+              <div class="transaction-item">
+                <div class="transaction-icon coffee">
+                  <i class="ri-cup-line"></i>
+                </div>
+                <div class="transaction-details">
+                  <div class="transaction-title">Starbucks Coffee</div>
+                  <div class="transaction-date">3 days ago</div>
+                </div>
+                <div class="transaction-amount negative">-$12.45</div>
+              </div>
+
+              <div class="transaction-item">
+                <div class="transaction-icon transfer">
+                  <i class="ri-send-plane-line"></i>
+                </div>
+                <div class="transaction-details">
+                  <div class="transaction-title">Transfer to Sarah</div>
+                  <div class="transaction-date">4 days ago</div>
+                </div>
+                <div class="transaction-amount negative">-$250.00</div>
+              </div>
+
+              <div class="transaction-item">
+                <div class="transaction-icon netflix">
+                  <i class="ri-tv-line"></i>
+                </div>
+                <div class="transaction-details">
+                  <div class="transaction-title">Netflix Subscription</div>
+                  <div class="transaction-date">5 days ago</div>
+                </div>
+                <div class="transaction-amount negative">-$15.99</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="dashboard-widget quick-actions">
+          <div class="widget-header">
+            <h3>Quick Actions</h3>
+          </div>
+          <div class="widget-content">
+            <div class="action-grid">
+              <div class="action-item send-money">
+                <div class="action-icon">
+                  <i class="ri-send-plane-line"></i>
+                </div>
+                <span>Send Money</span>
+              </div>
+              <div class="action-item request-money">
+                <div class="action-icon">
+                  <i class="ri-qr-code-line"></i>
+                </div>
+                <span>Request Money</span>
+              </div>
+              <div class="action-item pay-bills">
+                <div class="action-icon">
+                  <i class="ri-bill-line"></i>
+                </div>
+                <span>Pay Bills</span>
+              </div>
+              <div class="action-item mobile-recharge">
+                <div class="action-icon">
+                  <i class="ri-smartphone-line"></i>
+                </div>
+                <span>Mobile Recharge</span>
+              </div>
+              <div class="action-item currency-exchange">
+                <div class="action-icon">
+                  <i class="ri-exchange-line"></i>
+                </div>
+                <span>Currency Exchange</span>
+              </div>
+              <div class="action-item invest">
+                <div class="action-icon">
+                  <i class="ri-line-chart-line"></i>
+                </div>
+                <span>Invest</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Savings Goals -->
+        <div class="dashboard-widget savings-goals">
+          <div class="widget-header">
+            <h3>Savings Goals</h3>
+            <button class="add-goal-btn">
+              <i class="ri-add-line"></i>
+            </button>
+          </div>
+          <div class="widget-content">
+            <div class="goal-item vacation">
+              <div class="goal-info">
+                <div class="goal-title">Vacation Fund</div>
+                <div class="goal-progress">
+                  <div class="progress-bar">
+                    <div class="progress-fill vacation-progress" style="width: 75%"></div>
+                  </div>
+                  <div class="progress-text">$3,750 / $5,000</div>
+                </div>
+              </div>
+              <div class="goal-percentage vacation-color">75%</div>
+            </div>
+
+            <div class="goal-item emergency">
+              <div class="goal-info">
+                <div class="goal-title">Emergency Fund</div>
+                <div class="goal-progress">
+                  <div class="progress-bar">
+                    <div class="progress-fill emergency-progress" style="width: 45%"></div>
+                  </div>
+                  <div class="progress-text">$4,500 / $10,000</div>
+                </div>
+              </div>
+              <div class="goal-percentage emergency-color">45%</div>
+            </div>
+
+            <div class="goal-item car">
+              <div class="goal-info">
+                <div class="goal-title">New Car</div>
+                <div class="goal-progress">
+                  <div class="progress-bar">
+                    <div class="progress-fill car-progress" style="width: 20%"></div>
+                  </div>
+                  <div class="progress-text">$6,000 / $30,000</div>
+                </div>
+              </div>
+              <div class="goal-percentage car-color">20%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Credit Score -->
+        <div class="dashboard-widget credit-score">
+          <div class="widget-header">
+            <h3>Credit Score</h3>
+            <div class="score-date">Updated 2 days ago</div>
+          </div>
+          <div class="widget-content">
+            <div class="score-display">
+              <div class="score-circle">
+                <svg viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="#333" stroke-width="6"/>
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="#10b981" stroke-width="6" 
+                          stroke-dasharray="283" stroke-dashoffset="70" transform="rotate(-90 50 50)"/>
+                </svg>
+                <div class="score-number">742</div>
+                <div class="score-label">Excellent</div>
+              </div>
+            </div>
+            <div class="score-insights">
+              <div class="insight-item positive">
+                <i class="ri-arrow-up-line"></i>
+                <span>Score increased by 12 points</span>
+              </div>
+              <div class="insight-item tip">
+                <i class="ri-lightbulb-line"></i>
+                <span>Pay down credit card balance to improve score</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Monthly Budget -->
+        <div class="dashboard-widget monthly-budget">
+          <div class="widget-header">
+            <h3>Monthly Budget</h3>
+            <div class="budget-status good">On Track</div>
+          </div>
+          <div class="widget-content">
+            <div class="budget-overview">
+              <div class="budget-amount">
+                <div class="spent">$3,120</div>
+                <div class="total">/ $4,500 budgeted</div>
+              </div>
+              <div class="budget-percentage">69% used</div>
+            </div>
+            <div class="budget-progress">
+              <div class="budget-bar">
+                <div class="budget-fill" style="width: 69%"></div>
+              </div>
+            </div>
+            <div class="budget-categories">
+              <div class="budget-category">
+                <span class="category-name">Groceries</span>
+                <span class="category-spent">$820</span>
+                <span class="category-budget">/ $1,000</span>
+              </div>
+              <div class="budget-category">
+                <span class="category-name">Entertainment</span>
+                <span class="category-spent">$345</span>
+                <span class="category-budget">/ $500</span>
+              </div>
+              <div class="budget-category">
+                <span class="category-name">Transport</span>
+                <span class="category-spent">$280</span>
+                <span class="category-budget">/ $400</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Dashboard functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize charts
+      initializeSpendingChart();
+      initializePortfolioChart();
+      
+      // Add menu interactions
+      initializeMenuInteractions();
+    });
+
+    function initializeSpendingChart() {
+      const ctx = document.getElementById('spendingChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Food & Dining', 'Shopping', 'Transportation', 'Bills & Utilities'],
+          datasets: [{
+            data: [1245, 890, 456, 2100],
+            backgroundColor: ['#eb7ef2', '#9333ea', '#6366f1', '#3b82f6'],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+      });
+    }
+
+    function initializePortfolioChart() {
+      const ctx = document.getElementById('portfolioChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+          datasets: [{
+            data: [12000, 13500, 12800, 14200, 15100, 15450],
+            borderColor: '#eb7ef2',
+            backgroundColor: 'rgba(235, 126, 242, 0.1)',
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            x: {
+              display: false
+            },
+            y: {
+              display: false
+            }
+          }
+        }
+      });
+    }
+
+    function initializeMenuInteractions() {
+      const menuItems = document.querySelectorAll('.menu-item');
+      
+      menuItems.forEach(item => {
+        item.addEventListener('click', function() {
+          menuItems.forEach(mi => mi.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+    }
+  </script>
+
+</body>
+
+</html>

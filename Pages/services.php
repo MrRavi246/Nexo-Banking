@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../style/nav.css">
+  <link rel="stylesheet" href="../style/services.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>NEXO Services - Complete Banking Solutions</title>
+</head>
+
+<body>
+<nav>
+    <div class="navLeft">
+        <div class="navLeftHover">
+            <a href="index.html"><span>N</span>exo</a>
+        </div>
+    </div>
+    <div class="navcenter">
+        <div class="navCenterHover">
+            <a href="index.html">Home</a>
+            <a href="index.html">Home</a>
+        </div>
+        <div class="navCenterHover">
+            <a href="Pages/feature.html">Feature</a>
+            <a href="Pages/feature.html">Feature</a>
+        </div>
+        <div class="navCenterHover">
+            <a href="Pages/about.html">About</a>
+            <a href="Pages/about.html">About</a>
+        </div>
+        <div class="navCenterHover">
+            <a href="Pages/services.php">Service</a>
+            <a href="Pages/services.php">Service</a>
+        </div>
+    </div>
+    <div class="navRight">
+        <button class="signin" onclick="location.href='Pages/login.php'">
+            Sign In
+        </button>
+        <button class="acc_btn">Open an Account</button>
+    </div>
+</nav>
+  <main>
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <div class="gradient"></div>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Complete Banking <span class="highlight">Services</span></h1>
+          <p class="hero-subtitle">From personal banking to business solutions, discover our comprehensive range of financial services tailored to your needs</p>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <h3>500K+</h3>
+              <p>Active Customers</p>
+            </div>
+            <div class="stat-item">
+              <h3>50+</h3>
+              <p>Banking Services</p>
+            </div>
+            <div class="stat-item">
+              <h3>24/7</h3>
+              <p>Customer Support</p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="service-icons">
+            <div class="floating-icon icon-1">
+              <i class="ri-bank-line"></i>
+            </div>
+            <div class="floating-icon icon-2">
+              <i class="ri-wallet-3-line"></i>
+            </div>
+            <div class="floating-icon icon-3">
+              <i class="ri-line-chart-line"></i>
+            </div>
+            <div class="floating-icon icon-4">
+              <i class="ri-shield-check-line"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services Categories -->
+    <div class="categories-section">
+      <div class="section-header">
+        <h2>Service Categories</h2>
+        <p>Choose the right banking solution for your lifestyle</p>
+      </div>
+      
+      <div class="categories-grid">
+        <div class="category-card personal active" data-category="personal">
+          <div class="category-icon">
+            <i class="ri-user-line"></i>
+          </div>
+          <h3>Personal Banking</h3>
+          <p>Everyday banking made simple</p>
+        </div>
+        
+        <div class="category-card business" data-category="business">
+          <div class="category-icon">
+            <i class="ri-building-line"></i>
+          </div>
+          <h3>Business Banking</h3>
+          <p>Solutions for your business growth</p>
+        </div>
+        
+        <div class="category-card investment" data-category="investment">
+          <div class="category-icon">
+            <i class="ri-line-chart-line"></i>
+          </div>
+          <h3>Investment Services</h3>
+          <p>Grow your wealth with expert guidance</p>
+        </div>
+        
+        <div class="category-card premium" data-category="premium">
+          <div class="category-icon">
+            <i class="ri-vip-crown-line"></i>
+          </div>
+          <h3>Premium Banking</h3>
+          <p>Exclusive services for high-net-worth clients</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="services-section">
+      <!-- Personal Banking Services -->
+      <div class="service-category personal-services active">
+        <div class="services-grid">
+          <div class="service-card featured">
+            <div class="service-icon">
+              <i class="ri-bank-card-line"></i>
+            </div>
+            <h3>Checking & Savings</h3>
+            <p>High-yield accounts with no monthly fees and unlimited transactions</p>
+            <ul class="service-features">
+              <li>No minimum balance</li>
+              <li>Free ATM access worldwide</li>
+              <li>Mobile check deposit</li>
+              <li>Overdraft protection</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">2.5% APY</span>
+              <span class="period">on savings</span>
+            </div>
+            <button class="service-btn">Open Account</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-credit-card-line"></i>
+            </div>
+            <h3>Credit Cards</h3>
+            <p>Rewards credit cards with cashback and travel benefits</p>
+            <ul class="service-features">
+              <li>Up to 3% cashback</li>
+              <li>No annual fee</li>
+              <li>Travel insurance included</li>
+              <li>Fraud protection</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">0% APR</span>
+              <span class="period">for 12 months</span>
+            </div>
+            <button class="service-btn">Apply Now</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-home-4-line"></i>
+            </div>
+            <h3>Home Loans</h3>
+            <p>Competitive mortgage rates for first-time and experienced buyers</p>
+            <ul class="service-features">
+              <li>Low down payment options</li>
+              <li>Fast pre-approval</li>
+              <li>Expert loan officers</li>
+              <li>Refinancing available</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">3.2% APR</span>
+              <span class="period">starting rate</span>
+            </div>
+            <button class="service-btn">Get Quote</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-car-line"></i>
+            </div>
+            <h3>Auto Loans</h3>
+            <p>Financing for new and used vehicles with flexible terms</p>
+            <ul class="service-features">
+              <li>Same-day approval</li>
+              <li>No prepayment penalty</li>
+              <li>Dealer partnerships</li>
+              <li>Refinancing options</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">2.9% APR</span>
+              <span class="period">as low as</span>
+            </div>
+            <button class="service-btn">Apply Today</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-graduation-cap-line"></i>
+            </div>
+            <h3>Student Banking</h3>
+            <p>Special accounts and services designed for students</p>
+            <ul class="service-features">
+              <li>No monthly fees</li>
+              <li>Student loan options</li>
+              <li>Financial education</li>
+              <li>Mobile banking</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">Free</span>
+              <span class="period">for students</span>
+            </div>
+            <button class="service-btn">Learn More</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-shield-user-line"></i>
+            </div>
+            <h3>Personal Insurance</h3>
+            <p>Comprehensive insurance coverage for life, health, and property</p>
+            <ul class="service-features">
+              <li>Life insurance</li>
+              <li>Health insurance</li>
+              <li>Property insurance</li>
+              <li>Travel insurance</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">Custom</span>
+              <span class="period">quotes</span>
+            </div>
+            <button class="service-btn">Get Quote</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Business Banking Services -->
+      <div class="service-category business-services">
+        <div class="services-grid">
+          <div class="service-card featured">
+            <div class="service-icon">
+              <i class="ri-briefcase-line"></i>
+            </div>
+            <h3>Business Checking</h3>
+            <p>Professional business accounts with advanced features</p>
+            <ul class="service-features">
+              <li>Unlimited transactions</li>
+              <li>Cash management tools</li>
+              <li>Integration with accounting software</li>
+              <li>Dedicated relationship manager</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">$0</span>
+              <span class="period">monthly fee</span>
+            </div>
+            <button class="service-btn">Open Account</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-hand-coin-line"></i>
+            </div>
+            <h3>Business Loans</h3>
+            <p>Flexible financing solutions for business growth and expansion</p>
+            <ul class="service-features">
+              <li>Term loans</li>
+              <li>Lines of credit</li>
+              <li>Equipment financing</li>
+              <li>SBA loans</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">4.5% APR</span>
+              <span class="period">starting rate</span>
+            </div>
+            <button class="service-btn">Apply Now</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-bank-line"></i>
+            </div>
+            <h3>Merchant Services</h3>
+            <p>Complete payment processing solutions for your business</p>
+            <ul class="service-features">
+              <li>Credit card processing</li>
+              <li>Point-of-sale systems</li>
+              <li>Online payments</li>
+              <li>Mobile payments</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">2.6%</span>
+              <span class="period">+ $0.10 per transaction</span>
+            </div>
+            <button class="service-btn">Get Started</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-money-dollar-circle-line"></i>
+            </div>
+            <h3>Payroll Services</h3>
+            <p>Automated payroll processing with tax compliance</p>
+            <ul class="service-features">
+              <li>Direct deposit</li>
+              <li>Tax filing</li>
+              <li>Employee self-service</li>
+              <li>Benefits administration</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">$25</span>
+              <span class="period">per month + $4 per employee</span>
+            </div>
+            <button class="service-btn">Learn More</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-global-line"></i>
+            </div>
+            <h3>International Trade</h3>
+            <p>Global banking services for international business</p>
+            <ul class="service-features">
+              <li>Letters of credit</li>
+              <li>Foreign exchange</li>
+              <li>Wire transfers</li>
+              <li>Trade financing</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">Custom</span>
+              <span class="period">pricing</span>
+            </div>
+            <button class="service-btn">Contact Us</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-pie-chart-line"></i>
+            </div>
+            <h3>Business Analytics</h3>
+            <p>Advanced reporting and analytics for business insights</p>
+            <ul class="service-features">
+              <li>Cash flow analysis</li>
+              <li>Financial reporting</li>
+              <li>Expense categorization</li>
+              <li>Budget forecasting</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">Included</span>
+              <span class="period">with business accounts</span>
+            </div>
+            <button class="service-btn">Explore</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Investment Services -->
+      <div class="service-category investment-services">
+        <div class="services-grid">
+          <div class="service-card featured">
+            <div class="service-icon">
+              <i class="ri-line-chart-line"></i>
+            </div>
+            <h3>Portfolio Management</h3>
+            <p>Professional investment management with personalized strategies</p>
+            <ul class="service-features">
+              <li>Personalized portfolios</li>
+              <li>Professional advisors</li>
+              <li>Regular rebalancing</li>
+              <li>Tax optimization</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">0.75%</span>
+              <span class="period">annual fee</span>
+            </div>
+            <button class="service-btn">Start Investing</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-calendar-check-line"></i>
+            </div>
+            <h3>Retirement Planning</h3>
+            <p>Comprehensive retirement savings and planning services</p>
+            <ul class="service-features">
+              <li>401(k) rollovers</li>
+              <li>IRA accounts</li>
+              <li>Retirement calculators</li>
+              <li>Financial planning</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">Free</span>
+              <span class="period">consultation</span>
+            </div>
+            <button class="service-btn">Plan Now</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-funds-line"></i>
+            </div>
+            <h3>Mutual Funds</h3>
+            <p>Diversified investment options with professional management</p>
+            <ul class="service-features">
+              <li>Equity funds</li>
+              <li>Bond funds</li>
+              <li>Index funds</li>
+              <li>Target-date funds</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">Low</span>
+              <span class="period">expense ratios</span>
+            </div>
+            <button class="service-btn">Browse Funds</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-exchange-line"></i>
+            </div>
+            <h3>Trading Platform</h3>
+            <p>Advanced trading tools for active investors</p>
+            <ul class="service-features">
+              <li>Stock trading</li>
+              <li>Options trading</li>
+              <li>ETF trading</li>
+              <li>Research tools</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">$0</span>
+              <span class="period">commission on stocks</span>
+            </div>
+            <button class="service-btn">Start Trading</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-copper-coin-line"></i>
+            </div>
+            <h3>Alternative Investments</h3>
+            <p>Access to alternative investment opportunities</p>
+            <ul class="service-features">
+              <li>Real estate investment</li>
+              <li>Commodities</li>
+              <li>Private equity</li>
+              <li>Hedge funds</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">Minimum</span>
+              <span class="period">$100K investment</span>
+            </div>
+            <button class="service-btn">Learn More</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-user-star-line"></i>
+            </div>
+            <h3>Financial Advisory</h3>
+            <p>One-on-one financial planning and investment advice</p>
+            <ul class="service-features">
+              <li>Personal financial planning</li>
+              <li>Investment strategy</li>
+              <li>Tax planning</li>
+              <li>Estate planning</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">1.0%</span>
+              <span class="period">of assets under management</span>
+            </div>
+            <button class="service-btn">Schedule Consultation</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Premium Banking Services -->
+      <div class="service-category premium-services">
+        <div class="services-grid">
+          <div class="service-card featured">
+            <div class="service-icon">
+              <i class="ri-vip-crown-line"></i>
+            </div>
+            <h3>Private Banking</h3>
+            <p>Exclusive banking services for high-net-worth individuals</p>
+            <ul class="service-features">
+              <li>Dedicated relationship manager</li>
+              <li>Priority customer service</li>
+              <li>Exclusive investment opportunities</li>
+              <li>Concierge services</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">$1M</span>
+              <span class="period">minimum balance</span>
+            </div>
+            <button class="service-btn">Apply Now</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-plane-line"></i>
+            </div>
+            <h3>Lifestyle Services</h3>
+            <p>Luxury lifestyle and travel services for premium clients</p>
+            <ul class="service-features">
+              <li>Travel concierge</li>
+              <li>Event planning</li>
+              <li>Luxury shopping</li>
+              <li>Restaurant reservations</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">Complimentary</span>
+              <span class="period">for premium clients</span>
+            </div>
+            <button class="service-btn">Explore Services</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-shield-star-line"></i>
+            </div>
+            <h3>Wealth Management</h3>
+            <p>Comprehensive wealth preservation and growth strategies</p>
+            <ul class="service-features">
+              <li>Asset allocation</li>
+              <li>Risk management</li>
+              <li>Legacy planning</li>
+              <li>Family office services</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">Custom</span>
+              <span class="period">fee structure</span>
+            </div>
+            <button class="service-btn">Contact Advisor</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-building-2-line"></i>
+            </div>
+            <h3>Trust Services</h3>
+            <p>Professional trust and estate administration services</p>
+            <ul class="service-features">
+              <li>Trust administration</li>
+              <li>Estate planning</li>
+              <li>Custody services</li>
+              <li>Succession planning</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">Fee-based</span>
+              <span class="period">on assets</span>
+            </div>
+            <button class="service-btn">Learn More</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-home-gear-line"></i>
+            </div>
+            <h3>Real Estate Services</h3>
+            <p>Specialized financing for luxury real estate investments</p>
+            <ul class="service-features">
+              <li>Jumbo mortgages</li>
+              <li>Investment property loans</li>
+              <li>Construction financing</li>
+              <li>Bridge loans</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">Competitive</span>
+              <span class="period">rates</span>
+            </div>
+            <button class="service-btn">Get Quote</button>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-award-line"></i>
+            </div>
+            <h3>Exclusive Benefits</h3>
+            <p>Premium perks and rewards for elite banking clients</p>
+            <ul class="service-features">
+              <li>Airport lounge access</li>
+              <li>Exclusive events</li>
+              <li>Premium credit cards</li>
+              <li>Waived fees</li>
+            </ul>
+            <div class="service-price">
+              <span class="rate">Included</span>
+              <span class="period">with premium banking</span>
+            </div>
+            <button class="service-btn">View Benefits</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Support Section -->
+    <div class="support-section">
+      <div class="support-content">
+        <div class="support-text">
+          <h2>Need Help Choosing?</h2>
+          <p>Our financial experts are here to help you find the perfect banking solution for your unique needs and goals.</p>
+          <div class="support-options">
+            <div class="support-option">
+              <i class="ri-phone-line"></i>
+              <div>
+                <h4>Call Us</h4>
+                <p>1-800-NEXO-BANK</p>
+              </div>
+            </div>
+            <div class="support-option">
+              <i class="ri-chat-3-line"></i>
+              <div>
+                <h4>Live Chat</h4>
+                <p>Available 24/7</p>
+              </div>
+            </div>
+            <div class="support-option">
+              <i class="ri-calendar-line"></i>
+              <div>
+                <h4>Schedule Meeting</h4>
+                <p>Book a consultation</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="support-visual">
+          <div class="support-circle">
+            <i class="ri-customer-service-2-line"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+      <div class="cta-content">
+        <h2>Ready to Get Started?</h2>
+        <p>Open your account today and experience the difference of modern banking</p>
+        <div class="cta-buttons">
+          <button class="btn-primary" onclick="location.href='account-type.html'">
+            <i class="ri-bank-card-line"></i>
+            Open Account
+          </button>
+          <button class="btn-secondary" onclick="location.href='contact.html'">
+            <i class="ri-customer-service-line"></i>
+            Contact Us
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Category switching functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const categoryCards = document.querySelectorAll('.category-card');
+      const serviceCategories = document.querySelectorAll('.service-category');
+
+      categoryCards.forEach(card => {
+        card.addEventListener('click', function() {
+          const category = this.dataset.category;
+          
+          // Remove active class from all cards
+          categoryCards.forEach(c => c.classList.remove('active'));
+          // Add active class to clicked card
+          this.classList.add('active');
+          
+          // Hide all service categories
+          serviceCategories.forEach(sc => sc.classList.remove('active'));
+          // Show selected service category
+          document.querySelector(`.${category}-services`).classList.add('active');
+        });
+      });
+    });
+  </script>
+
+</body>
+
+</html>
