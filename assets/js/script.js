@@ -1,5 +1,3 @@
-
-
 function lenis() {
   // Initialize Lenis
   const lenis = new Lenis({
@@ -11,10 +9,26 @@ function lenis() {
     duration: 3,
   });
 
+  // Sync ScrollTrigger with Lenis
+  lenis.on("scroll", ScrollTrigger.update);
+
   // Listen for the scroll event and log the event data
   lenis.on("scroll", (e) => {});
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
 }
 lenis();
+
+// Force ScrollTrigger to refresh after Lenis is ready
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    ScrollTrigger.refresh();
+  }, 100); // slight delay ensures DOM is ready
+});
 
 // to remove right click
 // document.addEventListener(
@@ -138,7 +152,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
           },
           "<"
         );
-
         tl.to(
           ".imgrow3",
           {
@@ -233,6 +246,55 @@ document.addEventListener("DOMContentLoaded", (event) => {
       }, 'sct-4')
       }
       page4();
+
+       function page5() {
+        let tl5 = gsap.timeline({
+          scrollTrigger: {
+            trigger: ".page5",
+            start: "50% 50%",
+            end: "350% 40%",
+            pin: true,
+            scrub: 1,
+            // markers:true
+          },
+        });
+        tl5.to("#demo", {
+          bottom: "7%",
+          backgroundColor: "red", // Add a visible change for testing
+        });
+        tl5.to(
+          ".our-work-txt-div",
+          {
+            height: "60vh",
+          },
+          "height"
+        );
+        tl5.to(
+          ".our-work-txt",
+          {
+            height: "60vh",
+          },
+          "height"
+        );
+        tl5.to(
+          "#our",
+          {
+            left: "0%",
+          },
+          "height"
+        );
+        tl5.to(
+          "#work",
+          {
+            right: "0%",
+          },
+          "height"
+        );
+        tl5.to(".scroll-img", {
+          marginTop: "-300%",
+        });
+      }
+      page5();
     }
   }
   GSAP();
