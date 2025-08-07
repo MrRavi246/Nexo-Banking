@@ -21,21 +21,21 @@ body {
   width: 100%;
   position: relative;
   font-family: roboto;
-  background-color: black;
+  background-color: #000000;
   color: white;
   overflow-x: hidden;
+  line-height: 1.6;
 }
 
 .container {
   min-height: 100vh;
-  background-color: black;
-  color: white;
+  background-color: #000000;
 }
 
-/* Header Styles - Matching your nav */
+/* Header Styles - Nexo Style */
 .header {
   width: 100%;
-  height: 4vw;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -44,15 +44,15 @@ body {
   left: 0;
   z-index: 90;
   mix-blend-mode: difference;
-  padding: 0 4vw;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  padding: 0 32px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: white;
 }
 
 .logo h2 {
   font-family: teko;
-  font-size: 2.2vw;
+  font-size: 24px;
   font-weight: normal;
   color: white;
   text-transform: uppercase;
@@ -63,11 +63,738 @@ body {
 }
 
 .logo p {
-  font-size: 1.2vw;
-  color: white;
-  margin-top: -0.5vw;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: -3px;
   letter-spacing: 0.5px;
   font-family: roboto;
+}
+
+/* Main Content */
+.main-content {
+  padding-top: 100px;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-bottom: 50px;
+  min-height: 100vh;
+}
+
+.content-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Header Section - Better Readability */
+.header-section {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.header-section h1 {
+  font-family: teko;
+  font-size: 32px;
+  font-weight: normal;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  font-family: roboto;
+  max-width: 400px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Account Cards Container - Vertical Stack */
+.account-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 40px 0;
+}
+
+/* Account Card Styles - Horizontal Layout */
+.account-card {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 32px;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  min-height: 140px;
+}
+
+.account-card:hover {
+  border-color: #eb7ef2;
+  background-color: rgba(235, 126, 242, 0.03);
+  transform: translateX(8px);
+}
+
+/* Card Icon - Left Side */
+.card-icon {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(235, 126, 242, 0.3);
+  border-radius: 8px;
+  background-color: rgba(235, 126, 242, 0.05);
+}
+
+.card-icon i {
+  font-size: 36px;
+  color: #eb7ef2;
+  transition: all 0.3s ease;
+}
+
+.account-card:hover .card-icon {
+  background-color: rgba(235, 126, 242, 0.1);
+  border-color: #eb7ef2;
+}
+
+.account-card:hover .card-icon i {
+  transform: scale(1.1);
+}
+
+/* Card Content - Main Content Area */
+.card-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Card Header - Smaller Readable */
+.card-header h2 {
+  font-family: teko;
+  font-size: 22px;
+  font-weight: normal;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.card-tagline {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  font-family: roboto;
+  line-height: 1.4;
+}
+
+/* Card Content - Compact List */
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.features-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.features-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: roboto;
+  font-weight: 300;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+
+.features-list i {
+  font-size: 12px;
+  color: #eb7ef2;
+  flex-shrink: 0;
+}
+
+.card-description {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  letter-spacing: 0.1px;
+  font-family: roboto;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+/* Select Button - Right Side */
+.card-action {
+  flex-shrink: 0;
+  width: 140px;
+}
+
+.select-btn {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  font-family: roboto;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.select-btn:hover {
+  border-color: #eb7ef2;
+  color: #eb7ef2;
+  background-color: rgba(235, 126, 242, 0.05);
+}
+
+.select-btn i {
+  transition: transform 0.3s ease;
+  font-size: 12px;
+}
+
+.select-btn:hover i {
+  transform: translateX(2px);
+}
+
+/* Navigation Links - Bottom */
+.navigation-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-link,
+.terms-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-family: roboto;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.2px;
+}
+
+.back-link:hover,
+.terms-link:hover {
+  color: #eb7ef2;
+  border-color: rgba(235, 126, 242, 0.4);
+  background-color: rgba(235, 126, 242, 0.03);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    height: 60px;
+    padding: 0 20px;
+  }
+  
+  .logo h2 {
+    font-size: 20px;
+  }
+  
+  .logo p {
+    font-size: 10px;
+  }
+  
+  .main-content {
+    padding-top: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 30px;
+  }
+  
+  .header-section {
+    margin-bottom: 30px;
+  }
+  
+  .header-section h1 {
+    font-size: 28px;
+  }
+  
+  .subtitle {
+    font-size: 14px;
+  }
+  
+  .account-cards {
+    gap: 16px;
+    margin: 30px 0;
+  }
+  
+  .account-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 24px 20px;
+    min-height: auto;
+  }
+  
+  .card-main-content {
+    gap: 12px;
+  }
+  
+  .card-header h2 {
+    font-size: 20px;
+  }
+  
+  .card-tagline {
+    font-size: 13px;
+  }
+  
+  .features-list {
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .features-list li {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+  
+  .card-description {
+    font-size: 12px;
+  }
+  
+  .card-action {
+    width: 100%;
+  }
+  
+  .select-btn {
+    font-size: 12px;
+    padding: 10px 14px;
+  }
+  
+  .navigation-links {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 30px;
+  }
+  
+  .back-link,
+  .terms-link {
+    font-size: 12px;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .card-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .card-icon i {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-section h1 {
+    font-size: 24px;
+  }
+  
+  .card-header h2 {
+    font-size: 18px;
+  }
+  
+  .card-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .card-icon i {
+    font-size: 24px;
+  }
+  
+  .account-card {
+    padding: 20px 16px;
+  }
+  
+  .select-btn {
+    font-size: 11px;
+    padding: 8px 12px;
+  }
+}
+
+/* Main Content */
+.main-content {
+  padding-top: 120px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 60px;
+  min-height: 100vh;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Section - Minimal */
+.header-section {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.header-section h1 {
+  font-family: teko;
+  font-size: 48px;
+  font-weight: normal;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  font-family: roboto;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Account Cards Container - Simple Grid */
+.account-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin: 60px 0;
+}
+
+/* Account Card Styles - Clean & Minimal */
+.account-card {
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 40px 30px;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+}
+
+.account-card:hover {
+  border-color: #eb7ef2;
+  background-color: rgba(235, 126, 242, 0.02);
+}
+
+/* Card Icon - Simple */
+.card-icon {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.card-icon i {
+  font-size: 48px;
+  color: #eb7ef2;
+  transition: all 0.3s ease;
+}
+
+.account-card:hover .card-icon i {
+  transform: scale(1.1);
+}
+
+/* Card Header - Clean Typography */
+.card-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.card-header h2 {
+  font-family: teko;
+  font-size: 32px;
+  font-weight: normal;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.card-tagline {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  font-family: roboto;
+  line-height: 1.4;
+}
+
+/* Card Content - Clean List */
+.card-content {
+  margin-bottom: 30px;
+  flex: 1;
+}
+
+.features-list {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.features-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.2px;
+  font-family: roboto;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.features-list i {
+  font-size: 16px;
+  color: #eb7ef2;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.card-description {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  font-style: italic;
+  letter-spacing: 0.2px;
+  padding: 20px;
+  border: 1px solid rgba(235, 126, 242, 0.2);
+  border-radius: 8px;
+  background-color: rgba(235, 126, 242, 0.03);
+  font-family: roboto;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* Select Button - Modern Minimal */
+.select-btn {
+  width: 100%;
+  padding: 16px 24px;
+  background-color: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  font-family: roboto;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: auto;
+}
+
+.select-btn:hover {
+  border-color: #eb7ef2;
+  color: #eb7ef2;
+  background-color: rgba(235, 126, 242, 0.05);
+}
+
+.select-btn i {
+  transition: transform 0.3s ease;
+}
+
+.select-btn:hover i {
+  transform: translateX(3px);
+}
+
+/* Navigation Links - Simple */
+.navigation-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-link,
+.terms-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-family: roboto;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 12px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+}
+
+.back-link:hover,
+.terms-link:hover {
+  color: #eb7ef2;
+  border-color: rgba(235, 126, 242, 0.4);
+  background-color: rgba(235, 126, 242, 0.03);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .account-cards {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  
+  .header-section h1 {
+    font-size: 40px;
+  }
+  
+  .card-header h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: 70px;
+    padding: 0 20px;
+  }
+  
+  .logo h2 {
+    font-size: 24px;
+  }
+  
+  .logo p {
+    font-size: 12px;
+  }
+  
+  .main-content {
+    padding-top: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+  }
+  
+  .header-section {
+    margin-bottom: 40px;
+  }
+  
+  .header-section h1 {
+    font-size: 36px;
+  }
+  
+  .subtitle {
+    font-size: 16px;
+  }
+  
+  .account-cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin: 40px 0;
+  }
+  
+  .account-card {
+    padding: 30px 20px;
+    min-height: auto;
+  }
+  
+  .card-header h2 {
+    font-size: 24px;
+  }
+  
+  .card-tagline {
+    font-size: 14px;
+  }
+  
+  .features-list li {
+    font-size: 14px;
+  }
+  
+  .card-description {
+    font-size: 14px;
+    padding: 16px;
+  }
+  
+  .select-btn {
+    font-size: 14px;
+    padding: 14px 20px;
+  }
+  
+  .navigation-links {
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 40px;
+  }
+  
+  .back-link,
+  .terms-link {
+    font-size: 14px;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .card-icon i {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-section h1 {
+    font-size: 32px;
+  }
+  
+  .card-header h2 {
+    font-size: 22px;
+  }
+  
+  .card-icon i {
+    font-size: 36px;
+  }
+  
+  .account-card {
+    padding: 24px 16px;
+  }
+  
+  .select-btn {
+    font-size: 13px;
+    padding: 12px 16px;
+  }
 }
 
 /* Main Content */
@@ -84,10 +811,24 @@ body {
   margin: 0 auto;
 }
 
-/* Header Section */
+/* Header Section - Enhanced */
 .header-section {
   text-align: center;
   margin-bottom: 4vw;
+  position: relative;
+}
+
+.header-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(235, 126, 242, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
 }
 
 .header-section h1 {
@@ -98,59 +839,129 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 1vw;
+  text-shadow: 0 0 30px rgba(235, 126, 242, 0.3);
+  position: relative;
 }
 
 .subtitle {
   font-size: 2vw;
   color: white;
-  font-weight: normal;
-  text-transform: uppercase;
+  font-weight: 300;
   letter-spacing: 1px;
   font-family: roboto;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-/* Account Cards Container */
+/* Account Cards Container - Enhanced Grid */
 .account-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 3vw;
   margin: 4vw 0;
+  perspective: 1000px;
 }
 
-/* Account Card Styles */
+/* Account Card Styles - Modern Design with Nexo Theme */
 .account-card {
-  background-color: transparent;
-  border: 1px solid white;
-  border-radius: 10px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
   padding: 3vw;
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.account-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #eb7ef2, rgba(235, 126, 242, 0.5), #eb7ef2);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+  border-radius: 20px 20px 0 0;
+}
+
+.account-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(235, 126, 242, 0.05) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 20px;
+  z-index: -1;
 }
 
 .account-card:hover {
-  border-color: #eb7ef2;
-  transform: scale(0.95);
-  background-color: rgba(235, 126, 242, 0.05);
+  border-color: rgba(235, 126, 242, 0.4);
+  transform: translateY(-10px) rotateX(5deg);
+  box-shadow: 
+    0 20px 40px rgba(235, 126, 242, 0.1),
+    0 0 50px rgba(235, 126, 242, 0.05);
 }
 
-/* Card Icon */
+.account-card:hover::before {
+  transform: scaleX(1);
+}
+
+.account-card:hover::after {
+  opacity: 1;
+}
+
+/* Card Icon - Enhanced */
 .card-icon {
   margin-bottom: 2vw;
   text-align: center;
+  position: relative;
+}
+
+.card-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(235, 126, 242, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+  transition: all 0.3s ease;
 }
 
 .card-icon i {
   font-size: 4vw;
   color: #eb7ef2;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
+  text-shadow: 0 0 20px rgba(235, 126, 242, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .account-card:hover .card-icon i {
-  transform: scale(1.1);
+  transform: scale(1.2) rotateY(360deg);
+  text-shadow: 0 0 30px rgba(235, 126, 242, 0.6);
 }
 
-/* Card Header */
+.account-card:hover .card-icon::before {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(235, 126, 242, 0.2) 0%, transparent 70%);
+}
+
+/* Card Header - Enhanced Typography */
 .card-header {
   margin-bottom: 2vw;
   text-align: center;
@@ -164,20 +975,21 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 1vw;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
 .card-tagline {
-  font-size: 1.5vw;
-  color: white;
-  font-weight: normal;
-  text-transform: uppercase;
+  font-size: 1.3vw;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
   letter-spacing: 0.5px;
   font-family: roboto;
+  line-height: 1.4;
 }
 
-/* Card Content */
+/* Card Content - Enhanced List */
 .card-content {
-  margin-bottom: 2vw;
+  margin-bottom: 2.5vw;
 }
 
 .features-list {
@@ -189,42 +1001,69 @@ body {
   display: flex;
   align-items: center;
   gap: 1vw;
-  padding: 0.5vw 0;
-  font-size: 1.5vw;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  padding: 0.8vw 0;
+  font-size: 1.3vw;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.3px;
   font-family: roboto;
+  font-weight: 300;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  padding-left: 1vw;
+}
+
+.features-list li:hover {
+  background: rgba(235, 126, 242, 0.05);
+  transform: translateX(5px);
 }
 
 .features-list i {
-  font-size: 1.5vw;
+  font-size: 1.3vw;
   color: #eb7ef2;
   flex-shrink: 0;
+  text-shadow: 0 0 10px rgba(235, 126, 242, 0.3);
 }
 
 .card-description {
-  font-size: 1.5vw;
-  color: white;
+  font-size: 1.3vw;
+  color: rgba(255, 255, 255, 0.8);
   text-align: center;
   font-style: italic;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   padding: 1.5vw;
-  border: 1px solid rgba(235, 126, 242, 0.3);
-  border-radius: 5px;
-  background-color: rgba(235, 126, 242, 0.05);
+  border: 1px solid rgba(235, 126, 242, 0.2);
+  border-radius: 15px;
+  background: linear-gradient(145deg, rgba(235, 126, 242, 0.02), rgba(235, 126, 242, 0.05));
   font-family: roboto;
+  font-weight: 300;
+  line-height: 1.5;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Select Button */
+.card-description::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(235, 126, 242, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.account-card:hover .card-description::before {
+  left: 100%;
+}
+
+/* Select Button - Premium Design */
 .select-btn {
   width: 100%;
   padding: 1.5vw 2vw;
-  background-color: transparent;
+  background: linear-gradient(145deg, transparent, rgba(235, 126, 242, 0.05));
   color: white;
-  border: 1px solid white;
-  border-radius: 5px;
+  border: 1px solid rgba(235, 126, 242, 0.3);
+  border-radius: 15px;
   font-family: teko;
   font-size: 2vw;
   font-weight: normal;
@@ -233,16 +1072,37 @@ body {
   align-items: center;
   justify-content: center;
   gap: 1vw;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.select-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(235, 126, 242, 0.2), transparent);
+  transition: left 0.5s ease;
 }
 
 .select-btn:hover {
   border-color: #eb7ef2;
   color: #eb7ef2;
-  transform: scale(0.95);
-  background-color: rgba(235, 126, 242, 0.1);
+  transform: translateY(-3px);
+  background: linear-gradient(145deg, rgba(235, 126, 242, 0.1), rgba(235, 126, 242, 0.05));
+  box-shadow: 
+    0 10px 30px rgba(235, 126, 242, 0.2),
+    0 0 20px rgba(235, 126, 242, 0.1);
+  text-shadow: 0 0 10px rgba(235, 126, 242, 0.3);
+}
+
+.select-btn:hover::before {
+  left: 100%;
 }
 
 .select-btn i {
@@ -250,17 +1110,17 @@ body {
 }
 
 .select-btn:hover i {
-  transform: translateX(0.5vw);
+  transform: translateX(5px);
 }
 
-/* Navigation Links */
+/* Navigation Links - Enhanced */
 .navigation-links {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 4vw;
   padding-top: 2vw;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .back-link,
@@ -268,25 +1128,161 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5vw;
-  color: white;
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   font-family: roboto;
-  font-size: 1.8vw;
-  font-weight: normal;
+  font-size: 1.6vw;
+  font-weight: 300;
   padding: 1vw 2vw;
-  border: 1px solid white;
-  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
   transition: all 0.3s ease;
-  text-transform: uppercase;
   letter-spacing: 0.5px;
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .back-link:hover,
 .terms-link:hover {
   color: #eb7ef2;
-  border-color: #eb7ef2;
-  transform: scale(0.95);
-  background-color: rgba(235, 126, 242, 0.05);
+  border-color: rgba(235, 126, 242, 0.4);
+  background: rgba(235, 126, 242, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(235, 126, 242, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .account-cards {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5vw;
+  }
+  
+  .header-section h1 {
+    font-size: 7vw;
+  }
+  
+  .card-header h2 {
+    font-size: 3.5vw;
+  }
+}
+
+@media (max-width: 1024px) {
+  .header-section h1 {
+    font-size: 6vw;
+  }
+  
+  .card-header h2 {
+    font-size: 4vw;
+  }
+  
+  .account-cards {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2vw;
+  }
+  
+  .card-icon i {
+    font-size: 5vw;
+  }
+  
+  .select-btn {
+    font-size: 2.5vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: 6vw;
+  }
+  
+  .logo h2 {
+    font-size: 4vw;
+  }
+  
+  .logo p {
+    font-size: 2vw;
+  }
+  
+  .main-content {
+    padding-top: 10vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+  
+  .header-section h1 {
+    font-size: 8vw;
+  }
+  
+  .subtitle {
+    font-size: 3vw;
+  }
+  
+  .account-cards {
+    grid-template-columns: 1fr;
+    gap: 3vw;
+  }
+  
+  .account-card {
+    padding: 4vw;
+  }
+  
+  .card-header h2 {
+    font-size: 5vw;
+  }
+  
+  .card-tagline {
+    font-size: 2.5vw;
+  }
+  
+  .features-list li {
+    font-size: 2.5vw;
+  }
+  
+  .card-description {
+    font-size: 2.5vw;
+  }
+  
+  .select-btn {
+    font-size: 3vw;
+    padding: 2vw;
+  }
+  
+  .navigation-links {
+    flex-direction: column;
+    gap: 2vw;
+  }
+  
+  .back-link,
+  .terms-link {
+    font-size: 3vw;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .card-icon i {
+    font-size: 6vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-section h1 {
+    font-size: 10vw;
+  }
+  
+  .card-header h2 {
+    font-size: 6vw;
+  }
+  
+  .card-icon i {
+    font-size: 8vw;
+  }
+  
+  .account-card {
+    padding: 6vw 4vw;
+  }
+  
+  .select-btn {
+    font-size: 4vw;
+  }
 }
 
 /* Responsive Design */
