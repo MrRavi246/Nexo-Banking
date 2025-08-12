@@ -793,7 +793,12 @@ background: #1b1b1c;
   border-color: #feca57;
   box-shadow: 0 8px 25px rgba(254, 202, 87, 0.3);
 }
+.action-item.auto-pay:hover {
+  border-color: #eb7ef2;
+  box-shadow: 0 8px 25px rgba(160, 16, 185, 0.3);
+}
 
+  
 .action-icon {
   width: 50px;
   height: 50px;
@@ -932,6 +937,66 @@ background: #1b1b1c;
   font-weight: bold;
 }
 
+/* Investment Portfolio Widget */
+.portfolio {
+  grid-column: span 4;
+}
+
+.portfolio-change {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 600;
+}
+
+.portfolio-change.positive {
+  color: #10b981;
+}
+
+.portfolio-value {
+  margin-bottom: 1rem;
+}
+
+.total-value {
+  font-family: 'Teko', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: white;
+}
+
+.value-change {
+  font-size: 0.9rem;
+  color: #10b981;
+}
+
+.portfolio-chart {
+  height: 100px;
+  margin-bottom: 1rem;
+}
+
+.portfolio-holdings {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.holding-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+}
+
+.holding-change.positive {
+  color: #10b981;
+}
+
+.holding-change.negative {
+  color: #ef4444;
+}
+
 /* Credit Score Widget */
 .credit-score {
   grid-column: span 7;
@@ -1037,7 +1102,8 @@ background: #1b1b1c;
   }
   
   .quick-actions,
-  .savings-goals {
+  .savings-goals,
+  .portfolio {
     grid-column: span 4;
   }
   
