@@ -95,14 +95,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
           duration: 0.8,
           y: 100,
           autoAlpha: 0,
-          stagger: 0.2,
+          stagger: 0.1,
         });
 
         tl.to(split.chars, {
           duration: 0.8,
           y: -100,
           autoAlpha: 0,
-          stagger: 0.2,
+          stagger: 0.1,
         });
 
         tl.to(".loader", {
