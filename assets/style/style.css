@@ -128,7 +128,7 @@ main {
   padding: 0.3vw 2vw;
   border-radius: 2vw;
   position: absolute;
-  background-color: #ffffff2a;
+  
   left: 50%;
   transform: translateX(-50%);
   bottom: 8%;
@@ -139,8 +139,10 @@ main {
   gap: 0vh;
   color: #fff;
   z-index: 3;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(2px);
+  /* -webkit-backdrop-filter: blur(10px); */
+  border: 1px solid hsl(0,0%, 100%, 0.3);
+  background: hsl(0,0%, 100%, 0.2);
 }
 
 .scroll-down h4{
