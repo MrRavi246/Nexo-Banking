@@ -1,0 +1,166 @@
+/* Transactions page specific styles */
+
+/* Reuse base resets from accounts.css; this file only contains page-specific rules */
+
+.filters-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.buttons-row {
+  flex-direction: row;
+}
+
+.filter-label {
+  font-size: 0.85rem;
+  color: #bdbdbd;
+  font-weight: 600;
+}
+
+.account-controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.account-controls select,
+.account-controls input[type="date"] {
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+  color: #eee;
+  outline: none;
+  min-width: 200px;
+}
+
+.account-controls select:focus,
+.account-controls input[type="date"]:focus {
+  border-color: #eb7ef2;
+  box-shadow: 0 6px 18px rgba(235,126,242,0.06);
+}
+
+.transactions-table {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 14px;
+  overflow: hidden;
+  padding: 12px;
+}
+
+.transactions-table table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #e6e6e6;
+  font-size: 0.95rem;
+}
+
+.transactions-table thead th {
+  text-align: left;
+  padding: 12px 16px;
+  color: #bfbfbf;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.transactions-table tbody td {
+  padding: 14px 16px;
+  vertical-align: middle;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.transactions-table tbody tr:hover {
+  background: rgba(235,126,242,0.03);
+  transform: translateY(-1px);
+}
+
+.positive {
+  color: #4ce39a; /* green */
+  font-weight: 700;
+}
+
+.negative {
+  color: #ff7b88; /* pink/red */
+  font-weight: 700;
+}
+
+.action-small {
+  background: rgba(255,255,255,0.03);
+  color: #ddd;
+  border: 1px solid rgba(255,255,255,0.04);
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.action-small i { font-size: 1rem; }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 1rem;
+  color: #bdbdbd;
+}
+
+.page-btn {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.04);
+  color: #ddd;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Small responsive tweaks */
+@media (max-width: 900px) {
+  .account-controls select,
+  .account-controls input[type="date"] { min-width: 140px; }
+  .filters-row { flex-direction: column; width: 100%; }
+  .buttons-row { width: 100%; justify-content: flex-start; }
+  .header-actions { gap: 0.6rem; }
+}
+
+@media (min-width: 901px) {
+  .filters-row { flex-direction: column; }
+  .account-controls { align-items: flex-end; }
+  .buttons-row { justify-content: flex-start; }
+}
+
+/* Notifications (lightweight, page-scoped) */
+.notification {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: rgba(20,20,20,0.85);
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.6);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 260ms ease;
+  z-index: 2000;
+}
+
+.notification.show { opacity: 1; transform: translateY(0); }
+
+.notification.success { border-left: 4px solid #4ce39a; }
+.notification.error { border-left: 4px solid #ff7b88; }
+.notification.info { border-left: 4px solid #6fb3ff; }
+
+.notification i { font-size: 1.1rem; color: #fff; }
+
+/* Table empty state */
+.transactions-table .empty {
+  padding: 2rem;
+  text-align: center;
+  color: #999;
+}
