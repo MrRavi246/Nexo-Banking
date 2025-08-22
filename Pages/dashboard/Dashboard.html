@@ -926,13 +926,13 @@
     const emailNotifToggle = document.getElementById('toggleEmailNotif');
 
         function updateBadge() {
+          if (!badge || !dropdown) return;
           const unread = dropdown.querySelectorAll('.notification-item.unread').length;
-          if (!badge) return;
           badge.textContent = unread > 0 ? unread : '';
           badge.style.display = unread > 0 ? 'inline-flex' : 'none';
         }
 
-        if (toggle) {
+        if (toggle && dropdown) {
           toggle.addEventListener('click', function (e) {
             e.stopPropagation();
             const expanded = this.getAttribute('aria-expanded') === 'true';
@@ -945,7 +945,7 @@
           });
         }
 
-        if (mailToggle) {
+        if (mailToggle && mailDropdown) {
           mailToggle.addEventListener('click', function (e) {
             e.stopPropagation();
             const expanded = this.getAttribute('aria-expanded') === 'true';
@@ -957,7 +957,7 @@
           });
         }
 
-        if (settingsToggle) {
+        if (settingsToggle && settingsDropdown) {
           settingsToggle.addEventListener('click', function (e) {
             e.stopPropagation();
             const expanded = this.getAttribute('aria-expanded') === 'true';
@@ -1015,9 +1015,14 @@
         if (clearBtn) {
           clearBtn.addEventListener('click', function (e) {
             e.preventDefault();
+            if (!dropdown) return;
             const items = dropdown.querySelectorAll('.notification-item');
             items.forEach(i => i.remove());
             updateBadge();
+            // collapse dropdown and update aria
+            if (dropdown.classList.contains('open')) dropdown.classList.remove('open');
+            if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            dropdown.setAttribute('aria-hidden', 'true');
           });
         }
 
@@ -1025,9 +1030,13 @@
         if (mailClear) {
           mailClear.addEventListener('click', function (e) {
             e.preventDefault();
+            if (!mailDropdown) return;
             const items = mailDropdown.querySelectorAll('.email-item');
             items.forEach(i => i.remove());
             updateMailBadge();
+            if (mailDropdown.classList.contains('open')) mailDropdown.classList.remove('open');
+            if (mailToggle) mailToggle.setAttribute('aria-expanded', 'false');
+            mailDropdown.setAttribute('aria-hidden', 'true');
           });
         }
 
@@ -1041,11 +1050,14 @@
 
         // Settings: persist email notification toggle
         if (emailNotifToggle) {
-          // load
-          const saved = localStorage.getItem('nexo_email_notifications');
-          emailNotifToggle.checked = saved === null ? true : saved === '1';
+          try {
+            const saved = localStorage.getItem('nexo_email_notifications');
+            emailNotifToggle.checked = saved === null ? true : saved === '1';
+          } catch (e) {
+            emailNotifToggle.checked = true;
+          }
           emailNotifToggle.addEventListener('change', function () {
-            localStorage.setItem('nexo_email_notifications', this.checked ? '1' : '0');
+            try { localStorage.setItem('nexo_email_notifications', this.checked ? '1' : '0'); } catch (e) {}
           });
         }
 
