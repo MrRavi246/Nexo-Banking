@@ -2,6 +2,10 @@
   font-family: teko;
   src: url(../fonts/Teko/Teko-Regular.ttf);
 }
+@font-face {
+  font-family: roboto;
+  src: url(../fonts/Roboto/Roboto-Black.ttf);
+}
 
 * {
   padding: 0;
@@ -14,7 +18,7 @@ body {
   height: 100%;
   width: 100%;
   position: relative;
-  font-family: teko;
+  font-family: roboto;
   background-color: #0F0F10;
   color: white;
   overflow-x: hidden;
@@ -58,12 +62,13 @@ body {
 
 .admin-badge {
   background: linear-gradient(135deg, #eb7ef2, #9333ea);
-  color: white;
+  color: white !important;
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.5px;
+  font-family: roboto;
 }
 
 .nav-center {
@@ -216,6 +221,7 @@ body {
   transform: translateY(-10px);
   transition: all 0.3s ease;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  font-family: roboto;
 }
 
 .notification-dropdown.open,
@@ -231,6 +237,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
 }
 
 .dropdown-header span {
@@ -296,6 +303,7 @@ body {
 
 .settings-dropdown {
   min-width: 200px;
+  
 }
 
 .settings-item {
@@ -1519,7 +1527,9 @@ body {
 .pagination-controls {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  width: fit-content;
 }
 
 .pagination-btn {
@@ -1551,6 +1561,11 @@ body {
   color: #888;
   font-size: 0.85rem;
   padding: 0 0.5rem;
+}
+
+.pagination-numbers{
+  display: flex;
+  align-items: center;
 }
 
 /* User Modals */
@@ -1664,6 +1679,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  font-family: roboto;
 }
 
 .profile-header {

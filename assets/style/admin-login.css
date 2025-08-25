@@ -2,6 +2,10 @@
   font-family: teko;
   src: url(../fonts/Teko/Teko-Regular.ttf);
 }
+@font-face {
+  font-family: roboto;
+  src: url(../fonts/Roboto/Roboto-Black.ttf);
+}
 
 * {
   padding: 0;
@@ -13,7 +17,7 @@ html,
 body {
   height: 100%;
   width: 100%;
-  font-family: teko;
+  font-family: roboto;
   background-color: #0F0F10;
   color: white;
   overflow: hidden;
@@ -64,12 +68,13 @@ body {
 }
 
 .login-content {
+  /* background-color: #fff; */
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 4rem;
   width: 100%;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   padding: 2rem;
   z-index: 10;
   position: relative;
@@ -77,13 +82,13 @@ body {
 
 /* Login Card */
 .login-card {
-  background: rgba(15, 15, 16, 0.9);
+  background: rgba(15, 15, 16, 0.5);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(235, 126, 242, 0.2);
   border-radius: 20px;
   padding: 3rem;
-  width: 100%;
-  max-width: 450px;
+  width: 50%;
+  /* max-width: 450px; */
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
@@ -101,7 +106,9 @@ body {
 
 .login-header {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: .8rem;
+  border-bottom: 1px solid rgba(235, 126, 242, 0.2);;
+  padding-bottom: 1rem;
 }
 
 .logo {
@@ -109,14 +116,16 @@ body {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  /* margin-bottom: .5rem; */
 }
 
 .logo a {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 3.5rem;
+  font-weight: 800;
   text-decoration: none;
   color: white;
+  font-family: teko;
+  text-transform: uppercase;
 }
 
 .logo span {
@@ -125,7 +134,7 @@ body {
 
 .admin-badge {
   background: linear-gradient(135deg, #eb7ef2, #9333ea);
-  color: white;
+  color: white !important;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   font-size: 0.8rem;
@@ -136,7 +145,7 @@ body {
 .login-header h1 {
   font-size: 1.8rem;
   font-weight: 600;
-  color: white;
+  color: #ea7ef2a6;
   margin-bottom: 0.5rem;
 }
 
@@ -202,15 +211,17 @@ body {
 
 .password-toggle {
   position: absolute;
-  right: 1rem;
+  right: 3rem;
+  top: 1rem;
   background: transparent;
   border: none;
   color: #888;
   cursor: pointer;
   font-size: 1rem;
-  padding: 0.25rem;
+  /* padding: 0.25rem; */
   border-radius: 4px;
   transition: all 0.3s ease;
+  background-color: #fff;
 }
 
 .password-toggle:hover {
@@ -367,7 +378,8 @@ body {
 /* Login Info */
 .login-info {
   flex: 1;
-  max-width: 500px;
+  width: 100%;
+  /* max-width: fit-content; */
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -388,6 +400,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  cursor: pointer;
 }
 
 .feature-item {

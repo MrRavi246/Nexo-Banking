@@ -242,20 +242,20 @@ document.addEventListener("DOMContentLoaded", (event) => {
       tl4.to(".cir-part-4",{
           marginLeft:"70vw",
           rotate: 360,
-          duration:1
+          duration:3,
+          backgroundColor:"#20ba58",
       }, 'sct-4')
       }
       page4();
 
-        function page5() {
+      function page5() {
         let tl7 = gsap.timeline({
           scrollTrigger: {
             trigger: ".part-7",
             start: "50% 50%",
-            end: "300% 50%",
+            end: "300% -50%",
             pin: `.page5`,
-            scrub: 1,         
-            markers:true   
+            scrub: 1,            
           },
         });
         tl7.to("#demo", {
@@ -265,6 +265,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           ".our-work-txt-div",
           {
             height: "60vh",
+            duration:5
           },
           "height"
         );
@@ -272,6 +273,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           ".our-work-txt",
           {
             height: "60vh",
+            duration:5
           },
           "height"
         );
@@ -279,7 +281,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
           "#our",
           {
             left: "0%",
-            color:"#eb7ef2"
+            color:"#eb7ef2",
+            duration:5
           },
           "height"
         );
@@ -287,12 +290,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
           "#work",
           {
             right: "0%",
+            color:"white",
+            duration:5
           },
           "height"
         );
         tl7.to(".scroll-img", {
           marginTop: "-300%",
-          duration:8
+          duration:10
         });
       }
       page5();
