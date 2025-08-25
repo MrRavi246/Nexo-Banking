@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../assets/style/login.css">
+    <title>Nexo - LoginPage</title>
+  </head>
+  <body>
+    
+    <div class="container">
+      <div class="left-side">
+        <img src="../../assets/media/BG PNG.png" alt="" />
+        <p>All your cards, account and <br />saving in one place</p>
+      </div>
+      <div class="right-side">
+        <form action="../../backend/login.php" method="POST"> 
+        <!-- <form onsubmit="login(event)" method="POST"> -->
+          <div class="form-header">
+            <h2>Login</h2>
+            <p class="form-description">
+              Enter Credentials provided by bank’s offecials
+            </p>
+          </div>
+          <div>
+            <label for="account_number">Account Number</label><br />
+            <input
+              type="text"
+              id="account_number"
+              name="account_number"
+              required
+            />
+          </div>
+          <div>
+            <label for="password">Password:</label><br />
+            <input type="password" id="password" name="password" required />
+          </div>
+          <button type="submit" class="button">Login</button>
+        </form>
+      </div>
+    </div>
+    <script src="../Js/login.js"></script>
+    
+  </body>
+</html>
