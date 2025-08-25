@@ -29,16 +29,106 @@
     </div>
     <div class="nav-right">
       <div class="nav-icons">
-        <div class="nav-icon">
-          <i class="ri-notification-3-line"></i>
-          <span class="notification-badge">3</span>
+        <div class="nav-icon notif-wrapper">
+          <button id="notifToggle" class="notif-btn" aria-expanded="false" aria-haspopup="true">
+            <i class="ri-notification-3-line"></i>
+            <span class="notification-badge" id="notifBadge">3</span>
+          </button>
+          <div id="notifDropdown" class="notification-dropdown" aria-hidden="true">
+            <div class="dropdown-header">
+              <span>Notifications</span>
+              <button id="clearAll" class="clear-btn">Clear</button>
+            </div>
+            <div class="dropdown-list">
+              <div class="notification-item unread" data-id="1">
+                <div class="notif-left"><i class="ri-arrow-down-line"></i></div>
+                <div class="notif-body">
+                  <div class="notif-title">Salary deposited</div>
+                  <div class="notif-time">Today • 2h ago</div>
+                </div>
+                <button class="mark-read" title="Mark read"><i class="ri-checkbox-blank-circle-line"></i></button>
+              </div>
+
+              <div class="notification-item unread" data-id="2">
+                <div class="notif-left"><i class="ri-shopping-bag-line"></i></div>
+                <div class="notif-body">
+                  <div class="notif-title">Payment to Amazon</div>
+                  <div class="notif-time">Today • 4h ago</div>
+                </div>
+                <button class="mark-read" title="Mark read"><i class="ri-checkbox-blank-circle-line"></i></button>
+              </div>
+
+              <div class="notification-item" data-id="3">
+                <div class="notif-left"><i class="ri-lock-line"></i></div>
+                <div class="notif-body">
+                  <div class="notif-title">Password changed</div>
+                  <div class="notif-time">1 day ago</div>
+                </div>
+                <button class="mark-read" title="Mark read"><i class="ri-checkbox-blank-circle-line"></i></button>
+              </div>
+            </div>
+            <a href="#" class="view-all-notifs">View all</a>
+          </div>
         </div>
-        <div class="nav-icon">
-          <i class="ri-mail-line"></i>
-          <span class="notification-badge">7</span>
+        <div class="nav-icon mail-wrapper">
+          <button id="mailToggle" class="notif-btn" aria-expanded="false" aria-haspopup="true">
+            <i class="ri-mail-line"></i>
+            <span class="notification-badge" id="mailBadge">7</span>
+          </button>
+          <div id="mailDropdown" class="nav-dropdown" aria-hidden="true">
+            <div class="dropdown-header">
+              <span>Messages</span>
+              <button id="mailClear" class="clear-btn">Clear</button>
+            </div>
+            <div class="dropdown-list">
+              <div class="email-item unread" data-id="e1">
+                <div class="notif-left"><i class="ri-user-line"></i></div>
+                <div class="notif-body">
+                  <div class="notif-title">Statement available</div>
+                  <div class="notif-time">Today • 1h ago</div>
+                </div>
+                <button class="email-mark-read" title="Mark read"><i class="ri-checkbox-blank-circle-line"></i></button>
+              </div>
+
+              <div class="email-item unread" data-id="e2">
+                <div class="notif-left"><i class="ri-gift-line"></i></div>
+                <div class="notif-body">
+                  <div class="notif-title">Special offer inside</div>
+                  <div class="notif-time">Yesterday</div>
+                </div>
+                <button class="email-mark-read" title="Mark read"><i class="ri-checkbox-blank-circle-line"></i></button>
+              </div>
+
+              <div class="email-item" data-id="e3">
+                <div class="notif-left"><i class="ri-info-line"></i></div>
+                <div class="notif-body">
+                  <div class="notif-title">Security notice</div>
+                  <div class="notif-time">2 days ago</div>
+                </div>
+                <button class="email-mark-read" title="Mark read"><i class="ri-checkbox-blank-circle-line"></i></button>
+              </div>
+            </div>
+            <a href="#" class="view-all-notifs">View all messages</a>
+          </div>
         </div>
-        <div class="nav-icon">
-          <i class="ri-settings-3-line"></i>
+
+        <div class="nav-icon settings-wrapper">
+          <button id="settingsToggle" class="notif-btn" aria-expanded="false" aria-haspopup="true">
+            <i class="ri-settings-3-line"></i>
+          </button>
+          <div id="settingsDropdown" class="nav-dropdown settings-dropdown" aria-hidden="true">
+            <div class="dropdown-list settings-list">
+              <a href="../../pages/auth/account-type.html" class="settings-item">Profile</a>
+              <a href="#" class="settings-item" id="openAccountSettings">Account Settings</a>
+              <div class="settings-item">
+                <label class="settings-toggle">
+                  <input type="checkbox" id="toggleEmailNotif">
+                  <span>Email notifications</span>
+                </label>
+              </div>
+              <a href="#" class="settings-item" id="logoutLink">Logout</a>
+            </div>
+          </div>
         </div>
       </div>
       <div class="user-profile">
@@ -69,11 +159,11 @@
             <div class="submenu-item">Credit Cards</div>
           </div> -->
         </div>
-        <div class="menu-item">
+        <div class="menu-item" onclick="window.location.href='Transactions.html'">
           <i class="ri-exchange-line"></i>
           <span>Transactions</span>
         </div>
-        <div class="menu-item">
+        <div class="menu-item" onclick="window.location.href='transfer-money.html'">
           <i class="ri-send-plane-line"></i>
           <span>Transfer Money</span>
         </div>
@@ -124,9 +214,9 @@
           </div>
         </div>
         <div class="header-actions">
-          <button class="btn-primary" onclick="openTransferModal()">
-            <i class="ri-add-line"></i>
-            Quick Transfer
+          <button class="btn-primary" onclick="window.location.href='transfer-money.html'">
+            <i class="ri-send-plane-line"></i>
+            Transfer Money
           </button>
           <button class="btn-secondary">
             <i class="ri-download-line"></i>
@@ -816,6 +906,165 @@
         }
       });
     });
+
+      // Notification dropdown behavior
+      (function () {
+    const toggle = document.getElementById('notifToggle');
+    const dropdown = document.getElementById('notifDropdown');
+    const badge = document.getElementById('notifBadge');
+    const clearBtn = document.getElementById('clearAll');
+
+    // Mail elements
+    const mailToggle = document.getElementById('mailToggle');
+    const mailDropdown = document.getElementById('mailDropdown');
+    const mailBadge = document.getElementById('mailBadge');
+    const mailClear = document.getElementById('mailClear');
+
+    // Settings
+    const settingsToggle = document.getElementById('settingsToggle');
+    const settingsDropdown = document.getElementById('settingsDropdown');
+    const emailNotifToggle = document.getElementById('toggleEmailNotif');
+
+        function updateBadge() {
+          if (!badge || !dropdown) return;
+          const unread = dropdown.querySelectorAll('.notification-item.unread').length;
+          badge.textContent = unread > 0 ? unread : '';
+          badge.style.display = unread > 0 ? 'inline-flex' : 'none';
+        }
+
+        if (toggle && dropdown) {
+          toggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            const expanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', String(!expanded));
+            dropdown.classList.toggle('open');
+            dropdown.setAttribute('aria-hidden', String(expanded));
+            // close others
+            if (mailDropdown) mailDropdown.classList.remove('open');
+            if (settingsDropdown) settingsDropdown.classList.remove('open');
+          });
+        }
+
+        if (mailToggle && mailDropdown) {
+          mailToggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            const expanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', String(!expanded));
+            mailDropdown.classList.toggle('open');
+            mailDropdown.setAttribute('aria-hidden', String(expanded));
+            if (dropdown) dropdown.classList.remove('open');
+            if (settingsDropdown) settingsDropdown.classList.remove('open');
+          });
+        }
+
+        if (settingsToggle && settingsDropdown) {
+          settingsToggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            const expanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', String(!expanded));
+            settingsDropdown.classList.toggle('open');
+            settingsDropdown.setAttribute('aria-hidden', String(expanded));
+            if (dropdown) dropdown.classList.remove('open');
+            if (mailDropdown) mailDropdown.classList.remove('open');
+          });
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function (e) {
+          [dropdown, mailDropdown, settingsDropdown].forEach(d => {
+            if (!d) return;
+            if (!d.classList.contains('open')) return;
+            const parentToggle = d === dropdown ? toggle : d === mailDropdown ? mailToggle : settingsToggle;
+            if (!d.contains(e.target) && e.target !== parentToggle) {
+              d.classList.remove('open');
+              if (parentToggle) parentToggle.setAttribute('aria-expanded', 'false');
+              d.setAttribute('aria-hidden', 'true');
+            }
+          });
+        });
+
+        // Mark individual as read for notifications
+        document.addEventListener('click', function (e) {
+          if (e.target.closest('.mark-read')) {
+            const item = e.target.closest('.notification-item');
+            if (!item) return;
+            item.classList.remove('unread');
+            const icon = item.querySelector('.mark-read i');
+            if (icon) {
+              icon.classList.remove('ri-checkbox-blank-circle-line');
+              icon.classList.add('ri-checkbox-circle-fill');
+            }
+            updateBadge();
+          }
+
+          // emails
+          if (e.target.closest('.email-mark-read')) {
+            const item = e.target.closest('.email-item');
+            if (!item) return;
+            item.classList.remove('unread');
+            const icon = item.querySelector('.email-mark-read i');
+            if (icon) {
+              icon.classList.remove('ri-checkbox-blank-circle-line');
+              icon.classList.add('ri-checkbox-circle-fill');
+            }
+            updateMailBadge();
+          }
+        });
+
+        // Clear all notifications
+        if (clearBtn) {
+          clearBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (!dropdown) return;
+            const items = dropdown.querySelectorAll('.notification-item');
+            items.forEach(i => i.remove());
+            updateBadge();
+            // collapse dropdown and update aria
+            if (dropdown.classList.contains('open')) dropdown.classList.remove('open');
+            if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            dropdown.setAttribute('aria-hidden', 'true');
+          });
+        }
+
+        // Mail clear
+        if (mailClear) {
+          mailClear.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (!mailDropdown) return;
+            const items = mailDropdown.querySelectorAll('.email-item');
+            items.forEach(i => i.remove());
+            updateMailBadge();
+            if (mailDropdown.classList.contains('open')) mailDropdown.classList.remove('open');
+            if (mailToggle) mailToggle.setAttribute('aria-expanded', 'false');
+            mailDropdown.setAttribute('aria-hidden', 'true');
+          });
+        }
+
+        // Update mail badge
+        function updateMailBadge() {
+          if (!mailBadge || !mailDropdown) return;
+          const unread = mailDropdown.querySelectorAll('.email-item.unread').length;
+          mailBadge.textContent = unread > 0 ? unread : '';
+          mailBadge.style.display = unread > 0 ? 'inline-flex' : 'none';
+        }
+
+        // Settings: persist email notification toggle
+        if (emailNotifToggle) {
+          try {
+            const saved = localStorage.getItem('nexo_email_notifications');
+            emailNotifToggle.checked = saved === null ? true : saved === '1';
+          } catch (e) {
+            emailNotifToggle.checked = true;
+          }
+          emailNotifToggle.addEventListener('change', function () {
+            try { localStorage.setItem('nexo_email_notifications', this.checked ? '1' : '0'); } catch (e) {}
+          });
+        }
+
+    // initial badge updates
+    updateBadge();
+    updateMailBadge();
+      })();
   </script>
 
 </body>
