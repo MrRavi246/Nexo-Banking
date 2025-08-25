@@ -525,8 +525,12 @@ h1 span {
   transition: all cubic-bezier(0.19, 1, 0.22, 1)1s;
 }
 
-.scroll-img img{
+.scroll-img .imgdiv{
   width: 100%;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ----------------page6---------------- */

@@ -247,51 +247,52 @@ document.addEventListener("DOMContentLoaded", (event) => {
       }
       page4();
 
-       function page5() {
-        let tl5 = gsap.timeline({
+        function page5() {
+        let tl7 = gsap.timeline({
           scrollTrigger: {
-            trigger: ".page5",
+            trigger: ".part-7",
             start: "50% 50%",
-            end: "350% 40%",
-            pin: true,
-            scrub: 1,
-            // markers:true
+            end: "300% 50%",
+            pin: `.page5`,
+            scrub: 1,         
+            markers:true   
           },
         });
-        tl5.to("#demo", {
+        tl7.to("#demo", {
           bottom: "7%",
-          backgroundColor: "red", // Add a visible change for testing
         });
-        tl5.to(
+        tl7.to(
           ".our-work-txt-div",
           {
             height: "60vh",
           },
           "height"
         );
-        tl5.to(
+        tl7.to(
           ".our-work-txt",
           {
             height: "60vh",
           },
           "height"
         );
-        tl5.to(
+        tl7.to(
           "#our",
           {
             left: "0%",
+            color:"#eb7ef2"
           },
           "height"
         );
-        tl5.to(
+        tl7.to(
           "#work",
           {
             right: "0%",
           },
           "height"
         );
-        tl5.to(".scroll-img", {
+        tl7.to(".scroll-img", {
           marginTop: "-300%",
+          duration:8
         });
       }
       page5();
