@@ -1,0 +1,53 @@
+@font-face {
+    font-family: teko;
+    src: url(../media/Teko-Regular.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trip Sans', sans-serif;
+    background-color: #F3F7FB;
+    color: #0F0F10;
+}
+
+.nav {
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+}
+
+
+
+.main {
+    padding-left: 25px;
+    width: 90%;
+}
+
+.main h1 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.main h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.main a {
+    font-size: 1.2rem;
+    text-decoration: underline black;
+    color: black;
+    font-weight: 600;
+}
+
+.main p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}

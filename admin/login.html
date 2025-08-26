@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style/style.css">
+    <link rel="stylesheet" href="../assets/style/admin-login.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="../assets/media/svgs/favicon-white-1.svg" type="image/x-icon">
+    <title>NEXO Admin - Login</title>
+</head>
+
+<body>
+    <!-- Admin Login Container -->
+    <div class="admin-login-container">
+        <div class="login-background">
+            <div class="gradient-overlay"></div>
+        </div>
+        
+        <div class="login-content">
+            <div class="login-card">
+                <div class="login-header">
+                    <div class="logo">
+                        <a href="../index.html"><span>N</span>exo</a>
+                        <span class="admin-badge">ADMIN</span>
+                    </div>
+                    <h1>Administrator Login</h1>
+                    <p>Access the NEXO administrative dashboard</p>
+                </div>
+                
+                <form class="login-form" id="adminLoginForm">
+                    <div class="form-group">
+                        <label for="adminEmail">Administrator Email</label>
+                        <div class="input-wrapper">
+                            <i class="ri-user-line"></i>
+                            <input type="email" id="adminEmail" name="adminEmail" required placeholder="admin@nexo.com">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="adminPassword">Password</label>
+                        <div class="input-wrapper">
+                            <i class="ri-lock-line"></i>
+                            <input type="password" id="adminPassword" name="adminPassword" required placeholder="Enter your password">
+                            <button type="button" class="password-toggle" onclick="togglePassword()">
+                                <i class="ri-eye-line" id="passwordIcon"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe" name="rememberMe">
+                            <span>Remember me for 30 days</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="login-btn">
+                        <i class="ri-login-box-line"></i>
+                        <span>Sign In to Admin Panel</span>
+                        <div class="login-spinner" id="loginSpinner">
+                            <i class="ri-loader-4-line"></i>
+                        </div>
+                    </button>
+                    
+                    <div class="login-links">
+                        <a href="#" class="forgot-password" onclick="showForgotPassword()">
+                            <i class="ri-question-line"></i>
+                            Forgot Password?
+                        </a>
+                    </div>
+                </form>
+                
+                <div class="login-footer">
+                    <div class="security-notice">
+                        <i class="ri-shield-check-line"></i>
+                        <span>Your connection is secured with end-to-end encryption</span>
+                    </div>
+                    <div class="system-status">
+                        <div class="status-indicator online"></div>
+                        <span>All systems operational</span>
+                    </div>
+                </div>
+            </div>
+            <!-- -------------------------- -->
+            <div class="login-info">
+                <h2>Secure Administrator Access</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="ri-shield-check-line"></i>
+                        <div>
+                            <h3>Enhanced Security</h3>
+                            <p>Multi-factor authentication and encrypted sessions</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="ri-dashboard-3-line"></i>
+                        <div>
+                            <h3>Comprehensive Dashboard</h3>
+                            <p>Monitor all system activities in real-time</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="ri-team-line"></i>
+                        <div>
+                            <h3>User Management</h3>
+                            <p>Complete control over user accounts and permissions</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="ri-line-chart-line"></i>
+                        <div>
+                            <h3>Advanced Analytics</h3>
+                            <p>Detailed reports and business intelligence</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script>
+        // Simple form styling and basic interactions
+        function togglePassword() {
+            const passwordInput = document.getElementById('adminPassword');
+            const passwordIcon = document.getElementById('passwordIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordIcon.className = 'ri-eye-off-line';
+            } else {
+                passwordInput.type = 'password';
+                passwordIcon.className = 'ri-eye-line';
+            }
+        }
+
+        function showForgotPassword() {
+            alert('Please contact the system administrator for password reset.');
+        }
+
+        // Demo message
+        setTimeout(() => {
+            const toast = document.createElement('div');
+            toast.className = 'toast toast-info';
+            toast.innerHTML = `
+                <div class="toast-content">
+                    <i class="ri-information-line"></i>
+                    <span>Demo: This is a frontend-only admin interface</span>
+                </div>
+            `;
+            document.getElementById('toastContainer').appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 5000);
+        }, 2000);
+    </script>
+</body>
+</html>

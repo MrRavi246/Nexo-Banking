@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style/nav.css">
+    <link rel="stylesheet" href="../assets/style/admin.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../assets/media/svgs/favicon-white-1.svg" type="image/x-icon">
+    <title>NEXO Admin Panel - Dashboard</title>
+</head>
+
+<body>
+    <!-- Admin Navigation -->
+    <nav class="admin-nav">
+        <div class="nav-left">
+            <div class="logo">
+                <a href="../index.html"><span>N</span>exo</a>
+                <span class="admin-badge">ADMIN</span>
+            </div>
+        </div>
+        <div class="nav-center">
+            <div class="search-bar">
+                <i class="ri-search-line"></i>
+                <input type="text" placeholder="Search users, transactions, accounts...">
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="nav-icons">
+                <div class="nav-icon notif-wrapper">
+                    <button id="notifToggle" class="notif-btn" aria-expanded="false" aria-haspopup="true">
+                        <i class="ri-notification-3-line"></i>
+                        <span class="notification-badge" id="notifBadge">5</span>
+                    </button>
+                    <div id="notifDropdown" class="notification-dropdown" aria-hidden="true">
+                        <div class="dropdown-header">
+                            <span>System Alerts</span>
+                            <button id="clearAll" class="clear-btn">Clear</button>
+                        </div>
+                        <div class="dropdown-list">
+                            <div class="notification-item unread" data-id="1">
+                                <div class="notif-left"><i class="ri-alert-line"></i></div>
+                                <div class="notif-body">
+                                    <div class="notif-title">Suspicious transaction detected</div>
+                                    <div class="notif-time">Today • 1h ago</div>
+                                </div>
+                            </div>
+                            <div class="notification-item unread" data-id="2">
+                                <div class="notif-left"><i class="ri-user-add-line"></i></div>
+                                <div class="notif-body">
+                                    <div class="notif-title">New user registration</div>
+                                    <div class="notif-time">Today • 2h ago</div>
+                                </div>
+                            </div>
+                            <div class="notification-item unread" data-id="3">
+                                <div class="notif-left"><i class="ri-server-line"></i></div>
+                                <div class="notif-body">
+                                    <div class="notif-title">Server maintenance scheduled</div>
+                                    <div class="notif-time">Today • 3h ago</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-footer">
+                            <a href="#" class="view-all-notifs">View all alerts</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nav-icon settings-wrapper">
+                    <button id="settingsToggle" class="notif-btn" aria-expanded="false" aria-haspopup="true">
+                        <i class="ri-settings-3-line"></i>
+                    </button>
+                    <div id="settingsDropdown" class="nav-dropdown settings-dropdown" aria-hidden="true">
+                        <div class="dropdown-list settings-list">
+                            <a href="#" class="settings-item">Admin Profile</a>
+                            <a href="#" class="settings-item">System Settings</a>
+                            <a href="#" class="settings-item">Security Settings</a>
+                            <div class="settings-item">
+                                <label class="settings-toggle">
+                                    <input type="checkbox" id="toggleMaintenanceMode">
+                                    <span>Maintenance Mode</span>
+                                </label>
+                            </div>
+                            <a href="../pages/auth/login.html" class="settings-item">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="user-profile">
+                <img src="../assets/media/user-avatar.jpg" alt="Admin Avatar" class="avatar">
+                <div class="user-info">
+                    <span class="username">Admin User</span>
+                    <span class="user-type">System Administrator</span>
+                </div>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Dashboard Container -->
+    <div class="admin-container">
+        <!-- Admin Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <div class="menu-item active">
+                    <i class="ri-dashboard-3-line"></i>
+                    <a href="index.html">Dashboard</a>
+                </div>
+                <div class="menu-item">
+                    <i class="ri-group-line"></i>
+                    <a href="users.html">User Management</a>
+                </div>
+                <div class="menu-item">
+                    <i class="ri-exchange-line"></i>
+                    <a href="transactions.html">Transactions</a>
+                </div>
+                <div class="menu-item">
+                    <i class="ri-bank-card-line"></i>
+                    <a href="accounts.html">Account Management</a>
+                </div>
+                <div class="menu-item">
+                    <i class="ri-pie-chart-line"></i>
+                    <a href="analytics.html">Analytics & Reports</a>
+                </div>
+                <div class="menu-item">
+                    <i class="ri-shield-check-line"></i>
+                    <a href="security.html">Security & Compliance</a>
+                </div>
+                <div class="menu-item">
+                    <i class="ri-settings-3-line"></i>
+                    <a href="system-settings.html">System Settings</a>
+                </div>
+                <div class="menu-item">
+                    <i class="ri-customer-service-2-line"></i>
+                    <a href="support.html">Support Tickets</a>
+                </div>
+                <div class="menu-item">
+                    <i class="ri-file-text-line"></i>
+                    <a href="audit-logs.html">Audit Logs</a>
+                </div>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="system-status">
+                    <div class="status-indicator online"></div>
+                    <span>System Online</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Admin Content -->
+        <main class="admin-main">
+            <!-- Admin Header -->
+            <div class="admin-header">
+                <div class="header-content">
+                    <h1>Admin Dashboard</h1>
+                    <p>System overview and management console</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-secondary" onclick="exportSystemReport()">
+                        <i class="ri-download-line"></i>
+                        Export Report
+                    </button>
+                    <button class="btn-primary" onclick="openQuickActions()">
+                        <i class="ri-add-line"></i>
+                        Quick Actions
+                    </button>
+                </div>
+            </div>
+
+            <!-- System Overview Cards -->
+            <div class="overview-cards">
+                <div class="overview-card users">
+                    <div class="card-icon">
+                        <i class="ri-group-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-number">12,485</div>
+                        <div class="card-label">Total Users</div>
+                        <div class="card-change positive">+8.2% from last month</div>
+                    </div>
+                    <div class="card-chart">
+                        <canvas id="usersChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="overview-card transactions">
+                    <div class="card-icon">
+                        <i class="ri-exchange-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-number">$2.4M</div>
+                        <div class="card-label">Total Transactions</div>
+                        <div class="card-change positive">+12.5% from last month</div>
+                    </div>
+                    <div class="card-chart">
+                        <canvas id="transactionsChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="overview-card accounts">
+                    <div class="card-icon">
+                        <i class="ri-bank-card-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-number">8,927</div>
+                        <div class="card-label">Active Accounts</div>
+                        <div class="card-change positive">+5.7% from last month</div>
+                    </div>
+                    <div class="card-chart">
+                        <canvas id="accountsChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="overview-card revenue">
+                    <div class="card-icon">
+                        <i class="ri-money-dollar-circle-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-number">$48,920</div>
+                        <div class="card-label">Monthly Revenue</div>
+                        <div class="card-change positive">+15.3% from last month</div>
+                    </div>
+                    <div class="card-chart">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div class="admin-grid">
+                <!-- Recent Activity -->
+                <div class="admin-widget recent-activity">
+                    <div class="widget-header">
+                        <h3>Recent Activity</h3>
+                        <a href="audit-logs.html" class="view-all">View All</a>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon user-action">
+                                <i class="ri-user-add-line"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">New user registration</div>
+                                <div class="activity-detail">John Smith created account #12486</div>
+                                <div class="activity-time">2 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon transaction-action">
+                                <i class="ri-exchange-line"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Large transaction processed</div>
+                                <div class="activity-detail">$50,000 transfer between accounts</div>
+                                <div class="activity-time">5 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon security-action">
+                                <i class="ri-shield-check-line"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Security alert resolved</div>
+                                <div class="activity-detail">Suspicious login attempt blocked</div>
+                                <div class="activity-time">12 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon system-action">
+                                <i class="ri-settings-line"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">System configuration updated</div>
+                                <div class="activity-detail">Interest rates adjusted</div>
+                                <div class="activity-time">1 hour ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Health -->
+                <div class="admin-widget system-health">
+                    <div class="widget-header">
+                        <h3>System Health</h3>
+                        <button class="refresh-btn" onclick="refreshSystemHealth()">
+                            <i class="ri-refresh-line"></i>
+                        </button>
+                    </div>
+                    <div class="health-metrics">
+                        <div class="health-metric">
+                            <div class="metric-label">Server Uptime</div>
+                            <div class="metric-value">99.9%</div>
+                            <div class="metric-status online">Online</div>
+                        </div>
+                        <div class="health-metric">
+                            <div class="metric-label">Database Performance</div>
+                            <div class="metric-value">847ms</div>
+                            <div class="metric-status good">Good</div>
+                        </div>
+                        <div class="health-metric">
+                            <div class="metric-label">API Response Time</div>
+                            <div class="metric-value">145ms</div>
+                            <div class="metric-status excellent">Excellent</div>
+                        </div>
+                        <div class="health-metric">
+                            <div class="metric-label">Storage Usage</div>
+                            <div class="metric-value">68%</div>
+                            <div class="metric-status warning">Warning</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="admin-widget quick-actions">
+                    <div class="widget-header">
+                        <h3>Quick Actions</h3>
+                    </div>
+                    <div class="actions-grid">
+                        <div class="action-item" onclick="openUserModal()">
+                            <div class="action-icon">
+                                <i class="ri-user-add-line"></i>
+                            </div>
+                            <span>Add User</span>
+                        </div>
+                        <div class="action-item" onclick="window.location.href='transactions.html?filter=pending'">
+                            <div class="action-icon">
+                                <i class="ri-file-list-3-line"></i>
+                            </div>
+                            <span>Review Transactions</span>
+                        </div>
+                        <div class="action-item" onclick="openSystemAlert()">
+                            <div class="action-icon">
+                                <i class="ri-notification-2-line"></i>
+                            </div>
+                            <span>Send Alert</span>
+                        </div>
+                        <div class="action-item" onclick="window.location.href='security.html'">
+                            <div class="action-icon">
+                                <i class="ri-shield-line"></i>
+                            </div>
+                            <span>Security Check</span>
+                        </div>
+                        <div class="action-item" onclick="generateReport()">
+                            <div class="action-icon">
+                                <i class="ri-file-chart-line"></i>
+                            </div>
+                            <span>Generate Report</span>
+                        </div>
+                        <div class="action-item" onclick="openMaintenanceModal()">
+                            <div class="action-icon">
+                                <i class="ri-tools-line"></i>
+                            </div>
+                            <span>Maintenance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics Overview -->
+                <div class="admin-widget analytics-overview">
+                    <div class="widget-header">
+                        <h3>Analytics Overview</h3>
+                        <select id="timeRange" onchange="updateAnalytics(this.value)">
+                            <option value="7d">Last 7 Days</option>
+                            <option value="30d" selected>Last 30 Days</option>
+                            <option value="90d">Last 90 Days</option>
+                            <option value="1y">Last Year</option>
+                        </select>
+                    </div>
+                    <div class="analytics-chart">
+                        <canvas id="analyticsChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Pending Approvals -->
+                <div class="admin-widget pending-approvals">
+                    <div class="widget-header">
+                        <h3>Pending Approvals</h3>
+                        <span class="approval-count">12</span>
+                    </div>
+                    <div class="approval-list">
+                        <div class="approval-item">
+                            <div class="approval-info">
+                                <div class="approval-title">Large Transfer Request</div>
+                                <div class="approval-detail">$75,000 international transfer</div>
+                                <div class="approval-user">Requested by: Sarah Johnson</div>
+                            </div>
+                            <div class="approval-actions">
+                                <button class="btn-approve" onclick="approveRequest('tr_001')">
+                                    <i class="ri-check-line"></i>
+                                </button>
+                                <button class="btn-reject" onclick="rejectRequest('tr_001')">
+                                    <i class="ri-close-line"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="approval-item">
+                            <div class="approval-info">
+                                <div class="approval-title">Account Verification</div>
+                                <div class="approval-detail">Business account verification</div>
+                                <div class="approval-user">Requested by: TechCorp Ltd.</div>
+                            </div>
+                            <div class="approval-actions">
+                                <button class="btn-approve" onclick="approveRequest('acc_002')">
+                                    <i class="ri-check-line"></i>
+                                </button>
+                                <button class="btn-reject" onclick="rejectRequest('acc_002')">
+                                    <i class="ri-close-line"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="approval-item">
+                            <div class="approval-info">
+                                <div class="approval-title">Credit Limit Increase</div>
+                                <div class="approval-detail">Increase to $25,000</div>
+                                <div class="approval-user">Requested by: Michael Chen</div>
+                            </div>
+                            <div class="approval-actions">
+                                <button class="btn-approve" onclick="approveRequest('cr_003')">
+                                    <i class="ri-check-line"></i>
+                                </button>
+                                <button class="btn-reject" onclick="rejectRequest('cr_003')">
+                                    <i class="ri-close-line"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="approval-footer">
+                        <a href="#" class="view-all-approvals">View All Pending</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Quick Action Modal -->
+    <div id="quickActionModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Quick Actions</h3>
+                <button class="modal-close" onclick="closeQuickActionModal()">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="quick-action-grid">
+                    <button class="quick-action-btn" onclick="openUserModal()">
+                        <i class="ri-user-add-line"></i>
+                        <span>Add New User</span>
+                    </button>
+                    <button class="quick-action-btn" onclick="sendSystemAlert()">
+                        <i class="ri-notification-2-line"></i>
+                        <span>Send System Alert</span>
+                    </button>
+                    <button class="quick-action-btn" onclick="blockSuspiciousAccount()">
+                        <i class="ri-shield-line"></i>
+                        <span>Block Account</span>
+                    </button>
+                    <button class="quick-action-btn" onclick="generateSystemReport()">
+                        <i class="ri-file-chart-line"></i>
+                        <span>Generate Report</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts can be added later with actual data -->
+    <script>
+        // Simple dropdown toggle for demo
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdownButtons = document.querySelectorAll('[aria-expanded]');
+            dropdownButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const dropdown = button.nextElementSibling || document.querySelector('#' + button.getAttribute('aria-controls'));
+                    if (dropdown) {
+                        dropdown.classList.toggle('open');
+                    }
+                });
+            });
+            
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function() {
+                document.querySelectorAll('.notification-dropdown, .nav-dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('open');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

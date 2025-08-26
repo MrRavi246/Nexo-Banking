@@ -1,0 +1,140 @@
+@font-face {
+  font-family: teko;
+  src: url(../fonts/Teko/Teko-Regular.ttf);
+}
+
+nav {
+  font-family: teko;
+  width: 100%;
+  height: 4vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  mix-blend-mode: difference;
+  padding: 0 4vw;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+  /* border: 1px solid hsl(0,0%, 100%, 0.3); */
+  /* background: hsl(0,0%, 100%, 0.2); */
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+}
+
+.navRight {
+  width: calc(100% / 3);
+  height: 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 0.5vw;
+  overflow: hidden;
+}
+
+.navLeft {
+  width: calc(100% / 3);
+  height: 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0.5vw;
+  overflow: hidden;
+}
+
+.navcenter {
+  width: calc(100% / 3);
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  overflow: hidden;
+  gap: 32px;
+  height: 2vw;
+}
+
+.navCenterHover:hover {
+  margin-top: -2.9vw;
+  transition: all 0.3s;
+  color: #eb7ef2;
+}
+
+.navCenterHover a:hover {
+  color: #eb7ef2;
+}
+
+.navLeftHover {
+  padding: 1vw 2vw;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  font-size: 2.2vw;
+  transition: all 0.3s;
+}
+
+.navLeft a {
+  text-decoration: none;
+  color: white;
+}
+
+.navLeftHover:hover {
+  border-radius: 5vw;
+  color: #eb7ef2;
+  border-color: #eb7ef2;
+  scale: 0.9;
+}
+
+.navLeftHover a:hover {
+  color: #eb7ef2;
+}
+
+.navCenterHover a {
+  font-size: 2vw;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.navLeft a span {
+  color: #eb7ef2;
+  text-decoration: none;
+}
+
+.signin {
+  padding: 1vw 2vw;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2vw;
+  transition: all 0.3s;
+}
+
+.signin:hover {
+  border-radius: 2vw;
+  color: #eb7ef2;
+  border-color: #eb7ef2;
+  scale: 0.9;
+}
+
+.acc_btn:hover {
+  border-radius: 2vw;
+  color: #eb7ef2;
+  border-color: #eb7ef2;
+  scale: 0.9;
+}
+
+.acc_btn {
+  padding: 1vw 1vw;
+  font-size: 1.2vw;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
