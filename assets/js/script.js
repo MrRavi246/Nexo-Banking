@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           scrollTrigger: {
             trigger: ".part-7",
             start: "50% 50%",
-            end: "300% -50%",
+            end: "300% 50%",
             pin: `.page5`,
             scrub: 1,            
           },

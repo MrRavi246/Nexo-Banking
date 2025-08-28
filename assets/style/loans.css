@@ -273,6 +273,15 @@
   border: 1px solid rgba(255,255,255,0.06);
   color: #fff;
 }
+#loanTerm{
+  color: white;
+  background-color: rgba(255,255,255,0.03);;
+}
+
+#loanTerm option{
+  color: white;
+   background-color: #1c1c1c;
+}
 
 .amount-input {
   position: relative;
