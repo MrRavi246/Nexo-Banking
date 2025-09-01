@@ -13,7 +13,7 @@
 
 <body>
     <!-- Admin Navigation -->
-    <nav class="admin-nav">
+     <nav class="admin-nav">
         <div class="nav-left">
             <div class="logo">
                 <a href="../index.html"><span>N</span>exo</a>
@@ -23,7 +23,7 @@
         <div class="nav-center">
             <div class="search-bar">
                 <i class="ri-search-line"></i>
-                <input type="text" placeholder="Search users by name, email, or ID..." id="userSearch">
+                <input type="text" placeholder="Search users, transactions, accounts...">
             </div>
         </div>
         <div class="nav-right">
@@ -33,11 +33,58 @@
                         <i class="ri-notification-3-line"></i>
                         <span class="notification-badge" id="notifBadge">5</span>
                     </button>
+                    <div id="notifDropdown" class="notification-dropdown" aria-hidden="true">
+                        <div class="dropdown-header">
+                            <span>System Alerts</span>
+                            <button id="clearAll" class="clear-btn">Clear</button>
+                        </div>
+                        <div class="dropdown-list">
+                            <div class="notification-item unread" data-id="1">
+                                <div class="notif-left"><i class="ri-alert-line"></i></div>
+                                <div class="notif-body">
+                                    <div class="notif-title">Suspicious transaction detected</div>
+                                    <div class="notif-time">Today • 1h ago</div>
+                                </div>
+                            </div>
+                            <div class="notification-item unread" data-id="2">
+                                <div class="notif-left"><i class="ri-user-add-line"></i></div>
+                                <div class="notif-body">
+                                    <div class="notif-title">New user registration</div>
+                                    <div class="notif-time">Today • 2h ago</div>
+                                </div>
+                            </div>
+                            <div class="notification-item unread" data-id="3">
+                                <div class="notif-left"><i class="ri-server-line"></i></div>
+                                <div class="notif-body">
+                                    <div class="notif-title">Server maintenance scheduled</div>
+                                    <div class="notif-time">Today • 3h ago</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-footer">
+                            <a href="#" class="view-all-notifs">View all alerts</a>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="nav-icon settings-wrapper">
                     <button id="settingsToggle" class="notif-btn" aria-expanded="false" aria-haspopup="true">
                         <i class="ri-settings-3-line"></i>
                     </button>
+                    <div id="settingsDropdown" class="nav-dropdown settings-dropdown" aria-hidden="true">
+                        <div class="dropdown-list settings-list">
+                            <a href="#" class="settings-item">Admin Profile</a>
+                            <a href="#" class="settings-item">System Settings</a>
+                            <a href="#" class="settings-item">Security Settings</a>
+                            <div class="settings-item">
+                                <label class="settings-toggle">
+                                    <input type="checkbox" id="toggleMaintenanceMode">
+                                    <span>Maintenance Mode</span>
+                                </label>
+                            </div>
+                            <a href="../pages/auth/login.html" class="settings-item">Logout</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="user-profile">
