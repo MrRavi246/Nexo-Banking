@@ -42,8 +42,6 @@ window.addEventListener("load", () => {
 // to remove scrollbar
 document.body.style.overflow = "hidden";
 
-
-
 function middleware() {
   function authMiddleware(next) {
     const user =
@@ -66,14 +64,12 @@ function middleware() {
 
   function mainApp() {
     console.log("User is allowed, app running...");
-  
   }
 
   authMiddleware(mainApp);
 }
 
 // middleware();
-
 
 document.addEventListener("DOMContentLoaded", (event) => {
   // gsap code here!
@@ -82,7 +78,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
       gsap.registerPlugin(ScrollTrigger, SplitText);
 
       function loader() {
-        
         let split = SplitText.create(".con", { type: "chars" });
 
         let tl = gsap.timeline();
@@ -181,9 +176,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
           },
           "<"
         );
-        tl.to(".scrolling",{
-          width: "100%",
-      },"<")
+        tl.to(
+          ".scrolling",
+          {
+            width: "100%",
+          },
+          "<"
+        );
       }
       page1();
 
@@ -191,60 +190,117 @@ document.addEventListener("DOMContentLoaded", (event) => {
         gsap.to(".page3", {
           backgroundColor: `white`,
           color: `black`,
+          borderColor: "black",
           duration: 1,
           scrollTrigger: {
             trigger: `.page2`,
-            start: "90% 10%",
+            start: "80% 10%",
             end: "100% 50%",
-            scrub: 3,
+            scrub: 2,
           },
-        });
+        },"<");
+        gsap.to(".page3 .rowRound", {          
+          borderColor: "black",
+          duration: 1,
+          scrollTrigger: {
+            trigger: `.page2`,
+            start: "80% 10%",
+            end: "100% 50%",
+            scrub: 2,
+          },
+        },"<");
+        gsap.to(".page3 .number", {          
+          borderColor: "black",
+          duration: 1,
+          scrollTrigger: {
+            trigger: `.page2`,
+            start: "80% 10%",
+            end: "100% 50%",
+            scrub: 2,
+          },
+        },"<");
       }
       page3();
 
       function page4() {
         let tl4 = gsap.timeline({
-          scrollTrigger:{
-              trigger: ".part-4",
-              start:"50% 50%",
-              end: "200% 50%",
-              pin: true,
-              // markers: true,
-              scrub: 1,
-          },  
-      });
-      tl4.to(".c-one",{
-          marginTop: "-25%",
-          opacity:"1",
-      }, 'sct-1')
-      tl4.to(".c-two",{
-          opacity:"1",
-      }, 'sct-2')
-      tl4.to(".c-one",{
-          marginTop: "-100",
-          opacity:"0",
-      }, 'sct-2')
-      tl4.to(".c-three",{
-          opacity:"1",
-      }, 'sct-3')
-      tl4.to(".c-two",{
-          opacity:"0",
-      }, 'sct-3')
-      tl4.to(".c-one",{
-          marginTop:"-180%",
-      }, 'sct-3')
-      tl4.to(".c-one",{
-          marginTop:"-230%",
-      }, 'sct-4')
-      tl4.to(".c-three",{
-          opacity:"0",
-      }, 'sct-4')
-      tl4.to(".cir-part-4",{
-          marginLeft:"70vw",
-          rotate: 360,
-          duration:3,
-          backgroundColor:"#20ba58",
-      }, 'sct-4')
+          scrollTrigger: {
+            trigger: ".part-4",
+            start: "50% 50%",
+            end: "200% 50%",
+            pin: true,
+            // markers: true,
+            scrub: 1,
+          },
+        });
+        tl4.to(
+          ".c-one",
+          {
+            marginTop: "-25%",
+            opacity: "1",
+          },
+          "sct-1"
+        );
+        tl4.to(
+          ".c-two",
+          {
+            opacity: "1",
+          },
+          "sct-2"
+        );
+        tl4.to(
+          ".c-one",
+          {
+            marginTop: "-100",
+            opacity: "0",
+          },
+          "sct-2"
+        );
+        tl4.to(
+          ".c-three",
+          {
+            opacity: "1",
+          },
+          "sct-3"
+        );
+        tl4.to(
+          ".c-two",
+          {
+            opacity: "0",
+          },
+          "sct-3"
+        );
+        tl4.to(
+          ".c-one",
+          {
+            marginTop: "-180%",
+          },
+          "sct-3"
+        );
+        tl4.to(
+          ".c-one",
+          {
+            marginTop: "-230%",
+          },
+          "sct-4"
+        );
+        tl4.to(
+          ".c-three",
+          {
+            opacity: "0",
+          },
+          "sct-4"
+        );
+        tl4.to(
+          ".cir-part-4",
+          {
+            marginLeft: "70vw",
+            rotate: 360,
+            duration: 3,
+            backgroundColor: "#20ba58",
+          },
+          "sct-4"
+        );
       }
       page4();
 
@@ -253,9 +309,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
           scrollTrigger: {
             trigger: ".part-7",
             start: "50% 50%",
-            end: "300% -50%",
+            end: "200% -50%",
             pin: `.page5`,
-            scrub: 1,            
+            scrub: 1,
           },
         });
         tl7.to("#demo", {
@@ -265,7 +321,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           ".our-work-txt-div",
           {
             height: "60vh",
-            duration:5
+            duration: 5,
           },
           "height"
         );
@@ -273,7 +329,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           ".our-work-txt",
           {
             height: "60vh",
-            duration:5
+            duration: 5,
           },
           "height"
         );
@@ -281,8 +337,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
           "#our",
           {
             left: "0%",
-            color:"#eb7ef2",
-            duration:5
+            color: "#eb7ef2",
+            duration: 5,
           },
           "height"
         );
@@ -290,14 +346,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
           "#work",
           {
             right: "0%",
-            color:"white",
-            duration:5
+            color: "white",
+            duration: 5,
           },
           "height"
         );
         tl7.to(".scroll-img", {
           marginTop: "-300%",
-          duration:10
+          duration: 10,
         });
       }
       page5();

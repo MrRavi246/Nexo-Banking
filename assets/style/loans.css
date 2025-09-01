@@ -188,6 +188,7 @@
 /* Loan Products Section */
 .loan-options {
   margin-top: 2rem;
+  
 }
 
 .loan-products {
@@ -271,6 +272,11 @@
   border-radius: 10px;
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.06);
+  color: #fff;
+}
+
+#loanTerm{
+  background-color: #1c1c1c;
   color: #fff;
 }
 

@@ -8,165 +8,114 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="shortcut icon" href="../assets/media/svgs/favicon-white-1.svg" type="image/x-icon">
     <title>NEXO Admin - Login</title>
+
+  
 </head>
 
 <body>
     <!-- Admin Login Container -->
     <div class="admin-login-container">
-        <!-- Background Elements -->
         <div class="login-background">
-            <div class="bg-animation"></div>
-            <div class="floating-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
-                <div class="shape shape-4"></div>
-            </div>
+            <div class="gradient-overlay"></div>
         </div>
         
-        <!-- Main Content Grid -->
-        <div class="login-grid">
-            <!-- Left Side - Branding & Info -->
-            <div class="login-brand">
-                <div class="brand-header">
-                    <div class="brand-logo">
-                        <a href="../index.html">
-                            <span class="logo-icon">N</span>
-                            <span class="logo-text">exo</span>
+        <div class="login-content">
+            <div class="login-card">
+                <div class="login-header">
+                    <div class="logo">
+                        <a href="../index.html"><span>N</span>exo</a>
+                        <span class="admin-badge">ADMIN</span>
+                    </div>
+                    <h1>Administrator Login</h1>
+                    <p>Access the NEXO administrative dashboard</p>
+                </div>
+                
+                <form class="login-form" id="adminLoginForm">
+                    <div class="form-group">
+                        <label for="adminEmail">Administrator Email</label>
+                        <div class="input-wrapper">
+                            <i class="ri-user-line"></i>
+                            <input type="email" id="adminEmail" name="adminEmail" required placeholder="admin@nexo.com">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="adminPassword">Password</label>
+                        <div class="input-wrapper">
+                            <i class="ri-lock-line"></i>
+                            <input type="password" id="adminPassword" name="adminPassword" required placeholder="Enter your password">
+                            <button type="button" class="password-toggle" onclick="togglePassword()">
+                                <i class="ri-eye-line" id="passwordIcon"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe" name="rememberMe">
+                            <span>Remember me for 30 days</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="login-btn">
+                        <i class="ri-login-box-line"></i>
+                        <span>Sign In to Admin Panel</span>
+                        <div class="login-spinner" id="loginSpinner">
+                            <i class="ri-loader-4-line"></i>
+                        </div>
+                    </button>
+                    
+                    <div class="login-links">
+                        <a href="#" class="forgot-password" onclick="showForgotPassword()">
+                            <i class="ri-question-line"></i>
+                            Forgot Password?
                         </a>
                     </div>
-                    <div class="admin-indicator">
-                        <i class="ri-shield-keyhole-line"></i>
-                        <span>ADMIN PORTAL</span>
-                    </div>
-                </div>
+                </form>
                 
-                <div class="brand-content">
-                    <h1>Welcome Back, Administrator</h1>
-                    <p>Secure access to your administrative dashboard with advanced banking management tools.</p>
-                    
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="ri-user-3-line"></i>
-                            </div>
-                            <div class="stat-info">
-                                <h3>12,847</h3>
-                                <p>Active Users</p>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="ri-exchange-dollar-line"></i>
-                            </div>
-                            <div class="stat-info">
-                                <h3>$2.4M</h3>
-                                <p>Today's Volume</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="security-badges">
-                    <div class="badge">
+                <div class="login-footer">
+                    <div class="security-notice">
                         <i class="ri-shield-check-line"></i>
-                        <span>Bank-Grade Security</span>
+                        <span>Your connection is secured with end-to-end encryption</span>
                     </div>
-                    <div class="badge">
-                        <i class="ri-time-line"></i>
-                        <span>24/7 Monitoring</span>
-                    </div>
-                    <div class="badge">
-                        <i class="ri-fingerprint-line"></i>
-                        <span>Biometric Auth</span>
+                    <div class="system-status">
+                        <div class="status-indicator online"></div>
+                        <span>All systems operational</span>
                     </div>
                 </div>
             </div>
-            
-            <!-- Right Side - Login Form -->
-            <div class="login-panel">
-                <div class="login-card">
-                    <div class="card-header">
-                        <h2>Administrator Sign In</h2>
-                        <p>Enter your credentials to access the admin dashboard</p>
-                    </div>
-                    
-                    <form class="login-form" id="adminLoginForm">
-                        <div class="form-group">
-                            <label for="adminEmail">Email Address</label>
-                            <div class="input-wrapper">
-                                <div class="input-icon">
-                                    <i class="ri-mail-line"></i>
-                                </div>
-                                <input type="email" id="adminEmail" name="adminEmail" required 
-                                       placeholder="admin@nexo.com" autocomplete="email">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="adminPassword">Password</label>
-                            <div class="input-wrapper">
-                                <div class="input-icon">
-                                    <i class="ri-lock-line"></i>
-                                </div>
-                                <input type="password" id="adminPassword" name="adminPassword" required 
-                                       placeholder="Enter your password" autocomplete="current-password">
-                                <button type="button" class="password-toggle" onclick="togglePassword()">
-                                    <i class="ri-eye-line" id="passwordIcon"></i>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="form-options">
-                            <label class="checkbox-wrapper">
-                                <input type="checkbox" id="rememberMe" name="rememberMe">
-                                <span class="checkmark"></span>
-                                <span class="checkbox-text">Keep me signed in</span>
-                            </label>
-                            <a href="#" class="forgot-link" onclick="showForgotPassword()">
-                                Forgot password?
-                            </a>
-                        </div>
-                        
-                        <button type="submit" class="signin-btn">
-                            <span class="btn-text">Sign In to Dashboard</span>
-                            <div class="btn-loader" id="loginSpinner">
-                                <div class="spinner"></div>
-                            </div>
-                            <i class="ri-arrow-right-line btn-arrow"></i>
-                        </button>
-                        
-                        <div class="alternative-options">
-                            <div class="divider">
-                                <span>or continue with</span>
-                            </div>
-                            <div class="auth-methods">
-                                <button type="button" class="auth-btn">
-                                    <i class="ri-fingerprint-line"></i>
-                                    <span>Biometric</span>
-                                </button>
-                                <button type="button" class="auth-btn">
-                                    <i class="ri-smartphone-line"></i>
-                                    <span>Mobile Auth</span>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                    
-                    <div class="card-footer">
-                        <div class="status-indicator">
-                            <div class="status-dot"></div>
-                            <span>All systems operational</span>
-                        </div>
-                        <div class="security-info">
-                            <i class="ri-shield-check-line"></i>
-                            <span>End-to-end encrypted</span>
+            <!-- -------------------------- -->
+            <div class="login-info">
+                <h2>Secure Administrator Access</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="ri-shield-check-line"></i>
+                        <div>
+                            <h3>Enhanced Security</h3>
+                            <p>Multi-factor authentication and encrypted sessions</p>
                         </div>
                     </div>
-                </div>
-                
-                <div class="login-help">
-                    <p>Need assistance? <a href="#">Contact IT Support</a></p>
+                    <div class="feature-item">
+                        <i class="ri-dashboard-3-line"></i>
+                        <div>
+                            <h3>Comprehensive Dashboard</h3>
+                            <p>Monitor all system activities in real-time</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="ri-team-line"></i>
+                        <div>
+                            <h3>User Management</h3>
+                            <p>Complete control over user accounts and permissions</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="ri-line-chart-line"></i>
+                        <div>
+                            <h3>Advanced Analytics</h3>
+                            <p>Detailed reports and business intelligence</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -176,7 +125,7 @@
     <div id="toastContainer" class="toast-container"></div>
 
     <script>
-        // Enhanced password toggle functionality
+        // Simple form styling and basic interactions
         function togglePassword() {
             const passwordInput = document.getElementById('adminPassword');
             const passwordIcon = document.getElementById('passwordIcon');
@@ -191,110 +140,25 @@
         }
 
         function showForgotPassword() {
-            showToast('Please contact the system administrator for password reset.', 'info');
+            alert('Please contact the system administrator for password reset.');
         }
 
-        // Enhanced form handling
-        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const submitBtn = document.querySelector('.signin-btn');
-            const btnText = document.querySelector('.btn-text');
-            const btnLoader = document.querySelector('.btn-loader');
-            const btnArrow = document.querySelector('.btn-arrow');
-            
-            // Show loading state
-            submitBtn.classList.add('loading');
-            btnText.textContent = 'Signing In...';
-            
-            // Simulate login process
-            setTimeout(() => {
-                showToast('Demo: Login functionality not implemented in frontend-only version', 'warning');
-                
-                // Reset button state
-                submitBtn.classList.remove('loading');
-                btnText.textContent = 'Sign In to Dashboard';
-            }, 2000);
-        });
-
-        // Enhanced toast system
-        function showToast(message, type = 'info') {
+        // Demo message
+        setTimeout(() => {
             const toast = document.createElement('div');
-            toast.className = `toast toast-${type}`;
-            
-            const iconMap = {
-                'info': 'ri-information-line',
-                'success': 'ri-check-line',
-                'warning': 'ri-alert-line',
-                'error': 'ri-close-line'
-            };
-            
+            toast.className = 'toast toast-info';
             toast.innerHTML = `
                 <div class="toast-content">
-                    <i class="${iconMap[type]}"></i>
-                    <span>${message}</span>
-                    <button class="toast-close" onclick="this.parentElement.parentElement.remove()">
-                        <i class="ri-close-line"></i>
-                    </button>
+                    <i class="ri-information-line"></i>
+                    <span>Demo: This is a frontend-only admin interface</span>
                 </div>
             `;
-            
             document.getElementById('toastContainer').appendChild(toast);
             
-            // Auto remove after 5 seconds
             setTimeout(() => {
-                if (toast.parentElement) {
-                    toast.remove();
-                }
+                toast.remove();
             }, 5000);
-        }
-
-        // Form input enhancements
-        document.querySelectorAll('.input-wrapper input').forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.classList.add('focused');
-            });
-            
-            input.addEventListener('blur', function() {
-                if (!this.value) {
-                    this.parentElement.classList.remove('focused');
-                }
-            });
-            
-            input.addEventListener('input', function() {
-                if (this.value) {
-                    this.parentElement.classList.add('has-value');
-                } else {
-                    this.parentElement.classList.remove('has-value');
-                }
-            });
-        });
-
-        // Floating shapes animation
-        function initFloatingShapes() {
-            const shapes = document.querySelectorAll('.shape');
-            shapes.forEach((shape, index) => {
-                shape.style.animationDelay = `${index * 2}s`;
-            });
-        }
-
-        // Initialize on load
-        document.addEventListener('DOMContentLoaded', function() {
-            initFloatingShapes();
-            
-            // Show welcome message
-            setTimeout(() => {
-                showToast('Welcome to NEXO Admin Portal - Demo Version', 'info');
-            }, 1000);
-        });
-
-        // Alternative auth methods (demo)
-        document.querySelectorAll('.auth-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const method = this.querySelector('span').textContent;
-                showToast(`${method} authentication not available in demo`, 'warning');
-            });
-        });
+        }, 2000);
     </script>
 </body>
 </html>

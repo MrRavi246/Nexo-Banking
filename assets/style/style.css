@@ -259,8 +259,7 @@ h1 span {
 .OpenACCBTN {
   padding: 0.6vw 1vw;
   border-radius: 2vw;
-  /* background-color: # */
-  
+  background-color: #eb7ef2;
   cursor: pointer;
 }
 
@@ -357,7 +356,7 @@ h1 span {
 }
 
 .number {
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 2vw;
   padding: 0.2vw 2vw;
   font-size: 2vw;
@@ -396,7 +395,7 @@ h1 span {
 .rowRound {
   height: 50%;
   width: 10%;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -496,8 +495,8 @@ h1 span {
 #our{
   position: absolute;
   top: 0;
-  left: 45%;
-  transform: translate(-30%, -50%);
+  left: 40%;
+  transform: translate(-50%, -50%);
   color: #fff;
   font-size: 5vw;
 }
@@ -505,8 +504,8 @@ h1 span {
 #work{
   position: absolute;
   bottom: 0;
-  right: 39%;
-  transform: translate(30%, 50%);
+  right: 45%;
+  transform: translate(50%, 50%);
   color: #eb7ef2;
   font-size: 5vw;
 }
