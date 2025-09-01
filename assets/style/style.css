@@ -255,7 +255,8 @@ h1 span {
 .OpenACCBTN {
   padding: 0.6vw 1vw;
   border-radius: 2vw;
-  background-color: #eb7ef2;
+  /* background-color: # */
+  
   cursor: pointer;
 }
 
