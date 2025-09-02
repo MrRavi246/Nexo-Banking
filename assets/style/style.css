@@ -56,7 +56,6 @@ main {
 }
 
 /* page-1 */
-
 .page1 {
   height: 100vh;
   width: 100%;
@@ -554,4 +553,234 @@ h1 span {
   height: 100vh;
   width: 100%;
   position: relative;
+}
+/* Responsive Styles */
+@media (max-width: 900px) {
+  html, body {
+    font-size: 14px;
+  }
+  .content {
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    scale: 1;
+    transform: none;
+    gap: 16px;
+  }
+  .imgrow1, .imgrow2, .imgrow3, .imgrow4, .imgrow5 {
+    flex-direction: row;
+    width: 100vw;
+    height: auto;
+    margin-top: 0;
+    gap: 10px;
+  }
+  .imgcontainer {
+    height: auto;
+    width: 18vw;
+    min-width: 80px;
+    border-radius: 6px;
+  }
+  .herotext h3 {
+    font-size: 8vw;
+  }
+  .scroll-down {
+    padding: 1vw 4vw;
+    border-radius: 4vw;
+    bottom: 4%;
+  }
+  .scroll-down h4 {
+    font-size: 3vw;
+  }
+  .scroll-p {
+    width: 20vw;
+    height: 4px;
+  }
+  .gradient {
+    height: 60vh;
+  }
+  .container {
+    margin-top: 4vw;
+    height: auto;
+    padding: 2vw;
+  }
+  .top h1 {
+    font-size: 6vw;
+    line-height: 7vw;
+  }
+  .pg2bottomleft, .pg2bottomCneter, .pg2bottomRight {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 2vw;
+  }
+  .squre1 {
+    height: 18vw;
+    width: 18vw;
+    font-size: 3vw;
+    margin-bottom: 2vw;
+  }
+  .pg2bottomCneterImg1, .pg2bottomCneterImg2, .pg2bottomCneterImg3 {
+    scale: 0.8;
+    margin-top: 0;
+    padding: 1vw;
+  }
+  .pg2bottomRight {
+    font-size: 3vw;
+    gap: 2vw;
+  }
+  .OpenACCBTN, .pg2BTN {
+    padding: 1vw 2vw;
+    font-size: 3vw;
+    border-radius: 4vw;
+  }
+  .row1 h1 {
+    font-size: 12vw;
+    letter-spacing: 2vw;
+  }
+  .rowContent {
+    flex-direction: column;
+    gap: 2vw;
+  }
+  .rowC1 {
+    width: 100%;
+    margin-bottom: 2vw;
+  }
+  .rowCtext {
+    font-size: 5vw;
+    line-height: 4vw;
+    width: 100%;
+  }
+  .rowCDescribtion {
+    font-size: 3vw;
+    line-height: 3vw;
+    width: 100%;
+  }
+  .rowRound {
+    font-size: 6vw;
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+  }
+  .part-4 {
+    flex-direction: column;
+    height: auto;
+    min-height: 80vh;
+  }
+  .lft-part-4, .rght-part-4 {
+    width: 100%;
+    padding: 2vw;
+    margin-top: 0;
+  }
+  .lft-part-4 h1 {
+    font-size: 8vw;
+  }
+  .cir-part-4 {
+    width: 12vw;
+    height: 12vw;
+    font-size: 4vw;
+  }
+  .content-rght-part-4 h1 {
+    font-size: 4vw;
+  }
+  .content-rght-part-4 p {
+    font-size: 3vw;
+    width: 100%;
+  }
+  .page5, .part-7 {
+    height: auto;
+    min-height: 60vh;
+    flex-direction: column;
+    padding: 2vw 0;
+  }
+  .our-work-txt, .our-work-txt-div {
+    width: 90vw;
+    height: auto;
+  }
+  #our, #work {
+    font-size: 8vw;
+    left: 0;
+    right: 0;
+    transform: none;
+    position: static;
+  }
+  .scroll-work, .scroll-img, .imgdiv {
+    height: auto;
+    min-height: 20vh;
+  }
+  .imgdiv h1 {
+    font-size: 6vw;
+  }
+  .page6 {
+    height: 40vh;
+  }
+}
+@media (max-width: 600px) {
+  html, body {
+    font-size: 12px;
+  }
+  .content {
+    gap: 8px;
+  }
+  .imgcontainer {
+    width: 40vw;
+    min-width: 60px;
+  }
+  .herotext h3 {
+    font-size: 12vw;
+  }
+  .scroll-down h4 {
+    font-size: 4vw;
+  }
+  .scroll-p {
+    width: 40vw;
+    height: 4px;
+  }
+  .top h1 {
+    font-size: 8vw;
+  }
+  .squre1 {
+    height: 24vw;
+    width: 24vw;
+    font-size: 4vw;
+  }
+  .OpenACCBTN, .pg2BTN {
+    font-size: 4vw;
+  }
+  .row1 h1 {
+    font-size: 10vw;
+  }
+  .rowCtext {
+    font-size: 7vw;
+    line-height: 6vw;
+  }
+  .rowCDescribtion {
+    font-size: 4vw;
+    line-height: 4vw;
+  }
+  .rowRound {
+    font-size: 8vw;
+    width: 24vw;
+    height: 24vw;
+  }
+  .lft-part-4 h1 {
+    font-size: 10vw;
+  }
+  .cir-part-4 {
+    width: 16vw;
+    height: 16vw;
+    font-size: 6vw;
+  }
+  .content-rght-part-4 h1 {
+    font-size: 6vw;
+  }
+  .content-rght-part-4 p {
+    font-size: 4vw;
+  }
+  #our, #work {
+    font-size: 10vw;
+  }
+  .imgdiv h1 {
+    font-size: 8vw;
+  }
 }
