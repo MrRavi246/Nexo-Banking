@@ -42,34 +42,7 @@ window.addEventListener("load", () => {
 // to remove scrollbar
 document.body.style.overflow = "hidden";
 
-function middleware() {
-  function authMiddleware(next) {
-    const user =
-      localStorage.getItem("isLoggedIn") === "true"
-        ? {
-            account_number: localStorage.getItem("account_number"),
-          }
-        : null;
 
-    if (user) {
-      console.log("User is authenticated:", user);
-      mainApp();
-      // next();
-    } else {
-      alert("Unauthorized!");
-      window.location.href = "Pages/login.html";
-      localStorage.clear();
-    }
-  }
-
-  function mainApp() {
-    console.log("User is allowed, app running...");
-  }
-
-  authMiddleware(mainApp);
-}
-
-// middleware();
 
 document.addEventListener("DOMContentLoaded", (event) => {
   // gsap code here!
@@ -96,8 +69,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
         });
 
         tl.to(split.chars, {
-          duration: 0.3,
-          x:  gsap.utils.random(-100, 100),
+          duration: 0.5,
+          x:  gsap.utils.random(-50, 50),
           y:  gsap.utils.random(-100, 100),
           autoAlpha: 0,
           stagger: 0.05,
