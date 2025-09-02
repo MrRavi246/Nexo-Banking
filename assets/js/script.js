@@ -88,16 +88,18 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
         tl.from(split.chars, {
           duration: 0.8,
-          y: 100,
+          x:  gsap.utils.random(-100, 100),
+          y:  gsap.utils.random(-100, 100),
           autoAlpha: 0,
-          stagger: 0.1,
+          stagger: 0.05,
+          ease: "back.out(0.7)",
         });
 
         tl.to(split.chars, {
-          duration: 0.8,
-          y: -100,
+          duration: 0.5,
           autoAlpha: 0,
-          stagger: 0.1,
+          stagger: 0.05,
+          ease: "back.in(2)",
         });
 
         tl.to(".loader", {
