@@ -96,14 +96,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
         });
 
         tl.to(split.chars, {
-          duration: 0.5,
+          duration: 0.3,
+          x:  gsap.utils.random(-100, 100),
+          y:  gsap.utils.random(-100, 100),
           autoAlpha: 0,
           stagger: 0.05,
           ease: "back.in(2)",
         });
 
         tl.to(".loader", {
-          duration: 0.5,
+          duration: 0.3,
           autoAlpha: 0,
           display: "none",
           backgroundColor: `rgba(0, 0, 0, 0.77)`,
