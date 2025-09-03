@@ -63,10 +63,12 @@ nav a {
   margin-top: -2.9vw;
   transition: all 0.3s;
   color: #eb7ef2;
+  
 }
 
 .navCenterHover a:hover {
   color: #eb7ef2;
+  
 }
 
 .navLeftHover {
