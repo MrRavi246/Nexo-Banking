@@ -8,6 +8,11 @@
   gap: 6px;
 }
 
+#filterAccount,#filterType,#dateFrom{
+  background-color: #171717;
+  color: white;
+}
+
 .buttons-row {
   flex-direction: row;
 }

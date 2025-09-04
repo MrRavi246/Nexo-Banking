@@ -8,6 +8,10 @@
   background: #0F0F10;
   width: 100%;
 }
+#fromAccount{
+  background-color: #171717;
+  color: white;
+}
 
 /* Content Header */
 .content-header {
