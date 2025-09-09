@@ -1,0 +1,314 @@
+/* Register Page Specific Styles */
+
+.register-form-container {
+    max-height: 90vh;
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    width: 95%; /* Make register form wider */
+    max-width: 600px; /* Increase max width for register form */
+}
+
+.register-form-container::-webkit-scrollbar {
+    display: none; /* WebKit */
+}
+
+/* Adjust the right panel for register page */
+.login-container .login-right {
+    width: 50%; /* Increase right panel width for register */
+}
+
+.login-container .login-left {
+    width: 50%; /* Adjust left panel accordingly */
+}
+
+/* Form Sections */
+.form-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0F0F10;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.section-title i {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Input Rows */
+.input-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.input-group.half-width {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* File Upload Styling */
+.file-upload-container {
+    position: relative;
+}
+
+.file-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.file-upload-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px dashed #e1e1e1;
+    border-radius: 8px;
+    background: #fafafa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.file-upload-label:hover {
+    border-color: #0F0F10;
+    background: #f0f0f0;
+}
+
+.file-upload-label i {
+    font-size: 1.2rem;
+}
+
+.file-name {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Select Styling */
+select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e1e1e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #fafafa;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+select:focus {
+    outline: none;
+    border-color: #0F0F10;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(15, 15, 16, 0.1);
+}
+
+/* Textarea Styling */
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e1e1e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #fafafa;
+    resize: vertical;
+    min-height: 80px;
+    font-family: roboto, sans-serif;
+    transition: all 0.3s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #0F0F10;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(15, 15, 16, 0.1);
+}
+
+/* Password Strength Indicator */
+.password-strength {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    padding: 0.25rem 0;
+}
+
+.password-strength.weak {
+    color: #e74c3c;
+}
+
+.password-strength.medium {
+    color: #f39c12;
+}
+
+.password-strength.strong {
+    color: #27ae60;
+}
+
+.strength-bar {
+    width: 100%;
+    height: 4px;
+    background: #e1e1e1;
+    border-radius: 2px;
+    margin-top: 0.25rem;
+    overflow: hidden;
+}
+
+.strength-fill {
+    height: 100%;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.strength-fill.weak {
+    width: 33%;
+    background: #e74c3c;
+}
+
+.strength-fill.medium {
+    width: 66%;
+    background: #f39c12;
+}
+
+.strength-fill.strong {
+    width: 100%;
+    background: #27ae60;
+}
+
+/* Register Options */
+.register-options {
+    margin-bottom: 1.5rem;
+}
+
+.register-options .remember-me {
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.terms-link {
+    color: #0F0F10;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.terms-link:hover {
+    text-decoration: underline;
+}
+
+/* Register Button */
+.register-btn {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    margin-bottom: 1rem;
+}
+
+.register-btn:hover {
+    background: linear-gradient(135deg, #229954 0%, #27ae60 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3);
+}
+
+/* Responsive Design for Register Page */
+@media (max-width: 768px) {
+    .input-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .input-group.half-width {
+        margin-bottom: 1rem;
+    }
+    
+    .register-form-container {
+        max-height: 80vh;
+    }
+    
+    .form-section {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1rem;
+    }
+    
+    .register-options .remember-me {
+        font-size: 0.8rem;
+    }
+}
+
+/* Animation for form sections */
+.form-section {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.form-section:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.form-section:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.form-section:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Error messages */
+.error-message {
+    color: #e74c3c;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+.input-group.error input,
+.input-group.error select,
+.input-group.error textarea {
+    border-color: #e74c3c;
+    background-color: #ffeaea;
+}
+
+.input-group.error .error-message {
+    display: block;
+}
+
+/* Success state */
+.input-group.success input,
+.input-group.success select,
+.input-group.success textarea {
+    border-color: #27ae60;
+    background-color: #eafaf1;
+}

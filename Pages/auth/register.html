@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexo - Create Account</title>
+    <link rel="stylesheet" href="/assets/style/login.css">
+    <link rel="stylesheet" href="/assets/style/register.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/assets/media/svgs/favicon-white-1.svg" type="image/x-icon">
+</head>
+<body>
+    <!-- Register Container -->
+    <div class="login-container">
+        <div class="login-left">
+            <div class="background-image">
+                <img src="/assets/media/BG PNG.png" alt="Banking Background">
+            </div>
+            <div class="login-content">
+                <div class="welcome-text">
+                    <h1>Join Nexo Today</h1>
+                    <p>Start your journey with secure, modern banking solutions</p>
+                </div>
+                <div class="features">
+                    <div class="feature-item">
+                        <i class="ri-shield-check-line"></i>
+                        <span>Secure Banking</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="ri-global-line"></i>
+                        <span>Global Access</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="ri-award-line"></i>
+                        <span>Premium Features</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="login-right">
+            <div class="login-form-container register-form-container">
+                <div class="form-header">
+                    <h2>Create Account</h2>
+                    <p>Fill in your details to get started</p>
+                </div>
+
+                <form id="registerForm" action="/backend/signup.php" method="POST" enctype="multipart/form-data">
+                    <!-- Personal Information Section -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="ri-user-line"></i>
+                            Personal Information
+                        </h3>
+                        
+                        <div class="input-row">
+                            <div class="input-group half-width">
+                                <label for="first_name">
+                                    <i class="ri-user-line"></i>
+                                    First Name
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="first_name" 
+                                    name="first_name" 
+                                    placeholder="Enter your first name"
+                                    required>
+                            </div>
+                            <div class="input-group half-width">
+                                <label for="last_name">
+                                    <i class="ri-user-line"></i>
+                                    Last Name
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="last_name" 
+                                    name="last_name" 
+                                    placeholder="Enter your last name"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="email">
+                                <i class="ri-mail-line"></i>
+                                Email Address
+                            </label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="Enter your email address"
+                                required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="phone_number">
+                                <i class="ri-phone-line"></i>
+                                Phone Number
+                            </label>
+                            <input 
+                                type="tel" 
+                                id="phone_number" 
+                                name="phone_number" 
+                                placeholder="Enter your phone number"
+                                required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="date_of_birth">
+                                <i class="ri-calendar-line"></i>
+                                Date of Birth
+                            </label>
+                            <input 
+                                type="date" 
+                                id="date_of_birth" 
+                                name="date_of_birth" 
+                                required>
+                        </div>
+                    </div>
+
+                    <!-- Account Information Section -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="ri-shield-keyhole-line"></i>
+                            Account Information
+                        </h3>
+
+                        <div class="input-group">
+                            <label for="username">
+                                <i class="ri-at-line"></i>
+                                Username
+                            </label>
+                            <input 
+                                type="text" 
+                                id="username" 
+                                name="username" 
+                                placeholder="Choose a username"
+                                required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="password">
+                                <i class="ri-lock-line"></i>
+                                Password
+                            </label>
+                            <div class="password-container">
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    name="password" 
+                                    placeholder="Create a strong password"
+                                    required>
+                                <button type="button" class="toggle-password" onclick="togglePassword('password')">
+                                    <i class="ri-eye-line" id="toggleIcon1"></i>
+                                </button>
+                            </div>
+                            <div class="password-strength" id="passwordStrength"></div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="confirm_password">
+                                <i class="ri-lock-line"></i>
+                                Confirm Password
+                            </label>
+                            <div class="password-container">
+                                <input 
+                                    type="password" 
+                                    id="confirm_password" 
+                                    name="confirm_password" 
+                                    placeholder="Confirm your password"
+                                    required>
+                                <button type="button" class="toggle-password" onclick="togglePassword('confirm_password')">
+                                    <i class="ri-eye-line" id="toggleIcon2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Information Section -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="ri-map-pin-line"></i>
+                            Additional Information
+                        </h3>
+
+                        <div class="input-group">
+                            <label for="address">
+                                <i class="ri-home-line"></i>
+                                Address
+                            </label>
+                            <textarea 
+                                id="address" 
+                                name="address" 
+                                placeholder="Enter your full address"
+                                rows="3"
+                                required></textarea>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="member_type">
+                                <i class="ri-vip-crown-line"></i>
+                                Account Type
+                            </label>
+                            <select id="member_type" name="member_type" required>
+                                <option value="">Select account type</option>
+                                <option value="basic">Basic Account</option>
+                                <option value="premium">Premium Account</option>
+                                <option value="business">Business Account</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="profile_image">
+                                <i class="ri-image-line"></i>
+                                Profile Picture (Optional)
+                            </label>
+                            <div class="file-upload-container">
+                                <input 
+                                    type="file" 
+                                    id="profile_image" 
+                                    name="profile_image" 
+                                    accept="image/*"
+                                    class="file-input">
+                                <label for="profile_image" class="file-upload-label">
+                                    <i class="ri-upload-line"></i>
+                                    <span>Choose Profile Picture</span>
+                                </label>
+                                <div class="file-name" id="fileName"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms and Conditions -->
+                    <div class="form-options register-options">
+                        <label class="remember-me">
+                            <input type="checkbox" name="terms" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="#" class="terms-link">Terms & Conditions</a> and <a href="#" class="terms-link">Privacy Policy</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="login-btn register-btn">
+                        <span>Create Account</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </form>
+
+                <div class="signup-link">
+                    <p>Already have an account? <a href="login.html">Sign in here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Creating your account...</p>
+        </div>
+    </div>
+
+    <script src="/assets/js/register.js"></script>
+</body>
+</html>
