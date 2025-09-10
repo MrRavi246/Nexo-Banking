@@ -57,7 +57,7 @@
             </div>
           </div>
           <div class="navRight">
-            <button class="signin" onclick="location.href='Pages/auth/login.html'">
+            <button class="signin" onclick="location.href='backend/login.php'">
               Sign In
             </button>
             <button class="acc_btn" onclick="location.href='backend/signup.php'">
@@ -338,15 +338,15 @@
               <div class="scroll-work">
                 <div class="scroll-img">
                   <div class="imgdiv">
-                    <img src="/assets/media/img2.jpg" alt="">
+                    <img src="assets/media/img2.jpg" alt="">
                     <h1>Financial Inclusion</h1>
                   </div>
                   <div class="imgdiv">
-                    <img src="/assets/media/img9.jpg" alt="">
+                    <img src="assets/media/img9.jpg" alt="">
                     <h1>Sustainability & ESG</h1>
                   </div>
                   <div class="imgdiv">
-                    <img src="/assets/media/img4.jpg" alt="">
+                    <img src="assets/media/img4.jpg" alt="">
                     <h1>Community Support</h1>
                   </div>
                 </div>
@@ -366,7 +366,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
-    <script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"></script>        
-    <script src="/assets/js/script.js"></script>
+    <script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"></script>            
+     <script src="assets/js/script.js"></script>
   </body>
 </html>
