@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style/nav.css">
+    <link rel="stylesheet" href="../assets/style/admin.css">
+    <link rel="stylesheet" href="../assets/style/transactions.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../assets/media/svgs/favicon-white-1.svg" type="image/x-icon">
+    <title>NEXO Admin Panel - Transactions</title>
+</head>
+
+<body>
+    <!-- Admin Navigation -->
+    <nav class="admin-nav">
+        <div class="nav-left">
+            <div class="logo">
+                <a href="../index.html"><span>N</span>exo</a>
+                <span class="admin-badge">ADMIN</span>
+            </div>
+        </div>
+        <div class="nav-center">
+            <div class="search-bar">
+                <i class="ri-search-line"></i>
+                <input type="text" placeholder="Search transactions by ID, user, amount...">
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="nav-icons">
+                <div class="nav-icon notif-wrapper">
+                    <button id="notifToggle" class="notif-btn" aria-expanded="false" aria-haspopup="true">
+                        <i class="ri-notification-3-line"></i>
+                        <span class="notification-badge" id="notifBadge">5</span>
+                    </button>
+                    <div id="notifDropdown" class="notification-dropdown" aria-hidden="true">
+                        <div class="dropdown-header">
+                            <span>System Alerts</span>
+                            <button id="clearAll" class="clear-btn">Clear</button>
+                        </div>
+                        <div class="dropdown-list">
+                            <div class="notification-item unread" data-id="1">
+                                <div class="notif-left"><i class="ri-alert-line"></i></div>
+                                <div class="notif-body">
+                                    <div class="notif-title">Suspicious transaction detected</div>
+                                    <div class="notif-time">Today • 1h ago</div>
+                                </div>
+                            </div>
+                            <div class="notification-item unread" data-id="2">
+                                <div class="notif-left"><i class="ri-user-add-line"></i></div>
+                                <div class="notif-body">
+                                    <div class="notif-title">New user registration</div>
+                                    <div class="notif-time">Today • 2h ago</div>
+                                </div>
+                            </div>
+                            <div class="notification-item unread" data-id="3">
+                                <div class="notif-left"><i class="ri-server-line"></i></div>
+                                <div class="notif-body">
+                                    <div class="notif-title">Server maintenance scheduled</div>
+                                    <div class="notif-time">Today • 3h ago</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-footer">
+                            <a href="#" class="view-all-notifs">View all alerts</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nav-icon settings-wrapper">
+                    <button id="settingsToggle" class="notif-btn" aria-expanded="false" aria-haspopup="true">
+                        <i class="ri-settings-3-line"></i>
+                    </button>
+                    <div id="settingsDropdown" class="nav-dropdown settings-dropdown" aria-hidden="true">
+                        <div class="dropdown-list settings-list">
+                            <a href="#" class="settings-item">Admin Profile</a>
+                            <a href="#" class="settings-item">System Settings</a>
+                            <a href="#" class="settings-item">Security Settings</a>
+                            <div class="settings-item">
+                                <label class="settings-toggle">
+                                    <input type="checkbox" id="toggleMaintenanceMode">
+                                    <span>Maintenance Mode</span>
+                                </label>
+                            </div>
+                            <a href="../pages/auth/login.html" class="settings-item">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="user-profile">
+                <img src="../assets/media/user-avatar.jpg" alt="Admin Avatar" class="avatar">
+                <div class="user-info">
+                    <span class="username">Admin User</span>
+                    <span class="user-type">System Administrator</span>
+                </div>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Dashboard Container -->
+    <div class="admin-container">
+        <!-- Admin Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <div class="menu-item">
+                    <i class="ri-dashboard-3-line"></i>
+                    <a href="index.html">Dashboard</a>
+                </div>
+                <div class="menu-item">
+                    <i class="ri-group-line"></i>
+                    <a href="users.html">User Management</a>
+                </div>
+                <div class="menu-item active">
+                    <i class="ri-exchange-line"></i>
+                    <a href="transactions.html">Transactions</a>
+                </div>
+                <div class="menu-item">
+                    <i class="ri-bank-card-line"></i>
+                    <a href="accounts.html">Account Management</a>
+                </div>
+                <div class="menu-item">
+                    <i class="ri-pie-chart-line"></i>
+                    <a href="analytics.html">Analytics & Reports</a>
+                </div>
+                <div class="menu-item">
+                    <i class="ri-shield-check-line"></i>
+                    <a href="security.html">Security & Compliance</a>
+                </div>
+                <div class="menu-item">
+                    <i class="ri-settings-3-line"></i>
+                    <a href="system-settings.html">System Settings</a>
+                </div>
+                <div class="menu-item">
+                    <i class="ri-customer-service-2-line"></i>
+                    <a href="support.html">Support Tickets</a>
+                </div>
+                <div class="menu-item">
+                    <i class="ri-file-text-line"></i>
+                    <a href="audit-logs.html">Audit Logs</a>
+                </div>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="system-status">
+                    <div class="status-indicator online"></div>
+                    <span>System Online</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Admin Content -->
+        <main class="admin-main">
+            <!-- Admin Header -->
+            <div class="admin-header">
+                <div class="header-content">
+                    <h1>Transaction Management</h1>
+                    <p>Monitor and manage all system transactions</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-secondary">
+                        <i class="ri-download-line"></i>
+                        Export Data
+                    </button>
+                    <button class="btn-primary">
+                        <i class="ri-filter-line"></i>
+                        Advanced Filters
+                    </button>
+                </div>
+            </div>
+
+            <!-- Transaction Overview Cards -->
+            <div class="overview-cards">
+                <div class="overview-card transactions-today">
+                    <div class="card-icon">
+                        <i class="ri-calendar-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-number">1,247</div>
+                        <div class="card-label">Today's Transactions</div>
+                        <div class="card-change positive">+12.3% from yesterday</div>
+                    </div>
+                </div>
+
+                <div class="overview-card volume-today">
+                    <div class="card-icon">
+                        <i class="ri-money-dollar-circle-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-number">$2.8M</div>
+                        <div class="card-label">Today's Volume</div>
+                        <div class="card-change positive">+8.7% from yesterday</div>
+                    </div>
+                </div>
+
+                <div class="overview-card pending-transactions">
+                    <div class="card-icon">
+                        <i class="ri-time-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-number">23</div>
+                        <div class="card-label">Pending Review</div>
+                        <div class="card-change warning">Requires attention</div>
+                    </div>
+                </div>
+
+                <div class="overview-card failed-transactions">
+                    <div class="card-icon">
+                        <i class="ri-error-warning-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-number">12</div>
+                        <div class="card-label">Failed Transactions</div>
+                        <div class="card-change negative">-2 from yesterday</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transaction Filters -->
+            <div class="transaction-filters">
+                <div class="filter-group">
+                    <label for="statusFilter">Status</label>
+                    <select id="statusFilter">
+                        <option value="">All Status</option>
+                        <option value="completed">Completed</option>
+                        <option value="pending">Pending</option>
+                        <option value="failed">Failed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="typeFilter">Type</label>
+                    <select id="typeFilter">
+                        <option value="">All Types</option>
+                        <option value="transfer">Transfer</option>
+                        <option value="deposit">Deposit</option>
+                        <option value="withdrawal">Withdrawal</option>
+                        <option value="payment">Payment</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="dateFilter">Date Range</label>
+                    <select id="dateFilter">
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month" selected>This Month</option>
+                        <option value="quarter">This Quarter</option>
+                        <option value="year">This Year</option>
+                        <option value="custom">Custom Range</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="amountFilter">Amount Range</label>
+                    <select id="amountFilter">
+                        <option value="">All Amounts</option>
+                        <option value="0-100">$0 - $100</option>
+                        <option value="100-1000">$100 - $1,000</option>
+                        <option value="1000-10000">$1,000 - $10,000</option>
+                        <option value="10000+">$10,000+</option>
+                    </select>
+                </div>
+                <div class="filter-actions">
+                    <button class="btn-secondary">
+                        <i class="ri-close-line"></i>
+                        Clear
+                    </button>
+                    <button class="btn-primary">
+                        <i class="ri-search-line"></i>
+                        Apply
+                    </button>
+                </div>
+            </div>
+
+            <!-- Transactions Table -->
+            <div class="admin-widget transactions-table">
+                <div class="widget-header">
+                    <h3>Recent Transactions</h3>
+                    <div class="table-controls">
+                        <button class="table-control">
+                            <i class="ri-refresh-line"></i>
+                        </button>
+                        <button class="table-control">
+                            <i class="ri-layout-column-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="transactions-data-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" id="selectAll">
+                                </th>
+                                <th>
+                                    Transaction ID <i class="ri-arrow-up-down-line"></i>
+                                </th>
+                                <th>
+                                    User <i class="ri-arrow-up-down-line"></i>
+                                </th>
+                                <th>
+                                    Type <i class="ri-arrow-up-down-line"></i>
+                                </th>
+                                <th>
+                                    Amount <i class="ri-arrow-up-down-line"></i>
+                                </th>
+                                <th>
+                                    Status <i class="ri-arrow-up-down-line"></i>
+                                </th>
+                                <th>
+                                    Date <i class="ri-arrow-up-down-line"></i>
+                                </th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionsTableBody">
+                            <tr>
+                                <td><input type="checkbox" class="row-select"></td>
+                                <td><span class="transaction-id">#TXN-001247</span></td>
+                                <td>
+                                    <div class="user-info-cell">
+                                        <img src="../assets/media/user-avatar.jpg" alt="User" class="user-avatar-small">
+                                        <div class="user-details">
+                                            <span class="user-name">John Smith</span>
+                                            <span class="user-email">john.smith@email.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="transaction-type transfer">Transfer</span></td>
+                                <td><span class="amount">$15,250.00</span></td>
+                                <td><span class="status completed">Completed</span></td>
+                                <td><span class="date">Sep 10, 2025 14:30</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="View Details">
+                                            <i class="ri-eye-line"></i>
+                                        </button>
+                                        <button class="btn-action" title="Flag">
+                                            <i class="ri-flag-line"></i>
+                                        </button>
+                                        <button class="btn-action danger" title="Block">
+                                            <i class="ri-forbid-line"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="row-select"></td>
+                                <td><span class="transaction-id">#TXN-001246</span></td>
+                                <td>
+                                    <div class="user-info-cell">
+                                        <img src="../assets/media/user-avatar.jpg" alt="User" class="user-avatar-small">
+                                        <div class="user-details">
+                                            <span class="user-name">Sarah Johnson</span>
+                                            <span class="user-email">sarah.j@email.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="transaction-type deposit">Deposit</span></td>
+                                <td><span class="amount">$5,000.00</span></td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td><span class="date">Sep 10, 2025 13:45</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="View Details">
+                                            <i class="ri-eye-line"></i>
+                                        </button>
+                                        <button class="btn-approve" title="Approve">
+                                            <i class="ri-check-line"></i>
+                                        </button>
+                                        <button class="btn-reject" title="Reject">
+                                            <i class="ri-close-line"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="row-select"></td>
+                                <td><span class="transaction-id">#TXN-001245</span></td>
+                                <td>
+                                    <div class="user-info-cell">
+                                        <img src="../assets/media/user-avatar.jpg" alt="User" class="user-avatar-small">
+                                        <div class="user-details">
+                                            <span class="user-name">Michael Chen</span>
+                                            <span class="user-email">m.chen@email.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="transaction-type withdrawal">Withdrawal</span></td>
+                                <td><span class="amount">$2,500.00</span></td>
+                                <td><span class="status failed">Failed</span></td>
+                                <td><span class="date">Sep 10, 2025 12:20</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="View Details">
+                                            <i class="ri-eye-line"></i>
+                                        </button>
+                                        <button class="btn-action" title="Retry">
+                                            <i class="ri-refresh-line"></i>
+                                        </button>
+                                        <button class="btn-action" title="Contact User">
+                                            <i class="ri-mail-line"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="row-select"></td>
+                                <td><span class="transaction-id">#TXN-001244</span></td>
+                                <td>
+                                    <div class="user-info-cell">
+                                        <img src="../assets/media/user-avatar.jpg" alt="User" class="user-avatar-small">
+                                        <div class="user-details">
+                                            <span class="user-name">Emily Davis</span>
+                                            <span class="user-email">emily.davis@email.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="transaction-type payment">Payment</span></td>
+                                <td><span class="amount">$750.00</span></td>
+                                <td><span class="status completed">Completed</span></td>
+                                <td><span class="date">Sep 10, 2025 11:15</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="View Details">
+                                            <i class="ri-eye-line"></i>
+                                        </button>
+                                        <button class="btn-action" title="Receipt">
+                                            <i class="ri-file-text-line"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="row-select"></td>
+                                <td><span class="transaction-id">#TXN-001243</span></td>
+                                <td>
+                                    <div class="user-info-cell">
+                                        <img src="../assets/media/user-avatar.jpg" alt="User" class="user-avatar-small">
+                                        <div class="user-details">
+                                            <span class="user-name">Robert Wilson</span>
+                                            <span class="user-email">r.wilson@email.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="transaction-type transfer">Transfer</span></td>
+                                <td><span class="amount">$25,000.00</span></td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td><span class="date">Sep 10, 2025 10:30</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="View Details">
+                                            <i class="ri-eye-line"></i>
+                                        </button>
+                                        <button class="btn-approve" title="Approve">
+                                            <i class="ri-check-line"></i>
+                                        </button>
+                                        <button class="btn-reject" title="Reject">
+                                            <i class="ri-close-line"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-pagination">
+                    <div class="pagination-info">
+                        Showing 1-5 of 1,247 transactions
+                    </div>
+                    <div class="pagination-controls">
+                        <button class="pagination-btn" disabled>
+                            <i class="ri-arrow-left-line"></i>
+                        </button>
+                        <button class="pagination-btn active">1</button>
+                        <button class="pagination-btn">2</button>
+                        <button class="pagination-btn">3</button>
+                        <span class="pagination-dots">...</span>
+                        <button class="pagination-btn">250</button>
+                        <button class="pagination-btn">
+                            <i class="ri-arrow-right-line"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bulk Actions -->
+            <div class="bulk-actions" id="bulkActions" style="display: none;">
+                <div class="bulk-info">
+                    <span id="selectedCount">0</span> transactions selected
+                </div>
+                <div class="bulk-buttons">
+                    <button class="btn-bulk">
+                        <i class="ri-check-line"></i>
+                        Approve Selected
+                    </button>
+                    <button class="btn-bulk">
+                        <i class="ri-close-line"></i>
+                        Reject Selected
+                    </button>
+                    <button class="btn-bulk">
+                        <i class="ri-download-line"></i>
+                        Export Selected
+                    </button>
+                    <button class="btn-bulk danger">
+                        <i class="ri-flag-line"></i>
+                        Flag Selected
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Transaction Detail Modal -->
+    <div id="transactionModal" class="modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Transaction Details</h3>
+                <button class="modal-close">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="transaction-detail-grid">
+                    <div class="detail-section">
+                        <h4>Transaction Information</h4>
+                        <div class="detail-row">
+                            <span class="detail-label">Transaction ID:</span>
+                            <span class="detail-value" id="modalTransactionId">#TXN-001247</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Type:</span>
+                            <span class="detail-value" id="modalTransactionType">Transfer</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Amount:</span>
+                            <span class="detail-value" id="modalTransactionAmount">$15,250.00</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Status:</span>
+                            <span class="detail-value" id="modalTransactionStatus">Completed</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Date & Time:</span>
+                            <span class="detail-value" id="modalTransactionDate">Sep 10, 2025 14:30:25</span>
+                        </div>
+                    </div>
+                    <div class="detail-section">
+                        <h4>User Information</h4>
+                        <div class="detail-row">
+                            <span class="detail-label">User Name:</span>
+                            <span class="detail-value" id="modalUserName">John Smith</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">User Email:</span>
+                            <span class="detail-value" id="modalUserEmail">john.smith@email.com</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Account ID:</span>
+                            <span class="detail-value" id="modalAccountId">ACC-789456</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="transaction-timeline">
+                    <h4>Transaction Timeline</h4>
+                    <div class="timeline">
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon"><i class="ri-check-line"></i></div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">Transaction Initiated</div>
+                                <div class="timeline-time">Sep 10, 2025 14:30:25</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon"><i class="ri-shield-check-line"></i></div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">Security Validation</div>
+                                <div class="timeline-time">Sep 10, 2025 14:30:28</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon"><i class="ri-bank-line"></i></div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">Processing Complete</div>
+                                <div class="timeline-time">Sep 10, 2025 14:30:45</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary">Close</button>
+                <button class="btn-primary">
+                    <i class="ri-download-line"></i>
+                    Download Report
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
