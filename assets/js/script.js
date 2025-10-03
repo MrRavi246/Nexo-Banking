@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           scrollTrigger: {
             trigger: ".page1",
             start: "50% 50%",
-            end: "250% -50%",
+            end: "200% 0%",
             scrub: 2,
             pin: `.page1`,
           },
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           ".content",
           {
             rotate: -10,
-            scale: 0.8,
+            scale: 0.8,            
           },
           "<"
         );
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           "<"
         );
       }
-      page1();
+      // page1();
 
       function page3() {
         gsap.to(".page3", {

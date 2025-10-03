@@ -314,3 +314,86 @@
     padding: 0 1rem;
   }
 }
+
+@media (max-width: 600px) {
+  .dashboard-container {
+    flex-direction: column;
+    margin-top: 60px;
+  }
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #333;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 0.5rem 0;
+  }
+  .sidebar-menu {
+    flex-direction: row;
+    padding: 0.5rem 0;
+    gap: 0.5rem;
+  }
+  .menu-item {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+    min-width: 90px;
+    justify-content: center;
+  }
+  .sidebar-footer {
+    display: none;
+  }
+  .main-content {
+    padding: 0.5rem;
+    margin-left: 0;
+  }
+  .content-wrapper {
+    padding: 0;
+    max-width: 100%;
+  }
+  .page-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 0.5rem;
+    gap: 0.5rem;
+  }
+  .hero-actions {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+  .hero-stats {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .bills-list {
+    padding: 1rem 0.5rem;
+  }
+  .bill-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+  .bill-right {
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  .pay-panel {
+    padding: 0.75rem 0.5rem;
+    margin-top: 1rem;
+  }
+  .pay-form input, .pay-form select {
+    padding: 0.6rem;
+    font-size: 1rem;
+  }
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  .recent-payments {
+    margin-top: 1rem;
+  }
+}
