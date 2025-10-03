@@ -624,4 +624,140 @@ h1 span {
   .scroll-p {
     width: 18vw;
   }
-}
+
+
+  /* page2 */
+
+
+
+  /* .container .top {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .top h1 {
+    font-size: 14vw;
+    line-height: 12vw;
+  }
+
+  .pg2bottomleft {
+    align-items: flex-start;
+  }
+
+  .squre1 {
+    height: 20vw;
+    width: 20vw;
+    padding: 0 5vw;
+    position: relative;
+  }
+
+  .squre1 h1 {
+    font-size: 1.5rem;
+    line-height: initial;
+  } */
+
+  /* --- 📱 MOBILE RESPONSIVE STYLES 📱 --- */
+  
+    .page2 {
+      padding: 2rem 1rem;
+      /* Adjust padding for mobile */
+      min-height: auto;
+      /* Allow height to be determined by content */
+    }
+
+    .container {
+      margin-top: 10vw;
+    }
+
+    .top h1 {
+      font-size: 10vw;
+      /* Larger, more impactful font size for mobile */
+      line-height: 1.2;
+    }
+
+    .container .bottom {
+      flex-direction: column;
+      /* Stack the columns vertically */
+      align-items: center;
+      /* Center items in the column */
+      gap: 4rem;
+      /* Add space between stacked items */
+    }
+
+    /* Make each section take up more width */
+    .pg2bottomleft,
+    .pg2bottomCneter,
+    .pg2bottomRight {
+      width: 100%;
+      align-items: center;
+      /* Center content within each section */
+      text-align: center;
+    }
+
+    .pg2bottomleft {
+      flex-direction: row;
+      /* Place squares side-by-side */
+      justify-content: center;
+      /* Center them horizontally */
+      gap: 1rem;
+    }
+
+    .squre1 {
+      min-width: 140px;
+      min-height: 140px;
+      border-radius: 3vw;
+      backdrop-filter: blur(5px);      
+    }
+
+    .squre1 h1 {
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .squre1 h1:first-child {
+      font-size: 1.8rem;
+    }
+
+    .pg2bottomCneter {
+      min-height: 250px;
+      /* Ensure space for the images */
+      margin-bottom: 2rem;
+      /* Add some margin */
+    }
+
+    .pg2bottomCneterImg1{
+      height: 60%;
+      width: auto;
+    }
+
+   
+    .pg2bottomCneterImg3{
+      height: 50%;
+      width: auto;
+      margin-top: -70vw;
+    }
+
+
+    .pg2bottomRight {
+      padding-left: 0;
+      /* Remove side padding */
+      gap: 1.5rem;
+      /* Adjust gap */
+    }
+
+    .pg2bottomRight .buttons {
+      flex-direction: column;
+      /* Stack buttons on mobile */
+      width: 80%;
+      max-width: 300px;
+    }
+
+    .OpenACCBTN,
+    .pg2BTN {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+    }
+
+  }
+

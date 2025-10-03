@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           "<"
         );
       }
-      // page1();
+      page1();
 
       function page3() {
         gsap.to(".page3", {
