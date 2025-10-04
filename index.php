@@ -73,87 +73,87 @@
           <div class="content">
             <div class="imgrow1">
               <div class="imgcontainer">
-                <img src="./assets/media/card1.png" alt="" />
+                <img src="./assets/media/card1.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card2.png" alt="" />
+                <img src="./assets/media/card2.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card4.png" alt="" />
+                <img src="./assets/media/card4.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card3.png" alt="" />
+                <img src="./assets/media/card3.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card5.png" alt="" />
+                <img src="./assets/media/card5.webp" alt="" />
               </div>
             </div>
             <div class="imgrow2">
               <div class="imgcontainer">
-                <img src="./assets/media/card4.png" alt="" />
+                <img src="./assets/media/card4.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card5.png" alt="" />
+                <img src="./assets/media/card5.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card2.png" alt="" />
+                <img src="./assets/media/card2.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card3.png" alt="" />
+                <img src="./assets/media/card3.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card6.png" alt="" />
+                <img src="./assets/media/card6.webp" alt="" />
               </div>
             </div>
             <div class="imgrow3">
               <div class="imgcontainer">
-                <img src="./assets/media/card2.png" alt="" />
+                <img src="./assets/media/card2.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card3.png" alt="" />
+                <img src="./assets/media/card3.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card1.png" alt="" />
+                <img src="./assets/media/card1.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card4.png" alt="" />
+                <img src="./assets/media/card4.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card1.png" alt="" />
+                <img src="./assets/media/card1.webp" alt="" />
               </div>
             </div>
             <div class="imgrow4">
               <div class="imgcontainer">
-                <img src="./assets/media/card5.png" alt="" />
+                <img src="./assets/media/card5.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card3.png" alt="" />
+                <img src="./assets/media/card3.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card4.png" alt="" />
+                <img src="./assets/media/card4.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card1.png" alt="" />
+                <img src="./assets/media/card1.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card2.png" alt="" />
+                <img src="./assets/media/card2.webp" alt="" />
               </div>
             </div>
             <div class="imgrow5">
               <div class="imgcontainer">
-                <img src="./assets/media/card6.png" alt="" />
+                <img src="./assets/media/card6.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card2.png" alt="" />
+                <img src="./assets/media/card2.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card4.png" alt="" />
+                <img src="./assets/media/card4.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card3.png" alt="" />
+                <img src="./assets/media/card3.webp" alt="" />
               </div>
               <div class="imgcontainer">
-                <img src="./assets/media/card5.png" alt="" />
+                <img src="./assets/media/card5.webp" alt="" />
               </div>
             </div>
           </div>
