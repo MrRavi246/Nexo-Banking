@@ -588,7 +588,7 @@ h1 span {
     /* Adjust scale and position to center the content nicely on mobile */
     scale: 1.2;
     transform: translateX(-33%);
-    gap: 16px;
+    gap: 0px;
     /* Reduce the gap between columns */
   }
 
@@ -600,6 +600,20 @@ h1 span {
     width: 100%;
     overflow: hidden;
     border-radius: 10px;
+    scale: 0.9;
+  }
+
+  .imgrow1,
+  .imgrow2,
+  .imgrow3,
+  .imgrow4,
+  .imgrow5 {
+    height: auto;
+    /* Allow height to adjust based on content */
+    width: calc(100% / 3);
+    /* Show 3 columns on mobile */
+    margin-top: -90vh;
+    gap: 0px;
   }
 
   .herotext h3 {
@@ -612,7 +626,7 @@ h1 span {
   .scroll-down {
     /* Adjust padding for smaller screens */
     padding: 1.5vw 5vw;
-    bottom: 15%;
+    bottom: 10%;
     /* Move it up from the bottom edge */
     border-radius: 5vw;
   }
@@ -657,107 +671,114 @@ h1 span {
   } */
 
   /* --- 📱 MOBILE RESPONSIVE STYLES 📱 --- */
-  
-    .page2 {
-      padding: 2rem 1rem;
-      /* Adjust padding for mobile */
-      min-height: auto;
-      /* Allow height to be determined by content */
-    }
 
-    .container {
-      margin-top: 10vw;
-    }
-
-    .top h1 {
-      font-size: 10vw;
-      /* Larger, more impactful font size for mobile */
-      line-height: 1.2;
-    }
-
-    .container .bottom {
-      flex-direction: column;
-      /* Stack the columns vertically */
-      align-items: center;
-      /* Center items in the column */
-      gap: 4rem;
-      /* Add space between stacked items */
-    }
-
-    /* Make each section take up more width */
-    .pg2bottomleft,
-    .pg2bottomCneter,
-    .pg2bottomRight {
-      width: 100%;
-      align-items: center;
-      /* Center content within each section */
-      text-align: center;
-    }
-
-    .pg2bottomleft {
-      flex-direction: row;
-      /* Place squares side-by-side */
-      justify-content: center;
-      /* Center them horizontally */
-      gap: 1rem;
-    }
-
-    .squre1 {
-      min-width: 140px;
-      min-height: 140px;
-      border-radius: 3vw;
-      backdrop-filter: blur(5px);      
-    }
-
-    .squre1 h1 {
-      font-size: 1rem;
-      line-height: 1.2;
-    }
-
-    .squre1 h1:first-child {
-      font-size: 1.8rem;
-    }
-
-    .pg2bottomCneter {
-      min-height: 250px;
-      /* Ensure space for the images */
-      margin-bottom: 2rem;
-      /* Add some margin */
-    }
-
-    .pg2bottomCneterImg1{
-      height: 60%;
-      width: auto;
-    }
-
-   
-    .pg2bottomCneterImg3{
-      height: 50%;
-      width: auto;
-      margin-top: -70vw;
-    }
-
-
-    .pg2bottomRight {
-      padding-left: 0;
-      /* Remove side padding */
-      gap: 1.5rem;
-      /* Adjust gap */
-    }
-
-    .pg2bottomRight .buttons {
-      flex-direction: column;
-      /* Stack buttons on mobile */
-      width: 80%;
-      max-width: 300px;
-    }
-
-    .OpenACCBTN,
-    .pg2BTN {
-      width: 100%;
-      padding: 1rem;
-      font-size: 1rem;
-    }
-
+  .page2 {
+    padding: 2rem 1rem;
+    /* Adjust padding for mobile */
+    min-height: auto;
+    /* Allow height to be determined by content */
   }
 
+  .container {
+    margin-top: 10vw;
+  }
+
+  .top h1 {
+    font-size: 10vw;
+    /* Larger, more impactful font size for mobile */
+    line-height: 1.2;
+  }
+
+  .container .bottom {
+    flex-direction: column;
+    /* Stack the columns vertically */
+    align-items: center;
+    /* Center items in the column */
+    gap: 4rem;
+    /* Add space between stacked items */
+  }
+
+  /* Make each section take up more width */
+  .pg2bottomleft,
+  .pg2bottomCneter,
+  .pg2bottomRight {
+    width: 100%;
+    align-items: center;
+    /* Center content within each section */
+    text-align: center;
+  }
+
+  .pg2bottomleft {
+    flex-direction: row;
+    /* Place squares side-by-side */
+    justify-content: center;
+    /* Center them horizontally */
+    gap: 1rem;
+  }
+
+  .squre1 {
+    min-width: 140px;
+    min-height: 140px;
+    border-radius: 3vw;
+    backdrop-filter: blur(5px);
+  }
+
+  .squre1 h1 {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .squre1 h1:first-child {
+    font-size: 1.8rem;
+  }
+
+  .pg2bottomCneter {
+    min-height: 250px;
+    /* Ensure space for the images */
+    margin-bottom: 2rem;
+    /* Add some margin */
+  }
+
+  .pg2bottomCneterImg1 {
+    height: 60%;
+    width: auto;
+  }
+
+
+  .pg2bottomCneterImg3 {
+    height: 50%;
+    width: auto;
+    margin-top: -70vw;
+  }
+
+
+  .pg2bottomRight {
+    padding-left: 0;
+    /* Remove side padding */
+    gap: 1.5rem;
+    /* Adjust gap */
+    font-size: 1rem;
+  }
+
+  .pg2bottomRight .buttons {
+    /* flex-direction: column; */
+    /* Stack buttons on mobile */
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .OpenACCBTN,
+  .pg2BTN {
+    /* width: 90%; */
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 10vw;
+  }
+
+
+  /* page3 */
+
+ 
+
+
+}
