@@ -1,1100 +1,998 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../assets/style/style.css" />
     <link rel="stylesheet" href="../assets/style/nav.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
-    />
-    <link
-      rel="shortcut icon"
-      href="../assets/media/svgs/favicon-white-1.svg"
-      type="image/x-icon"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    <link rel="shortcut icon" href="../assets/media/svgs/favicon-white-1.svg" type="image/x-icon" />
     <title>About Us - Nexo Banking</title>
     <style>
-      /* Import Roboto font */
-      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap");
-
-      /* Remove scrollbars */
-      ::-webkit-scrollbar {
-        display: none;
-      }
-
-      html {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-
-      /* About Page Specific Styles */
-      .about-container {
-        min-height: 100vh;
-        background: linear-gradient(135deg, #0f0f10 0%, #1a1a1d 100%);
-        padding-top: 100px;
-        font-family: "Roboto", sans-serif;
-      }
-
-      .hero-section {
-        text-align: center;
-        padding: 80px 20px;
-        background: linear-gradient(
-          135deg,
-          rgba(235, 126, 242, 0.1) 0%,
-          rgba(147, 51, 234, 0.1) 100%
-        );
-      }
-
-      .hero-title {
-        font-size: 4rem;
-        font-weight: 700;
-        margin-bottom: 20px;
-        background: linear-gradient(135deg, #eb7ef2, #9333ea);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-family: "teko", sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-      }
-
-      .hero-subtitle {
-        font-size: 1.5rem;
-        color: #aaa;
-        max-width: 600px;
-        margin: 0 auto;
-        line-height: 1.6;
-        font-family: "Roboto", sans-serif;
-        font-weight: 400;
-      }
-
-      .content-section {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 80px 20px;
-      }
-
-      .section-title {
-        font-size: 2.5rem;
-        font-weight: 600;
-        text-align: center;
-        margin-bottom: 50px;
-        color: white;
-        font-family: "teko", sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .cards-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        margin-bottom: 80px;
-      }
-
-      .info-card {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
-        padding: 40px 30px;
-        text-align: center;
-        transition: all 0.3s ease;
-      }
-
-      .info-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(235, 126, 242, 0.2);
-        border-color: rgba(235, 126, 242, 0.3);
-      }
-
-      .card-icon {
-        width: 80px;
-        height: 80px;
-        margin: 0 auto 25px;
-        background: linear-gradient(135deg, #eb7ef2, #9333ea);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2rem;
-        color: white;
-      }
-
-      .card-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 15px;
-        color: white;
-        font-family: "teko", sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .card-description {
-        color: #aaa;
-        line-height: 1.6;
-        font-size: 1rem;
-        font-family: "Roboto", sans-serif;
-        font-weight: 400;
-      }
-
-      .stats-section {
-        background: rgba(255, 255, 255, 0.02);
-        padding: 80px 20px;
-        text-align: center;
-      }
-
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 40px;
-        max-width: 800px;
-        margin: 0 auto;
-      }
-
-      .stat-item {
-        padding: 20px;
-      }
-
-      .stat-number {
-        font-size: 3rem;
-        font-weight: 700;
-        color: #eb7ef2;
-        margin-bottom: 10px;
-      }
-
-      .stat-label {
-        font-size: 1.1rem;
-        color: #aaa;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-family: "Roboto", sans-serif;
-        font-weight: 500;
-      }
-
-      .team-section {
-        padding: 80px 20px;
-      }
-
-      .team-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 40px;
-        max-width: 1000px;
-        margin: 0 auto;
-      }
-
-      .team-member {
-        text-align: center;
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 20px;
-        padding: 30px 20px;
-        transition: all 0.3s ease;
-      }
-
-      .team-member:hover {
-        transform: translateY(-5px);
-        background: rgba(255, 255, 255, 0.08);
-      }
-
-      .member-avatar {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        margin: 0 auto 20px;
-        background: linear-gradient(135deg, #eb7ef2, #9333ea);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2.5rem;
-        color: white;
-        font-weight: 600;
-      }
-
-      .member-name {
-        font-size: 1.3rem;
-        font-weight: 600;
-        color: white;
-        margin-bottom: 5px;
-        font-family: "teko", sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .member-role {
-        color: #eb7ef2;
-        font-size: 1rem;
-        margin-bottom: 15px;
-        font-family: "Roboto", sans-serif;
-        font-weight: 500;
-      }
-
-      .member-description {
-        color: #aaa;
-        font-size: 0.9rem;
-        line-height: 1.5;
-        font-family: "Roboto", sans-serif;
-        font-weight: 400;
-      }
-
-      .values-section {
-        background: rgba(255, 255, 255, 0.02);
-        padding: 80px 20px;
-      }
-
-      .values-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        max-width: 1000px;
-        margin: 0 auto;
-      }
-
-      .value-item {
-        padding: 30px;
-        border-left: 4px solid #eb7ef2;
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 0 15px 15px 0;
-      }
-
-      .value-title {
-        font-size: 1.3rem;
-        font-weight: 600;
-        color: #eb7ef2;
-        margin-bottom: 15px;
-        font-family: "teko", sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .value-description {
-        color: #aaa;
-        line-height: 1.6;
-        font-family: "Roboto", sans-serif;
-        font-weight: 400;
-      }
-
-      .cta-section {
-        text-align: center;
-        padding: 80px 20px;
-        background: linear-gradient(
-          135deg,
-          rgba(235, 126, 242, 0.1) 0%,
-          rgba(147, 51, 234, 0.1) 100%
-        );
-      }
-
-      .cta-title {
-        font-size: 2.5rem;
-        font-weight: 600;
-        margin-bottom: 20px;
-        color: white;
-        font-family: "teko", sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .cta-description {
-        font-size: 1.2rem;
-        color: #aaa;
-        margin-bottom: 40px;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-        font-family: "Roboto", sans-serif;
-        font-weight: 400;
-        line-height: 1.6;
-      }
-
-      .cta-buttons {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      .btn-primary,
-      .btn-secondary {
-        padding: 15px 30px;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .btn-primary {
-        background: linear-gradient(135deg, #eb7ef2, #9333ea);
-        color: white;
-        border: none;
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(235, 126, 242, 0.4);
-      }
-
-      .btn-secondary {
-        background: transparent;
-        color: white;
-        border: 2px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .btn-secondary:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: #eb7ef2;
-      }
-
-      /* Additional Sections Styles */
-      .timeline-section {
-        padding: 80px 20px;
-        background: rgba(255, 255, 255, 0.02);
-      }
-
-      .timeline {
-        max-width: 800px;
-        margin: 0 auto;
-        position: relative;
-      }
-
-      .timeline::before {
-        content: "";
-        position: absolute;
-        left: 50%;
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        background: linear-gradient(135deg, #eb7ef2, #9333ea);
-        transform: translateX(-50%);
-      }
-
-      .timeline-item {
-        position: relative;
-        margin-bottom: 60px;
-        width: 50%;
-        padding: 30px;
-      }
-
-      .timeline-item:nth-child(odd) {
-        left: 0;
-        text-align: right;
-        padding-right: 60px;
-      }
-
-      .timeline-item:nth-child(even) {
-        left: 50%;
-        text-align: left;
-        padding-left: 60px;
-      }
-
-      .timeline-item::before {
-        content: "";
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background: #eb7ef2;
-        border-radius: 50%;
-        top: 35px;
-      }
-
-      .timeline-item:nth-child(odd)::before {
-        right: -10px;
-      }
-
-      .timeline-item:nth-child(even)::before {
-        left: -10px;
-      }
-
-      .timeline-year {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #eb7ef2;
-        margin-bottom: 10px;
-        font-family: "teko", sans-serif;
-      }
-
-      .timeline-title {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: white;
-        margin-bottom: 10px;
-        font-family: "teko", sans-serif;
-        text-transform: uppercase;
-      }
-
-      .timeline-description {
-        color: #aaa;
-        line-height: 1.6;
-        font-family: "Roboto", sans-serif;
-      }
-
-      .achievements-section {
-        padding: 80px 20px;
-      }
-
-      .achievements-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .achievement-card {
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 20px;
-        padding: 30px;
-        text-align: center;
-        border: 1px solid rgba(235, 126, 242, 0.2);
-        transition: all 0.3s ease;
-      }
-
-      .achievement-card:hover {
-        transform: translateY(-5px);
-        border-color: rgba(235, 126, 242, 0.5);
-        box-shadow: 0 15px 30px rgba(235, 126, 242, 0.2);
-      }
-
-      .achievement-icon {
-        width: 60px;
-        height: 60px;
-        margin: 0 auto 20px;
-        background: linear-gradient(135deg, #eb7ef2, #9333ea);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        color: white;
-      }
-
-      .achievement-title {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: white;
-        margin-bottom: 10px;
-        font-family: "teko", sans-serif;
-        text-transform: uppercase;
-      }
-
-      .achievement-description {
-        color: #aaa;
-        font-size: 0.9rem;
-        line-height: 1.5;
-        font-family: "Roboto", sans-serif;
-      }
-
-      .technology-section {
-        padding: 80px 20px;
-        background: rgba(255, 255, 255, 0.02);
-      }
-
-      .tech-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 30px;
-        max-width: 1000px;
-        margin: 0 auto;
-      }
-
-      .tech-item {
-        text-align: center;
-        padding: 30px 20px;
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 15px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: all 0.3s ease;
-      }
-
-      .tech-item:hover {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(235, 126, 242, 0.3);
-      }
-
-      .tech-icon {
-        font-size: 2.5rem;
-        color: #eb7ef2;
-        margin-bottom: 15px;
-      }
-
-      .tech-name {
-        font-size: 1rem;
-        font-weight: 600;
-        color: white;
-        margin-bottom: 8px;
-        font-family: "teko", sans-serif;
-        text-transform: uppercase;
-      }
-
-      .tech-description {
-        font-size: 0.85rem;
-        color: #aaa;
-        font-family: "Roboto", sans-serif;
-      }
-
-      @media (max-width: 768px) {
+        /* Import Roboto font */
+        
+        @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap");
+        /* Remove scrollbars */
+        
+         ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        html {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* About Page Specific Styles */
+        
+        .about-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f0f10 0%, #1a1a1d 100%);
+            padding-top: 100px;
+            font-family: "Roboto", sans-serif;
+        }
+        
+        .hero-section {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient( 135deg, rgba(235, 126, 242, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
+        }
+        
         .hero-title {
-          font-size: 2.5rem;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #eb7ef2, #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: "teko", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-
+        
         .hero-subtitle {
-          font-size: 1.2rem;
+            font-size: 1.5rem;
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-family: "Roboto", sans-serif;
+            font-weight: 400;
         }
-
+        
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        
         .section-title {
-          font-size: 2rem;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+            font-family: "teko", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-
+        
         .cards-grid {
-          grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
         }
-
+        
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(235, 126, 242, 0.2);
+            border-color: rgba(235, 126, 242, 0.3);
+        }
+        
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #eb7ef2, #9333ea);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: white;
+            font-family: "teko", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .card-description {
+            color: #aaa;
+            line-height: 1.6;
+            font-size: 1rem;
+            font-family: "Roboto", sans-serif;
+            font-weight: 400;
+        }
+        
+        .stats-section {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
         .stats-grid {
-          grid-template-columns: repeat(2, 1fr);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
         }
-
+        
+        .stat-item {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #eb7ef2;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: "Roboto", sans-serif;
+            font-weight: 500;
+        }
+        
+        .team-section {
+            padding: 80px 20px;
+        }
+        
         .team-grid {
-          grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
-
-        .cta-buttons {
-          flex-direction: column;
-          align-items: center;
+        
+        .team-member {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px 20px;
+            transition: all 0.3s ease;
         }
-
-        .timeline::before {
-          left: 20px;
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
         }
-
-        .timeline-item {
-          width: 100%;
-          left: 0 !important;
-          text-align: left !important;
-          padding-left: 60px !important;
-          padding-right: 30px !important;
+        
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #eb7ef2, #9333ea);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: 600;
         }
-
-        .timeline-item::before {
-          left: 10px !important;
+        
+        .member-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 5px;
+            font-family: "teko", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-
-        .achievements-grid {
-          grid-template-columns: 1fr;
+        
+        .member-role {
+            color: #eb7ef2;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            font-family: "Roboto", sans-serif;
+            font-weight: 500;
         }
-
-        .tech-grid {
-          grid-template-columns: repeat(2, 1fr);
+        
+        .member-description {
+            color: #aaa;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            font-family: "Roboto", sans-serif;
+            font-weight: 400;
         }
-
+        
+        .values-section {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 80px 20px;
+        }
+        
         .values-grid {
-          grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
-      }
-
-      @media (max-width: 480px) {
+        
+        .value-item {
+            padding: 30px;
+            border-left: 4px solid #eb7ef2;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 0 15px 15px 0;
+        }
+        
+        .value-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #eb7ef2;
+            margin-bottom: 15px;
+            font-family: "teko", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .value-description {
+            color: #aaa;
+            line-height: 1.6;
+            font-family: "Roboto", sans-serif;
+            font-weight: 400;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient( 135deg, rgba(235, 126, 242, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
+            font-family: "teko", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cta-description {
+            font-size: 1.2rem;
+            color: #aaa;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: "Roboto", sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary,
+        .btn-secondary {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #eb7ef2, #9333ea);
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(235, 126, 242, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #eb7ef2;
+        }
+        /* Additional Sections Styles */
+        
+        .timeline-section {
+            padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(135deg, #eb7ef2, #9333ea);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            width: 50%;
+            padding: 30px;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+            padding-right: 60px;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+            padding-left: 60px;
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #eb7ef2;
+            border-radius: 50%;
+            top: 35px;
+        }
+        
+        .timeline-item:nth-child(odd)::before {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even)::before {
+            left: -10px;
+        }
+        
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #eb7ef2;
+            margin-bottom: 10px;
+            font-family: "teko", sans-serif;
+        }
+        
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 10px;
+            font-family: "teko", sans-serif;
+            text-transform: uppercase;
+        }
+        
+        .timeline-description {
+            color: #aaa;
+            line-height: 1.6;
+            font-family: "Roboto", sans-serif;
+        }
+        
+        .achievements-section {
+            padding: 80px 20px;
+        }
+        
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .achievement-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(235, 126, 242, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(235, 126, 242, 0.5);
+            box-shadow: 0 15px 30px rgba(235, 126, 242, 0.2);
+        }
+        
+        .achievement-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #eb7ef2, #9333ea);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .achievement-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 10px;
+            font-family: "teko", sans-serif;
+            text-transform: uppercase;
+        }
+        
+        .achievement-description {
+            color: #aaa;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            font-family: "Roboto", sans-serif;
+        }
+        
+        .technology-section {
+            padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
         .tech-grid {
-          grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
-
-        .stats-grid {
-          grid-template-columns: 1fr;
+        
+        .tech-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
-      }
+        
+        .tech-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(235, 126, 242, 0.3);
+        }
+        
+        .tech-icon {
+            font-size: 2.5rem;
+            color: #eb7ef2;
+            margin-bottom: 15px;
+        }
+        
+        .tech-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 8px;
+            font-family: "teko", sans-serif;
+            text-transform: uppercase;
+        }
+        
+        .tech-description {
+            font-size: 0.85rem;
+            color: #aaa;
+            font-family: "Roboto", sans-serif;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                text-align: left !important;
+                padding-left: 60px !important;
+                padding-right: 30px !important;
+            }
+            .timeline-item::before {
+                left: 10px !important;
+            }
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
     <!-- loader -->
-    <div class="loader">
+    <!-- <div class="loader">
       <div class="con">
         <h1>About Us</h1>
       </div>
-    </div>
+    </div> -->
 
     <main>
-      <!-- navbar -->
-      <nav>
-        <div class="navLeft">
-          <div class="navLeftHover">
-            <a href="/index.html"><span>N</span>exo</a>
-          </div>
-        </div>
-        <div class="navcenter">
-          <div class="navCenterHover">
-            <a href="/index.html">Home</a>
-            <a href="/index.html">Home</a>
-          </div>
-          <div class="navCenterHover">
-            <a href="/Pages/feature.html">Feature</a>
-            <a href="/Pages/feature.html">Feature</a>
-          </div>
-          <div class="navCenterHover">
-            <a href="/Pages/about.html">About</a>
-            <a href="/Pages/about.html">About</a>
-          </div>
-          <div class="navCenterHover">
-            <a href="/Pages/services.html">Service</a>
-            <a href="/Pages/services.html">Service</a>
-          </div>
-        </div>
-        <div class="navRight">
-          <button class="signin" onclick="location.href='/Pages/auth/login.html'">
+        <!-- navbar -->
+        <nav>
+            <div class="navLeft">
+                <div class="navLeftHover">
+                    <a href="/index.html"><span>N</span>exo</a>
+                </div>
+            </div>
+            <div class="navcenter">
+                <div class="navCenterHover">
+                    <a href="/index.html">Home</a>
+                    <a href="/index.html">Home</a>
+                </div>
+                <div class="navCenterHover">
+                    <a href="/Pages/feature.html">Feature</a>
+                    <a href="/Pages/feature.html">Feature</a>
+                </div>
+                <div class="navCenterHover">
+                    <a href="/Pages/about.html">About</a>
+                    <a href="/Pages/about.html">About</a>
+                </div>
+                <div class="navCenterHover">
+                    <a href="/Pages/services.html">Service</a>
+                    <a href="/Pages/services.html">Service</a>
+                </div>
+            </div>
+            <div class="navRight">
+                <button class="signin" onclick="location.href='/Pages/auth/login.html'">
             Sign In
           </button>
-          <button class="acc_btn">Open an Account</button>
+                <button class="acc_btn">Open an Account</button>
+            </div>
+        </nav>
+
+        <div class="about-container">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <h1 class="hero-title">About Nexo</h1>
+                <p class="hero-subtitle">
+                    Pioneering the future of digital banking with innovative solutions, unparalleled security, and customer-centric services that empower your financial journey.
+                </p>
+            </section>
+
+            <!-- Mission & Vision Cards -->
+            <section class="content-section">
+                <h2 class="section-title">Our Mission & Vision</h2>
+                <div class="cards-grid">
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="ri-rocket-line"></i>
+                        </div>
+                        <h3 class="card-title">Our Mission</h3>
+                        <p class="card-description">
+                            To revolutionize banking by providing seamless, secure, and intelligent financial services that adapt to the evolving needs of modern consumers and businesses. We strive to eliminate traditional banking barriers and create an inclusive financial ecosystem
+                            where innovation meets accessibility.
+                        </p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="ri-eye-line"></i>
+                        </div>
+                        <h3 class="card-title">Our Vision</h3>
+                        <p class="card-description">
+                            To become the world's most trusted digital banking platform, empowering individuals and businesses to achieve their financial goals through innovative technology and personalized services. We envision a future where banking is intuitive, transparent,
+                            and available to everyone, everywhere.
+                        </p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="ri-heart-line"></i>
+                        </div>
+                        <h3 class="card-title">Our Values</h3>
+                        <p class="card-description">
+                            Built on trust, innovation, and customer-centricity, we prioritize security, transparency, and excellence in every interaction and service we provide. Our commitment extends beyond banking to creating meaningful relationships and sustainable financial
+                            growth for our community.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Company Timeline -->
+            <section class="timeline-section">
+                <div class="content-section">
+                    <h2 class="section-title">Our Journey</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">2020</div>
+                            <h3 class="timeline-title">Foundation</h3>
+                            <p class="timeline-description">
+                                Nexo was founded by a team of fintech visionaries with a mission to democratize banking and make financial services accessible to everyone through cutting-edge technology.
+                            </p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2021</div>
+                            <h3 class="timeline-title">Product Launch</h3>
+                            <p class="timeline-description">
+                                Launched our first digital banking platform with core features including instant transfers, savings goals, and AI-powered financial insights, serving over 100,000 users in the first year.
+                            </p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2022</div>
+                            <h3 class="timeline-title">Global Expansion</h3>
+                            <p class="timeline-description">
+                                Expanded internationally, reaching 50+ countries and obtaining regulatory approvals in major markets while introducing multi-currency support and localized banking solutions.
+                            </p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2023</div>
+                            <h3 class="timeline-title">AI Integration</h3>
+                            <p class="timeline-description">
+                                Integrated advanced AI and machine learning capabilities for personalized financial advice, fraud detection, and automated savings recommendations, serving over 1 million active users.
+                            </p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2024</div>
+                            <h3 class="timeline-title">Enterprise Solutions</h3>
+                            <p class="timeline-description">
+                                Launched comprehensive business banking solutions including corporate accounts, payroll management, and API integrations, becoming the preferred choice for 10,000+ businesses.
+                            </p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2025</div>
+                            <h3 class="timeline-title">Future Innovation</h3>
+                            <p class="timeline-description">
+                                Continuing to pioneer the future of banking with blockchain integration, sustainable finance initiatives, and next-generation security protocols while serving over 2 million users globally.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Statistics Section -->
+            <section class="stats-section">
+                <h2 class="section-title">Nexo by Numbers</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">2M+</div>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">$50B+</div>
+                        <div class="stat-label">Assets Managed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Countries Served</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99.9%</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements Section -->
+            <section class="achievements-section">
+                <div class="content-section">
+                    <h2 class="section-title">Awards & Recognition</h2>
+                    <div class="achievements-grid">
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="ri-trophy-line"></i>
+                            </div>
+                            <h3 class="achievement-title">Best Digital Bank 2024</h3>
+                            <p class="achievement-description">
+                                Recognized by Global Finance Magazine for excellence in digital banking innovation and customer experience.
+                            </p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="ri-shield-check-line"></i>
+                            </div>
+                            <h3 class="achievement-title">Top Security Award</h3>
+                            <p class="achievement-description">
+                                Awarded by Cybersecurity Excellence Awards for implementing industry-leading security protocols and fraud prevention.
+                            </p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="ri-customer-service-2-line"></i>
+                            </div>
+                            <h3 class="achievement-title">Customer Choice 2024</h3>
+                            <p class="achievement-description">
+                                Voted as the preferred digital banking platform by customers for outstanding service and user experience.
+                            </p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="ri-leaf-line"></i>
+                            </div>
+                            <h3 class="achievement-title">Green Banking Leader</h3>
+                            <p class="achievement-description">
+                                Certified for sustainable banking practices and commitment to environmental responsibility in financial services.
+                            </p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="ri-lightbulb-line"></i>
+                            </div>
+                            <h3 class="achievement-title">Fintech Innovation</h3>
+                            <p class="achievement-description">
+                                Recognized at FinTech Awards for breakthrough AI integration and pioneering blockchain-based solutions.
+                            </p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="ri-team-line"></i>
+                            </div>
+                            <h3 class="achievement-title">Best Workplace 2024</h3>
+                            <p class="achievement-description">
+                                Listed among top employers in tech for creating an inclusive, innovative, and growth-oriented work environment.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technology Section -->
+            <section class="technology-section">
+                <div class="content-section">
+                    <h2 class="section-title">Powered by Technology</h2>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="ri-brain-line"></i>
+                            </div>
+                            <h3 class="tech-name">Artificial Intelligence</h3>
+                            <p class="tech-description">
+                                Advanced AI for personalized insights and fraud detection
+                            </p>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="ri-links-line"></i>
+                            </div>
+                            <h3 class="tech-name">Blockchain</h3>
+                            <p class="tech-description">
+                                Secure, transparent transactions with distributed ledger technology
+                            </p>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="ri-cloud-line"></i>
+                            </div>
+                            <h3 class="tech-name">Cloud Infrastructure</h3>
+                            <p class="tech-description">
+                                Scalable, reliable cloud-native architecture
+                            </p>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="ri-fingerprint-line"></i>
+                            </div>
+                            <h3 class="tech-name">Biometric Security</h3>
+                            <p class="tech-description">
+                                Multi-factor authentication with biometric verification
+                            </p>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="ri-smartphone-line"></i>
+                            </div>
+                            <h3 class="tech-name">Mobile First</h3>
+                            <p class="tech-description">
+                                Native mobile applications with offline capabilities
+                            </p>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="ri-database-2-line"></i>
+                            </div>
+                            <h3 class="tech-name">Big Data Analytics</h3>
+                            <p class="tech-description">
+                                Real-time data processing for actionable insights
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Team Section -->
+            <section class="content-section team-section">
+                <h2 class="section-title">Meet Our Leadership</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar">AR</div>
+                        <h3 class="member-name">Alex Rivera</h3>
+                        <p class="member-role">Chief Executive Officer</p>
+                        <p class="member-description">
+                            Visionary leader with 15+ years in fintech, previously at JPMorgan Chase and Goldman Sachs. Alex drives Nexo's mission to democratize banking and has led the company through multiple funding rounds, securing over $500M in investment.
+                        </p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">SC</div>
+                        <h3 class="member-name">Sarah Chen</h3>
+                        <p class="member-role">Chief Technology Officer</p>
+                        <p class="member-description">
+                            Former Google Staff Engineer specializing in distributed systems and AI. Sarah architected Nexo's scalable platform serving millions of users and holds 12 patents in financial technology and machine learning applications.
+                        </p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">MJ</div>
+                        <h3 class="member-name">Michael Johnson</h3>
+                        <p class="member-role">Chief Financial Officer</p>
+                        <p class="member-description">
+                            Former Goldman Sachs Managing Director with expertise in global financial markets, regulatory compliance, and risk management. Michael oversees Nexo's financial strategy and international expansion across 150+ countries.
+                        </p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">EP</div>
+                        <h3 class="member-name">Emily Parker</h3>
+                        <p class="member-role">Chief Security Officer</p>
+                        <p class="member-description">
+                            Former NSA cybersecurity expert with 20+ years in financial security. Emily leads Nexo's security initiatives, implementing bank-grade encryption and achieving SOC 2 Type II compliance across all systems.
+                        </p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">DR</div>
+                        <h3 class="member-name">David Rodriguez</h3>
+                        <p class="member-role">Chief Product Officer</p>
+                        <p class="member-description">
+                            Product visionary from Apple and Stripe, David leads user experience design and product strategy. Under his leadership, Nexo has achieved 4.9/5 app store ratings and 98% customer satisfaction scores.
+                        </p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">LW</div>
+                        <h3 class="member-name">Lisa Wang</h3>
+                        <p class="member-role">Chief Compliance Officer</p>
+                        <p class="member-description">
+                            Former Federal Reserve regulatory expert ensuring Nexo meets all banking regulations globally. Lisa has successfully navigated regulatory approvals in 50+ jurisdictions and maintains relationships with global financial authorities.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Values Section -->
+            <section class="values-section">
+                <div class="content-section">
+                    <h2 class="section-title">What Drives Us</h2>
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <h3 class="value-title">Security First</h3>
+                            <p class="value-description">
+                                Every feature we build starts with security. Bank-grade encryption, multi-factor authentication, biometric verification, and continuous monitoring protect your financial data 24/7. Our security infrastructure is audited by leading cybersecurity firms
+                                and meets the highest industry standards including SOC 2 Type II compliance.
+                            </p>
+                        </div>
+                        <div class="value-item">
+                            <h3 class="value-title">Innovation</h3>
+                            <p class="value-description">
+                                We're constantly pushing boundaries with AI-powered insights, blockchain technology, machine learning algorithms, and intuitive interfaces that make banking effortless. Our R&D team works continuously to bring tomorrow's banking solutions to today's users,
+                                investing 25% of our revenue in innovation.
+                            </p>
+                        </div>
+                        <div class="value-item">
+                            <h3 class="value-title">Transparency</h3>
+                            <p class="value-description">
+                                No hidden fees, clear terms, real-time updates, and complete transaction visibility. We believe in honest, straightforward communication with our customers. Every fee, every policy, and every process is clearly explained in simple language, and we provide
+                                detailed analytics on all your financial activities.
+                            </p>
+                        </div>
+                        <div class="value-item">
+                            <h3 class="value-title">Accessibility</h3>
+                            <p class="value-description">
+                                Banking should be available to everyone, everywhere. Our platform works seamlessly across devices, supports multiple languages and currencies, and is designed for users of all technical backgrounds. We're committed to financial inclusion and breaking
+                                down barriers to banking services.
+                            </p>
+                        </div>
+                        <div class="value-item">
+                            <h3 class="value-title">Customer Centricity</h3>
+                            <p class="value-description">
+                                Every decision we make is driven by our customers' needs. Our 24/7 support team, personalized financial advice, and continuous feature improvements are all focused on delivering exceptional customer experiences. We actively listen to feedback and implement
+                                suggestions from our community.
+                            </p>
+                        </div>
+                        <div class="value-item">
+                            <h3 class="value-title">Sustainability</h3>
+                            <p class="value-description">
+                                We're committed to environmental responsibility and sustainable business practices. Our carbon-neutral data centers, paperless operations, and green investment options help customers make environmentally conscious financial decisions while supporting
+                                renewable energy initiatives.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <section class="cta-section">
+                <h2 class="cta-title">Ready to Join the Future of Banking?</h2>
+                <p class="cta-description">
+                    Experience the next generation of digital banking with Nexo. Join millions of users who trust us with their financial future.
+                </p>
+                <div class="cta-buttons">
+                    <a href="auth/account-type.html" class="btn-primary">
+                        <i class="ri-user-add-line"></i> Get Started Today
+                    </a>
+                    <a href="feature.html" class="btn-secondary">
+                        <i class="ri-information-line"></i> Learn More
+                    </a>
+                </div>
+            </section>
         </div>
-      </nav>
-
-      <div class="about-container">
-        <!-- Hero Section -->
-        <section class="hero-section">
-          <h1 class="hero-title">About Nexo</h1>
-          <p class="hero-subtitle">
-            Pioneering the future of digital banking with innovative solutions,
-            unparalleled security, and customer-centric services that empower
-            your financial journey.
-          </p>
-        </section>
-
-        <!-- Mission & Vision Cards -->
-        <section class="content-section">
-          <h2 class="section-title">Our Mission & Vision</h2>
-          <div class="cards-grid">
-            <div class="info-card">
-              <div class="card-icon">
-                <i class="ri-rocket-line"></i>
-              </div>
-              <h3 class="card-title">Our Mission</h3>
-              <p class="card-description">
-                To revolutionize banking by providing seamless, secure, and
-                intelligent financial services that adapt to the evolving needs
-                of modern consumers and businesses. We strive to eliminate
-                traditional banking barriers and create an inclusive financial
-                ecosystem where innovation meets accessibility.
-              </p>
-            </div>
-            <div class="info-card">
-              <div class="card-icon">
-                <i class="ri-eye-line"></i>
-              </div>
-              <h3 class="card-title">Our Vision</h3>
-              <p class="card-description">
-                To become the world's most trusted digital banking platform,
-                empowering individuals and businesses to achieve their financial
-                goals through innovative technology and personalized services.
-                We envision a future where banking is intuitive, transparent,
-                and available to everyone, everywhere.
-              </p>
-            </div>
-            <div class="info-card">
-              <div class="card-icon">
-                <i class="ri-heart-line"></i>
-              </div>
-              <h3 class="card-title">Our Values</h3>
-              <p class="card-description">
-                Built on trust, innovation, and customer-centricity, we
-                prioritize security, transparency, and excellence in every
-                interaction and service we provide. Our commitment extends
-                beyond banking to creating meaningful relationships and
-                sustainable financial growth for our community.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <!-- Company Timeline -->
-        <section class="timeline-section">
-          <div class="content-section">
-            <h2 class="section-title">Our Journey</h2>
-            <div class="timeline">
-              <div class="timeline-item">
-                <div class="timeline-year">2020</div>
-                <h3 class="timeline-title">Foundation</h3>
-                <p class="timeline-description">
-                  Nexo was founded by a team of fintech visionaries with a
-                  mission to democratize banking and make financial services
-                  accessible to everyone through cutting-edge technology.
-                </p>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-year">2021</div>
-                <h3 class="timeline-title">Product Launch</h3>
-                <p class="timeline-description">
-                  Launched our first digital banking platform with core features
-                  including instant transfers, savings goals, and AI-powered
-                  financial insights, serving over 100,000 users in the first
-                  year.
-                </p>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-year">2022</div>
-                <h3 class="timeline-title">Global Expansion</h3>
-                <p class="timeline-description">
-                  Expanded internationally, reaching 50+ countries and obtaining
-                  regulatory approvals in major markets while introducing
-                  multi-currency support and localized banking solutions.
-                </p>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-year">2023</div>
-                <h3 class="timeline-title">AI Integration</h3>
-                <p class="timeline-description">
-                  Integrated advanced AI and machine learning capabilities for
-                  personalized financial advice, fraud detection, and automated
-                  savings recommendations, serving over 1 million active users.
-                </p>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-year">2024</div>
-                <h3 class="timeline-title">Enterprise Solutions</h3>
-                <p class="timeline-description">
-                  Launched comprehensive business banking solutions including
-                  corporate accounts, payroll management, and API integrations,
-                  becoming the preferred choice for 10,000+ businesses.
-                </p>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-year">2025</div>
-                <h3 class="timeline-title">Future Innovation</h3>
-                <p class="timeline-description">
-                  Continuing to pioneer the future of banking with blockchain
-                  integration, sustainable finance initiatives, and
-                  next-generation security protocols while serving over 2
-                  million users globally.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Statistics Section -->
-        <section class="stats-section">
-          <h2 class="section-title">Nexo by Numbers</h2>
-          <div class="stats-grid">
-            <div class="stat-item">
-              <div class="stat-number">2M+</div>
-              <div class="stat-label">Active Users</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">$50B+</div>
-              <div class="stat-label">Assets Managed</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">150+</div>
-              <div class="stat-label">Countries Served</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">99.9%</div>
-              <div class="stat-label">Uptime</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Achievements Section -->
-        <section class="achievements-section">
-          <div class="content-section">
-            <h2 class="section-title">Awards & Recognition</h2>
-            <div class="achievements-grid">
-              <div class="achievement-card">
-                <div class="achievement-icon">
-                  <i class="ri-trophy-line"></i>
-                </div>
-                <h3 class="achievement-title">Best Digital Bank 2024</h3>
-                <p class="achievement-description">
-                  Recognized by Global Finance Magazine for excellence in
-                  digital banking innovation and customer experience.
-                </p>
-              </div>
-              <div class="achievement-card">
-                <div class="achievement-icon">
-                  <i class="ri-shield-check-line"></i>
-                </div>
-                <h3 class="achievement-title">Top Security Award</h3>
-                <p class="achievement-description">
-                  Awarded by Cybersecurity Excellence Awards for implementing
-                  industry-leading security protocols and fraud prevention.
-                </p>
-              </div>
-              <div class="achievement-card">
-                <div class="achievement-icon">
-                  <i class="ri-customer-service-2-line"></i>
-                </div>
-                <h3 class="achievement-title">Customer Choice 2024</h3>
-                <p class="achievement-description">
-                  Voted as the preferred digital banking platform by customers
-                  for outstanding service and user experience.
-                </p>
-              </div>
-              <div class="achievement-card">
-                <div class="achievement-icon">
-                  <i class="ri-leaf-line"></i>
-                </div>
-                <h3 class="achievement-title">Green Banking Leader</h3>
-                <p class="achievement-description">
-                  Certified for sustainable banking practices and commitment to
-                  environmental responsibility in financial services.
-                </p>
-              </div>
-              <div class="achievement-card">
-                <div class="achievement-icon">
-                  <i class="ri-lightbulb-line"></i>
-                </div>
-                <h3 class="achievement-title">Fintech Innovation</h3>
-                <p class="achievement-description">
-                  Recognized at FinTech Awards for breakthrough AI integration
-                  and pioneering blockchain-based solutions.
-                </p>
-              </div>
-              <div class="achievement-card">
-                <div class="achievement-icon">
-                  <i class="ri-team-line"></i>
-                </div>
-                <h3 class="achievement-title">Best Workplace 2024</h3>
-                <p class="achievement-description">
-                  Listed among top employers in tech for creating an inclusive,
-                  innovative, and growth-oriented work environment.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Technology Section -->
-        <section class="technology-section">
-          <div class="content-section">
-            <h2 class="section-title">Powered by Technology</h2>
-            <div class="tech-grid">
-              <div class="tech-item">
-                <div class="tech-icon">
-                  <i class="ri-brain-line"></i>
-                </div>
-                <h3 class="tech-name">Artificial Intelligence</h3>
-                <p class="tech-description">
-                  Advanced AI for personalized insights and fraud detection
-                </p>
-              </div>
-              <div class="tech-item">
-                <div class="tech-icon">
-                  <i class="ri-links-line"></i>
-                </div>
-                <h3 class="tech-name">Blockchain</h3>
-                <p class="tech-description">
-                  Secure, transparent transactions with distributed ledger
-                  technology
-                </p>
-              </div>
-              <div class="tech-item">
-                <div class="tech-icon">
-                  <i class="ri-cloud-line"></i>
-                </div>
-                <h3 class="tech-name">Cloud Infrastructure</h3>
-                <p class="tech-description">
-                  Scalable, reliable cloud-native architecture
-                </p>
-              </div>
-              <div class="tech-item">
-                <div class="tech-icon">
-                  <i class="ri-fingerprint-line"></i>
-                </div>
-                <h3 class="tech-name">Biometric Security</h3>
-                <p class="tech-description">
-                  Multi-factor authentication with biometric verification
-                </p>
-              </div>
-              <div class="tech-item">
-                <div class="tech-icon">
-                  <i class="ri-smartphone-line"></i>
-                </div>
-                <h3 class="tech-name">Mobile First</h3>
-                <p class="tech-description">
-                  Native mobile applications with offline capabilities
-                </p>
-              </div>
-              <div class="tech-item">
-                <div class="tech-icon">
-                  <i class="ri-database-2-line"></i>
-                </div>
-                <h3 class="tech-name">Big Data Analytics</h3>
-                <p class="tech-description">
-                  Real-time data processing for actionable insights
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Team Section -->
-        <section class="content-section team-section">
-          <h2 class="section-title">Meet Our Leadership</h2>
-          <div class="team-grid">
-            <div class="team-member">
-              <div class="member-avatar">AR</div>
-              <h3 class="member-name">Alex Rivera</h3>
-              <p class="member-role">Chief Executive Officer</p>
-              <p class="member-description">
-                Visionary leader with 15+ years in fintech, previously at
-                JPMorgan Chase and Goldman Sachs. Alex drives Nexo's mission to
-                democratize banking and has led the company through multiple
-                funding rounds, securing over $500M in investment.
-              </p>
-            </div>
-            <div class="team-member">
-              <div class="member-avatar">SC</div>
-              <h3 class="member-name">Sarah Chen</h3>
-              <p class="member-role">Chief Technology Officer</p>
-              <p class="member-description">
-                Former Google Staff Engineer specializing in distributed systems
-                and AI. Sarah architected Nexo's scalable platform serving
-                millions of users and holds 12 patents in financial technology
-                and machine learning applications.
-              </p>
-            </div>
-            <div class="team-member">
-              <div class="member-avatar">MJ</div>
-              <h3 class="member-name">Michael Johnson</h3>
-              <p class="member-role">Chief Financial Officer</p>
-              <p class="member-description">
-                Former Goldman Sachs Managing Director with expertise in global
-                financial markets, regulatory compliance, and risk management.
-                Michael oversees Nexo's financial strategy and international
-                expansion across 150+ countries.
-              </p>
-            </div>
-            <div class="team-member">
-              <div class="member-avatar">EP</div>
-              <h3 class="member-name">Emily Parker</h3>
-              <p class="member-role">Chief Security Officer</p>
-              <p class="member-description">
-                Former NSA cybersecurity expert with 20+ years in financial
-                security. Emily leads Nexo's security initiatives, implementing
-                bank-grade encryption and achieving SOC 2 Type II compliance
-                across all systems.
-              </p>
-            </div>
-            <div class="team-member">
-              <div class="member-avatar">DR</div>
-              <h3 class="member-name">David Rodriguez</h3>
-              <p class="member-role">Chief Product Officer</p>
-              <p class="member-description">
-                Product visionary from Apple and Stripe, David leads user
-                experience design and product strategy. Under his leadership,
-                Nexo has achieved 4.9/5 app store ratings and 98% customer
-                satisfaction scores.
-              </p>
-            </div>
-            <div class="team-member">
-              <div class="member-avatar">LW</div>
-              <h3 class="member-name">Lisa Wang</h3>
-              <p class="member-role">Chief Compliance Officer</p>
-              <p class="member-description">
-                Former Federal Reserve regulatory expert ensuring Nexo meets all
-                banking regulations globally. Lisa has successfully navigated
-                regulatory approvals in 50+ jurisdictions and maintains
-                relationships with global financial authorities.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <!-- Values Section -->
-        <section class="values-section">
-          <div class="content-section">
-            <h2 class="section-title">What Drives Us</h2>
-            <div class="values-grid">
-              <div class="value-item">
-                <h3 class="value-title">Security First</h3>
-                <p class="value-description">
-                  Every feature we build starts with security. Bank-grade
-                  encryption, multi-factor authentication, biometric
-                  verification, and continuous monitoring protect your financial
-                  data 24/7. Our security infrastructure is audited by leading
-                  cybersecurity firms and meets the highest industry standards
-                  including SOC 2 Type II compliance.
-                </p>
-              </div>
-              <div class="value-item">
-                <h3 class="value-title">Innovation</h3>
-                <p class="value-description">
-                  We're constantly pushing boundaries with AI-powered insights,
-                  blockchain technology, machine learning algorithms, and
-                  intuitive interfaces that make banking effortless. Our R&D
-                  team works continuously to bring tomorrow's banking solutions
-                  to today's users, investing 25% of our revenue in innovation.
-                </p>
-              </div>
-              <div class="value-item">
-                <h3 class="value-title">Transparency</h3>
-                <p class="value-description">
-                  No hidden fees, clear terms, real-time updates, and complete
-                  transaction visibility. We believe in honest, straightforward
-                  communication with our customers. Every fee, every policy, and
-                  every process is clearly explained in simple language, and we
-                  provide detailed analytics on all your financial activities.
-                </p>
-              </div>
-              <div class="value-item">
-                <h3 class="value-title">Accessibility</h3>
-                <p class="value-description">
-                  Banking should be available to everyone, everywhere. Our
-                  platform works seamlessly across devices, supports multiple
-                  languages and currencies, and is designed for users of all
-                  technical backgrounds. We're committed to financial inclusion
-                  and breaking down barriers to banking services.
-                </p>
-              </div>
-              <div class="value-item">
-                <h3 class="value-title">Customer Centricity</h3>
-                <p class="value-description">
-                  Every decision we make is driven by our customers' needs. Our
-                  24/7 support team, personalized financial advice, and
-                  continuous feature improvements are all focused on delivering
-                  exceptional customer experiences. We actively listen to
-                  feedback and implement suggestions from our community.
-                </p>
-              </div>
-              <div class="value-item">
-                <h3 class="value-title">Sustainability</h3>
-                <p class="value-description">
-                  We're committed to environmental responsibility and
-                  sustainable business practices. Our carbon-neutral data
-                  centers, paperless operations, and green investment options
-                  help customers make environmentally conscious financial
-                  decisions while supporting renewable energy initiatives.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Call to Action -->
-        <section class="cta-section">
-          <h2 class="cta-title">Ready to Join the Future of Banking?</h2>
-          <p class="cta-description">
-            Experience the next generation of digital banking with Nexo. Join
-            millions of users who trust us with their financial future.
-          </p>
-          <div class="cta-buttons">
-            <a href="auth/account-type.html" class="btn-primary">
-              <i class="ri-user-add-line"></i>
-              Get Started Today
-            </a>
-            <a href="feature.html" class="btn-secondary">
-              <i class="ri-information-line"></i>
-              Learn More
-            </a>
-          </div>
-        </section>
-      </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
@@ -1105,87 +1003,89 @@
     <script src="/assets/js/router.js"></script>
     <script src="/assets/js/script.js"></script>
     <script>
-      // Smooth scrolling for navigation
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth",
-          });
-        });
-      });
-
-      // Animate cards on scroll
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-          }
-        });
-      }, observerOptions);
-
-      // Observe all cards and sections
-      document
-        .querySelectorAll(".info-card, .team-member, .value-item")
-        .forEach((card) => {
-          card.style.opacity = "0";
-          card.style.transform = "translateY(30px)";
-          card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-          observer.observe(card);
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute("href")).scrollIntoView({
+                    behavior: "smooth",
+                });
+            });
         });
 
-      // Counter animation for stats
-      function animateCounter(element, target) {
-        let current = 0;
-        const increment = target / 100;
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            current = target;
-            clearInterval(timer);
-          }
+        // Animate cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+        };
 
-          if (element.textContent.includes("$")) {
-            element.textContent = "$" + Math.floor(current) + "B+";
-          } else if (element.textContent.includes("%")) {
-            element.textContent = current.toFixed(1) + "%";
-          } else if (element.textContent.includes("M")) {
-            element.textContent = current.toFixed(1) + "M+";
-          } else {
-            element.textContent = Math.floor(current) + "+";
-          }
-        }, 50);
-      }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
 
-      // Animate stats when they come into view
-      const statsObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const statNumber = entry.target.querySelector(".stat-number");
-              const text = statNumber.textContent;
+        // Observe all cards and sections
+        document
+            .querySelectorAll(".info-card, .team-member, .value-item")
+            .forEach((card) => {
+                card.style.opacity = "0";
+                card.style.transform = "translateY(30px)";
+                card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+                observer.observe(card);
+            });
 
-              if (text.includes("2M+")) animateCounter(statNumber, 2);
-              else if (text.includes("$50B+")) animateCounter(statNumber, 50);
-              else if (text.includes("150+")) animateCounter(statNumber, 150);
-              else if (text.includes("99.9%")) animateCounter(statNumber, 99.9);
+        // Counter animation for stats
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
 
-              statsObserver.unobserve(entry.target);
+                if (element.textContent.includes("$")) {
+                    element.textContent = "$" + Math.floor(current) + "B+";
+                } else if (element.textContent.includes("%")) {
+                    element.textContent = current.toFixed(1) + "%";
+                } else if (element.textContent.includes("M")) {
+                    element.textContent = current.toFixed(1) + "M+";
+                } else {
+                    element.textContent = Math.floor(current) + "+";
+                }
+            }, 50);
+        }
+
+        // Animate stats when they come into view
+        const statsObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const statNumber = entry.target.querySelector(".stat-number");
+                        const text = statNumber.textContent;
+
+                        if (text.includes("2M+")) animateCounter(statNumber, 2);
+                        else if (text.includes("$50B+")) animateCounter(statNumber, 50);
+                        else if (text.includes("150+")) animateCounter(statNumber, 150);
+                        else if (text.includes("99.9%")) animateCounter(statNumber, 99.9);
+
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.5
             }
-          });
-        },
-        { threshold: 0.5 }
-      );
+        );
 
-      document.querySelectorAll(".stat-item").forEach((stat) => {
-        statsObserver.observe(stat);
-      });
+        document.querySelectorAll(".stat-item").forEach((stat) => {
+            statsObserver.observe(stat);
+        });
     </script>
-  </body>
+</body>
+
 </html>
