@@ -142,14 +142,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
           ".herotext",
           {
             opacity: 1,
-            delay: 0.2,
+            // delay: 0.2,
+            backgroundColor: `rgba(0, 0, 0, 0.77)`,
           },
           "<"
         );
         tl.to(
           ".content",
           {
-            backdropFilter: "blur(20px)",
+            backdropFilter: "blur(10px)",            
           },
           "<"
         );
