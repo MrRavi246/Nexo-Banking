@@ -3,10 +3,10 @@ function lenis() {
   const lenis = new Lenis({
     autoRaf: true,
     smoothWheel: true,
-    lerp: 1,
+    lerp: 0.1,
     smoothTouch: true,
     touchMultiplier: 2,
-    duration: 3,
+    duration: 1.5,
   });
 
   // Sync ScrollTrigger with Lenis
@@ -40,7 +40,7 @@ window.addEventListener("load", () => {
 // );
 
 // to remove scrollbar
-document.body.style.overflow = "hidden";
+// document.body.style.overflow = "hidden";
 
 
 
@@ -96,8 +96,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
           scrollTrigger: {
             trigger: ".page1",
             start: "50% 50%",
-            end: "250% -50%",
-            scrub: 2,
+            end: "200% 0%",
+            scrub: true,
             pin: `.page1`,
           },
         });
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           ".content",
           {
             rotate: -10,
-            scale: 0.8,
+            scale: 0.8,            
           },
           "<"
         );
@@ -142,14 +142,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
           ".herotext",
           {
             opacity: 1,
-            delay: 0.2,
+            // delay: 0.2,
+            backgroundColor: `rgba(0, 0, 0, 0.77)`,
           },
           "<"
         );
         tl.to(
           ".content",
           {
-            backdropFilter: "blur(30px)",
+            backdropFilter: "blur(10px)",            
           },
           "<"
         );
