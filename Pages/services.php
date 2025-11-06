@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/assets/style/nav.css" />
-    <link rel="stylesheet" href="/assets/style/services.css" />
+    <link rel="stylesheet" href="../assets/style/nav.css" />
+    <link rel="stylesheet" href="../assets/style/services.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -28,29 +28,29 @@
       <nav>
         <div class="navLeft">
           <div class="navLeftHover">
-            <a href="/index.php"><span>N</span>exo</a>
+            <a href="../index.php"><span>N</span>exo</a>
           </div>
         </div>
         <div class="navcenter">
           <div class="navCenterHover">
-            <a href="/index.php">Home</a>
-            <a href="/index.php">Home</a>
+            <a href="../index.php">Home</a>
+            <a href="../index.php">Home</a>
           </div>
           <div class="navCenterHover">
-            <a href="feature.html">Feature</a>
-            <a href="feature.html">Feature</a>
+            <a href="feature.php">Feature</a>
+            <a href="feature.php">Feature</a>
           </div>
           <div class="navCenterHover">
-            <a href="about.html">About</a>
-            <a href="about.html">About</a>
+            <a href="about.php">About</a>
+            <a href="about.php">About</a>
           </div>
           <div class="navCenterHover">
-            <a href="services.html">Service</a>
-            <a href="services.html">Service</a>
+            <a href="services.php">Service</a>
+            <a href="services.php">Service</a>
           </div>
         </div>
         <div class="navRight">
-          <button class="signin" onclick="location.href='/Pages/auth/login.html'">
+          <button class="signin" onclick="location.href='/Pages/auth/login.php'">
             Sign In
           </button>
           <button class="acc_btn">Open an Account</button>
@@ -684,14 +684,14 @@
           <div class="cta-buttons">
             <button
               class="btn-primary"
-              onclick="location.href='account-type.html'"
+              onclick="location.href='account-type.php'"
             >
               <i class="ri-bank-card-line"></i>
               Open Account
             </button>
             <button
               class="btn-secondary"
-              onclick="location.href='contact.html'"
+              onclick="location.href='contact.php'"
             >
               <i class="ri-customer-service-line"></i>
               Contact Us

@@ -16,7 +16,7 @@
     <nav class="admin-nav">
         <div class="nav-left">
             <div class="logo">
-                <a href="../index.html"><span>N</span>exo</a>
+                <a href="../index.php"><span>N</span>exo</a>
                 <span class="admin-badge">ADMIN</span>
             </div>
         </div>
@@ -82,7 +82,7 @@
                                     <span>Maintenance Mode</span>
                                 </label>
                             </div>
-                            <a href="../pages/auth/login.html" class="settings-item">Logout</a>
+                            <a href="../pages/auth/login.php" class="settings-item">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -105,39 +105,39 @@
             <div class="sidebar-menu">
                 <div class="menu-item active">
                     <i class="ri-dashboard-3-line"></i>
-                    <a href="index.html">Dashboard</a>
+                    <a href="index.php">Dashboard</a>
                 </div>
                 <div class="menu-item">
                     <i class="ri-group-line"></i>
-                    <a href="users.html">User Management</a>
+                    <a href="users.php">User Management</a>
                 </div>
                 <div class="menu-item">
                     <i class="ri-exchange-line"></i>
-                    <a href="transactions.html">Transactions</a>
+                    <a href="transactions.php">Transactions</a>
                 </div>
                 <div class="menu-item">
                     <i class="ri-bank-card-line"></i>
-                    <a href="accounts.html">Account Management</a>
+                    <a href="accounts.php">Account Management</a>
                 </div>
                 <div class="menu-item">
                     <i class="ri-pie-chart-line"></i>
-                    <a href="analytics.html">Analytics & Reports</a>
+                    <a href="analytics.php">Analytics & Reports</a>
                 </div>
                 <div class="menu-item">
                     <i class="ri-shield-check-line"></i>
-                    <a href="security.html">Security & Compliance</a>
+                    <a href="security.php">Security & Compliance</a>
                 </div>
                 <div class="menu-item">
                     <i class="ri-settings-3-line"></i>
-                    <a href="system-settings.html">System Settings</a>
+                    <a href="system-settings.php">System Settings</a>
                 </div>
                 <div class="menu-item">
                     <i class="ri-customer-service-2-line"></i>
-                    <a href="support.html">Support Tickets</a>
+                    <a href="support.php">Support Tickets</a>
                 </div>
                 <div class="menu-item">
                     <i class="ri-file-text-line"></i>
-                    <a href="audit-logs.html">Audit Logs</a>
+                    <a href="audit-logs.php">Audit Logs</a>
                 </div>
             </div>
             
@@ -234,7 +234,7 @@
                 <div class="admin-widget recent-activity">
                     <div class="widget-header">
                         <h3>Recent Activity</h3>
-                        <a href="audit-logs.html" class="view-all">View All</a>
+                        <a href="audit-logs.php" class="view-all">View All</a>
                     </div>
                     <div class="activity-list">
                         <div class="activity-item">
@@ -324,7 +324,7 @@
                             </div>
                             <span>Add User</span>
                         </div>
-                        <div class="action-item" onclick="window.location.href='transactions.html?filter=pending'">
+                        <div class="action-item" onclick="window.location.href='transactions.php?filter=pending'">
                             <div class="action-icon">
                                 <i class="ri-file-list-3-line"></i>
                             </div>
@@ -336,7 +336,7 @@
                             </div>
                             <span>Send Alert</span>
                         </div>
-                        <div class="action-item" onclick="window.location.href='security.html'">
+                        <div class="action-item" onclick="window.location.href='security.php'">
                             <div class="action-icon">
                                 <i class="ri-shield-line"></i>
                             </div>

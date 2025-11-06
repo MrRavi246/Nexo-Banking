@@ -595,29 +595,29 @@
       <nav>
         <div class="navLeft">
           <div class="navLeftHover">
-            <a href="index.php"><span>N</span>exo</a>
+            <a href="../index.php"><span>N</span>exo</a>
           </div>
         </div>
         <div class="navcenter">
           <div class="navCenterHover">
-            <a href="index.php">Home</a>
-            <a href="index.php">Home</a>
+            <a href="../index.php">Home</a>
+            <a href="../index.php">Home</a>
           </div>
           <div class="navCenterHover">
-            <a href="feature.html">Feature</a>
-            <a href="feature.html">Feature</a>
+            <a href="feature.php">Feature</a>
+            <a href="feature.php">Feature</a>
           </div>
           <div class="navCenterHover">
-            <a href="about.html">About</a>
-            <a href="about.html">About</a>
+            <a href="about.php">About</a>
+            <a href="about.php">About</a>
           </div>
           <div class="navCenterHover">
-            <a href="services.html">Service</a>
-            <a href="services.html">Service</a>
+            <a href="services.php">Service</a>
+            <a href="services.php">Service</a>
           </div>
         </div>
         <div class="navRight">
-          <button class="signin" onclick="location.href='/Pages/auth/login.html'">
+          <button class="signin" onclick="location.href='/Pages/auth/login.php'">
             Sign In
           </button>
           <button class="acc_btn">Open an Account</button>
@@ -983,10 +983,10 @@
                     Experience the next generation of digital banking with Nexo. Join millions of users who trust us with their financial future.
                 </p>
                 <div class="cta-buttons">
-                    <a href="auth/account-type.html" class="btn-primary">
+                    <a href="auth/account-type.php" class="btn-primary">
                         <i class="ri-user-add-line"></i> Get Started Today
                     </a>
-                    <a href="feature.html" class="btn-secondary">
+                    <a href="feature.php" class="btn-secondary">
                         <i class="ri-information-line"></i> Learn More
                     </a>
                 </div>

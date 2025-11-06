@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexo - Create Account</title>
-    <link rel="stylesheet" href="/assets/style/login.css">
-    <link rel="stylesheet" href="/assets/style/register.css">
+    <link rel="stylesheet" href="../../assets/style/login.css">
+    <link rel="stylesheet" href="../../assets/style/register.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="shortcut icon" href="/assets/media/svgs/favicon-white-1.svg" type="image/x-icon">
 </head>
@@ -14,7 +14,7 @@
     <div class="login-container">
         <div class="login-left">
             <div class="background-image">
-                <img src="/assets/media/BG PNG.png" alt="Banking Background">
+                <img src="../../assets/media/BG PNG.png" alt="Banking Background">
             </div>
             <div class="login-content">
                 <div class="welcome-text">
@@ -45,7 +45,7 @@
                     <p>Fill in your details to get started</p>
                 </div>
 
-                <form id="registerForm" action="/backend/signup.php" method="POST" enctype="multipart/form-data">
+                <form id="registerForm" method="POST" enctype="multipart/form-data">
                     <!-- Personal Information Section -->
                     <div class="form-section">
                         <h3 class="section-title">
@@ -236,7 +236,7 @@
                         <label class="remember-me">
                             <input type="checkbox" name="terms" required>
                             <span class="checkmark"></span>
-                            I agree to the <a href="terms-and-conditions.html" class="terms-link">Terms & Conditions</a> and <a href="privacy-policy.html" class="terms-link">Privacy Policy</a>
+                            I agree to the <a href="terms-and-conditions.php" class="terms-link">Terms & Conditions</a> and <a href="privacy-policy.php" class="terms-link">Privacy Policy</a>
                         </label>
                     </div>
 
@@ -247,7 +247,7 @@
                 </form>
 
                 <div class="signup-link">
-                    <p>Already have an account? <a href="login.html">Sign in here</a></p>
+                    <p>Already have an account? <a href="login.php">Sign in here</a></p>
                 </div>
             </div>
         </div>
@@ -261,6 +261,6 @@
         </div>
     </div>
 
-    <script src="/assets/js/register.js"></script>
+    <script src="../../assets/js/register.js"></script>
 </body>
 </html>

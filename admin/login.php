@@ -1,64 +1,3 @@
-<?php
-session_start();
-
-// If already logged in, redirect to dashboard
-if (isset($_SESSION['admin_loggedin']) && $_SESSION['admin_loggedin'] === true) {
-    header('Location: dashboard.php');
-    exit;
-}
-
-$error = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username'] ?? '');
-    $password = $_POST['password'] ?? '';
-
-    // DB connection parameters (same used in signup.php)
-    $host = 'localhost';
-    $db   = 'miniproject';
-    $user = 'root';
-    $pass = '';
-    $dsn = "mysql:host=$host;dbname=$db;charset=utf8mb4";
-
-    try {
-        $pdo = new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-
-        // Try to find an admin record in admins table
-        $stmt = $pdo->prepare("SELECT id, username, password_hash FROM admins WHERE username = ? LIMIT 1");
-        $stmt->execute([$username]);
-        $admin = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($admin) {
-            if (password_verify($password, $admin['password_hash'])) {
-                $_SESSION['admin_loggedin'] = true;
-                $_SESSION['admin_username'] = $admin['username'];
-                header('Location: dashboard.php');
-                exit;
-            } else {
-                $error = 'Invalid username or password.';
-            }
-        } else {
-            // fallback: if no admins table or user not found, allow default credential
-            if ($username === 'admin' && $password === 'password') {
-                $_SESSION['admin_loggedin'] = true;
-                $_SESSION['admin_username'] = 'admin';
-                header('Location: dashboard.php');
-                exit;
-            } else {
-                $error = 'Invalid username or password.';
-            }
-        }
-    } catch (PDOException $e) {
-        // DB not available -> fallback credential
-        if ($username === 'admin' && $password === 'password') {
-            $_SESSION['admin_loggedin'] = true;
-            $_SESSION['admin_username'] = 'admin';
-            header('Location: dashboard.php');
-            exit;
-        }
-        $error = 'Database error: ' . htmlspecialchars($e->getMessage());
-    }
-}
-?>
 <!doctype html>
 <html>
   <head>
@@ -67,29 +6,155 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Admin Login - Nexo Banking</title>
     <link rel="stylesheet" href="../assets/style/nav.css">
     <link rel="stylesheet" href="../assets/style/admin.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
   </head>
   <body>
     <div class="admin-login-wrap">
       <div class="admin-login-card">
         <h2>Admin Panel</h2>
-        <?php if ($error): ?>
-          <div class="admin-error"><?=htmlspecialchars($error)?></div>
-        <?php endif; ?>
+        <div id="messageContainer"></div>
 
-        <form method="post" action="login.php">
-          <label>Username
-            <input type="text" name="username" required autofocus>
+        <form id="adminLoginForm" method="post">
+          <label>Username or Email
+            <input type="text" name="username" id="username" required autofocus>
           </label>
           <label>Password
-            <input type="password" name="password" required>
+            <input type="password" name="password" id="password" required>
+          </label>
+          <label class="remember-checkbox">
+            <input type="checkbox" name="remember">
+            <span>Remember me</span>
           </label>
           <div class="admin-actions">
             <button type="submit" class="btn-primary">Sign in</button>
           </div>
         </form>
-        <p class="small">Default admin: <code>admin</code> / <code>password</code> (create an admin record in DB for production)</p>
+        <p class="small">Default admin: <code>admin</code> / <code>Admin@123</code></p>
       </div>
     </div>
-    <script src="../assets/js/admin.js"></script>
+    
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Signing you in...</p>
+        </div>
+    </div>
+
+    <script>
+    document.getElementById('adminLoginForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        loadingOverlay.style.display = 'flex';
+        
+        const formData = new FormData(this);
+        
+        try {
+            const response = await fetch('../backend/admin_login.php', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                showMessage('success', data.message);
+                setTimeout(() => {
+                    window.location.href = data.data.redirect_url;
+                }, 1000);
+            } else {
+                loadingOverlay.style.display = 'none';
+                showMessage('error', data.message);
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            loadingOverlay.style.display = 'none';
+            showMessage('error', 'An error occurred. Please try again.');
+        }
+    });
+    
+    function showMessage(type, message) {
+        const container = document.getElementById('messageContainer');
+        container.innerHTML = `
+            <div class="admin-${type}">
+                <i class="ri-${type === 'success' ? 'checkbox-circle' : 'error-warning'}-line"></i>
+                ${message}
+            </div>
+        `;
+        
+        setTimeout(() => {
+            container.innerHTML = '';
+        }, 5000);
+    }
+    </script>
+    
+    <style>
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    }
+    
+    .loading-spinner {
+        text-align: center;
+        color: white;
+    }
+    
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top-color: white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 15px;
+    }
+    
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+    
+    .admin-success {
+        background: #d4edda;
+        color: #155724;
+        padding: 12px;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .admin-error {
+        background: #f8d7da;
+        color: #721c24;
+        padding: 12px;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .remember-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 10px 0;
+    }
+    
+    .remember-checkbox input[type="checkbox"] {
+        width: auto;
+        margin: 0;
+    }
+    </style>
   </body>
 </html>
+

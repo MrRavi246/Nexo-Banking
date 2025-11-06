@@ -16,7 +16,7 @@
     <nav class="dashboard-nav">
         <div class="nav-left">
             <div class="logo">
-                <a href="/index.html"><span>N</span>exo</a>
+                <a href="../../index.php"><span>N</span>exo</a>
             </div>
         </div>
         <div class="nav-center">
@@ -50,31 +50,31 @@
     <div class="dashboard-container">
         <aside class="sidebar">
             <div class="sidebar-menu">
-                <div class="menu-item" onclick="window.location.href='Dashboard.html'">
+                <div class="menu-item" onclick="window.location.href='Dashboard.php'">
                     <i class="ri-dashboard-3-line"></i>
                     <span>Dashboard</span>
                 </div>
-                <div class="menu-item" onclick="window.location.href='accounts.html'">
+                <div class="menu-item" onclick="window.location.href='accounts.php'">
                     <i class="ri-bank-card-line"></i>
                     <span>Accounts</span>
                 </div>
-                <div class="menu-item" onclick="window.location.href='Transactions.html'">
+                <div class="menu-item" onclick="window.location.href='Transactions.php'">
                     <i class="ri-exchange-line"></i>
                     <span>Transactions</span>
                 </div>
-                <div class="menu-item" onclick="window.location.href='transfer-money.html'">
+                <div class="menu-item" onclick="window.location.href='transfer-money.php'">
                     <i class="ri-send-plane-line"></i>
                     <span>Transfer Money</span>
                 </div>
-                <div class="menu-item" onclick="window.location.href='pay-bills.html'">
+                <div class="menu-item" onclick="window.location.href='pay-bills.php'">
                     <i class="ri-bill-line"></i>
                     <span>Pay Bills</span>
                 </div>
-                <div class="menu-item" onclick="window.location.href='loans.html'">
+                <div class="menu-item" onclick="window.location.href='loans.php'">
                     <i class="ri-hand-coin-line"></i>
                     <span>Loans</span>
                 </div>
-                <div class="menu-item" onclick="window.location.href='analytics.html'">
+                <div class="menu-item" onclick="window.location.href='analytics.php'">
                     <i class="ri-pie-chart-line"></i>
                     <span>Analytics</span>
                 </div>

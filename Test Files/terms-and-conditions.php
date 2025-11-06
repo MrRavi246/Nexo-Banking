@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexo - Terms & Conditions</title>
-    <link rel="stylesheet" href="../style/terms-and-conditions.css">
+    <link rel="stylesheet" href="../assets/style/terms-and-conditions.css">
 </head>
 
 <body>
@@ -54,7 +54,7 @@
             By checking the box and registering, you confirm that you have read, understood, and agree to abide by these
             Terms and Conditions.
         </p>
-        <p><a href="">Return to registration form</a></p>
+        <p><a href="login.php">Return to registration form</a></p>
 
 </body>
 

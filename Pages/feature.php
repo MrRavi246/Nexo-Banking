@@ -21,32 +21,32 @@
     <nav>
         <div class="navLeft">
             <div class="navLeftHover">
-                <a href="/index.php"><span>N</span>exo</a>
+                <a href="../index.php"><span>N</span>exo</a>
             </div>
         </div>
         <div class="navcenter">
             <div class="navCenterHover">
-                <a href="index.php">Home</a>
-                <a href="index.php">Home</a>
+                <a href="../index.php">Home</a>
+                <a href="../index.php">Home</a>
             </div>
             <div class="navCenterHover">
-                <a href="feature.html">Feature</a>
-                <a href="feature.html">Feature</a>
+                <a href="feature.php">Feature</a>
+                <a href="feature.php">Feature</a>
             </div>
             <div class="navCenterHover">
-                <a href="about.html">About</a>
-                <a href="about.html">About</a>
+                <a href="about.php">About</a>
+                <a href="about.php">About</a>
             </div>
             <div class="navCenterHover">
-                <a href="services.html">Service</a>
-                <a href="services.html">Service</a>
+                <a href="services.php">Service</a>
+                <a href="services.php">Service</a>
             </div>
         </div>
         <div class="navRight">
-            <button class="signin" onclick="location.href='backend/login.php'">
+            <button class="signin" onclick="location.href='pages/authlogin.php'">
               Sign In
             </button>
-            <button class="acc_btn" onclick="location.href='backend/signup.php'">
+            <button class="acc_btn" onclick="location.href='pages/authsignup.php'">
               Open an Account
             </button>
 
@@ -284,11 +284,11 @@
                     Join thousands of satisfied customers who have revolutionized their financial management with Nexo
                 </p>
                 <div class="cta-buttons">
-                    <button class="btn-primary" onclick="location.href='account-type.html'">
+                    <button class="btn-primary" onclick="location.href='account-type.php'">
             <i class="ri-bank-card-line"></i>
             Open Account
           </button>
-                    <button class="btn-secondary" onclick="location.href='login.html'">
+                    <button class="btn-secondary" onclick="location.href='auth/login.php'">
             <i class="ri-user-line"></i>
             Sign In
           </button>

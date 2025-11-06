@@ -61,10 +61,10 @@
             </div>
           </div>
           <div class="navRight">
-            <button class="signin" onclick="location.href='backend/login.php'">
+            <button class="signin" onclick="location.href='pages/auth/login.php'">
               Sign In
             </button>
-            <button class="acc_btn" onclick="location.href='backend/signup.php'">
+            <button class="acc_btn" onclick="location.href='pages/auth/signup.php'">
               Open an Account
             </button>
 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexo - Choose Account Type</title>
-    <link rel="stylesheet" href="../../assets/style/account-type.css">
+    <link rel="stylesheet" href="../assets/style/account-type.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
@@ -116,11 +116,11 @@
 
                 <!-- Navigation Links -->
                 <div class="navigation-links">
-                    <a href="login.html" class="back-link">
+                    <a href="login.php" class="back-link">
                         <i class="ri-arrow-left-line"></i>
                         <span>Back to Login</span>
                     </a>
-                    <a href="terms-and-conditions.html" class="terms-link">
+                    <a href="terms-and-conditions.php" class="terms-link">
                         <span>Terms & Conditions</span>
                         <i class="ri-external-link-line"></i>
                     </a>

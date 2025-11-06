@@ -15,35 +15,35 @@
     <nav>
         <div class="navLeft">
             <div class="navLeftHover">
-                <a href="/index.html"><span>N</span>exo</a>
+                <a href="/index.php"><span>N</span>exo</a>
             </div>
         </div>
         <div class="navcenter">
             <div class="navCenterHover">
-                <a href="/index.html">Home</a>
-                <a href="/index.html">Home</a>
+                <a href="../index.php">Home</a>
+                <a href="../index.php">Home</a>
             </div>
             <div class="navCenterHover">
-                <a href="/Pages/feature.html">Feature</a>
-                <a href="/Pages/feature.html">Feature</a>
+                <a href="../Pages/feature.php">Feature</a>
+                <a href="../Pages/feature.php">Feature</a>
             </div>
             <div class="navCenterHover">
-                <a href="/Pages/services.html">Services</a>
-                <a href="/Pages/services.html">Services</a>
+                <a href="../Pages/services.php">Services</a>
+                <a href="../Pages/services.php">Services</a>
             </div>
             <div class="navCenterHover">
-                <a href="/Pages/about.html">About</a>
-                <a href="/Pages/about.html">About</a>
+                <a href="../Pages/about.php">About</a>
+                <a href="../Pages/about.php">About</a>
             </div>
         </div>
         <div class="navRight">
             <div class="navRightHover">
-                <a href="/Pages/auth/login.html">Login</a>
-                <a href="/Pages/auth/login.html">Login</a>
+                <a href="../Pages/auth/login.php">Login</a>
+                <a href="../Pages/auth/login.php">Login</a>
             </div>
             <div class="navRightHover">
-                <a href="/Pages/auth/register.html">Register</a>
-                <a href="/Pages/auth/register.html">Register</a>
+                <a href="../Pages/auth/register.php">Register</a>
+                <a href="../Pages/auth/register.php">Register</a>
             </div>
         </div>
     </nav>
@@ -157,7 +157,7 @@
                 </section>
             </div>
             <div class="terms-footer">
-                <a href="register.html" class="back-btn">
+                <a href="register.php" class="back-btn">
                     <i class="ri-arrow-left-line"></i>
                     Back to Registration
                 </a>
