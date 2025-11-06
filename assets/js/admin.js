@@ -1,3 +1,14 @@
+// Minimal admin JS helpers
+document.addEventListener('DOMContentLoaded', function(){
+  // confirmation on delete buttons (forms use onsubmit confirm too)
+  document.querySelectorAll('.admin-table form').forEach(function(f){
+    f.addEventListener('submit', function(e){
+      if (!confirm('Are you sure? This action cannot be undone.')) {
+        e.preventDefault();
+      }
+    })
+  })
+});
 // Admin Dashboard JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {

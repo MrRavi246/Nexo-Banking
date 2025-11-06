@@ -1,0 +1,178 @@
+/* Support page specific styles - follows dashboard theme */
+
+.page-hero {
+    margin-bottom: 1.25rem;
+}
+
+.page-hero .hero-left h1 {
+    color: #eb7ef2;
+    font-family: 'Teko', sans-serif;
+    font-size: 1.9rem;
+    margin: 0
+}
+
+.page-hero .hero-left p {
+    color: #bdbdbd;
+    margin: 0
+}
+
+.hero-stats {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.25rem
+}
+
+.stat-card {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 1rem;
+    border-radius: 10px
+}
+
+.stat-card .label {
+    color: #bdbdbd;
+    font-weight: 600
+}
+
+.stat-card .value {
+    font-weight: 700;
+    color: #fff;
+    margin-top: 6px
+}
+
+.stat-card .value.large {
+    font-size: 1.3rem
+}
+
+.stat-card .value.danger {
+    color: #ff7b88
+}
+
+.stat-card .value.success {
+    color: #7ef29b
+}
+
+.pay-main-container {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 1rem;
+    align-items: start
+}
+
+.bills-list {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 1rem
+}
+
+.bill-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.9rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    margin-bottom: 0.6rem
+}
+
+.bill-left h4 {
+    margin: 0;
+    color: #fff
+}
+
+.bill-left p {
+    margin: 0;
+    color: #bdbdbd;
+    font-size: 0.9rem
+}
+
+.bill-right {
+    display: flex;
+    align-items: center
+}
+
+.bill-action .btn {
+    padding: 6px 10px
+}
+
+.pay-panel {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 1rem
+}
+
+.pay-form label {
+    color: #bdbdbd;
+    font-weight: 600;
+    display: block;
+    margin-top: 0.6rem
+}
+
+.pay-form input[type="file"] {
+    color: #bdbdbd
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 0.75rem
+}
+
+.payments-list .payment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.payment-left {
+    color: #fff
+}
+
+.payment-right {
+    color: #bdbdbd;
+    font-weight: 600
+}
+
+
+/* Buttons consistent with dashboard */
+
+.btn {
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600
+}
+
+.btn.primary {
+    background: linear-gradient(135deg, #eb7ef2 0%, #c44fd8 100%);
+    color: #fff
+}
+
+.btn.secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: #bdbdbd;
+    border: 1px solid rgba(255, 255, 255, 0.06)
+}
+
+.btn.export {
+    background: rgba(255, 255, 255, 0.03);
+    color: #ddd
+}
+
+@media (max-width:900px) {
+    .pay-main-container {
+        grid-template-columns: 1fr
+    }
+    .content-wrapper {
+        padding: 0 1rem
+    }
+}

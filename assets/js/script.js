@@ -21,7 +21,7 @@ function lenis() {
   }
   requestAnimationFrame(raf);
 }
-lenis();
+// lenis();
 
 // Force ScrollTrigger to refresh after Lenis is ready
 window.addEventListener("load", () => {
@@ -51,43 +51,59 @@ document.addEventListener("DOMContentLoaded", (event) => {
       gsap.registerPlugin(ScrollTrigger, SplitText);
 
       function loader() {
-        let split = SplitText.create(".con", { type: "chars" });
+        try {
+          if (!window.SplitText) throw new Error('SplitText plugin not found');
 
-        let tl = gsap.timeline();
+          let split = SplitText.create(".con", { type: "chars" });
 
-        tl.to("main", {
-          display: "none",
-        });
+          let tl = gsap.timeline();
 
-        tl.from(split.chars, {
-          duration: 0.8,
-          x:  gsap.utils.random(-100, 100),
-          y:  gsap.utils.random(-100, 100),
-          autoAlpha: 0,
-          stagger: 0.05,
-          ease: "back.out(0.7)",
-        });
+          // hide main while loader animation runs
+          tl.set("main", { display: "none" });
 
-        tl.to(split.chars, {
-          duration: 0.5,
-          x:  gsap.utils.random(-50, 50),
-          y:  gsap.utils.random(-100, 100),
-          autoAlpha: 0,
-          stagger: 0.05,
-          ease: "back.in(2)",
-        });
+          tl.from(split.chars, {
+            duration: 0.8,
+            x: gsap.utils.random(-100, 100),
+            y: gsap.utils.random(-100, 100),
+            autoAlpha: 0,
+            stagger: 0.05,
+            ease: "back.out(0.7)",
+          });
 
-        tl.to(".loader", {
-          duration: 0.3,
-          autoAlpha: 0,
-          display: "none",
-          backgroundColor: `rgba(0, 0, 0, 0.77)`,
-        });
+          tl.to(split.chars, {
+            duration: 0.5,
+            x: gsap.utils.random(-50, 50),
+            y: gsap.utils.random(-100, 100),
+            autoAlpha: 0,
+            stagger: 0.05,
+            ease: "back.in(2)",
+          });
 
-        tl.to("main", {
-          display: "block",
-          delay: -0.7,
-        });
+          tl.to(".loader", {
+            duration: 0.3,
+            autoAlpha: 0,
+            display: "none",
+            backgroundColor: `rgba(0, 0, 0, 0.77)`,
+          });
+
+          tl.to("main", {
+            display: "block",
+            delay: -0.7,
+          });
+        } catch (err) {
+          // If SplitText or GSAP animation fails, ensure loader is removed so page is scrollable
+          console.warn('Loader animation skipped:', err);
+          const loaderEl = document.querySelector('.loader');
+          const mainEl = document.querySelector('main');
+          if (loaderEl) {
+            loaderEl.style.display = 'none';
+            loaderEl.style.opacity = '0';
+            loaderEl.style.pointerEvents = 'none';
+          }
+          if (mainEl) {
+            mainEl.style.display = 'block';
+          }
+        }
       }
       loader();
 

@@ -2,179 +2,184 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../../assets/style/nav.css">
-  <link rel="stylesheet" href="../../assets/style/accounts.css">
-  <link rel="stylesheet" href="../../assets/style/pay-bills.css">
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <title>NEXO Pay Bills</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../assets/style/nav.css">
+    <link rel="stylesheet" href="../../assets/style/accounts.css">
+    <link rel="stylesheet" href="../../assets/style/pay-bills.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>NEXO Pay Bills</title>
 </head>
 
 <body>
-  <nav class="dashboard-nav">
-    <div class="nav-left">
-      <div class="logo">
-        <a href="../../index.html"><span>N</span>exo</a>
-      </div>
-    </div>
-    <div class="nav-center">
-      <div class="search-bar">
-        <i class="ri-search-line"></i>
-        <input id="globalSearch" type="text" placeholder="Search bills, payees...">
-      </div>
-    </div>
-    <div class="nav-right">
-      <div class="nav-icons">
-        <div class="nav-icon">
-          <i class="ri-notification-3-line"></i>
-          <span class="notification-badge">3</span>
+    <nav class="dashboard-nav">
+        <div class="nav-left">
+            <div class="logo">
+                <a href="../../index.html"><span>N</span>exo</a>
+            </div>
         </div>
-        <div class="nav-icon">
-          <i class="ri-mail-line"></i>
-          <span class="notification-badge">7</span>
+        <div class="nav-center">
+            <div class="search-bar">
+                <i class="ri-search-line"></i>
+                <input id="globalSearch" type="text" placeholder="Search bills, payees...">
+            </div>
         </div>
-      </div>
-      <div class="user-profile">
-        <img src="https://i.pravatar.cc/" alt="User Avatar" class="avatar">
-        <div class="user-info">
-          <span class="username">John Doe</span>
-          <span class="user-type">Premium Member</span>
+        <div class="nav-right">
+            <div class="nav-icons">
+                <div class="nav-icon">
+                    <i class="ri-notification-3-line"></i>
+                    <span class="notification-badge">3</span>
+                </div>
+                <div class="nav-icon">
+                    <i class="ri-mail-line"></i>
+                    <span class="notification-badge">7</span>
+                </div>
+            </div>
+            <div class="user-profile">
+                <img src="https://i.pravatar.cc/" alt="User Avatar" class="avatar">
+                <div class="user-info">
+                    <span class="username">John Doe</span>
+                    <span class="user-type">Premium Member</span>
+                </div>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
         </div>
-        <i class="ri-arrow-down-s-line"></i>
-      </div>
-    </div>
-  </nav>
+    </nav>
 
-  <div class="dashboard-container">
-    <aside class="sidebar">
-      <div class="sidebar-menu">
-        <div class="menu-item" onclick="window.location.href='Dashboard.html'">
-          <i class="ri-dashboard-3-line"></i>
-          <span>Dashboard</span>
-        </div>
-        <div class="menu-item" onclick="window.location.href='accounts.html'">
-          <i class="ri-bank-card-line"></i>
-          <span>Accounts</span>
-        </div>
-        <div class="menu-item" onclick="window.location.href='Transactions.html'">
-          <i class="ri-exchange-line"></i>
-          <span>Transactions</span>
-        </div>
-        <div class="menu-item" onclick="window.location.href='transfer-money.html'">
-          <i class="ri-send-plane-line"></i>
-          <span>Transfer Money</span>
-        </div>
-        <div class="menu-item active">
-          <i class="ri-bill-line"></i>
-          <span>Pay Bills</span>
-        </div>
-        <div class="menu-item">
-          <i class="ri-hand-coin-line"></i>
-          <span>Loans</span>
-        </div>
-        <div class="menu-item">
-          <i class="ri-pie-chart-line"></i>
-          <span>Analytics</span>
-        </div>
-      </div>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <div class="menu-item" onclick="window.location.href='Dashboard.html'">
+                    <i class="ri-dashboard-3-line"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="menu-item ">
+                    <i class="ri-bank-card-line"></i>
+                    <span>Accounts</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Transactions.html'">
+                    <i class="ri-exchange-line"></i>
+                    <span>Transactions</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='transfer-money.html'">
+                    <i class="ri-send-plane-line"></i>
+                    <span>Transfer Money</span>
+                </div>
+                <div class="menu-item active" onclick="window.location.href='pay-bills.html'">
+                    <i class="ri-bill-line"></i>
+                    <span>Pay Bills</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='loans.html'">
+                    <i class="ri-hand-coin-line"></i>
+                    <span>Loans</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='analytics.html'">
+                    <i class="ri-pie-chart-line"></i>
+                    <span>Analytics</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='support.html'">
+                    <i class="ri-customer-service-2-line"></i>
+                    <span>Support</span>
+                </div>
+            </div>
 
-      <div class="sidebar-footer">
-        <div class="menu-item">
-          <i class="ri-logout-box-line"></i>
-          <span>Logout</span>
-        </div>
-      </div>
-    </aside>
+            <div class="sidebar-footer" onclick="window.location.href='login.php'">
+                <div class="menu-item">
+                    <i class="ri-logout-box-line"></i>
+                    <span>Logout</span>
+                </div>
+            </div>
+        </aside>
 
-    <main class="main-content">
-      <div class="content-wrapper">
-        <div class="page-hero">
-          <div class="hero-left">
-            <h1>Pay Bills</h1>
-            <p>Manage and pay your recurring and one-time bills</p>
-          </div>
-          <div class="hero-actions">
-            <button class="btn export" onclick="/* noop */">
+
+        <main class="main-content">
+            <div class="content-wrapper">
+                <div class="page-hero">
+                    <div class="hero-left">
+                        <h1>Pay Bills</h1>
+                        <p>Manage and pay your recurring and one-time bills</p>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="btn export" onclick="/* noop */">
               <i class="ri-download-line"></i>
               Export Data
             </button>
-            <button class="btn primary" onclick="document.getElementById('payFormAmount').focus()">
+                        <button class="btn primary" onclick="document.getElementById('payFormAmount').focus()">
               <i class="ri-add-line"></i>
               Add Payment
             </button>
-          </div>
-        </div>
+                    </div>
+                </div>
 
-        <!-- Summary stats -->
-        <div class="hero-stats">
-          <div class="stat-card">
-            <div class="label">Total Due</div>
-            <div class="value large danger">$197.70</div>
-            <div class="muted">3 bills • next due in 5 days</div>
-          </div>
-          <div class="stat-card">
-            <div class="label">Next Payment</div>
-            <div class="value">Electric Co. • $120.50</div>
-            <div class="muted">Due in 5 days</div>
-          </div>
-          <div class="stat-card">
-            <div class="label">Auto-pay</div>
-            <div class="value success">2 enabled</div>
-            <div class="muted">Manage schedules in account settings</div>
-          </div>
-        </div>
+                <!-- Summary stats -->
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="label">Total Due</div>
+                        <div class="value large danger">$197.70</div>
+                        <div class="muted">3 bills • next due in 5 days</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">Next Payment</div>
+                        <div class="value">Electric Co. • $120.50</div>
+                        <div class="muted">Due in 5 days</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">Auto-pay</div>
+                        <div class="value success">2 enabled</div>
+                        <div class="muted">Manage schedules in account settings</div>
+                    </div>
+                </div>
 
-        <div class="pay-main-container">
-          <section class="bills-list">
-            <div class="section-header">
-              <h3>My Bills</h3>
-              <button class="view-all-btn" onclick="showAllBills()">View All</button>
-            </div>
+                <div class="pay-main-container">
+                    <section class="bills-list">
+                        <div class="section-header">
+                            <h3>My Bills</h3>
+                            <button class="view-all-btn" onclick="showAllBills()">View All</button>
+                        </div>
 
-            <div class="bill-item" data-payee="Electric Co." data-default="120.50">
-              <div class="bill-left">
-                <h4>Electric Co.</h4>
-                <p>Monthly • Due in 5 days</p>
-              </div>
-              <div class="bill-right">
-                <span class="bill-amount">$120.50</span>
-                <div class="bill-action"><button class="btn primary" onclick="document.getElementById('payeeSelect').value='Electric Co.';document.getElementById('payFormAmount').value='120.50';document.getElementById('payFormAmount').focus();">Pay Now</button></div>
-              </div>
-            </div>
+                        <div class="bill-item" data-payee="Electric Co." data-default="120.50">
+                            <div class="bill-left">
+                                <h4>Electric Co.</h4>
+                                <p>Monthly • Due in 5 days</p>
+                            </div>
+                            <div class="bill-right">
+                                <span class="bill-amount">$120.50</span>
+                                <div class="bill-action"><button class="btn primary" onclick="document.getElementById('payeeSelect').value='Electric Co.';document.getElementById('payFormAmount').value='120.50';document.getElementById('payFormAmount').focus();">Pay Now</button></div>
+                            </div>
+                        </div>
 
-            <div class="bill-item" data-payee="Internet Provider" data-default="45.00">
-              <div class="bill-left">
-                <h4>Internet Provider</h4>
-                <p>Monthly • Due in 12 days</p>
-              </div>
-              <div class="bill-right">
-                <span class="bill-amount">$45.00</span>
-                <div class="bill-action"><button class="btn" onclick="document.getElementById('payeeSelect').value='Internet Provider';document.getElementById('payFormAmount').value='45.00';document.getElementById('payFormAmount').focus();">Pay</button></div>
-              </div>
-            </div>
+                        <div class="bill-item" data-payee="Internet Provider" data-default="45.00">
+                            <div class="bill-left">
+                                <h4>Internet Provider</h4>
+                                <p>Monthly • Due in 12 days</p>
+                            </div>
+                            <div class="bill-right">
+                                <span class="bill-amount">$45.00</span>
+                                <div class="bill-action"><button class="btn" onclick="document.getElementById('payeeSelect').value='Internet Provider';document.getElementById('payFormAmount').value='45.00';document.getElementById('payFormAmount').focus();">Pay</button></div>
+                            </div>
+                        </div>
 
-            <div class="bill-item" data-payee="Water Works" data-default="32.20">
-              <div class="bill-left">
-                <h4>Water Works</h4>
-                <p>Quarterly • Due in 20 days</p>
-              </div>
-              <div class="bill-right">
-                <span class="bill-amount">$32.20</span>
-                <div class="bill-action"><button class="btn" onclick="document.getElementById('payeeSelect').value='Water Works';document.getElementById('payFormAmount').value='32.20';document.getElementById('payFormAmount').focus();">Pay</button></div>
-              </div>
-            </div>
-          </section>
+                        <div class="bill-item" data-payee="Water Works" data-default="32.20">
+                            <div class="bill-left">
+                                <h4>Water Works</h4>
+                                <p>Quarterly • Due in 20 days</p>
+                            </div>
+                            <div class="bill-right">
+                                <span class="bill-amount">$32.20</span>
+                                <div class="bill-action"><button class="btn" onclick="document.getElementById('payeeSelect').value='Water Works';document.getElementById('payFormAmount').value='32.20';document.getElementById('payFormAmount').focus();">Pay</button></div>
+                            </div>
+                        </div>
+                    </section>
 
-        <aside class="pay-panel">
-          <div class="section-header">
-            <h3>Pay a Bill</h3>
-          </div>
+                    <aside class="pay-panel">
+                        <div class="section-header">
+                            <h3>Pay a Bill</h3>
+                        </div>
 
-          <form id="payForm" class="pay-form">
-            <label for="payeeSelect">Payee</label>
-            <select id="payeeSelect" onchange="handlePayeeChange()">
+                        <form id="payForm" class="pay-form">
+                            <label for="payeeSelect">Payee</label>
+                            <select id="payeeSelect" onchange="handlePayeeChange()">
               <option value="">Select payee</option>
               <option value="Electric Co.">Electric Co.</option>
               <option value="Internet Provider">Internet Provider</option>
@@ -182,34 +187,34 @@
               <option value="custom">+ Add Custom Payee</option>
             </select>
 
-            <!-- Custom payee input (hidden by default) -->
-            <div id="customPayeeGroup" class="form-group" style="display: none;">
-              <label for="customPayee">Custom Payee Name</label>
-              <input id="customPayee" type="text" placeholder="Enter payee name">
-            </div>
+                            <!-- Custom payee input (hidden by default) -->
+                            <div id="customPayeeGroup" class="form-group" style="display: none;">
+                                <label for="customPayee">Custom Payee Name</label>
+                                <input id="customPayee" type="text" placeholder="Enter payee name">
+                            </div>
 
-            <label for="payFormAmount">Amount</label>
-            <div class="amount-input">
-              <span class="currency">$</span>
-              <input id="payFormAmount" type="number" step="0.01" min="0.01" placeholder="0.00" required>
-            </div>
+                            <label for="payFormAmount">Amount</label>
+                            <div class="amount-input">
+                                <span class="currency">$</span>
+                                <input id="payFormAmount" type="number" step="0.01" min="0.01" placeholder="0.00" required>
+                            </div>
 
-            <label for="payDate">Date</label>
-            <input id="payDate" type="date" required>
+                            <label for="payDate">Date</label>
+                            <input id="payDate" type="date" required>
 
-            <!-- Payment frequency/duration options -->
-            <div class="payment-frequency">
-              <label for="paymentType">Payment Type</label>
-              <select id="paymentType" onchange="handlePaymentTypeChange()">
+                            <!-- Payment frequency/duration options -->
+                            <div class="payment-frequency">
+                                <label for="paymentType">Payment Type</label>
+                                <select id="paymentType" onchange="handlePaymentTypeChange()">
                 <option value="one-time">One-time Payment</option>
                 <option value="recurring">Recurring Payment</option>
               </select>
-            </div>
+                            </div>
 
-            <!-- Recurring options (hidden by default) -->
-            <div id="recurringOptions" class="form-group" style="display: none;">
-              <label for="frequency">Frequency</label>
-              <select id="frequency">
+                            <!-- Recurring options (hidden by default) -->
+                            <div id="recurringOptions" class="form-group" style="display: none;">
+                                <label for="frequency">Frequency</label>
+                                <select id="frequency">
                 <option value="daily">Every Day</option>
                 <option value="weekly">Every 7 Days</option>
                 <option value="bi-weekly">Every 14 Days</option>
@@ -217,49 +222,56 @@
                 <option value="quarterly">Every 3 Months</option>
                 <option value="yearly">Every Year</option>
               </select>
-              
-              <label for="endDate">End Date (optional)</label>
-              <input id="endDate" type="date">
-              
-              <div class="recurring-summary" id="recurringSummary" style="margin-top: 0.5rem; color: #bdbdbd; font-size: 0.85rem;"></div>
-            </div>
 
-            <label for="payMemo">Memo (optional)</label>
-            <input id="payMemo" type="text" placeholder="Invoice #, account etc">
+                                <label for="endDate">End Date (optional)</label>
+                                <input id="endDate" type="date">
 
-            <div class="form-actions">
-              <button type="button" class="btn secondary" onclick="resetPayForm()">Reset</button>
-              <button type="submit" class="btn primary">Pay Now</button>
-            </div>
-          </form>
+                                <div class="recurring-summary" id="recurringSummary" style="margin-top: 0.5rem; color: #bdbdbd; font-size: 0.85rem;"></div>
+                            </div>
 
-          <div class="recent-payments">
-            <div class="section-header">
-              <h4>Recent Payments</h4>
-            </div>
-            <div id="recentPaymentsList" class="payments-list">
-              <!-- sample recent payments (static demo) -->
-              <div class="payment-item">
-                <div class="payment-left">Electric Co.<div class="muted">Paid 2 days ago</div></div>
-                <div class="payment-right">$120.50</div>
-              </div>
-              <div class="payment-item">
-                <div class="payment-left">Internet Provider<div class="muted">Paid 7 days ago</div></div>
-                <div class="payment-right">$45.00</div>
-              </div>
-              <div class="payment-item">
-                <div class="payment-left">Water Works<div class="muted">Paid 1 month ago</div></div>
-                <div class="payment-right">$32.20</div>
-              </div>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </div> <!-- /.content-wrapper -->
-  </main>
-  </div>
+                            <label for="payMemo">Memo (optional)</label>
+                            <input id="payMemo" type="text" placeholder="Invoice #, account etc">
 
-  <script src="../../assets/js/pay-bills.js"></script>
+                            <div class="form-actions">
+                                <button type="button" class="btn secondary" onclick="resetPayForm()">Reset</button>
+                                <button type="submit" class="btn primary">Pay Now</button>
+                            </div>
+                        </form>
+
+                        <div class="recent-payments">
+                            <div class="section-header">
+                                <h4>Recent Payments</h4>
+                            </div>
+                            <div id="recentPaymentsList" class="payments-list">
+                                <!-- sample recent payments (static demo) -->
+                                <div class="payment-item">
+                                    <div class="payment-left">Electric Co.
+                                        <div class="muted">Paid 2 days ago</div>
+                                    </div>
+                                    <div class="payment-right">$120.50</div>
+                                </div>
+                                <div class="payment-item">
+                                    <div class="payment-left">Internet Provider
+                                        <div class="muted">Paid 7 days ago</div>
+                                    </div>
+                                    <div class="payment-right">$45.00</div>
+                                </div>
+                                <div class="payment-item">
+                                    <div class="payment-left">Water Works
+                                        <div class="muted">Paid 1 month ago</div>
+                                    </div>
+                                    <div class="payment-right">$32.20</div>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+            <!-- /.content-wrapper -->
+        </main>
+    </div>
+
+    <script src="../../assets/js/pay-bills.js"></script>
 </body>
 
 </html>

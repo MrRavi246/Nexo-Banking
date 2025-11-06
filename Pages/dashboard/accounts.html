@@ -2,661 +2,648 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/assets/style/nav.css">
-  <link rel="stylesheet" href="/assets/style/accounts.css">
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <title>NEXO Accounts - Manage Your Banking Accounts</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/style/nav.css">
+    <link rel="stylesheet" href="/assets/style/accounts.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>NEXO Accounts - Manage Your Banking Accounts</title>
 </head>
 
 <body>
-  <!-- Dashboard Navbar -->
-  <nav class="dashboard-nav">
-    <div class="nav-left">
-      <div class="logo">
-        <a href="/index.html"><span>N</span>exo</a>
-      </div>
-    </div>
-    <div class="nav-center">
-      <div class="search-bar">
-        <i class="ri-search-line"></i>
-        <input type="text" placeholder="Search transactions, accounts...">
-      </div>
-    </div>
-    <div class="nav-right">
-      <div class="nav-icons">
-        <div class="nav-icon">
-          <i class="ri-notification-3-line"></i>
-          <span class="notification-badge">3</span>
+    <!-- Dashboard Navbar -->
+    <nav class="dashboard-nav">
+        <div class="nav-left">
+            <div class="logo">
+                <a href="/index.html"><span>N</span>exo</a>
+            </div>
         </div>
-        <div class="nav-icon">
-          <i class="ri-mail-line"></i>
-          <span class="notification-badge">7</span>
+        <div class="nav-center">
+            <div class="search-bar">
+                <i class="ri-search-line"></i>
+                <input type="text" placeholder="Search transactions, accounts...">
+            </div>
         </div>
-        <div class="nav-icon">
-          <i class="ri-settings-3-line"></i>
+        <div class="nav-right">
+            <div class="nav-icons">
+                <div class="nav-icon">
+                    <i class="ri-notification-3-line"></i>
+                    <span class="notification-badge">3</span>
+                </div>
+                <div class="nav-icon">
+                    <i class="ri-mail-line"></i>
+                    <span class="notification-badge">7</span>
+                </div>
+                <div class="nav-icon">
+                    <i class="ri-settings-3-line"></i>
+                </div>
+            </div>
+            <div class="user-profile">
+                <img src="" alt="User Avatar" class="avatar">
+                <div class="user-info">
+                    <span class="username">John Doe</span>
+                    <span class="user-type">Premium Member</span>
+                </div>
+                <i class="ri-arrow-down-s-line"></i>
+            </div>
         </div>
-      </div>
-      <div class="user-profile">
-        <img src="" alt="User Avatar" class="avatar">
-        <div class="user-info">
-          <span class="username">John Doe</span>
-          <span class="user-type">Premium Member</span>
-        </div>
-        <i class="ri-arrow-down-s-line"></i>
-      </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- Dashboard Sidebar -->
-  <div class="dashboard-container">
-    <aside class="sidebar">
-      <div class="sidebar-menu">
-        <div class="menu-item" onclick="window.location.href='Dashboard.html'">
-          <i class="ri-dashboard-3-line"></i>
-          <span>Dashboard</span>
-        </div>
-        <div class="menu-item active">
-          <i class="ri-bank-card-line"></i>
-          <span>Accounts</span>
-        </div>
-        <div class="menu-item" onclick="window.location.href='Transactions.html'">
-          <i class="ri-exchange-line"></i>
-          <span>Transactions</span>
-        </div>
-        <div class="menu-item" onclick="window.location.href='transfer-money.html'">
-          <i class="ri-send-plane-line"></i>
-          <span>Transfer Money</span>
-        </div>
-        <div class="menu-item">
-          <i class="ri-bill-line"></i>
-          <span>Pay Bills</span>
-        </div>
-        <div class="menu-item">
-          <i class="ri-hand-coin-line"></i>
-          <span>Loans</span>
-        </div>
-        <div class="menu-item">
-          <i class="ri-pie-chart-line"></i>
-          <span>Analytics</span>
-        </div>
-        <div class="menu-item">
-          <i class="ri-customer-service-2-line"></i>
-          <span>Support</span>
-        </div>
-      </div>
-      
-      <div class="sidebar-footer">
-        <div class="menu-item">
-          <i class="ri-logout-box-line"></i>
-          <span>Logout</span>
-        </div>
-      </div>
-    </aside>
+    <!-- Dashboard Sidebar -->
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <div class="menu-item" onclick="window.location.href='Dashboard.html'">
+                    <i class="ri-dashboard-3-line"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="menu-item active">
+                    <i class="ri-bank-card-line"></i>
+                    <span>Accounts</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Transactions.html'">
+                    <i class="ri-exchange-line"></i>
+                    <span>Transactions</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='transfer-money.html'">
+                    <i class="ri-send-plane-line"></i>
+                    <span>Transfer Money</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='pay-bills.html'">
+                    <i class="ri-bill-line"></i>
+                    <span>Pay Bills</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='loans.html'">
+                    <i class="ri-hand-coin-line"></i>
+                    <span>Loans</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='analytics.html'">
+                    <i class="ri-pie-chart-line"></i>
+                    <span>Analytics</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='support.html'">
+                    <i class="ri-customer-service-2-line"></i>
+                    <span>Support</span>
+                </div>
+            </div>
 
-    <!-- Main Accounts Content -->
-    <main class="accounts-main">
-      <!-- Accounts Header -->
-      <div class="accounts-header">
-        <div class="header-content">
-          <h1>My Accounts</h1>
-          <p>Manage your banking accounts and view detailed information</p>
-        </div>
-        <div class="header-actions">
-          <button class="btn-secondary" onclick="exportAccountData()">
+            <div class="sidebar-footer" onclick="window.location.href='login.php'">
+                <div class="menu-item">
+                    <i class="ri-logout-box-line"></i>
+                    <span>Logout</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Accounts Content -->
+        <main class="accounts-main">
+            <!-- Accounts Header -->
+            <div class="accounts-header">
+                <div class="header-content">
+                    <h1>My Accounts</h1>
+                    <p>Manage your banking accounts and view detailed information</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-secondary" onclick="exportAccountData()">
             <i class="ri-download-line"></i>
             Export Data
           </button>
-          <button class="btn-primary" onclick="openAddAccountModal()">
+                    <button class="btn-primary" onclick="openAddAccountModal()">
             <i class="ri-add-line"></i>
             Add Account
           </button>
-        </div>
-      </div>
-
-      <!-- Account Overview Cards -->
-      <div class="account-overview">
-        <div class="overview-card total-balance">
-          <div class="card-icon">
-            <i class="ri-wallet-3-line"></i>
-          </div>
-          <div class="card-content">
-            <h3>Total Balance</h3>
-            <div class="balance-amount">$47,582.50</div>
-            <div class="balance-change positive">
-              <i class="ri-arrow-up-line"></i>
-              +2.5% from last month
+                </div>
             </div>
-          </div>
-        </div>
 
-        <div class="overview-card total-accounts">
-          <div class="card-icon">
-            <i class="ri-bank-line"></i>
-          </div>
-          <div class="card-content">
-            <h3>Total Accounts</h3>
-            <div class="balance-amount">3</div>
-            <div class="balance-change neutral">
-              Active accounts
+            <!-- Account Overview Cards -->
+            <div class="account-overview">
+                <div class="overview-card total-balance">
+                    <div class="card-icon">
+                        <i class="ri-wallet-3-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Total Balance</h3>
+                        <div class="balance-amount">$47,582.50</div>
+                        <div class="balance-change positive">
+                            <i class="ri-arrow-up-line"></i> +2.5% from last month
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overview-card total-accounts">
+                    <div class="card-icon">
+                        <i class="ri-bank-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Total Accounts</h3>
+                        <div class="balance-amount">3</div>
+                        <div class="balance-change neutral">
+                            Active accounts
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overview-card monthly-income">
+                    <div class="card-icon">
+                        <i class="ri-arrow-down-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Monthly Income</h3>
+                        <div class="balance-amount">$8,750.00</div>
+                        <div class="balance-change positive">
+                            <i class="ri-arrow-up-line"></i> +12.3% this month
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overview-card monthly-expenses">
+                    <div class="card-icon">
+                        <i class="ri-arrow-up-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Monthly Expenses</h3>
+                        <div class="balance-amount">$4,891.25</div>
+                        <div class="balance-change negative">
+                            <i class="ri-arrow-up-line"></i> +5.7% this month
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
 
-        <div class="overview-card monthly-income">
-          <div class="card-icon">
-            <i class="ri-arrow-down-line"></i>
-          </div>
-          <div class="card-content">
-            <h3>Monthly Income</h3>
-            <div class="balance-amount">$8,750.00</div>
-            <div class="balance-change positive">
-              <i class="ri-arrow-up-line"></i>
-              +12.3% this month
-            </div>
-          </div>
-        </div>
-
-        <div class="overview-card monthly-expenses">
-          <div class="card-icon">
-            <i class="ri-arrow-up-line"></i>
-          </div>
-          <div class="card-content">
-            <h3>Monthly Expenses</h3>
-            <div class="balance-amount">$4,891.25</div>
-            <div class="balance-change negative">
-              <i class="ri-arrow-up-line"></i>
-              +5.7% this month
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Account Filters and Sort -->
-      <div class="account-controls">
-        <div class="account-filters">
-          <button class="filter-btn active" data-filter="all">All Accounts</button>
-          <button class="filter-btn" data-filter="checking">Checking</button>
-          <button class="filter-btn" data-filter="savings">Savings</button>
-          <button class="filter-btn" data-filter="credit">Credit Cards</button>
-        </div>
-        <div class="account-sort">
-          <select id="accountSort">
+            <!-- Account Filters and Sort -->
+            <div class="account-controls">
+                <div class="account-filters">
+                    <button class="filter-btn active" data-filter="all">All Accounts</button>
+                    <button class="filter-btn" data-filter="checking">Checking</button>
+                    <button class="filter-btn" data-filter="savings">Savings</button>
+                    <button class="filter-btn" data-filter="credit">Credit Cards</button>
+                </div>
+                <div class="account-sort">
+                    <select id="accountSort">
             <option value="balance-high">Balance: High to Low</option>
             <option value="balance-low">Balance: Low to High</option>
             <option value="name">Account Name</option>
             <option value="type">Account Type</option>
             <option value="recent">Recently Active</option>
           </select>
-        </div>
-      </div>
+                </div>
+            </div>
 
-      <!-- Account Cards Grid -->
-      <div class="accounts-grid">
-        <!-- Checking Account -->
-        <div class="account-card checking" data-type="checking">
-          <div class="account-header">
-            <div class="account-icon">
-              <i class="ri-bank-card-line"></i>
-            </div>
-            <div class="account-menu">
-              <i class="ri-more-line" onclick="toggleAccountMenu(this)"></i>
-              <div class="account-dropdown">
-                <div class="dropdown-item" onclick="viewAccountDetails('checking-001')">
-                  <i class="ri-eye-line"></i>
-                  View Details
-                </div>
-                <div class="dropdown-item" onclick="downloadStatement('checking-001')">
-                  <i class="ri-download-line"></i>
-                  Download Statement
-                </div>
-                <div class="dropdown-item" onclick="manageAccount('checking-001')">
-                  <i class="ri-settings-line"></i>
-                  Manage Account
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="account-content">
-            <div class="account-type">Checking Account</div>
-            <div class="account-name">Primary Checking</div>
-            <div class="account-number">**** **** **** 4892</div>
-            <div class="account-balance">$12,450.75</div>
-            <div class="account-status available">Available Balance</div>
-          </div>
-          <div class="account-footer">
-            <div class="account-actions">
-              <button class="action-btn" onclick="initiateTransfer('checking-001')">
+            <!-- Account Cards Grid -->
+            <div class="accounts-grid">
+                <!-- Checking Account -->
+                <div class="account-card checking" data-type="checking">
+                    <div class="account-header">
+                        <div class="account-icon">
+                            <i class="ri-bank-card-line"></i>
+                        </div>
+                        <div class="account-menu">
+                            <i class="ri-more-line" onclick="toggleAccountMenu(this)"></i>
+                            <div class="account-dropdown">
+                                <div class="dropdown-item" onclick="viewAccountDetails('checking-001')">
+                                    <i class="ri-eye-line"></i> View Details
+                                </div>
+                                <div class="dropdown-item" onclick="downloadStatement('checking-001')">
+                                    <i class="ri-download-line"></i> Download Statement
+                                </div>
+                                <div class="dropdown-item" onclick="manageAccount('checking-001')">
+                                    <i class="ri-settings-line"></i> Manage Account
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="account-content">
+                        <div class="account-type">Checking Account</div>
+                        <div class="account-name">Primary Checking</div>
+                        <div class="account-number">**** **** **** 4892</div>
+                        <div class="account-balance">$12,450.75</div>
+                        <div class="account-status available">Available Balance</div>
+                    </div>
+                    <div class="account-footer">
+                        <div class="account-actions">
+                            <button class="action-btn" onclick="initiateTransfer('checking-001')">
                 <i class="ri-send-plane-line"></i>
                 Transfer
               </button>
-              <button class="action-btn" onclick="viewTransactions('checking-001')">
+                            <button class="action-btn" onclick="viewTransactions('checking-001')">
                 <i class="ri-list-check-line"></i>
                 Transactions
               </button>
-            </div>
-            <div class="account-info">
-              <span class="last-transaction">Last transaction: Today</span>
-            </div>
-          </div>
-        </div>
+                        </div>
+                        <div class="account-info">
+                            <span class="last-transaction">Last transaction: Today</span>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- Savings Account -->
-        <div class="account-card savings" data-type="savings">
-          <div class="account-header">
-            <div class="account-icon">
-              <i class="ri-piggy-bank-line"></i>
-            </div>
-            <div class="account-menu">
-              <i class="ri-more-line" onclick="toggleAccountMenu(this)"></i>
-              <div class="account-dropdown">
-                <div class="dropdown-item" onclick="viewAccountDetails('savings-001')">
-                  <i class="ri-eye-line"></i>
-                  View Details
-                </div>
-                <div class="dropdown-item" onclick="downloadStatement('savings-001')">
-                  <i class="ri-download-line"></i>
-                  Download Statement
-                </div>
-                <div class="dropdown-item" onclick="manageAccount('savings-001')">
-                  <i class="ri-settings-line"></i>
-                  Manage Account
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="account-content">
-            <div class="account-type">Savings Account</div>
-            <div class="account-name">High Yield Savings</div>
-            <div class="account-number">**** **** **** 7321</div>
-            <div class="account-balance">$28,750.00</div>
-            <div class="account-status interest">2.5% APY</div>
-          </div>
-          <div class="account-footer">
-            <div class="account-actions">
-              <button class="action-btn" onclick="initiateTransfer('savings-001')">
+                <!-- Savings Account -->
+                <div class="account-card savings" data-type="savings">
+                    <div class="account-header">
+                        <div class="account-icon">
+                            <i class="ri-piggy-bank-line"></i>
+                        </div>
+                        <div class="account-menu">
+                            <i class="ri-more-line" onclick="toggleAccountMenu(this)"></i>
+                            <div class="account-dropdown">
+                                <div class="dropdown-item" onclick="viewAccountDetails('savings-001')">
+                                    <i class="ri-eye-line"></i> View Details
+                                </div>
+                                <div class="dropdown-item" onclick="downloadStatement('savings-001')">
+                                    <i class="ri-download-line"></i> Download Statement
+                                </div>
+                                <div class="dropdown-item" onclick="manageAccount('savings-001')">
+                                    <i class="ri-settings-line"></i> Manage Account
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="account-content">
+                        <div class="account-type">Savings Account</div>
+                        <div class="account-name">High Yield Savings</div>
+                        <div class="account-number">**** **** **** 7321</div>
+                        <div class="account-balance">$28,750.00</div>
+                        <div class="account-status interest">2.5% APY</div>
+                    </div>
+                    <div class="account-footer">
+                        <div class="account-actions">
+                            <button class="action-btn" onclick="initiateTransfer('savings-001')">
                 <i class="ri-send-plane-line"></i>
                 Transfer
               </button>
-              <button class="action-btn" onclick="viewTransactions('savings-001')">
+                            <button class="action-btn" onclick="viewTransactions('savings-001')">
                 <i class="ri-list-check-line"></i>
                 Transactions
               </button>
-            </div>
-            <div class="account-info">
-              <span class="last-transaction">Last transaction: 2 days ago</span>
-            </div>
-          </div>
-        </div>
+                        </div>
+                        <div class="account-info">
+                            <span class="last-transaction">Last transaction: 2 days ago</span>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- Credit Card -->
-        <div class="account-card credit" data-type="credit">
-          <div class="account-header">
-            <div class="account-icon">
-              <i class="ri-credit-card-line"></i>
-            </div>
-            <div class="account-menu">
-              <i class="ri-more-line" onclick="toggleAccountMenu(this)"></i>
-              <div class="account-dropdown">
-                <div class="dropdown-item" onclick="viewAccountDetails('credit-001')">
-                  <i class="ri-eye-line"></i>
-                  View Details
-                </div>
-                <div class="dropdown-item" onclick="downloadStatement('credit-001')">
-                  <i class="ri-download-line"></i>
-                  Download Statement
-                </div>
-                <div class="dropdown-item" onclick="payCredit('credit-001')">
-                  <i class="ri-money-dollar-circle-line"></i>
-                  Make Payment
-                </div>
-                <div class="dropdown-item" onclick="manageAccount('credit-001')">
-                  <i class="ri-settings-line"></i>
-                  Manage Account
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="account-content">
-            <div class="account-type">Credit Card</div>
-            <div class="account-name">Nexo Platinum Card</div>
-            <div class="account-number">**** **** **** 9876</div>
-            <div class="account-balance">$6,381.75</div>
-            <div class="account-status limit">$15,000 limit</div>
-          </div>
-          <div class="account-footer">
-            <div class="account-actions">
-              <button class="action-btn" onclick="payCredit('credit-001')">
+                <!-- Credit Card -->
+                <div class="account-card credit" data-type="credit">
+                    <div class="account-header">
+                        <div class="account-icon">
+                            <i class="ri-credit-card-line"></i>
+                        </div>
+                        <div class="account-menu">
+                            <i class="ri-more-line" onclick="toggleAccountMenu(this)"></i>
+                            <div class="account-dropdown">
+                                <div class="dropdown-item" onclick="viewAccountDetails('credit-001')">
+                                    <i class="ri-eye-line"></i> View Details
+                                </div>
+                                <div class="dropdown-item" onclick="downloadStatement('credit-001')">
+                                    <i class="ri-download-line"></i> Download Statement
+                                </div>
+                                <div class="dropdown-item" onclick="payCredit('credit-001')">
+                                    <i class="ri-money-dollar-circle-line"></i> Make Payment
+                                </div>
+                                <div class="dropdown-item" onclick="manageAccount('credit-001')">
+                                    <i class="ri-settings-line"></i> Manage Account
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="account-content">
+                        <div class="account-type">Credit Card</div>
+                        <div class="account-name">Nexo Platinum Card</div>
+                        <div class="account-number">**** **** **** 9876</div>
+                        <div class="account-balance">$6,381.75</div>
+                        <div class="account-status limit">$15,000 limit</div>
+                    </div>
+                    <div class="account-footer">
+                        <div class="account-actions">
+                            <button class="action-btn" onclick="payCredit('credit-001')">
                 <i class="ri-money-dollar-circle-line"></i>
                 Pay Now
               </button>
-              <button class="action-btn" onclick="viewTransactions('credit-001')">
+                            <button class="action-btn" onclick="viewTransactions('credit-001')">
                 <i class="ri-list-check-line"></i>
                 Transactions
               </button>
-            </div>
-            <div class="account-info">
-              <div class="credit-utilization">
-                <span>Utilization: 42.5%</span>
-                <div class="utilization-bar">
-                  <div class="utilization-fill" style="width: 42.5%"></div>
+                        </div>
+                        <div class="account-info">
+                            <div class="credit-utilization">
+                                <span>Utilization: 42.5%</span>
+                                <div class="utilization-bar">
+                                    <div class="utilization-fill" style="width: 42.5%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Recent Account Activity -->
-      <div class="account-activity">
-        <div class="activity-header">
-          <h2>Recent Account Activity</h2>
-          <button class="view-all-btn">View All Activity</button>
-        </div>
-        <div class="activity-list">
-          <div class="activity-item">
-            <div class="activity-icon checking">
-              <i class="ri-bank-card-line"></i>
-            </div>
-            <div class="activity-details">
-              <div class="activity-description">Direct deposit received</div>
-              <div class="activity-account">Primary Checking **** 4892</div>
-              <div class="activity-time">Today, 9:00 AM</div>
-            </div>
-            <div class="activity-amount positive">+$3,500.00</div>
-          </div>
+            <!-- Recent Account Activity -->
+            <div class="account-activity">
+                <div class="activity-header">
+                    <h2>Recent Account Activity</h2>
+                    <button class="view-all-btn">View All Activity</button>
+                </div>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon checking">
+                            <i class="ri-bank-card-line"></i>
+                        </div>
+                        <div class="activity-details">
+                            <div class="activity-description">Direct deposit received</div>
+                            <div class="activity-account">Primary Checking **** 4892</div>
+                            <div class="activity-time">Today, 9:00 AM</div>
+                        </div>
+                        <div class="activity-amount positive">+$3,500.00</div>
+                    </div>
 
-          <div class="activity-item">
-            <div class="activity-icon savings">
-              <i class="ri-piggy-bank-line"></i>
-            </div>
-            <div class="activity-details">
-              <div class="activity-description">Automatic savings transfer</div>
-              <div class="activity-account">High Yield Savings **** 7321</div>
-              <div class="activity-time">Yesterday, 11:30 PM</div>
-            </div>
-            <div class="activity-amount positive">+$500.00</div>
-          </div>
+                    <div class="activity-item">
+                        <div class="activity-icon savings">
+                            <i class="ri-piggy-bank-line"></i>
+                        </div>
+                        <div class="activity-details">
+                            <div class="activity-description">Automatic savings transfer</div>
+                            <div class="activity-account">High Yield Savings **** 7321</div>
+                            <div class="activity-time">Yesterday, 11:30 PM</div>
+                        </div>
+                        <div class="activity-amount positive">+$500.00</div>
+                    </div>
 
-          <div class="activity-item">
-            <div class="activity-icon credit">
-              <i class="ri-credit-card-line"></i>
-            </div>
-            <div class="activity-details">
-              <div class="activity-description">Online purchase - Amazon</div>
-              <div class="activity-account">Nexo Platinum Card **** 9876</div>
-              <div class="activity-time">Yesterday, 3:45 PM</div>
-            </div>
-            <div class="activity-amount negative">-$89.99</div>
-          </div>
+                    <div class="activity-item">
+                        <div class="activity-icon credit">
+                            <i class="ri-credit-card-line"></i>
+                        </div>
+                        <div class="activity-details">
+                            <div class="activity-description">Online purchase - Amazon</div>
+                            <div class="activity-account">Nexo Platinum Card **** 9876</div>
+                            <div class="activity-time">Yesterday, 3:45 PM</div>
+                        </div>
+                        <div class="activity-amount negative">-$89.99</div>
+                    </div>
 
-          <div class="activity-item">
-            <div class="activity-icon checking">
-              <i class="ri-bank-card-line"></i>
+                    <div class="activity-item">
+                        <div class="activity-icon checking">
+                            <i class="ri-bank-card-line"></i>
+                        </div>
+                        <div class="activity-details">
+                            <div class="activity-description">ATM withdrawal</div>
+                            <div class="activity-account">Primary Checking **** 4892</div>
+                            <div class="activity-time">3 days ago, 2:15 PM</div>
+                        </div>
+                        <div class="activity-amount negative">-$200.00</div>
+                    </div>
+                </div>
             </div>
-            <div class="activity-details">
-              <div class="activity-description">ATM withdrawal</div>
-              <div class="activity-account">Primary Checking **** 4892</div>
-              <div class="activity-time">3 days ago, 2:15 PM</div>
-            </div>
-            <div class="activity-amount negative">-$200.00</div>
-          </div>
-        </div>
-      </div>
-    </main>
-  </div>
-
-  <!-- Add Account Modal -->
-  <div id="addAccountModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Add New Account</h2>
-        <span class="close" onclick="closeAddAccountModal()">&times;</span>
-      </div>
-      <div class="modal-body">
-        <div class="account-type-selection">
-          <div class="account-type-option" data-type="checking">
-            <div class="type-icon">
-              <i class="ri-bank-card-line"></i>
-            </div>
-            <div class="type-info">
-              <h3>Checking Account</h3>
-              <p>For daily transactions and bill payments</p>
-            </div>
-          </div>
-          <div class="account-type-option" data-type="savings">
-            <div class="type-icon">
-              <!-- <i class="ri-piggy-bank-line"></i> -->
-               
-            </div>
-            <div class="type-info">
-              <h3>Savings Account</h3>
-              <p>Earn interest on your deposits</p>
-            </div>
-          </div>
-          <div class="account-type-option" data-type="credit">
-            <div class="type-icon">
-              <i class="ri-credit-card-line"></i>
-            </div>
-            <div class="type-info">
-              <h3>Credit Card</h3>
-              <p>Build credit and earn rewards</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn-cancel" onclick="closeAddAccountModal()">Cancel</button>
-        <button type="button" class="btn-primary" onclick="proceedWithAccountType()">Continue</button>
-      </div>
+        </main>
     </div>
-  </div>
 
-  <script>
-    // Account page functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      initializeAccountFilters();
-      initializeAccountSort();
-      initializeMenuInteractions();
-    });
+    <!-- Add Account Modal -->
+    <div id="addAccountModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Account</h2>
+                <span class="close" onclick="closeAddAccountModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="account-type-selection">
+                    <div class="account-type-option" data-type="checking">
+                        <div class="type-icon">
+                            <i class="ri-bank-card-line"></i>
+                        </div>
+                        <div class="type-info">
+                            <h3>Checking Account</h3>
+                            <p>For daily transactions and bill payments</p>
+                        </div>
+                    </div>
+                    <div class="account-type-option" data-type="savings">
+                        <div class="type-icon">
+                            <!-- <i class="ri-piggy-bank-line"></i> -->
 
-    function initializeAccountFilters() {
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const accountCards = document.querySelectorAll('.account-card');
+                        </div>
+                        <div class="type-info">
+                            <h3>Savings Account</h3>
+                            <p>Earn interest on your deposits</p>
+                        </div>
+                    </div>
+                    <div class="account-type-option" data-type="credit">
+                        <div class="type-icon">
+                            <i class="ri-credit-card-line"></i>
+                        </div>
+                        <div class="type-info">
+                            <h3>Credit Card</h3>
+                            <p>Build credit and earn rewards</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-cancel" onclick="closeAddAccountModal()">Cancel</button>
+                <button type="button" class="btn-primary" onclick="proceedWithAccountType()">Continue</button>
+            </div>
+        </div>
+    </div>
 
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          filterBtns.forEach(b => b.classList.remove('active'));
-          this.classList.add('active');
+    <script>
+        // Account page functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeAccountFilters();
+            initializeAccountSort();
+            initializeMenuInteractions();
+        });
 
-          const filter = this.getAttribute('data-filter');
-          
-          accountCards.forEach(card => {
-            if (filter === 'all' || card.getAttribute('data-type') === filter) {
-              card.style.display = 'block';
-              card.style.animation = 'fadeIn 0.3s ease-in-out';
-            } else {
-              card.style.display = 'none';
+        function initializeAccountFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const accountCards = document.querySelectorAll('.account-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+
+                    accountCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-type') === filter) {
+                            card.style.display = 'block';
+                            card.style.animation = 'fadeIn 0.3s ease-in-out';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+
+        function initializeAccountSort() {
+            const sortSelect = document.getElementById('accountSort');
+
+            sortSelect.addEventListener('change', function() {
+                const sortType = this.value;
+                const accountsGrid = document.querySelector('.accounts-grid');
+                const cards = Array.from(accountsGrid.children);
+
+                cards.sort((a, b) => {
+                    switch (sortType) {
+                        case 'balance-high':
+                            return parseFloat(b.querySelector('.account-balance').textContent.replace(/[$,]/g, '')) -
+                                parseFloat(a.querySelector('.account-balance').textContent.replace(/[$,]/g, ''));
+                        case 'balance-low':
+                            return parseFloat(a.querySelector('.account-balance').textContent.replace(/[$,]/g, '')) -
+                                parseFloat(b.querySelector('.account-balance').textContent.replace(/[$,]/g, ''));
+                        case 'name':
+                            return a.querySelector('.account-name').textContent.localeCompare(b.querySelector('.account-name').textContent);
+                        case 'type':
+                            return a.querySelector('.account-type').textContent.localeCompare(b.querySelector('.account-type').textContent);
+                        default:
+                            return 0;
+                    }
+                });
+
+                cards.forEach(card => accountsGrid.appendChild(card));
+            });
+        }
+
+        function initializeMenuInteractions() {
+            const menuItems = document.querySelectorAll('.sidebar .menu-item');
+
+            menuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    if (this.querySelector('span').textContent === 'Dashboard') {
+                        window.location.href = 'Dashboard.html';
+                    }
+                });
+            });
+        }
+
+        function toggleAccountMenu(element) {
+            const dropdown = element.nextElementSibling;
+            const allDropdowns = document.querySelectorAll('.account-dropdown');
+
+            allDropdowns.forEach(d => {
+                if (d !== dropdown) d.style.display = 'none';
+            });
+
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function viewAccountDetails(accountId) {
+            showNotification(`Viewing details for account ${accountId}`, 'info');
+            // Implementation would navigate to detailed account view
+        }
+
+        function downloadStatement(accountId) {
+            showNotification(`Downloading statement for account ${accountId}`, 'success');
+            // Implementation would generate and download PDF statement
+        }
+
+        function manageAccount(accountId) {
+            showNotification(`Opening account management for ${accountId}`, 'info');
+            // Implementation would open account settings modal
+        }
+
+        function initiateTransfer(accountId) {
+            showNotification(`Initiating transfer from account ${accountId}`, 'info');
+            // Implementation would open transfer modal with pre-selected account
+        }
+
+        function viewTransactions(accountId) {
+            showNotification(`Loading transactions for account ${accountId}`, 'info');
+            // Implementation would navigate to transaction history page
+        }
+
+        function payCredit(accountId) {
+            showNotification(`Opening payment form for account ${accountId}`, 'info');
+            // Implementation would open credit card payment modal
+        }
+
+        function exportAccountData() {
+            showNotification('Exporting account data...', 'info');
+            // Implementation would generate and download account data
+        }
+
+        function openAddAccountModal() {
+            document.getElementById('addAccountModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAddAccountModal() {
+            document.getElementById('addAccountModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+
+            // Reset selections
+            const options = document.querySelectorAll('.account-type-option');
+            options.forEach(option => option.classList.remove('selected'));
+        }
+
+        function proceedWithAccountType() {
+            const selected = document.querySelector('.account-type-option.selected');
+            if (!selected) {
+                showNotification('Please select an account type', 'error');
+                return;
             }
-          });
-        });
-      });
-    }
 
-    function initializeAccountSort() {
-      const sortSelect = document.getElementById('accountSort');
-      
-      sortSelect.addEventListener('change', function() {
-        const sortType = this.value;
-        const accountsGrid = document.querySelector('.accounts-grid');
-        const cards = Array.from(accountsGrid.children);
-        
-        cards.sort((a, b) => {
-          switch(sortType) {
-            case 'balance-high':
-              return parseFloat(b.querySelector('.account-balance').textContent.replace(/[$,]/g, '')) - 
-                     parseFloat(a.querySelector('.account-balance').textContent.replace(/[$,]/g, ''));
-            case 'balance-low':
-              return parseFloat(a.querySelector('.account-balance').textContent.replace(/[$,]/g, '')) - 
-                     parseFloat(b.querySelector('.account-balance').textContent.replace(/[$,]/g, ''));
-            case 'name':
-              return a.querySelector('.account-name').textContent.localeCompare(b.querySelector('.account-name').textContent);
-            case 'type':
-              return a.querySelector('.account-type').textContent.localeCompare(b.querySelector('.account-type').textContent);
-            default:
-              return 0;
-          }
-        });
-        
-        cards.forEach(card => accountsGrid.appendChild(card));
-      });
-    }
+            const accountType = selected.getAttribute('data-type');
+            showNotification(`Starting application for ${accountType} account`, 'success');
+            closeAddAccountModal();
+            // Implementation would navigate to account application form
+        }
 
-    function initializeMenuInteractions() {
-      const menuItems = document.querySelectorAll('.sidebar .menu-item');
-      
-      menuItems.forEach(item => {
-        item.addEventListener('click', function() {
-          if (this.querySelector('span').textContent === 'Dashboard') {
-            window.location.href = 'Dashboard.html';
-          }
-        });
-      });
-    }
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
 
-    function toggleAccountMenu(element) {
-      const dropdown = element.nextElementSibling;
-      const allDropdowns = document.querySelectorAll('.account-dropdown');
-      
-      allDropdowns.forEach(d => {
-        if (d !== dropdown) d.style.display = 'none';
-      });
-      
-      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-    }
+            const icon = type === 'success' ? 'ri-check-circle-line' :
+                type === 'error' ? 'ri-error-warning-line' : 'ri-information-line';
 
-    function viewAccountDetails(accountId) {
-      showNotification(`Viewing details for account ${accountId}`, 'info');
-      // Implementation would navigate to detailed account view
-    }
-
-    function downloadStatement(accountId) {
-      showNotification(`Downloading statement for account ${accountId}`, 'success');
-      // Implementation would generate and download PDF statement
-    }
-
-    function manageAccount(accountId) {
-      showNotification(`Opening account management for ${accountId}`, 'info');
-      // Implementation would open account settings modal
-    }
-
-    function initiateTransfer(accountId) {
-      showNotification(`Initiating transfer from account ${accountId}`, 'info');
-      // Implementation would open transfer modal with pre-selected account
-    }
-
-    function viewTransactions(accountId) {
-      showNotification(`Loading transactions for account ${accountId}`, 'info');
-      // Implementation would navigate to transaction history page
-    }
-
-    function payCredit(accountId) {
-      showNotification(`Opening payment form for account ${accountId}`, 'info');
-      // Implementation would open credit card payment modal
-    }
-
-    function exportAccountData() {
-      showNotification('Exporting account data...', 'info');
-      // Implementation would generate and download account data
-    }
-
-    function openAddAccountModal() {
-      document.getElementById('addAccountModal').style.display = 'block';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeAddAccountModal() {
-      document.getElementById('addAccountModal').style.display = 'none';
-      document.body.style.overflow = 'auto';
-      
-      // Reset selections
-      const options = document.querySelectorAll('.account-type-option');
-      options.forEach(option => option.classList.remove('selected'));
-    }
-
-    function proceedWithAccountType() {
-      const selected = document.querySelector('.account-type-option.selected');
-      if (!selected) {
-        showNotification('Please select an account type', 'error');
-        return;
-      }
-      
-      const accountType = selected.getAttribute('data-type');
-      showNotification(`Starting application for ${accountType} account`, 'success');
-      closeAddAccountModal();
-      // Implementation would navigate to account application form
-    }
-
-    function showNotification(message, type) {
-      const notification = document.createElement('div');
-      notification.className = `notification ${type}`;
-      
-      const icon = type === 'success' ? 'ri-check-circle-line' : 
-                   type === 'error' ? 'ri-error-warning-line' : 'ri-information-line';
-      
-      notification.innerHTML = `
+            notification.innerHTML = `
         <i class="${icon}"></i>
         <span>${message}</span>
       `;
-      
-      document.body.appendChild(notification);
-      
-      setTimeout(() => {
-        notification.classList.add('show');
-      }, 100);
-      
-      setTimeout(() => {
-        notification.classList.remove('show');
-        setTimeout(() => {
-          if (document.body.contains(notification)) {
-            document.body.removeChild(notification);
-          }
-        }, 300);
-      }, 3000);
-    }
 
-    // Initialize account type selection in modal
-    document.addEventListener('DOMContentLoaded', function() {
-      const accountTypeOptions = document.querySelectorAll('.account-type-option');
-      
-      accountTypeOptions.forEach(option => {
-        option.addEventListener('click', function() {
-          accountTypeOptions.forEach(opt => opt.classList.remove('selected'));
-          this.classList.add('selected');
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Initialize account type selection in modal
+        document.addEventListener('DOMContentLoaded', function() {
+            const accountTypeOptions = document.querySelectorAll('.account-type-option');
+
+            accountTypeOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    accountTypeOptions.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                const modal = document.getElementById('addAccountModal');
+                if (event.target === modal) {
+                    closeAddAccountModal();
+                }
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.account-menu')) {
+                    const dropdowns = document.querySelectorAll('.account-dropdown');
+                    dropdowns.forEach(dropdown => {
+                        dropdown.style.display = 'none';
+                    });
+                }
+            });
         });
-      });
-      
-      // Close modal when clicking outside
-      window.addEventListener('click', function(event) {
-        const modal = document.getElementById('addAccountModal');
-        if (event.target === modal) {
-          closeAddAccountModal();
-        }
-      });
-      
-      // Close dropdowns when clicking outside
-      document.addEventListener('click', function(event) {
-        if (!event.target.closest('.account-menu')) {
-          const dropdowns = document.querySelectorAll('.account-dropdown');
-          dropdowns.forEach(dropdown => {
-            dropdown.style.display = 'none';
-          });
-        }
-      });
-    });
-  </script>
+    </script>
 
 </body>
 
