@@ -51,10 +51,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       gsap.registerPlugin(ScrollTrigger, SplitText);
 
       function loader() {
-        try {
-          if (!window.SplitText) throw new Error('SplitText plugin not found');
-
-          let split = SplitText.create(".con", { type: "chars" });
+        let split = SplitText.create(".con", { type: "chars" });
 
           let tl = gsap.timeline();
 
@@ -90,20 +87,24 @@ document.addEventListener("DOMContentLoaded", (event) => {
             display: "block",
             delay: -0.7,
           });
-        } catch (err) {
-          // If SplitText or GSAP animation fails, ensure loader is removed so page is scrollable
-          console.warn('Loader animation skipped:', err);
-          const loaderEl = document.querySelector('.loader');
-          const mainEl = document.querySelector('main');
-          if (loaderEl) {
-            loaderEl.style.display = 'none';
-            loaderEl.style.opacity = '0';
-            loaderEl.style.pointerEvents = 'none';
-          }
-          if (mainEl) {
-            mainEl.style.display = 'block';
-          }
-        }
+        // try {
+        //   if (!window.SplitText) throw new Error('SplitText plugin not found');
+
+          
+        // } catch (err) {
+        //   // If SplitText or GSAP animation fails, ensure loader is removed so page is scrollable
+        //   console.warn('Loader animation skipped:', err);
+        //   const loaderEl = document.querySelector('.loader');
+        //   const mainEl = document.querySelector('main');
+        //   if (loaderEl) {
+        //     loaderEl.style.display = 'none';
+        //     loaderEl.style.opacity = '0';
+        //     loaderEl.style.pointerEvents = 'none';
+        //   }
+        //   if (mainEl) {
+        //     mainEl.style.display = 'block';
+        //   }
+        // }
       }
       loader();
 
