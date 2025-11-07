@@ -190,6 +190,11 @@ function redirect($url) {
  * Send JSON response
  */
 function sendResponse($success, $message, $data = null, $httpCode = 200) {
+    // Clear any buffered output if buffering is active
+    while (ob_get_level()) {
+        ob_end_clean();
+    }
+    
     http_response_code($httpCode);
     header('Content-Type: application/json');
     echo json_encode([
@@ -214,4 +219,3 @@ function createNotification($conn, $userId, $title, $message, $type = 'system_ma
         error_log("Notification Error: " . $e->getMessage());
     }
 }
-?>

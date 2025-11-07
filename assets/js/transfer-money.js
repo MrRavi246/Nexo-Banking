@@ -2,6 +2,8 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     initializeTransferPage();
+    loadTransferData(); // Load accounts and contacts from backend
+    loadRecentTransfers(); // Load recent transfers from backend
 });
 
 function initializeTransferPage() {
@@ -18,6 +20,168 @@ function initializeTransferPage() {
     // Set default date to today
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('transferDate').value = today;
+}
+
+// Load recent transfers from backend
+async function loadRecentTransfers() {
+    try {
+        const response = await fetch('../../backend/get_recent_transfers.php', {
+            method: 'GET',
+            credentials: 'include'
+        });
+
+        const result = await response.json();
+
+        if (result.success && result.data.transfers) {
+            console.log('Recent transfers loaded:', result.data.transfers);
+            updateRecentTransfersList(result.data.transfers);
+        } else {
+            console.error('Failed to load recent transfers:', result.message);
+            showEmptyTransfersMessage();
+        }
+    } catch (error) {
+        console.error('Error loading recent transfers:', error);
+        showEmptyTransfersMessage();
+    }
+}
+
+// Update recent transfers list with real data
+function updateRecentTransfersList(transfers) {
+    const transfersList = document.getElementById('recentTransfersList');
+    
+    if (!transfersList) return;
+    
+    if (transfers.length === 0) {
+        showEmptyTransfersMessage();
+        return;
+    }
+    
+    transfersList.innerHTML = '';
+    
+    transfers.forEach((transfer, index) => {
+        const transferItem = document.createElement('div');
+        transferItem.className = 'transfer-item';
+        
+        // Determine avatar
+        let avatarHtml = '';
+        if (transfer.type === 'external' || transfer.type === 'wire') {
+            avatarHtml = `
+                <div class="transfer-avatar">
+                    <div class="avatar-placeholder">
+                        <i class="ri-building-line"></i>
+                    </div>
+                </div>
+            `;
+        } else {
+            avatarHtml = `
+                <div class="transfer-avatar">
+                    <img src="https://i.pravatar.cc/40?img=${(index % 10) + 1}" alt="${transfer.name}">
+                </div>
+            `;
+        }
+        
+        // Determine amount class
+        const amountClass = transfer.is_sent ? 'sent' : 'received';
+        const amountPrefix = transfer.is_sent ? '-' : '+';
+        
+        // Determine status
+        const statusClass = transfer.status === 'completed' ? 'completed' : 'pending';
+        const statusIcon = transfer.status === 'completed' ? 'ri-check-line' : 'ri-time-line';
+        const statusText = transfer.status === 'completed' ? 'Completed' : 'Pending';
+        
+        transferItem.innerHTML = `
+            ${avatarHtml}
+            <div class="transfer-info">
+                <h4>${transfer.name}</h4>
+                <p>${transfer.time}</p>
+            </div>
+            <div class="transfer-amount ${amountClass}">
+                ${amountPrefix}$${transfer.amount.toFixed(2)}
+            </div>
+            <div class="transfer-status ${statusClass}">
+                <i class="${statusIcon}"></i> ${statusText}
+            </div>
+        `;
+        
+        transfersList.appendChild(transferItem);
+    });
+}
+
+// Show empty message if no transfers
+function showEmptyTransfersMessage() {
+    const transfersList = document.getElementById('recentTransfersList');
+    if (transfersList) {
+        transfersList.innerHTML = `
+            <div class="transfer-item" style="justify-content: center; color: #888; padding: 40px 20px;">
+                <div style="text-align: center;">
+                    <i class="ri-exchange-line" style="font-size: 48px; display: block; margin-bottom: 10px; opacity: 0.3;"></i>
+                    <p>No transfers yet</p>
+                    <p style="font-size: 12px; margin-top: 5px;">Your recent transfers will appear here</p>
+                </div>
+            </div>
+        `;
+    }
+}
+
+// Load transfer data from backend
+async function loadTransferData() {
+    try {
+        const response = await fetch('../../backend/get_transfer_data.php', {
+            method: 'GET',
+            credentials: 'include'
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            console.log('Transfer data loaded:', result.data);
+            
+            // Update contacts list if we got any
+            if (result.data.contacts && result.data.contacts.length > 0) {
+                updateContactsList(result.data.contacts);
+            }
+        } else {
+            console.error('Failed to load transfer data:', result.message);
+        }
+    } catch (error) {
+        console.error('Error loading transfer data:', error);
+    }
+}
+
+// Update contacts list dynamically
+function updateContactsList(contacts) {
+    const contactsContainer = document.querySelector('.saved-contacts');
+    
+    if (!contactsContainer || contacts.length === 0) return;
+    
+    contactsContainer.innerHTML = '';
+    
+    contacts.forEach((contact, index) => {
+        const contactItem = document.createElement('div');
+        contactItem.className = 'contact-item';
+        contactItem.dataset.contactId = contact.beneficiary_id;
+        
+        const avatarUrl = contact.email 
+            ? `https://ui-avatars.com/api/?name=${encodeURIComponent(contact.beneficiary_name)}&background=random`
+            : `https://i.pravatar.cc/50?img=${index + 1}`;
+        
+        contactItem.innerHTML = `
+            <div class="contact-avatar">
+                <img src="${avatarUrl}" alt="${contact.beneficiary_name}">
+            </div>
+            <div class="contact-info">
+                <h4>${contact.beneficiary_name}</h4>
+                <p>${contact.email || 'No email'}</p>
+                <span class="contact-bank">${contact.bank_name || 'Nexo Banking'} ${contact.account_number ? '(**** ' + contact.account_number.slice(-4) + ')' : ''}</span>
+            </div>
+            <i class="ri-check-line contact-selected"></i>
+        `;
+        
+        contactsContainer.appendChild(contactItem);
+    });
+    
+    // Re-setup contact selection listeners
+    setupContactSelection();
 }
 
 // Transfer Method Selection
@@ -228,64 +392,155 @@ function updateSummary() {
 }
 
 // Process Transfer
-function processTransfer() {
+async function processTransfer() {
     // Show loading state
     const submitBtn = document.querySelector('.btn.primary');
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = '<i class="ri-loader-4-line"></i> Processing...';
     submitBtn.disabled = true;
     
-    // Frontend-only simulation (no backend integration)
-    setTimeout(() => {
-        // Reset button
+    try {
+        // Gather form data
+        const fromAccount = document.getElementById('fromAccount').value;
+        const amount = parseFloat(document.getElementById('transferAmount').value);
+        const transferDate = document.getElementById('transferDate').value;
+        const memo = document.getElementById('transferMemo').value;
+        
+        // Get selected transfer method
+        const activeMethod = document.querySelector('.transfer-method.active');
+        const transferMethod = activeMethod.dataset.method;
+        
+        // Get recipient type and details
+        const isContactForm = document.querySelector('.contact-form').style.display !== 'none';
+        const recipientType = isContactForm ? 'contact' : 'new';
+        
+        let transferData = {
+            fromAccount: fromAccount,
+            amount: amount,
+            transferDate: transferDate,
+            memo: memo,
+            transferMethod: transferMethod,
+            recipientType: recipientType
+        };
+        
+        // Add recipient details based on type
+        if (recipientType === 'contact') {
+            const selectedContact = document.querySelector('.contact-item.selected');
+            if (selectedContact) {
+                transferData.contactId = selectedContact.dataset.contactId;
+            }
+        } else {
+            transferData.recipientName = document.getElementById('recipientName').value;
+            transferData.recipientEmail = document.getElementById('recipientEmail').value;
+            transferData.bankName = document.getElementById('bankName').value;
+            transferData.accountNumber = document.getElementById('accountNumber').value;
+            transferData.routingNumber = document.getElementById('routingNumber').value;
+            transferData.accountType = document.getElementById('accountType').value;
+        }
+        
+        // Get selected security method
+        const activeSecurityMethod = document.querySelector('.security-method.active');
+        transferData.securityMethod = activeSecurityMethod.dataset.method;
+        
+        console.log('Sending transfer data:', transferData);
+        
+        // Send to backend
+        const response = await fetch('../../backend/process_transfer.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+            body: JSON.stringify(transferData)
+        });
+        
+        const result = await response.json();
+        console.log('Transfer result:', result);
+        
+        if (result.success) {
+            // Show success message
+            showNotification('Transfer completed successfully! Amount: $' + result.data.amount.toFixed(2), 'success');
+            
+            // Add transfer to recent transfers list (prepend to top)
+            addTransferToRecentList(result.data);
+            
+            // Update account balance in the dropdown
+            updateAccountBalance(fromAccount, result.data.new_balance);
+            
+            // Reload recent transfers from server to get fresh data
+            setTimeout(() => {
+                loadRecentTransfers();
+            }, 500);
+            
+            // If it was a new recipient, reload contacts to show the newly saved contact
+            if (recipientType === 'new') {
+                setTimeout(() => {
+                    loadTransferData(); // This will reload contacts
+                }, 500);
+            }
+            
+            // Reset form
+            setTimeout(() => {
+                resetForm();
+            }, 1500);
+        } else {
+            showNotification('Transfer failed: ' + result.message, 'error');
+        }
+    } catch (error) {
+        console.error('Error processing transfer:', error);
+        showNotification('An error occurred while processing the transfer. Please try again.', 'error');
+    } finally {
+        // Reset button state
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
-        
-        // Show success message
-        showNotification('Transfer simulation completed! This is a frontend-only demo.', 'success');
-        
-        // Add transfer to recent transfers list
-        addTransferToRecentList();
-        
-        // Optionally reset form
-        // resetForm();
-        
-    }, 2000);
+    }
 }
 
-// Add transfer to recent transfers list (frontend only)
-function addTransferToRecentList() {
-    const amount = document.getElementById('transferAmount').value;
-    const selectedContact = document.querySelector('.contact-item.selected');
+// Update account balance in dropdown after transfer
+function updateAccountBalance(accountId, newBalance) {
+    const accountSelect = document.getElementById('fromAccount');
+    const option = accountSelect.querySelector(`option[value="${accountId}"]`);
     
-    if (amount && selectedContact) {
-        const transfersList = document.querySelector('.transfers-list');
-        const newTransfer = document.createElement('div');
-        newTransfer.className = 'transfer-item';
-        
-        const contactName = selectedContact.querySelector('h4').textContent;
-        const contactAvatar = selectedContact.querySelector('img').src;
-        
-        newTransfer.innerHTML = `
-            <div class="transfer-avatar">
-                <img src="${contactAvatar}" alt="${contactName}">
-            </div>
-            <div class="transfer-info">
-                <h4>${contactName}</h4>
-                <p>Just now</p>
-            </div>
-            <div class="transfer-amount sent">
-                -$${parseFloat(amount).toFixed(2)}
-            </div>
-            <div class="transfer-status completed">
-                <i class="ri-check-line"></i>
-                Completed
-            </div>
-        `;
-        
-        // Add to top of list
-        transfersList.insertBefore(newTransfer, transfersList.firstChild);
+    if (option) {
+        const text = option.textContent;
+        const updatedText = text.replace(/\$[\d,]+\.\d{2}/, '$' + newBalance.toFixed(2));
+        option.textContent = updatedText;
+        option.dataset.balance = newBalance;
     }
+}
+
+// Add transfer to recent list
+function addTransferToRecentList(transferData) {
+    const transfersList = document.querySelector('.transfers-list');
+    if (!transfersList) return;
+    
+    const transferItem = document.createElement('div');
+    transferItem.className = 'transfer-item';
+    
+    const statusClass = transferData.status === 'completed' ? 'completed' : 'pending';
+    const statusIcon = transferData.status === 'completed' ? 'ri-check-line' : 'ri-time-line';
+    const statusText = transferData.status === 'completed' ? 'Completed' : 'Pending';
+    
+    transferItem.innerHTML = `
+        <div class="transfer-avatar">
+            <div class="avatar-placeholder">
+                <i class="ri-send-plane-line"></i>
+            </div>
+        </div>
+        <div class="transfer-info">
+            <h4>${transferData.recipient}</h4>
+            <p>Just now</p>
+        </div>
+        <div class="transfer-amount sent">
+            -$${transferData.total.toFixed(2)}
+        </div>
+        <div class="transfer-status ${statusClass}">
+            <i class="${statusIcon}"></i> ${statusText}
+        </div>
+    `;
+    
+    // Add to top of list
+    transfersList.insertBefore(transferItem, transfersList.firstChild);
 }
 
 // Reset Form

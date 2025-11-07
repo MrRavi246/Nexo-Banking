@@ -1,3 +1,41 @@
+<?php
+// Start session and check authentication
+require_once '../../backend/config.php';
+require_once '../../backend/functions.php';
+
+// Check if user is logged in
+if (!isLoggedIn()) {
+    header('Location: ../auth/login.php');
+    exit();
+}
+
+// Validate session
+$conn = getDBConnection();
+if (!validateSession($conn, $_SESSION['user_id'], $_SESSION['session_token'])) {
+    session_destroy();
+    header('Location: ../auth/login.php');
+    exit();
+}
+
+$userId = $_SESSION['user_id'];
+
+// Get user's accounts
+$stmt = $conn->prepare("
+    SELECT account_id, account_type, account_number, balance, currency
+    FROM accounts 
+    WHERE user_id = ? AND status = 'active'
+    ORDER BY account_type
+");
+$stmt->execute([$userId]);
+$userAccounts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Get user info
+$stmt = $conn->prepare("SELECT first_name, last_name, member_type FROM users WHERE user_id = ?");
+$stmt->execute([$userId]);
+$userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+$userName = $userInfo['first_name'] . ' ' . $userInfo['last_name'];
+$memberType = ucfirst($userInfo['member_type']) . ' Member';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,8 +77,8 @@
             <div class="user-profile">
                 <img src="https://i.pravatar.cc/" alt="User Avatar" class="avatar">
                 <div class="user-info">
-                    <span class="username">John Doe</span>
-                    <span class="user-type">Premium Member</span>
+                    <span class="username"><?php echo htmlspecialchars($userName); ?></span>
+                    <span class="user-type"><?php echo htmlspecialchars($memberType); ?></span>
                 </div>
                 <i class="ri-arrow-down-s-line"></i>
             </div>
@@ -116,58 +154,33 @@
                 <div class="hero-stats">
                     <div class="stat-card">
                         <div class="label">Total Due</div>
-                        <div class="value large danger">$197.70</div>
-                        <div class="muted">3 bills • next due in 5 days</div>
+                        <div class="value large danger" id="totalDueAmount">$0.00</div>
+                        <div class="muted" id="totalDueText">Loading...</div>
                     </div>
                     <div class="stat-card">
                         <div class="label">Next Payment</div>
-                        <div class="value">Electric Co. • $120.50</div>
-                        <div class="muted">Due in 5 days</div>
+                        <div class="value" id="nextPaymentInfo">Loading...</div>
+                        <div class="muted" id="nextPaymentDate">--</div>
                     </div>
                     <div class="stat-card">
-                        <div class="label">Auto-pay</div>
-                        <div class="value success">2 enabled</div>
-                        <div class="muted">Manage schedules in account settings</div>
+                        <div class="label">Recent Payments</div>
+                        <div class="value success" id="recentPaymentsCount">--</div>
+                        <div class="muted">Last 30 days</div>
                     </div>
                 </div>
 
                 <div class="pay-main-container">
                     <section class="bills-list">
                         <div class="section-header">
-                            <h3>My Bills</h3>
+                            <h3>Upcoming Bills</h3>
                             <button class="view-all-btn" onclick="showAllBills()">View All</button>
                         </div>
 
-                        <div class="bill-item" data-payee="Electric Co." data-default="120.50">
-                            <div class="bill-left">
-                                <h4>Electric Co.</h4>
-                                <p>Monthly • Due in 5 days</p>
-                            </div>
-                            <div class="bill-right">
-                                <span class="bill-amount">$120.50</span>
-                                <div class="bill-action"><button class="btn primary" onclick="document.getElementById('payeeSelect').value='Electric Co.';document.getElementById('payFormAmount').value='120.50';document.getElementById('payFormAmount').focus();">Pay Now</button></div>
-                            </div>
-                        </div>
-
-                        <div class="bill-item" data-payee="Internet Provider" data-default="45.00">
-                            <div class="bill-left">
-                                <h4>Internet Provider</h4>
-                                <p>Monthly • Due in 12 days</p>
-                            </div>
-                            <div class="bill-right">
-                                <span class="bill-amount">$45.00</span>
-                                <div class="bill-action"><button class="btn" onclick="document.getElementById('payeeSelect').value='Internet Provider';document.getElementById('payFormAmount').value='45.00';document.getElementById('payFormAmount').focus();">Pay</button></div>
-                            </div>
-                        </div>
-
-                        <div class="bill-item" data-payee="Water Works" data-default="32.20">
-                            <div class="bill-left">
-                                <h4>Water Works</h4>
-                                <p>Quarterly • Due in 20 days</p>
-                            </div>
-                            <div class="bill-right">
-                                <span class="bill-amount">$32.20</span>
-                                <div class="bill-action"><button class="btn" onclick="document.getElementById('payeeSelect').value='Water Works';document.getElementById('payFormAmount').value='32.20';document.getElementById('payFormAmount').focus();">Pay</button></div>
+                        <div id="upcomingBillsList">
+                            <!-- Bills will be loaded dynamically -->
+                            <div style="padding: 2rem; text-align: center; color: #888;">
+                                <i class="ri-loader-4-line" style="font-size: 2rem; animation: spin 1s linear infinite;"></i>
+                                <p>Loading bills...</p>
                             </div>
                         </div>
                     </section>
@@ -178,12 +191,22 @@
                         </div>
 
                         <form id="payForm" class="pay-form">
+                            <label for="fromAccount">From Account</label>
+                            <select id="fromAccount" required>
+                                <option value="">Select account</option>
+                                <?php foreach ($userAccounts as $account): ?>
+                                    <option value="<?php echo htmlspecialchars($account['account_id']); ?>"
+                                        data-balance="<?php echo $account['balance']; ?>">
+                                        <?php echo ucfirst($account['account_type']); ?> Account
+                                        (**** <?php echo substr($account['account_number'], -4); ?>) -
+                                        $<?php echo number_format($account['balance'], 2); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+
                             <label for="payeeSelect">Payee</label>
                             <select id="payeeSelect" onchange="handlePayeeChange()">
               <option value="">Select payee</option>
-              <option value="Electric Co.">Electric Co.</option>
-              <option value="Internet Provider">Internet Provider</option>
-              <option value="Water Works">Water Works</option>
               <option value="custom">+ Add Custom Payee</option>
             </select>
 
@@ -191,6 +214,16 @@
                             <div id="customPayeeGroup" class="form-group" style="display: none;">
                                 <label for="customPayee">Custom Payee Name</label>
                                 <input id="customPayee" type="text" placeholder="Enter payee name">
+                                
+                                <label for="billType">Bill Type</label>
+                                <select id="billType">
+                                    <option value="utilities">Utilities</option>
+                                    <option value="credit_card">Credit Card</option>
+                                    <option value="loan">Loan</option>
+                                    <option value="subscription">Subscription</option>
+                                    <option value="mobile_recharge">Mobile Recharge</option>
+                                    <option value="insurance">Insurance</option>
+                                </select>
                             </div>
 
                             <label for="payFormAmount">Amount</label>

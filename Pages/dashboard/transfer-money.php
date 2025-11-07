@@ -1,3 +1,50 @@
+<?php
+// Start session and check authentication
+require_once '../../backend/config.php';
+require_once '../../backend/functions.php';
+
+// Check if user is logged in
+if (!isLoggedIn()) {
+    header('Location: ../auth/login.php');
+    exit();
+}
+
+// Validate session
+$conn = getDBConnection();
+if (!validateSession($conn, $_SESSION['user_id'], $_SESSION['session_token'])) {
+    session_destroy();
+    header('Location: ../auth/login.php');
+    exit();
+}
+
+$userId = $_SESSION['user_id'];
+
+// Get user's accounts for the dropdown
+$stmt = $conn->prepare("
+    SELECT account_id, account_type, account_number, balance, currency
+    FROM accounts 
+    WHERE user_id = ? AND status = 'active'
+    ORDER BY account_type
+");
+$stmt->execute([$userId]);
+$userAccounts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Get saved contacts/beneficiaries (if table exists)
+$savedContacts = [];
+try {
+    $stmt = $conn->prepare("
+        SELECT beneficiary_id, beneficiary_name, account_number, bank_name, email
+        FROM beneficiaries 
+        WHERE user_id = ? AND status = 'active'
+        ORDER BY beneficiary_name
+    ");
+    $stmt->execute([$userId]);
+    $savedContacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    // Beneficiaries table might not exist
+    error_log("Beneficiaries query failed: " . $e->getMessage());
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +55,9 @@
     <link rel="stylesheet" href="../../assets/style/accounts.css">
     <link rel="stylesheet" href="../../assets/style/transfer-money.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
     <title>NEXO Transfer Money - Send & Receive Funds</title>
 </head>
 
@@ -108,13 +157,13 @@
                 </div>
                 <div class="hero-actions">
                     <button class="btn export" onclick="/* export placeholder */">
-            <i class="ri-download-line"></i>
-            Export Data
-          </button>
+                        <i class="ri-download-line"></i>
+                        Export Data
+                    </button>
                     <button class="btn primary" onclick="showTransferForm()">
-            <i class="ri-send-plane-line"></i>
-            New Transfer
-          </button>
+                        <i class="ri-send-plane-line"></i>
+                        New Transfer
+                    </button>
                 </div>
             </div>
 
@@ -161,11 +210,16 @@
                             <h3>From Account</h3>
                             <div class="account-selector">
                                 <select id="fromAccount" required>
-                <option value="">Select source account</option>
-                <option value="checking-001">Checking Account (**** 4521) - $12,450.00</option>
-                <option value="savings-002">Savings Account (**** 7832) - $25,680.00</option>
-                <option value="credit-003">Credit Card (**** 1234) - $8,500.00 available</option>
-              </select>
+                                    <option value="">Select source account</option>
+                                    <?php foreach ($userAccounts as $account): ?>
+                                        <option value="<?php echo htmlspecialchars($account['account_id']); ?>"
+                                            data-balance="<?php echo $account['balance']; ?>">
+                                            <?php echo ucfirst($account['account_type']); ?> Account
+                                            (**** <?php echo substr($account['account_number'], -4); ?>) -
+                                            $<?php echo number_format($account['balance'], 2); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
                                 <i class="ri-arrow-down-s-line"></i>
                             </div>
                         </div>
@@ -174,13 +228,13 @@
                             <h3>Recipient Details</h3>
                             <div class="recipient-type-toggle">
                                 <button type="button" class="toggle-btn active" data-type="contact">
-                <i class="ri-user-line"></i>
-                Saved Contact
-              </button>
+                                    <i class="ri-user-line"></i>
+                                    Saved Contact
+                                </button>
                                 <button type="button" class="toggle-btn" data-type="new">
-                <i class="ri-add-line"></i>
-                New Recipient
-              </button>
+                                    <i class="ri-add-line"></i>
+                                    New Recipient
+                                </button>
                             </div>
 
                             <div class="recipient-form contact-form">
@@ -250,10 +304,10 @@
                                     <div class="form-group">
                                         <label for="accountType">Account Type</label>
                                         <select id="accountType">
-                    <option value="">Select account type</option>
-                    <option value="checking">Checking</option>
-                    <option value="savings">Savings</option>
-                  </select>
+                                            <option value="">Select account type</option>
+                                            <option value="checking">Checking</option>
+                                            <option value="savings">Savings</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -266,7 +320,8 @@
                                     <label for="transferAmount">Amount</label>
                                     <div class="amount-input">
                                         <span class="currency">$</span>
-                                        <input type="number" id="transferAmount" placeholder="0.00" step="0.01" min="0.01" required>
+                                        <input type="number" id="transferAmount" placeholder="0.00" step="0.01"
+                                            min="0.01" required>
                                     </div>
                                     <div class="amount-suggestions">
                                         <button type="button" class="amount-btn" data-amount="100">$100</button>
@@ -321,13 +376,13 @@
 
                         <div class="form-actions">
                             <button type="button" class="btn secondary" onclick="resetForm()">
-              <i class="ri-refresh-line"></i>
-              Reset
-            </button>
+                                <i class="ri-refresh-line"></i>
+                                Reset
+                            </button>
                             <button type="submit" class="btn primary">
-              <i class="ri-send-plane-line"></i>
-              Send Money
-            </button>
+                                <i class="ri-send-plane-line"></i>
+                                Send Money
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -338,68 +393,10 @@
                         <h3>Recent Transfers</h3>
                         <button class="view-all-btn">View All</button>
                     </div>
-                    <div class="transfers-list">
-                        <div class="transfer-item">
-                            <div class="transfer-avatar">
-                                <img src="https://i.pravatar.cc/40?img=1" alt="Sarah Wilson">
-                            </div>
-                            <div class="transfer-info">
-                                <h4>Sarah Wilson</h4>
-                                <p>Today • 2:30 PM</p>
-                            </div>
-                            <div class="transfer-amount sent">
-                                -$150.00
-                            </div>
-                            <div class="transfer-status completed">
-                                <i class="ri-check-line"></i> Completed
-                            </div>
-                        </div>
-                        <div class="transfer-item">
-                            <div class="transfer-avatar">
-                                <img src="https://i.pravatar.cc/40?img=2" alt="Mike Johnson">
-                            </div>
-                            <div class="transfer-info">
-                                <h4>Mike Johnson</h4>
-                                <p>Yesterday • 4:15 PM</p>
-                            </div>
-                            <div class="transfer-amount sent">
-                                -$75.50
-                            </div>
-                            <div class="transfer-status completed">
-                                <i class="ri-check-line"></i> Completed
-                            </div>
-                        </div>
-                        <div class="transfer-item">
-                            <div class="transfer-avatar">
-                                <div class="avatar-placeholder">
-                                    <i class="ri-building-line"></i>
-                                </div>
-                            </div>
-                            <div class="transfer-info">
-                                <h4>External Transfer</h4>
-                                <p>Dec 18 • 11:20 AM</p>
-                            </div>
-                            <div class="transfer-amount sent">
-                                -$500.00
-                            </div>
-                            <div class="transfer-status pending">
-                                <i class="ri-time-line"></i> Pending
-                            </div>
-                        </div>
-                        <div class="transfer-item">
-                            <div class="transfer-avatar">
-                                <img src="https://i.pravatar.cc/40?img=4" alt="Emma Davis">
-                            </div>
-                            <div class="transfer-info">
-                                <h4>Emma Davis</h4>
-                                <p>Dec 17 • 9:45 AM</p>
-                            </div>
-                            <div class="transfer-amount received">
-                                +$200.00
-                            </div>
-                            <div class="transfer-status completed">
-                                <i class="ri-check-line"></i> Completed
-                            </div>
+                    <div class="transfers-list" id="recentTransfersList">
+                        <!-- Transfers will be loaded dynamically via JavaScript -->
+                        <div class="transfer-item" style="justify-content: center; color: #888;">
+                            <p>Loading recent transfers...</p>
                         </div>
                     </div>
                 </div>

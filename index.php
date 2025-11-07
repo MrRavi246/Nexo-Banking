@@ -39,25 +39,25 @@
         <nav>
           <div class="navLeft">
             <div class="navLeftHover">
-              <a href="/index.html"><span>N</span>exo</a>
+              <a href="/index.php"><span>N</span>exo</a>
             </div>
           </div>
           <div class="navcenter">
             <div class="navCenterHover">
-              <a href="index.html">Home</a>
-              <a href="index.html">Home</a>
+              <a href="index.php">Home</a>
+              <a href="index.php">Home</a>
             </div>
             <div class="navCenterHover">
-              <a href="Pages/feature.html">Feature</a>
-              <a href="Pages/feature.html">Feature</a>
+              <a href="Pages/feature.php">Feature</a>
+              <a href="Pages/feature.php">Feature</a>
             </div>
             <div class="navCenterHover">
-              <a href="Pages/about.html">About</a>
-              <a href="Pages/about.html">About</a>
+              <a href="Pages/about.php">About</a>
+              <a href="Pages/about.php">About</a>
             </div>
             <div class="navCenterHover">
-              <a href="Pages/services.html">Service</a>
-              <a href="Pages/services.html">Service</a>
+              <a href="Pages/services.php">Service</a>
+              <a href="Pages/services.php">Service</a>
             </div>
           </div>
           <div class="navRight">

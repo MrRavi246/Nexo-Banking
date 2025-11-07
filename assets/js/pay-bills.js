@@ -1,10 +1,10 @@
-// Pay Bills Page JavaScript - Frontend Only
+// Pay Bills Page JavaScript - Backend Integrated
 
 document.addEventListener('DOMContentLoaded', function() {
     initializePayBillsPage();
 });
 
-function initializePayBillsPage() {
+async function initializePayBillsPage() {
     // Set default date to today
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('payDate').value = today;
@@ -12,6 +12,183 @@ function initializePayBillsPage() {
     // Setup form event listeners
     setupFormValidation();
     updateRecurringSummary();
+    
+    // Load bill data from backend
+    await loadBillData();
+}
+
+async function loadBillData() {
+    try {
+        const response = await fetch('/Nexo-Banking/backend/get_bill_data.php', {
+            method: 'GET',
+            credentials: 'same-origin'
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            const data = result.data;
+            
+            // Update summary stats
+            updateSummaryStats(data.summary);
+            
+            // Populate saved billers dropdown
+            populateBillersDropdown(data.savedBillers);
+            
+            // Display upcoming bills
+            displayUpcomingBills(data.upcomingBills);
+            
+            // Display recent payments
+            displayRecentPayments(data.recentPayments);
+            
+        } else {
+            showNotification('Failed to load bill data: ' + result.message, 'error');
+        }
+    } catch (error) {
+        console.error('Error loading bill data:', error);
+        showNotification('Error loading bill data', 'error');
+    }
+}
+
+function updateSummaryStats(summary) {
+    document.getElementById('totalDueAmount').textContent = '$' + parseFloat(summary.totalDue || 0).toFixed(2);
+    
+    const billsText = summary.billsDueCount === 1 ? '1 bill' : summary.billsDueCount + ' bills';
+    
+    if (summary.nextDueDate) {
+        const daysUntil = Math.ceil((new Date(summary.nextDueDate) - new Date()) / (1000 * 60 * 60 * 24));
+        const daysText = daysUntil === 1 ? 'tomorrow' : `in ${daysUntil} days`;
+        document.getElementById('totalDueText').textContent = `${billsText} • next due ${daysText}`;
+        
+        document.getElementById('nextPaymentInfo').textContent = 
+            `${summary.nextDueBiller} • $${parseFloat(summary.nextDueAmount).toFixed(2)}`;
+        document.getElementById('nextPaymentDate').textContent = `Due ${daysText}`;
+    } else {
+        document.getElementById('totalDueText').textContent = 'No upcoming bills';
+        document.getElementById('nextPaymentInfo').textContent = 'No bills due';
+        document.getElementById('nextPaymentDate').textContent = '--';
+    }
+}
+
+function populateBillersDropdown(billers) {
+    const select = document.getElementById('payeeSelect');
+    
+    // Keep the default options
+    const defaultOptions = select.querySelectorAll('option[value=""], option[value="custom"]');
+    select.innerHTML = '';
+    defaultOptions.forEach(opt => select.appendChild(opt));
+    
+    // Add saved billers
+    if (billers && billers.length > 0) {
+        billers.forEach(biller => {
+            const option = document.createElement('option');
+            option.value = biller.biller_name;
+            option.textContent = biller.biller_name;
+            option.dataset.billType = biller.bill_type;
+            select.insertBefore(option, select.querySelector('option[value="custom"]'));
+        });
+    }
+}
+
+function displayUpcomingBills(bills) {
+    const container = document.getElementById('upcomingBillsList');
+    
+    if (!bills || bills.length === 0) {
+        container.innerHTML = `
+            <div style="padding: 2rem; text-align: center; color: #888;">
+                <i class="ri-file-list-line" style="font-size: 2rem;"></i>
+                <p>No upcoming bills</p>
+            </div>
+        `;
+        return;
+    }
+    
+    container.innerHTML = '';
+    
+    bills.forEach(bill => {
+        const daysUntil = bill.days_until_due;
+        const dueText = daysUntil === 0 ? 'Due today' : 
+                        daysUntil === 1 ? 'Due tomorrow' : 
+                        `Due in ${daysUntil} days`;
+        
+        const billItem = document.createElement('div');
+        billItem.className = 'bill-item';
+        billItem.innerHTML = `
+            <div class="bill-left">
+                <h4>${bill.biller_name}</h4>
+                <p>${bill.bill_type.replace('_', ' ')} • ${dueText}</p>
+            </div>
+            <div class="bill-right">
+                <span class="bill-amount">$${parseFloat(bill.amount).toFixed(2)}</span>
+                <div class="bill-action">
+                    <button class="btn ${daysUntil <= 7 ? 'primary' : ''}" 
+                            onclick="quickPayBill('${bill.biller_name}', ${bill.amount}, '${bill.bill_type}')">
+                        ${daysUntil <= 7 ? 'Pay Now' : 'Pay'}
+                    </button>
+                </div>
+            </div>
+        `;
+        container.appendChild(billItem);
+    });
+}
+
+function displayRecentPayments(payments) {
+    const container = document.getElementById('recentPaymentsList');
+    
+    if (!payments || payments.length === 0) {
+        container.innerHTML = `
+            <div style="padding: 1rem; text-align: center; color: #888;">
+                <p>No recent payments</p>
+            </div>
+        `;
+        
+        document.getElementById('recentPaymentsCount').textContent = '0';
+        return;
+    }
+    
+    container.innerHTML = '';
+    
+    // Count payments in last 30 days
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    const recentCount = payments.filter(p => new Date(p.payment_date) >= thirtyDaysAgo).length;
+    document.getElementById('recentPaymentsCount').textContent = recentCount;
+    
+    payments.slice(0, 5).forEach(payment => {
+        const paymentDate = new Date(payment.payment_date);
+        const timeAgo = getTimeAgo(paymentDate);
+        
+        const statusBadge = payment.status === 'scheduled' ? 
+            `<span style="background: #eb7ef2; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; margin-left: 0.5rem;">Scheduled</span>` : '';
+        
+        const paymentItem = document.createElement('div');
+        paymentItem.className = 'payment-item';
+        paymentItem.innerHTML = `
+            <div class="payment-left">
+                ${payment.biller_name}${statusBadge}
+                <div class="muted">${timeAgo}</div>
+            </div>
+            <div class="payment-right">$${parseFloat(payment.amount).toFixed(2)}</div>
+        `;
+        container.appendChild(paymentItem);
+    });
+}
+
+function quickPayBill(billerName, amount, billType) {
+    document.getElementById('payeeSelect').value = billerName;
+    document.getElementById('payFormAmount').value = amount;
+    document.getElementById('billType').value = billType || 'utilities';
+    document.getElementById('payFormAmount').focus();
+}
+
+function getTimeAgo(date) {
+    const seconds = Math.floor((new Date() - date) / 1000);
+    
+    if (seconds < 60) return 'Just now';
+    if (seconds < 3600) return Math.floor(seconds / 60) + ' minutes ago';
+    if (seconds < 86400) return Math.floor(seconds / 3600) + ' hours ago';
+    if (seconds < 2592000) return Math.floor(seconds / 86400) + ' days ago';
+    return Math.floor(seconds / 2592000) + ' months ago';
 }
 
 function handlePayeeChange() {
@@ -148,42 +325,78 @@ function setupFormValidation() {
 }
 
 function processPayment() {
+    const fromAccount = document.getElementById('fromAccount').value;
     const payee = getSelectedPayee();
+    const billType = document.getElementById('billType').value;
     const amount = document.getElementById('payFormAmount').value;
     const date = document.getElementById('payDate').value;
     const memo = document.getElementById('payMemo').value;
     const paymentType = document.getElementById('paymentType').value;
     const frequency = document.getElementById('frequency').value;
+    const endDate = document.getElementById('endDate').value;
+    
+    if (!fromAccount) {
+        showNotification('Please select an account', 'error');
+        return;
+    }
     
     if (!payee || !amount || !date) {
         showNotification('Please fill in all required fields', 'error');
         return;
     }
     
-    // Simulate processing
+    // Validate amount
+    if (parseFloat(amount) <= 0) {
+        showNotification('Amount must be greater than 0', 'error');
+        return;
+    }
+    
+    // Show processing message
     showNotification('Processing payment...', 'info');
     
-    setTimeout(() => {
-        const paymentData = {
-            payee: payee,
-            amount: parseFloat(amount),
-            date: date,
-            memo: memo,
-            type: paymentType,
-            frequency: paymentType === 'recurring' ? frequency : null,
-            timestamp: new Date().toISOString()
-        };
-        
-        // Add to recent payments
-        addToRecentPayments(paymentData);
-        
-        // Show success message
-        const frequencyText = paymentType === 'recurring' ? ` (${frequency})` : '';
-        showNotification(`Payment of $${amount} to ${payee} scheduled successfully${frequencyText}!`, 'success');
-        
-        // Reset form
-        resetPayForm();
-    }, 1500);
+    // Prepare payment data
+    const paymentData = {
+        accountId: parseInt(fromAccount),
+        billerName: payee,
+        billType: billType,
+        amount: parseFloat(amount),
+        paymentDate: date,
+        dueDate: date,
+        memo: memo,
+        paymentType: paymentType,
+        frequency: paymentType === 'recurring' ? frequency : null,
+        endDate: paymentType === 'recurring' ? endDate : null
+    };
+    
+    // Send to backend
+    fetch('/Nexo-Banking/backend/process_bill_payment.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: 'same-origin',
+        body: JSON.stringify(paymentData)
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.success) {
+            showNotification(result.message, 'success');
+            
+            // Reset form
+            resetPayForm();
+            
+            // Reload bill data
+            setTimeout(() => {
+                loadBillData();
+            }, 500);
+        } else {
+            showNotification(result.message || 'Payment failed', 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Payment error:', error);
+        showNotification('Error processing payment', 'error');
+    });
 }
 
 function getSelectedPayee() {
