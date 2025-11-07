@@ -1,3 +1,37 @@
+<?php
+// Start session and check authentication
+require_once '../../backend/config.php';
+require_once '../../backend/functions.php';
+
+// Check if user is logged in
+if (!isLoggedIn()) {
+    header('Location: ../auth/login.php');
+    exit();
+}
+
+// Validate session
+$conn = getDBConnection();
+if (!validateSession($conn, $_SESSION['user_id'], $_SESSION['session_token'])) {
+    session_destroy();
+    header('Location: ../auth/login.php');
+    exit();
+}
+
+$userId = $_SESSION['user_id'];
+
+// Get user info
+$stmt = $conn->prepare("SELECT first_name, last_name, member_type FROM users WHERE user_id = ?");
+$stmt->execute([$userId]);
+$userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+$userName = $userInfo['first_name'] . ' ' . $userInfo['last_name'];
+$memberType = ucfirst($userInfo['member_type']) . ' Member';
+
+// Get user's active accounts to populate payment modal
+$acctStmt = $conn->prepare("SELECT account_id, account_number, account_type, balance, currency FROM accounts WHERE user_id = ? AND status = 'active' ORDER BY account_id");
+$acctStmt->execute([$userId]);
+$userAccounts = $acctStmt->fetchAll(PDO::FETCH_ASSOC);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,8 +73,8 @@
             <div class="user-profile">
                 <img src="https://i.pravatar.cc/" alt="User Avatar" class="avatar">
                 <div class="user-info">
-                    <span class="username">John Doe</span>
-                    <span class="user-type">Premium Member</span>
+                    <span class="username"><?php echo htmlspecialchars($userName); ?></span>
+                    <span class="user-type"><?php echo htmlspecialchars($memberType); ?></span>
                 </div>
                 <i class="ri-arrow-down-s-line"></i>
             </div>
@@ -54,7 +88,7 @@
                     <i class="ri-dashboard-3-line"></i>
                     <span>Dashboard</span>
                 </div>
-                <div class="menu-item ">
+                <div class="menu-item " onclick="window.location.href='accounts.php'">
                     <i class="ri-bank-card-line"></i>
                     <span>Accounts</span>
                 </div>
@@ -138,45 +172,8 @@
                             <button class="view-all-btn" onclick="showAllLoans()">View All</button>
                         </div>
 
-                        <div class="loan-item">
-                            <div class="loan-left">
-                                <h4>Personal Loan</h4>
-                                <p>5.2% APR • 36 months remaining</p>
-                                <div class="loan-progress">
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" style="width: 45%"></div>
-                                    </div>
-                                    <span class="progress-text">45% paid</span>
-                                </div>
-                            </div>
-                            <div class="loan-right">
-                                <div class="loan-balance">$22,450.00</div>
-                                <div class="loan-payment">$625.75/mo</div>
-                                <div class="loan-action">
-                                    <button class="btn primary" onclick="makePayment('Personal Loan', '625.75')">Make Payment</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="loan-item">
-                            <div class="loan-left">
-                                <h4>Auto Loan</h4>
-                                <p>3.8% APR • 42 months remaining</p>
-                                <div class="loan-progress">
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" style="width: 62%"></div>
-                                    </div>
-                                    <span class="progress-text">62% paid</span>
-                                </div>
-                            </div>
-                            <div class="loan-right">
-                                <div class="loan-balance">$22,780.00</div>
-                                <div class="loan-payment">$1,225.00/mo</div>
-                                <div class="loan-action">
-                                    <button class="btn primary" onclick="makePayment('Auto Loan', '1225.00')">Make Payment</button>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- loan items will be rendered here by assets/js/loans.js -->
+                        <div id="loansContainer"></div>
 
                         <!-- Loan Application Options -->
                         <div class="loan-options">
@@ -227,6 +224,54 @@
                             </div>
                         </div>
                     </section>
+
+                            <!-- Payment Modal -->
+                            <div id="loanPaymentModal" class="modal" style="display:none;">
+                                <div class="modal-content" style="max-width:600px;padding:1.5rem;">
+                                    <div class="modal-header">
+                                        <h2>Make Loan Payment</h2>
+                                        <span class="close" id="closePaymentModal">&times;</span>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="paymentDetails">
+                                            <label>Loan: <span id="pmLoanTitle"></span></label>
+                                            <label>Outstanding: <strong id="pmOutstanding"></strong></label>
+                                        </div>
+                                        <div style="margin-top:1rem;">
+                                            <label for="pmAmount">Amount</label>
+                                            <div style="display:flex; align-items:center; gap:.6rem; margin-bottom:.5rem;">
+                                                <input id="pmFullPayCheckbox" type="checkbox" checked style="width:16px; height:16px;" />
+                                                <label for="pmFullPayCheckbox" style="margin:0; font-size:0.95rem; color:#ddd;">Pay full outstanding</label>
+                                            </div>
+                                            <input id="pmAmount" type="number" step="0.01" min="0.01" style="width:100%; padding:.6rem; margin-top:.3rem;" />
+                                        </div>
+                                        <div style="margin-top:1rem;">
+                                            <label for="pmAccount">Source Account</label>
+                                            <select id="pmAccount" style="width:100%; padding:.6rem; margin-top:.3rem;">
+                                                <option value="">Select an account</option>
+                                                <?php foreach ($userAccounts as $ua):
+                                                    $masked = !empty($ua['account_number']) ? '**** **** **** ' . substr($ua['account_number'],-4) : 'Account ' . $ua['account_id'];
+                                                    $bal = isset($ua['balance']) ? '$' . number_format($ua['balance'],2) : '';
+                                                ?>
+                                                    <option value="<?php echo htmlspecialchars($ua['account_id']); ?>"><?php echo htmlspecialchars($masked . ' — ' . $bal); ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+
+                                        <div style="margin-top:1.2rem;">
+                                            <label>Progress</label>
+                                            <div class="progress-bar" style="background:#222; height:12px; border-radius:8px; overflow:hidden; margin-top:.5rem;">
+                                                <div id="pmProgressFill" style="width:0%; height:100%; background:linear-gradient(90deg,#ff7ef2,#7ef29b); transition:width 300ms ease;"></div>
+                                            </div>
+                                            <div id="pmProgressText" style="margin-top:.5rem; font-size:.9rem; color:#bbb;">Idle</div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer" style="margin-top:1rem; display:flex; gap:.6rem; justify-content:flex-end;">
+                                        <button class="btn-cancel" id="pmCancelBtn">Cancel</button>
+                                        <button class="btn-primary" id="pmSubmitBtn">Pay Now</button>
+                                    </div>
+                                </div>
+                            </div>
 
                     <aside class="loan-application-panel">
                         <div class="section-header">
@@ -321,6 +366,10 @@
     </div>
 
     <script src="../../assets/js/loans.js"></script>
+    <script>
+        // Expose user accounts to the loans.js runtime (already embedded options exist in select)
+        window.userAccounts = <?php echo json_encode($userAccounts ?? []); ?>;
+    </script>
 </body>
 
 </html>
