@@ -7,16 +7,15 @@
     <link rel="stylesheet" href="../assets/style/nav.css" />
     <link rel="stylesheet" href="../assets/style/feature.css" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link
+        rel="shortcut icon"
+        href="../assets/media/svgs/favicon-white-1.svg"
+        type="image/x-icon" />
     <title>NEXO Features - Next-Gen Banking</title>
 </head>
 
 <body>
-  <!-- loader -->
-    <div class="loader">
-      <div class="con">
-        <h1>Features</h1>
-      </div>
-    </div>
+
     <!-- Navigation -->
     <nav>
         <div class="navLeft">
@@ -43,11 +42,11 @@
             </div>
         </div>
         <div class="navRight">
-            <button class="signin" onclick="location.href='pages/authlogin.php'">
-              Sign In
+            <button class="signin" onclick="location.href='auth/login.php'">
+                Sign In
             </button>
-            <button class="acc_btn" onclick="location.href='pages/authsignup.php'">
-              Open an Account
+            <button class="acc_btn" onclick="location.href='auth/register.php'">
+                Open an Account
             </button>
 
         </div>
@@ -285,13 +284,13 @@
                 </p>
                 <div class="cta-buttons">
                     <button class="btn-primary" onclick="location.href='account-type.php'">
-            <i class="ri-bank-card-line"></i>
-            Open Account
-          </button>
+                        <i class="ri-bank-card-line"></i>
+                        Open Account
+                    </button>
                     <button class="btn-secondary" onclick="location.href='auth/login.php'">
-            <i class="ri-user-line"></i>
-            Sign In
-          </button>
+                        <i class="ri-user-line"></i>
+                        Sign In
+                    </button>
                 </div>
             </div>
         </div>
