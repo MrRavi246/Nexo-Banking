@@ -66,6 +66,10 @@ if (count($accounts) > 0) {
     <link rel="stylesheet" href="../../assets/style/transactions.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link
+        rel="shortcut icon"
+        href="../../assets/media/svgs/favicon-white-1.svg"
+        type="image/x-icon" />
     <title>NEXO Transactions - Transaction History</title>
 </head>
 
@@ -112,7 +116,7 @@ if (count($accounts) > 0) {
     <div class="dashboard-container">
         <aside class="sidebar">
             <div class="sidebar-menu">
-                <div class="menu-item" onclick="window.location.href='Dashboard.php'">
+                <div class="menu-item" onclick="window.location.href='Dashboard.php'">  
                     <i class="ri-dashboard-3-line"></i>
                     <span>Dashboard</span>
                 </div>

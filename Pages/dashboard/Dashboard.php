@@ -58,6 +58,10 @@ if ($userInfo) {
     <link rel="stylesheet" href="../../assets/style/Dashboard.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link
+        rel="shortcut icon"
+        href="../../assets/media/svgs/favicon-white-1.svg"
+        type="image/x-icon" />
     <title>NEXO Dashboard - Your Banking Overview</title>
 </head>
 

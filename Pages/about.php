@@ -8,37 +8,41 @@
     <link rel="stylesheet" href="../assets/style/nav.css" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
-    <link rel="shortcut icon" href="../assets/media/svgs/favicon-white-1.svg" type="image/x-icon" />
+    <link
+        rel="shortcut icon"
+        href="../assets/media/svgs/favicon-white-1.svg"
+        type="image/x-icon" />
     <title>About Us - Nexo Banking</title>
     <style>
         /* Import Roboto font */
-        
+
         @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap");
         /* Remove scrollbars */
-        
-         ::-webkit-scrollbar {
+
+        ::-webkit-scrollbar {
             display: none;
         }
-        
+
         html {
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
         /* About Page Specific Styles */
-        
+
         .about-container {
             min-height: 100vh;
             background: linear-gradient(135deg, #0f0f10 0%, #1a1a1d 100%);
             padding-top: 100px;
             font-family: "Roboto", sans-serif;
         }
-        
+
         .hero-section {
             text-align: center;
             padding: 80px 20px;
-            background: linear-gradient( 135deg, rgba(235, 126, 242, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(235, 126, 242, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
         }
-        
+
         .hero-title {
             font-size: 4rem;
             font-weight: 700;
@@ -51,7 +55,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-        
+
         .hero-subtitle {
             font-size: 1.5rem;
             color: #aaa;
@@ -61,13 +65,13 @@
             font-family: "Roboto", sans-serif;
             font-weight: 400;
         }
-        
+
         .content-section {
             max-width: 1200px;
             margin: 0 auto;
             padding: 80px 20px;
         }
-        
+
         .section-title {
             font-size: 2.5rem;
             font-weight: 600;
@@ -78,14 +82,14 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-bottom: 80px;
         }
-        
+
         .info-card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -95,13 +99,13 @@
             text-align: center;
             transition: all 0.3s ease;
         }
-        
+
         .info-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(235, 126, 242, 0.2);
             border-color: rgba(235, 126, 242, 0.3);
         }
-        
+
         .card-icon {
             width: 80px;
             height: 80px;
@@ -114,7 +118,7 @@
             font-size: 2rem;
             color: white;
         }
-        
+
         .card-title {
             font-size: 1.5rem;
             font-weight: 600;
@@ -124,7 +128,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+
         .card-description {
             color: #aaa;
             line-height: 1.6;
@@ -132,13 +136,13 @@
             font-family: "Roboto", sans-serif;
             font-weight: 400;
         }
-        
+
         .stats-section {
             background: rgba(255, 255, 255, 0.02);
             padding: 80px 20px;
             text-align: center;
         }
-        
+
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -146,18 +150,18 @@
             max-width: 800px;
             margin: 0 auto;
         }
-        
+
         .stat-item {
             padding: 20px;
         }
-        
+
         .stat-number {
             font-size: 3rem;
             font-weight: 700;
             color: #eb7ef2;
             margin-bottom: 10px;
         }
-        
+
         .stat-label {
             font-size: 1.1rem;
             color: #aaa;
@@ -166,11 +170,11 @@
             font-family: "Roboto", sans-serif;
             font-weight: 500;
         }
-        
+
         .team-section {
             padding: 80px 20px;
         }
-        
+
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -178,7 +182,7 @@
             max-width: 1000px;
             margin: 0 auto;
         }
-        
+
         .team-member {
             text-align: center;
             background: rgba(255, 255, 255, 0.03);
@@ -186,12 +190,12 @@
             padding: 30px 20px;
             transition: all 0.3s ease;
         }
-        
+
         .team-member:hover {
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.08);
         }
-        
+
         .member-avatar {
             width: 120px;
             height: 120px;
@@ -205,7 +209,7 @@
             color: white;
             font-weight: 600;
         }
-        
+
         .member-name {
             font-size: 1.3rem;
             font-weight: 600;
@@ -215,7 +219,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+
         .member-role {
             color: #eb7ef2;
             font-size: 1rem;
@@ -223,7 +227,7 @@
             font-family: "Roboto", sans-serif;
             font-weight: 500;
         }
-        
+
         .member-description {
             color: #aaa;
             font-size: 0.9rem;
@@ -231,12 +235,12 @@
             font-family: "Roboto", sans-serif;
             font-weight: 400;
         }
-        
+
         .values-section {
             background: rgba(255, 255, 255, 0.02);
             padding: 80px 20px;
         }
-        
+
         .values-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -244,14 +248,14 @@
             max-width: 1000px;
             margin: 0 auto;
         }
-        
+
         .value-item {
             padding: 30px;
             border-left: 4px solid #eb7ef2;
             background: rgba(255, 255, 255, 0.03);
             border-radius: 0 15px 15px 0;
         }
-        
+
         .value-title {
             font-size: 1.3rem;
             font-weight: 600;
@@ -261,20 +265,20 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+
         .value-description {
             color: #aaa;
             line-height: 1.6;
             font-family: "Roboto", sans-serif;
             font-weight: 400;
         }
-        
+
         .cta-section {
             text-align: center;
             padding: 80px 20px;
-            background: linear-gradient( 135deg, rgba(235, 126, 242, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(235, 126, 242, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
         }
-        
+
         .cta-title {
             font-size: 2.5rem;
             font-weight: 600;
@@ -284,7 +288,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+
         .cta-description {
             font-size: 1.2rem;
             color: #aaa;
@@ -296,14 +300,14 @@
             font-weight: 400;
             line-height: 1.6;
         }
-        
+
         .cta-buttons {
             display: flex;
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
         }
-        
+
         .btn-primary,
         .btn-secondary {
             padding: 15px 30px;
@@ -315,41 +319,42 @@
             align-items: center;
             gap: 10px;
         }
-        
+
         .btn-primary {
             background: linear-gradient(135deg, #eb7ef2, #9333ea);
             color: white;
             border: none;
         }
-        
+
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(235, 126, 242, 0.4);
         }
-        
+
         .btn-secondary {
             background: transparent;
             color: white;
             border: 2px solid rgba(255, 255, 255, 0.2);
         }
-        
+
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.1);
             border-color: #eb7ef2;
         }
+
         /* Additional Sections Styles */
-        
+
         .timeline-section {
             padding: 80px 20px;
             background: rgba(255, 255, 255, 0.02);
         }
-        
+
         .timeline {
             max-width: 800px;
             margin: 0 auto;
             position: relative;
         }
-        
+
         .timeline::before {
             content: "";
             position: absolute;
@@ -360,26 +365,26 @@
             background: linear-gradient(135deg, #eb7ef2, #9333ea);
             transform: translateX(-50%);
         }
-        
+
         .timeline-item {
             position: relative;
             margin-bottom: 60px;
             width: 50%;
             padding: 30px;
         }
-        
+
         .timeline-item:nth-child(odd) {
             left: 0;
             text-align: right;
             padding-right: 60px;
         }
-        
+
         .timeline-item:nth-child(even) {
             left: 50%;
             text-align: left;
             padding-left: 60px;
         }
-        
+
         .timeline-item::before {
             content: "";
             position: absolute;
@@ -389,15 +394,15 @@
             border-radius: 50%;
             top: 35px;
         }
-        
+
         .timeline-item:nth-child(odd)::before {
             right: -10px;
         }
-        
+
         .timeline-item:nth-child(even)::before {
             left: -10px;
         }
-        
+
         .timeline-year {
             font-size: 1.5rem;
             font-weight: 700;
@@ -405,7 +410,7 @@
             margin-bottom: 10px;
             font-family: "teko", sans-serif;
         }
-        
+
         .timeline-title {
             font-size: 1.2rem;
             font-weight: 600;
@@ -414,17 +419,17 @@
             font-family: "teko", sans-serif;
             text-transform: uppercase;
         }
-        
+
         .timeline-description {
             color: #aaa;
             line-height: 1.6;
             font-family: "Roboto", sans-serif;
         }
-        
+
         .achievements-section {
             padding: 80px 20px;
         }
-        
+
         .achievements-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -432,7 +437,7 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .achievement-card {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
@@ -441,13 +446,13 @@
             border: 1px solid rgba(235, 126, 242, 0.2);
             transition: all 0.3s ease;
         }
-        
+
         .achievement-card:hover {
             transform: translateY(-5px);
             border-color: rgba(235, 126, 242, 0.5);
             box-shadow: 0 15px 30px rgba(235, 126, 242, 0.2);
         }
-        
+
         .achievement-icon {
             width: 60px;
             height: 60px;
@@ -460,7 +465,7 @@
             font-size: 1.5rem;
             color: white;
         }
-        
+
         .achievement-title {
             font-size: 1.2rem;
             font-weight: 600;
@@ -469,19 +474,19 @@
             font-family: "teko", sans-serif;
             text-transform: uppercase;
         }
-        
+
         .achievement-description {
             color: #aaa;
             font-size: 0.9rem;
             line-height: 1.5;
             font-family: "Roboto", sans-serif;
         }
-        
+
         .technology-section {
             padding: 80px 20px;
             background: rgba(255, 255, 255, 0.02);
         }
-        
+
         .tech-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -489,7 +494,7 @@
             max-width: 1000px;
             margin: 0 auto;
         }
-        
+
         .tech-item {
             text-align: center;
             padding: 30px 20px;
@@ -498,18 +503,18 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
-        
+
         .tech-item:hover {
             background: rgba(255, 255, 255, 0.08);
             border-color: rgba(235, 126, 242, 0.3);
         }
-        
+
         .tech-icon {
             font-size: 2.5rem;
             color: #eb7ef2;
             margin-bottom: 15px;
         }
-        
+
         .tech-name {
             font-size: 1rem;
             font-weight: 600;
@@ -518,39 +523,47 @@
             font-family: "teko", sans-serif;
             text-transform: uppercase;
         }
-        
+
         .tech-description {
             font-size: 0.85rem;
             color: #aaa;
             font-family: "Roboto", sans-serif;
         }
-        
+
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.5rem;
             }
+
             .hero-subtitle {
                 font-size: 1.2rem;
             }
+
             .section-title {
                 font-size: 2rem;
             }
+
             .cards-grid {
                 grid-template-columns: 1fr;
             }
+
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
             .team-grid {
                 grid-template-columns: 1fr;
             }
+
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
             }
+
             .timeline::before {
                 left: 20px;
             }
+
             .timeline-item {
                 width: 100%;
                 left: 0 !important;
@@ -558,24 +571,29 @@
                 padding-left: 60px !important;
                 padding-right: 30px !important;
             }
+
             .timeline-item::before {
                 left: 10px !important;
             }
+
             .achievements-grid {
                 grid-template-columns: 1fr;
             }
+
             .tech-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
             .values-grid {
                 grid-template-columns: 1fr;
             }
         }
-        
+
         @media (max-width: 480px) {
             .tech-grid {
                 grid-template-columns: 1fr;
             }
+
             .stats-grid {
                 grid-template-columns: 1fr;
             }
@@ -584,45 +602,40 @@
 </head>
 
 <body>
-     <!-- loader -->
-    <div class="loader">
-      <div class="con">
-        <h1>About Us</h1>
-      </div>
-    </div>
+
     <main>
         <!-- navbar -->
-      <nav>
-        <div class="navLeft">
-          <div class="navLeftHover">
-            <a href="../index.php"><span>N</span>exo</a>
-          </div>
-        </div>
-        <div class="navcenter">
-          <div class="navCenterHover">
-            <a href="../index.php">Home</a>
-            <a href="../index.php">Home</a>
-          </div>
-          <div class="navCenterHover">
-            <a href="feature.php">Feature</a>
-            <a href="feature.php">Feature</a>
-          </div>
-          <div class="navCenterHover">
-            <a href="about.php">About</a>
-            <a href="about.php">About</a>
-          </div>
-          <div class="navCenterHover">
-            <a href="services.php">Service</a>
-            <a href="services.php">Service</a>
-          </div>
-        </div>
-        <div class="navRight">
-          <button class="signin" onclick="location.href='/Pages/auth/login.php'">
-            Sign In
-          </button>
-          <button class="acc_btn">Open an Account</button>
-        </div>
-      </nav>
+        <nav>
+            <div class="navLeft">
+                <div class="navLeftHover">
+                    <a href="../index.php"><span>N</span>exo</a>
+                </div>
+            </div>
+            <div class="navcenter">
+                <div class="navCenterHover">
+                    <a href="../index.php">Home</a>
+                    <a href="../index.php">Home</a>
+                </div>
+                <div class="navCenterHover">
+                    <a href="feature.php">Feature</a>
+                    <a href="feature.php">Feature</a>
+                </div>
+                <div class="navCenterHover">
+                    <a href="about.php">About</a>
+                    <a href="about.php">About</a>
+                </div>
+                <div class="navCenterHover">
+                    <a href="services.php">Service</a>
+                    <a href="services.php">Service</a>
+                </div>
+            </div>
+            <div class="navRight">
+                <button class="signin" onclick="location.href='auth/login.php'">
+                    Sign In
+                </button>
+                <button class="acc_btn" onclick="location.href='auth/register.php'">Open an Account</button>
+            </div>
+        </nav>
 
         <div class="about-container">
             <!-- Hero Section -->
@@ -1000,7 +1013,6 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
     <script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"></script>
     <script src="/assets/js/router.js"></script>
-    <script src="/assets/js/script.js"></script>
     <script>
         // Smooth scrolling for navigation
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {

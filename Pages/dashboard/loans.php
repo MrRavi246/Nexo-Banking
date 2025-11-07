@@ -43,6 +43,10 @@ $userAccounts = $acctStmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="../../assets/style/loans.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link
+        rel="shortcut icon"
+        href="../../assets/media/svgs/favicon-white-1.svg"
+        type="image/x-icon" />
     <title>NEXO Loans</title>
 </head>
 
@@ -136,13 +140,13 @@ $userAccounts = $acctStmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <div class="hero-actions">
                         <button class="btn export" onclick="/* noop */">
-              <i class="ri-download-line"></i>
-              Export Data
-            </button>
+                            <i class="ri-download-line"></i>
+                            Export Data
+                        </button>
                         <button class="btn primary" onclick="document.getElementById('loanAmount').focus()">
-              <i class="ri-add-line"></i>
-              Apply for Loan
-            </button>
+                            <i class="ri-add-line"></i>
+                            Apply for Loan
+                        </button>
                     </div>
                 </div>
 
@@ -225,53 +229,53 @@ $userAccounts = $acctStmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </section>
 
-                            <!-- Payment Modal -->
-                            <div id="loanPaymentModal" class="modal" style="display:none;">
-                                <div class="modal-content" style="max-width:600px;padding:1.5rem;">
-                                    <div class="modal-header">
-                                        <h2>Make Loan Payment</h2>
-                                        <span class="close" id="closePaymentModal">&times;</span>
+                    <!-- Payment Modal -->
+                    <div id="loanPaymentModal" class="modal" style="display:none;">
+                        <div class="modal-content" style="max-width:600px;padding:1.5rem;">
+                            <div class="modal-header">
+                                <h2>Make Loan Payment</h2>
+                                <span class="close" id="closePaymentModal">&times;</span>
+                            </div>
+                            <div class="modal-body">
+                                <div id="paymentDetails">
+                                    <label>Loan: <span id="pmLoanTitle"></span></label>
+                                    <label>Outstanding: <strong id="pmOutstanding"></strong></label>
+                                </div>
+                                <div style="margin-top:1rem;">
+                                    <label for="pmAmount">Amount</label>
+                                    <div style="display:flex; align-items:center; gap:.6rem; margin-bottom:.5rem;">
+                                        <input id="pmFullPayCheckbox" type="checkbox" checked style="width:16px; height:16px;" />
+                                        <label for="pmFullPayCheckbox" style="margin:0; font-size:0.95rem; color:#ddd;">Pay full outstanding</label>
                                     </div>
-                                    <div class="modal-body">
-                                        <div id="paymentDetails">
-                                            <label>Loan: <span id="pmLoanTitle"></span></label>
-                                            <label>Outstanding: <strong id="pmOutstanding"></strong></label>
-                                        </div>
-                                        <div style="margin-top:1rem;">
-                                            <label for="pmAmount">Amount</label>
-                                            <div style="display:flex; align-items:center; gap:.6rem; margin-bottom:.5rem;">
-                                                <input id="pmFullPayCheckbox" type="checkbox" checked style="width:16px; height:16px;" />
-                                                <label for="pmFullPayCheckbox" style="margin:0; font-size:0.95rem; color:#ddd;">Pay full outstanding</label>
-                                            </div>
-                                            <input id="pmAmount" type="number" step="0.01" min="0.01" style="width:100%; padding:.6rem; margin-top:.3rem;" />
-                                        </div>
-                                        <div style="margin-top:1rem;">
-                                            <label for="pmAccount">Source Account</label>
-                                            <select id="pmAccount" style="width:100%; padding:.6rem; margin-top:.3rem;">
-                                                <option value="">Select an account</option>
-                                                <?php foreach ($userAccounts as $ua):
-                                                    $masked = !empty($ua['account_number']) ? '**** **** **** ' . substr($ua['account_number'],-4) : 'Account ' . $ua['account_id'];
-                                                    $bal = isset($ua['balance']) ? '$' . number_format($ua['balance'],2) : '';
-                                                ?>
-                                                    <option value="<?php echo htmlspecialchars($ua['account_id']); ?>"><?php echo htmlspecialchars($masked . ' — ' . $bal); ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
+                                    <input id="pmAmount" type="number" step="0.01" min="0.01" style="width:100%; padding:.6rem; margin-top:.3rem;" />
+                                </div>
+                                <div style="margin-top:1rem;">
+                                    <label for="pmAccount">Source Account</label>
+                                    <select id="pmAccount" style="width:100%; padding:.6rem; margin-top:.3rem;">
+                                        <option value="">Select an account</option>
+                                        <?php foreach ($userAccounts as $ua):
+                                            $masked = !empty($ua['account_number']) ? '**** **** **** ' . substr($ua['account_number'], -4) : 'Account ' . $ua['account_id'];
+                                            $bal = isset($ua['balance']) ? '$' . number_format($ua['balance'], 2) : '';
+                                        ?>
+                                            <option value="<?php echo htmlspecialchars($ua['account_id']); ?>"><?php echo htmlspecialchars($masked . ' — ' . $bal); ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
 
-                                        <div style="margin-top:1.2rem;">
-                                            <label>Progress</label>
-                                            <div class="progress-bar" style="background:#222; height:12px; border-radius:8px; overflow:hidden; margin-top:.5rem;">
-                                                <div id="pmProgressFill" style="width:0%; height:100%; background:linear-gradient(90deg,#ff7ef2,#7ef29b); transition:width 300ms ease;"></div>
-                                            </div>
-                                            <div id="pmProgressText" style="margin-top:.5rem; font-size:.9rem; color:#bbb;">Idle</div>
-                                        </div>
+                                <div style="margin-top:1.2rem;">
+                                    <label>Progress</label>
+                                    <div class="progress-bar" style="background:#222; height:12px; border-radius:8px; overflow:hidden; margin-top:.5rem;">
+                                        <div id="pmProgressFill" style="width:0%; height:100%; background:linear-gradient(90deg,#ff7ef2,#7ef29b); transition:width 300ms ease;"></div>
                                     </div>
-                                    <div class="modal-footer" style="margin-top:1rem; display:flex; gap:.6rem; justify-content:flex-end;">
-                                        <button class="btn-cancel" id="pmCancelBtn">Cancel</button>
-                                        <button class="btn-primary" id="pmSubmitBtn">Pay Now</button>
-                                    </div>
+                                    <div id="pmProgressText" style="margin-top:.5rem; font-size:.9rem; color:#bbb;">Idle</div>
                                 </div>
                             </div>
+                            <div class="modal-footer" style="margin-top:1rem; display:flex; gap:.6rem; justify-content:flex-end;">
+                                <button class="btn-cancel" id="pmCancelBtn">Cancel</button>
+                                <button class="btn-primary" id="pmSubmitBtn">Pay Now</button>
+                            </div>
+                        </div>
+                    </div>
 
                     <aside class="loan-application-panel">
                         <div class="section-header">
@@ -281,12 +285,12 @@ $userAccounts = $acctStmt->fetchAll(PDO::FETCH_ASSOC);
                         <form id="loanForm" class="loan-form">
                             <label for="loanType">Loan Type</label>
                             <select id="loanType" onchange="updateLoanDetails()">
-                <option value="">Select loan type</option>
-                <option value="personal">Personal Loan</option>
-                <option value="auto">Auto Loan</option>
-                <option value="home">Home Loan</option>
-                <option value="business">Business Loan</option>
-              </select>
+                                <option value="">Select loan type</option>
+                                <option value="personal">Personal Loan</option>
+                                <option value="auto">Auto Loan</option>
+                                <option value="home">Home Loan</option>
+                                <option value="business">Business Loan</option>
+                            </select>
 
                             <label for="loanAmount">Loan Amount</label>
                             <div class="amount-input">
@@ -296,15 +300,15 @@ $userAccounts = $acctStmt->fetchAll(PDO::FETCH_ASSOC);
 
                             <label for="loanTerm">Loan Term</label>
                             <select id="loanTerm" onchange="calculatePayment()">
-                <option value="">Select term</option>
-                <option value="12">12 months</option>
-                <option value="24">24 months</option>
-                <option value="36">36 months</option>
-                <option value="48">48 months</option>
-                <option value="60">60 months</option>
-                <option value="72">72 months</option>
-                <option value="84">84 months</option>
-              </select>
+                                <option value="">Select term</option>
+                                <option value="12">12 months</option>
+                                <option value="24">24 months</option>
+                                <option value="36">36 months</option>
+                                <option value="48">48 months</option>
+                                <option value="60">60 months</option>
+                                <option value="72">72 months</option>
+                                <option value="84">84 months</option>
+                            </select>
 
                             <div class="loan-calculator" id="loanCalculator" style="display: none;">
                                 <div class="calculator-row">

@@ -21,13 +21,13 @@ function lenis() {
   }
   requestAnimationFrame(raf);
 }
-// lenis();
+lenis();
 
 // Force ScrollTrigger to refresh after Lenis is ready
 window.addEventListener("load", () => {
   setTimeout(() => {
     ScrollTrigger.refresh();
-  }, 100); // slight delay ensures DOM is ready
+  });
 });
 
 // to remove right click

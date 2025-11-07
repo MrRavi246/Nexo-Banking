@@ -47,6 +47,10 @@ $memberType = ucfirst($userInfo['member_type']) . ' Member';
     <link rel="stylesheet" href="../../assets/style/pay-bills.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link
+        rel="shortcut icon"
+        href="../../assets/media/svgs/favicon-white-1.svg"
+        type="image/x-icon" />
     <title>NEXO Pay Bills</title>
 </head>
 
@@ -140,13 +144,13 @@ $memberType = ucfirst($userInfo['member_type']) . ' Member';
                     </div>
                     <div class="hero-actions">
                         <button class="btn export" onclick="/* noop */">
-              <i class="ri-download-line"></i>
-              Export Data
-            </button>
+                            <i class="ri-download-line"></i>
+                            Export Data
+                        </button>
                         <button class="btn primary" onclick="document.getElementById('payFormAmount').focus()">
-              <i class="ri-add-line"></i>
-              Add Payment
-            </button>
+                            <i class="ri-add-line"></i>
+                            Add Payment
+                        </button>
                     </div>
                 </div>
 
@@ -206,15 +210,15 @@ $memberType = ucfirst($userInfo['member_type']) . ' Member';
 
                             <label for="payeeSelect">Payee</label>
                             <select id="payeeSelect" onchange="handlePayeeChange()">
-              <option value="">Select payee</option>
-              <option value="custom">+ Add Custom Payee</option>
-            </select>
+                                <option value="">Select payee</option>
+                                <option value="custom">+ Add Custom Payee</option>
+                            </select>
 
                             <!-- Custom payee input (hidden by default) -->
                             <div id="customPayeeGroup" class="form-group" style="display: none;">
                                 <label for="customPayee">Custom Payee Name</label>
                                 <input id="customPayee" type="text" placeholder="Enter payee name">
-                                
+
                                 <label for="billType">Bill Type</label>
                                 <select id="billType">
                                     <option value="utilities">Utilities</option>
@@ -239,22 +243,22 @@ $memberType = ucfirst($userInfo['member_type']) . ' Member';
                             <div class="payment-frequency">
                                 <label for="paymentType">Payment Type</label>
                                 <select id="paymentType" onchange="handlePaymentTypeChange()">
-                <option value="one-time">One-time Payment</option>
-                <option value="recurring">Recurring Payment</option>
-              </select>
+                                    <option value="one-time">One-time Payment</option>
+                                    <option value="recurring">Recurring Payment</option>
+                                </select>
                             </div>
 
                             <!-- Recurring options (hidden by default) -->
                             <div id="recurringOptions" class="form-group" style="display: none;">
                                 <label for="frequency">Frequency</label>
                                 <select id="frequency">
-                <option value="daily">Every Day</option>
-                <option value="weekly">Every 7 Days</option>
-                <option value="bi-weekly">Every 14 Days</option>
-                <option value="monthly">Every Month</option>
-                <option value="quarterly">Every 3 Months</option>
-                <option value="yearly">Every Year</option>
-              </select>
+                                    <option value="daily">Every Day</option>
+                                    <option value="weekly">Every 7 Days</option>
+                                    <option value="bi-weekly">Every 14 Days</option>
+                                    <option value="monthly">Every Month</option>
+                                    <option value="quarterly">Every 3 Months</option>
+                                    <option value="yearly">Every Year</option>
+                                </select>
 
                                 <label for="endDate">End Date (optional)</label>
                                 <input id="endDate" type="date">
