@@ -1,3 +1,60 @@
+<?php
+require_once __DIR__ . '/../../backend/config.php';
+require_once __DIR__ . '/../../backend/functions.php';
+
+// Require login
+if (!isLoggedIn()) {
+    header('Location: ../auth/login.php');
+    exit();
+}
+
+$conn = getDBConnection();
+if (!validateSession($conn, $_SESSION['user_id'], $_SESSION['session_token'])) {
+    header('Location: ../auth/login.php');
+    exit();
+}
+
+// Fetch current user display name and member type for navbar
+$userStmt = $conn->prepare("SELECT * FROM users WHERE user_id = ? LIMIT 1");
+$userStmt->execute([$_SESSION['user_id']]);
+$userRow = $userStmt->fetch(PDO::FETCH_ASSOC);
+$displayName = 'User';
+$memberType = '';
+if ($userRow) {
+    $first = trim($userRow['first_name'] ?? '');
+    $last = trim($userRow['last_name'] ?? '');
+    if ($first || $last) {
+        $displayName = trim($first . ' ' . $last);
+    } elseif (!empty($userRow['username'])) {
+        $displayName = $userRow['username'];
+    } elseif (!empty($userRow['email'])) {
+        $displayName = $userRow['email'];
+    }
+    $memberType = $userRow['member_type'] ?? ($userRow['role'] ?? 'Member');
+}
+
+// Fetch user's accounts (for balances and account info)
+$acctStmt = $conn->prepare("SELECT account_id, account_number, account_type, balance FROM accounts WHERE user_id = ?");
+$acctStmt->execute([$_SESSION['user_id']]);
+$accounts = [];
+foreach ($acctStmt->fetchAll(PDO::FETCH_ASSOC) as $a) {
+    $accounts[$a['account_id']] = $a;
+}
+
+// Fetch recent transactions for user's accounts
+$placeholders = implode(',', array_fill(0, count($accounts) > 0 ? count($accounts) : 1, '?'));
+if (count($accounts) > 0) {
+    $accountIds = array_keys($accounts);
+    $inClause = implode(',', array_fill(0, count($accountIds), '?'));
+    $txSql = "SELECT t.*, a.account_number, a.account_type FROM transactions t JOIN accounts a ON t.account_id = a.account_id WHERE t.account_id IN ($inClause) ORDER BY t.created_at DESC LIMIT 200";
+    $txStmt = $conn->prepare($txSql);
+    $txStmt->execute($accountIds);
+    $transactions = $txStmt->fetchAll(PDO::FETCH_ASSOC);
+} else {
+    $transactions = [];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,8 +100,8 @@
             <div class="user-profile">
                 <img src="https://i.pravatar.cc/" alt="User Avatar" class="avatar">
                 <div class="user-info">
-                    <span class="username">John Doe</span>
-                    <span class="user-type">Premium Member</span>
+                    <span class="username"><?php echo htmlspecialchars($displayName); ?></span>
+                    <span class="user-type"><?php echo htmlspecialchars($memberType); ?></span>
                 </div>
                 <i class="ri-arrow-down-s-line"></i>
             </div>
@@ -172,61 +229,33 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Sample rows (frontend-only) -->
-                        <tr data-account="checking-001" data-type="deposit" data-date="2025-08-22">
-                            <td>2025-08-22</td>
-                            <td>Direct deposit - Acme Corp</td>
-                            <td>Primary Checking **** 4892</td>
-                            <td>Income</td>
-                            <td class="positive">+$3,500.00</td>
-                            <td>$12,450.75</td>
-                            <td><button class="action-small" onclick="viewTransaction(this)"><i class="ri-eye-line"></i></button></td>
-                        </tr>
-                        <tr data-account="savings-001" data-type="transfer" data-date="2025-08-21">
-                            <td>2025-08-21</td>
-                            <td>Automatic savings transfer</td>
-                            <td>High Yield Savings **** 7321</td>
-                            <td>Transfer</td>
-                            <td class="positive">+$500.00</td>
-                            <td>$28,750.00</td>
-                            <td><button class="action-small" onclick="viewTransaction(this)"><i class="ri-eye-line"></i></button></td>
-                        </tr>
-                        <tr data-account="credit-001" data-type="payment" data-date="2025-08-21">
-                            <td>2025-08-21</td>
-                            <td>Online purchase - Amazon</td>
-                            <td>Nexo Platinum Card **** 9876</td>
-                            <td>Shopping</td>
-                            <td class="negative">-$89.99</td>
-                            <td>$6,381.75</td>
-                            <td><button class="action-small" onclick="viewTransaction(this)"><i class="ri-eye-line"></i></button></td>
-                        </tr>
-                        <tr data-account="checking-001" data-type="withdrawal" data-date="2025-08-19">
-                            <td>2025-08-19</td>
-                            <td>ATM withdrawal</td>
-                            <td>Primary Checking **** 4892</td>
-                            <td>Cash</td>
-                            <td class="negative">-$200.00</td>
-                            <td>$8,950.75</td>
-                            <td><button class="action-small" onclick="viewTransaction(this)"><i class="ri-eye-line"></i></button></td>
-                        </tr>
-                        <tr data-account="credit-001" data-type="payment" data-date="2025-07-15">
-                            <td>2025-07-15</td>
-                            <td>Credit card payment - Employer</td>
-                            <td>Nexo Platinum Card **** 9876</td>
-                            <td>Payment</td>
-                            <td class="positive">+$1,200.00</td>
-                            <td>$5,181.75</td>
-                            <td><button class="action-small" onclick="viewTransaction(this)"><i class="ri-eye-line"></i></button></td>
-                        </tr>
-                        <tr data-account="checking-001" data-type="payment" data-date="2025-06-30">
-                            <td>2025-06-30</td>
-                            <td>Utility bill payment - PowerCo</td>
-                            <td>Primary Checking **** 4892</td>
-                            <td>Utilities</td>
-                            <td class="negative">-$132.45</td>
-                            <td>$9,150.75</td>
-                            <td><button class="action-small" onclick="viewTransaction(this)"><i class="ri-eye-line"></i></button></td>
-                        </tr>
+                        <?php if (empty($transactions)): ?>
+                            <tr><td colspan="7" style="text-align:center;color:#888;padding:1rem;">No transactions found.</td></tr>
+                        <?php else: ?>
+                            <?php foreach ($transactions as $t):
+                                $acctId = $t['account_id'];
+                                $acct = $accounts[$acctId] ?? null;
+                                $acctLabel = $acct ? ($acct['account_type'] . ' **** ' . substr($acct['account_number'], -4)) : ('Account ' . $acctId);
+                                $type = htmlspecialchars($t['transaction_type'] ?? ($t['category'] ?? ''));
+                                $desc = htmlspecialchars($t['description'] ?? $t['recipient_name'] ?? '');
+                                $date = htmlspecialchars(substr($t['created_at'], 0, 10));
+                                $amountVal = (float)$t['amount'];
+                                $isPositive = in_array($t['transaction_type'], ['deposit','refund','interest']) || $amountVal > 0 && $t['transaction_type'] === 'transfer';
+                                $sign = $isPositive ? '+' : '-';
+                                $amountText = $sign . '$' . number_format(abs($amountVal), 2);
+                                $balanceText = isset($acct['balance']) ? '$' . number_format((float)$acct['balance'], 2) : '--';
+                            ?>
+                            <tr data-account="acct-<?php echo $acctId; ?>" data-type="<?php echo htmlspecialchars($t['transaction_type']); ?>" data-date="<?php echo $date; ?>">
+                                <td><?php echo $date; ?></td>
+                                <td><?php echo $desc; ?></td>
+                                <td><?php echo htmlspecialchars($acctLabel); ?></td>
+                                <td><?php echo htmlspecialchars($t['category'] ?? ''); ?></td>
+                                <td class="<?php echo $isPositive ? 'positive' : 'negative'; ?>"><?php echo $amountText; ?></td>
+                                <td><?php echo $balanceText; ?></td>
+                                <td><button class="action-small" onclick="viewTransaction(this)"><i class="ri-eye-line"></i></button></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>

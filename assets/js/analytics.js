@@ -6,9 +6,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function initializeAnalytics() {
     setupTimeFilter();
-    createCharts();
     setupChartControls();
     setupMiniCharts();
+    // Load initial analytics for the default time range
+    const timeRangeEl = document.getElementById('timeRange');
+    const days = timeRangeEl ? timeRangeEl.value : 30;
+    updateAnalytics(days);
     setupGoalTracking();
 }
 
@@ -20,29 +23,66 @@ function setupTimeFilter() {
 }
 
 function updateAnalytics(days) {
-    // Simulate data update based on time range
-    showNotification(`Updated analytics for the last ${days} days`, 'info');
-    
-    // Update metrics
-    updateMetrics(days);
-    
-    // Recreate charts with new data
-    createCharts();
+    // Fetch real analytics from backend
+    (async () => {
+        try {
+            const res = await fetch(`/Nexo-Banking/backend/get_analytics.php?days=${encodeURIComponent(days)}`, {credentials: 'same-origin'});
+            const json = await res.json();
+            if (json.success) {
+                window.analyticsData = json.data;
+                showNotification(`Updated analytics for the last ${days} days`, 'info');
+                updateMetrics();
+                createCharts();
+            } else {
+                showNotification('Failed to load analytics: ' + json.message, 'error');
+                // fallback to simulated
+                updateMetrics(days);
+                createCharts();
+            }
+        } catch (err) {
+            console.error('Error fetching analytics', err);
+            showNotification('Error loading analytics', 'error');
+            // fallback
+            updateMetrics(days);
+            createCharts();
+        }
+    })();
 }
 
 function updateMetrics(days) {
+    // If analyticsData is present use it
+    const data = window.analyticsData;
+    if (data) {
+        document.querySelector('.metric-card:nth-child(1) .metric-value').textContent = `$${Number(data.total_income || 0).toLocaleString()}`;
+        document.querySelector('.metric-card:nth-child(2) .metric-value').textContent = `$${Number(data.total_expenses || 0).toLocaleString()}`;
+        document.querySelector('.metric-card:nth-child(3) .metric-value').textContent = `$${Number(data.net_savings || 0).toLocaleString()}`;
+        document.querySelector('.metric-card:nth-child(4) .metric-value').textContent = `${Number(data.savings_rate || 0).toFixed(1)}%`;
+        // Populate top categories table if present
+        if (Array.isArray(data.top_categories)) {
+            const tbody = document.querySelector('.analytics-table tbody');
+            if (tbody) {
+                // Replace body with top categories rows
+                let rowsHtml = '';
+                data.top_categories.forEach(cat => {
+                    const label = cat.category || 'Other';
+                    const amt = Number(cat.total || 0).toFixed(2);
+                    rowsHtml += `<tr><td>${label}</td><td>$${Number(amt).toLocaleString()}</td><td>--</td><td>--</td><td><!-- sparkline --></td></tr>`;
+                });
+                tbody.innerHTML = rowsHtml;
+                setupMiniCharts();
+            }
+        }
+        return;
+    }
+
+    // fallback to previous behavior when no backend data
     const multiplier = days / 30; // Base calculations on 30-day period
-    
-    // Simulate different values based on time range
     const baseIncome = 12450;
     const baseExpenses = 8320;
-    
     const income = Math.round(baseIncome * multiplier);
     const expenses = Math.round(baseExpenses * multiplier);
     const savings = income - expenses;
     const savingsRate = ((savings / income) * 100);
-    
-    // Update DOM elements
     document.querySelector('.metric-card:nth-child(1) .metric-value').textContent = `$${income.toLocaleString()}`;
     document.querySelector('.metric-card:nth-child(2) .metric-value').textContent = `$${expenses.toLocaleString()}`;
     document.querySelector('.metric-card:nth-child(3) .metric-value').textContent = `$${savings.toLocaleString()}`;
@@ -65,12 +105,20 @@ function createIncomeExpenseChart() {
     
     // Clear canvas
     ctx.clearRect(0, 0, width, height);
-    
-    // Sample data for the last 7 days
+    // Use analyticsData when available
+    const d = window.analyticsData;
+    if (d && d.income_expense_series) {
+        const incomeData = d.income_expense_series.income || [];
+        const expenseData = d.income_expense_series.expenses || [];
+        const labels = d.income_expense_series.labels || [];
+        drawBarChart(ctx, width, height, incomeData, expenseData, labels);
+        return;
+    }
+
+    // fallback sample
     const incomeData = [1800, 2200, 1900, 2500, 2100, 1700, 2300];
     const expenseData = [1200, 1400, 1100, 1600, 1300, 1000, 1500];
     const labels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-    
     drawBarChart(ctx, width, height, incomeData, expenseData, labels);
 }
 
@@ -114,7 +162,16 @@ function createCategoryChart() {
     
     // Clear canvas
     ctx.clearRect(0, 0, width, height);
-    
+    // If analytics data available, use top_categories
+    const d = window.analyticsData;
+    if (d && Array.isArray(d.top_categories) && d.top_categories.length > 0) {
+        const palette = ['#ff7b88','#7ec8f2','#eb7ef2','#fbbf24','#7ef29b','#a0e7ff'];
+        const data = d.top_categories.map((c, idx) => ({ label: c.category || 'Other', value: Number(c.total||0), color: palette[idx % palette.length] }));
+        drawPieChart(ctx, width, height, data);
+        return;
+    }
+
+    // fallback sample
     const data = [
         { label: 'Food & Dining', value: 2450, color: '#ff7b88' },
         { label: 'Transportation', value: 1820, color: '#7ec8f2' },
@@ -122,7 +179,6 @@ function createCategoryChart() {
         { label: 'Utilities', value: 980, color: '#fbbf24' },
         { label: 'Entertainment', value: 780, color: '#7ef29b' }
     ];
-    
     drawPieChart(ctx, width, height, data);
 }
 
@@ -165,11 +221,17 @@ function createCashFlowChart() {
     
     // Clear canvas
     ctx.clearRect(0, 0, width, height);
-    
-    // Sample cash flow data (net income over time)
+    const d = window.analyticsData;
+    if (d && d.cash_flow_series) {
+        const vals = d.cash_flow_series.values || [];
+        const labels = d.cash_flow_series.labels || [];
+        drawLineChart(ctx, width, height, vals, labels);
+        return;
+    }
+
+    // fallback sample cash flow
     const cashFlowData = [500, 800, 300, 900, 700, 1200, 600, 1100, 400, 950, 800, 1300, 750, 1050];
     const labels = Array.from({length: 14}, (_, i) => `Day ${i + 1}`);
-    
     drawLineChart(ctx, width, height, cashFlowData, labels);
 }
 

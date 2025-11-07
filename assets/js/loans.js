@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeLoansPage() {
     setupFormValidation();
     setupLoanCalculator();
+    // Load real loans from backend if available
+    fetchLoans();
 }
 
 function setupFormValidation() {
@@ -146,30 +148,231 @@ function processLoanApplication() {
         return;
     }
     
-    // Simulate processing
-    showNotification('Processing loan application...', 'info');
-    
-    setTimeout(() => {
-        const applicationData = {
-            type: getLoanTypeName(loanType),
-            amount: parseFloat(amount),
-            term: parseInt(term),
-            purpose: purpose,
-            status: 'pending',
-            timestamp: new Date().toISOString(),
-            apr: getEstimatedAPR(loanType, parseFloat(amount))
-        };
-        
-        // Add to recent applications
-        addToRecentApplications(applicationData);
-        
-        // Show success message
-        showNotification(`Loan application for $${amount} submitted successfully! You'll receive a decision within 24-48 hours.`, 'success');
-        
-        // Reset form
-        resetLoanForm();
-    }, 2000);
+    // Submit to backend
+    showNotification('Submitting loan application...', 'info');
+
+    (async () => {
+        try {
+            const payload = {
+                loan_type: loanType,
+                principal: parseFloat(amount),
+                term_months: parseInt(term),
+                purpose: purpose
+            };
+
+            const res = await fetch('/Nexo-Banking/backend/apply_loan.php', {
+                method: 'POST',
+                credentials: 'same-origin',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(payload)
+            });
+
+            const result = await res.json();
+            if (result.success) {
+                showNotification('Loan application submitted. Status: ' + (result.data.status || 'pending'), 'success');
+                // Refresh loans list
+                fetchLoans();
+                resetLoanForm();
+            } else {
+                showNotification('Failed to submit application: ' + result.message, 'error');
+            }
+        } catch (err) {
+            console.error('Error submitting loan application', err);
+            showNotification('Error submitting application', 'error');
+        }
+    })();
 }
+
+async function fetchLoans() {
+    try {
+        const res = await fetch('/Nexo-Banking/backend/get_loans.php', {credentials: 'same-origin'});
+        const json = await res.json();
+        if (json.success) {
+            renderLoansList(json.data.loans || []);
+        } else {
+            console.warn('Could not load loans:', json.message);
+        }
+    } catch (err) {
+        console.error('Error fetching loans:', err);
+    }
+}
+
+function renderLoansList(loans) {
+    const container = document.querySelector('.loans-list');
+    if (!container) return;
+
+    // Simple rendering: replace the first .loans-list content area
+    const listSection = container.querySelector('.loans-list') || container;
+    // Find the area that contains loan items
+    const items = container.querySelectorAll('.loan-item');
+    // If there are placeholder items, remove them
+    items.forEach(it => it.remove());
+
+    loans.forEach(loan => {
+        const loanItem = document.createElement('div');
+        loanItem.className = 'loan-item';
+        loanItem.dataset.loanId = loan.loan_id;
+        loanItem.dataset.outstanding = loan.outstanding;
+        loanItem.dataset.principal = loan.principal;
+        loanItem.innerHTML = `
+            <div class="loan-left">
+                <h4>${getLoanTypeName(loan.loan_type)}</h4>
+                <p>${(loan.term_months || '') ? (loan.term_months + ' months remaining') : ''}</p>
+                <div class="loan-progress">
+                    <div class="progress-bar" style="background:#222; height:10px; border-radius:6px; overflow:hidden;">
+                        <div class="progress-fill" style="width:${Math.min(100, ((loan.principal - loan.outstanding) / (loan.principal || 1)) * 100)}%; height:100%; background:linear-gradient(90deg,#ff7ef2,#7ef29b);"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="loan-right">
+                <div class="loan-balance">$${parseFloat(loan.outstanding).toFixed(2)}</div>
+                <div class="loan-payment">$${(loan.monthly_payment || 0).toFixed(2)}/mo</div>
+                <div class="loan-action">
+                    <button class="btn primary loan-pay-btn" data-loan-id="${loan.loan_id}" data-monthly="${(loan.monthly_payment||0)}">Make Payment</button>
+                </div>
+            </div>
+        `;
+        container.appendChild(loanItem);
+    });
+}
+
+// Listen for clicks on dynamically added Make Payment buttons
+document.addEventListener('click', function(e) {
+    const btn = e.target.closest && e.target.closest('.loan-pay-btn');
+    if (btn) {
+        const loanId = btn.dataset.loanId;
+        const loanItem = document.querySelector(`.loan-item[data-loan-id="${loanId}"]`);
+        const outstanding = loanItem ? loanItem.dataset.outstanding : null;
+        const title = loanItem ? loanItem.querySelector('h4').textContent : ('Loan #' + loanId);
+        openPaymentModal(loanId, outstanding, title);
+    }
+});
+
+function openPaymentModal(loanId, outstanding, title) {
+    const modal = document.getElementById('loanPaymentModal');
+    if (!modal) return;
+    document.getElementById('pmLoanTitle').textContent = title;
+    document.getElementById('pmOutstanding').textContent = outstanding ? ('$' + parseFloat(outstanding).toFixed(2)) : 'N/A';
+    // Prefill amount and wire "Pay full outstanding" checkbox behaviour
+    const amountEl = document.getElementById('pmAmount');
+    const fullCheckbox = document.getElementById('pmFullPayCheckbox');
+    // default to pay full outstanding
+    if (fullCheckbox) {
+        fullCheckbox.checked = true;
+        amountEl.value = outstanding ? parseFloat(outstanding).toFixed(2) : '';
+        amountEl.disabled = true;
+        // toggle behaviour
+        fullCheckbox.onchange = function() {
+            if (this.checked) {
+                amountEl.value = outstanding ? parseFloat(outstanding).toFixed(2) : '';
+                amountEl.disabled = true;
+            } else {
+                amountEl.disabled = false;
+                amountEl.focus();
+            }
+        };
+    } else {
+        // fallback: still prefill
+        amountEl.value = outstanding ? parseFloat(outstanding).toFixed(2) : '';
+        amountEl.disabled = false;
+    }
+    document.getElementById('pmAccount').value = '';
+    document.getElementById('pmProgressFill').style.width = '0%';
+    document.getElementById('pmProgressText').textContent = 'Ready';
+    modal.style.display = 'block';
+    modal.dataset.loanId = loanId;
+
+    // Hook buttons
+    document.getElementById('closePaymentModal').onclick = closePaymentModal;
+    document.getElementById('pmCancelBtn').onclick = closePaymentModal;
+    document.getElementById('pmSubmitBtn').onclick = function() { submitPayment(loanId); };
+}
+
+function closePaymentModal() {
+    const modal = document.getElementById('loanPaymentModal');
+    if (!modal) return;
+    modal.style.display = 'none';
+}
+
+async function submitPayment(loanId) {
+    const amountEl = document.getElementById('pmAmount');
+    const acctEl = document.getElementById('pmAccount');
+    const progressFill = document.getElementById('pmProgressFill');
+    const progressText = document.getElementById('pmProgressText');
+    const submitBtn = document.getElementById('pmSubmitBtn');
+    const cancelBtn = document.getElementById('pmCancelBtn');
+
+    const amount = parseFloat(amountEl.value);
+    const accountId = parseInt(acctEl.value, 10);
+    if (!amount || amount <= 0) { showNotification('Enter a valid amount', 'error'); return; }
+    if (!accountId || accountId <= 0) { showNotification('Select a valid source account', 'error'); return; }
+
+    // Client-side check: ensure selected account belongs to user and has sufficient balance
+    try {
+        const accounts = window.userAccounts || [];
+        const acct = accounts.find(a => parseInt(a.account_id,10) === accountId);
+        if (!acct) {
+            showNotification('Selected account not found in your accounts', 'error');
+            document.getElementById('pmProgressText').textContent = 'Failed: Account not found locally';
+            document.getElementById('pmProgressFill').style.width = '100%';
+            return;
+        }
+        const bal = parseFloat(acct.balance || 0);
+        if (bal < amount) {
+            showNotification('Insufficient funds in selected account', 'error');
+            document.getElementById('pmProgressText').textContent = 'Failed: Insufficient funds';
+            document.getElementById('pmProgressFill').style.width = '100%';
+            return;
+        }
+    } catch (e) {
+        console.warn('Account validation failed', e);
+    }
+
+    // Disable buttons
+    submitBtn.disabled = true; cancelBtn.disabled = true;
+
+    // Start progress
+    progressText.textContent = 'Initializing payment...';
+    progressFill.style.width = '10%';
+
+    try {
+        // small delay to let UI update
+        await new Promise(r => setTimeout(r, 350));
+        progressText.textContent = 'Sending payment request...';
+        progressFill.style.width = '40%';
+
+        const res = await fetch('/Nexo-Banking/backend/pay_loan.php', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({loan_id: parseInt(loanId,10), amount: amount, account_id: accountId})
+        });
+        progressText.textContent = 'Processing...';
+        progressFill.style.width = '70%';
+
+        const json = await res.json();
+        if (json.success) {
+            progressFill.style.width = '100%';
+            progressText.textContent = 'Payment completed';
+            showNotification('Payment successful. New outstanding: $' + parseFloat(json.data.new_outstanding).toFixed(2), 'success');
+            // refresh loans list after a short delay to show full bar
+            setTimeout(() => { fetchLoans(); closePaymentModal(); }, 900);
+        } else {
+            progressFill.style.width = '100%';
+            progressText.textContent = 'Failed: ' + json.message;
+            showNotification('Payment failed: ' + json.message, 'error');
+            submitBtn.disabled = false; cancelBtn.disabled = false;
+        }
+    } catch (err) {
+        console.error('Payment error', err);
+        progressText.textContent = 'Error during payment';
+        showNotification('Error processing payment', 'error');
+        submitBtn.disabled = false; cancelBtn.disabled = false;
+        progressFill.style.width = '100%';
+    }
+}
+
+
 
 function getLoanTypeName(type) {
     const types = {
@@ -208,14 +411,7 @@ function addToRecentApplications(applicationData) {
     }
 }
 
-function makePayment(loanName, amount) {
-    showNotification(`Redirecting to payment for ${loanName} - $${amount}`, 'info');
-    
-    // Simulate redirect to payment page
-    setTimeout(() => {
-        showNotification('This would redirect to the payment processing page in a real application', 'info');
-    }, 1500);
-}
+
 
 function resetLoanForm() {
     document.getElementById('loanForm').reset();

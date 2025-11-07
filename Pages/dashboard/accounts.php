@@ -1,3 +1,65 @@
+<?php
+require_once __DIR__ . '/../../backend/config.php';
+require_once __DIR__ . '/../../backend/functions.php';
+
+// Require login
+if (!isLoggedIn()) {
+    header('Location: ../auth/login.php');
+    exit();
+}
+
+$conn = getDBConnection();
+if (!validateSession($conn, $_SESSION['user_id'], $_SESSION['session_token'])) {
+    header('Location: ../auth/login.php');
+    exit();
+}
+
+// Fetch current user display name and member type for navbar
+$userStmt = $conn->prepare("SELECT * FROM users WHERE user_id = ? LIMIT 1");
+$userStmt->execute([$_SESSION['user_id']]);
+$userRow = $userStmt->fetch(PDO::FETCH_ASSOC);
+$displayName = 'User';
+$memberType = '';
+if ($userRow) {
+    $first = trim($userRow['first_name'] ?? '');
+    $last = trim($userRow['last_name'] ?? '');
+    if ($first || $last) {
+        $displayName = trim($first . ' ' . $last);
+    } elseif (!empty($userRow['username'])) {
+        $displayName = $userRow['username'];
+    } elseif (!empty($userRow['email'])) {
+        $displayName = $userRow['email'];
+    }
+    $memberType = $userRow['member_type'] ?? ($userRow['role'] ?? 'Member');
+}
+
+$acctStmt = $conn->prepare("SELECT account_id, account_number, account_type, balance, currency, status, last_activity, created_at FROM accounts WHERE user_id = ? ORDER BY account_id");
+$acctStmt->execute([$_SESSION['user_id']]);
+$accounts = $acctStmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Compute totals
+$totalBalance = 0.0;
+foreach ($accounts as $a) { $totalBalance += (float)$a['balance']; }
+$totalAccounts = count($accounts);
+
+// Recent 30 days income/expenses
+$incomeStmt = $conn->prepare("SELECT COALESCE(SUM(amount),0) AS income FROM transactions WHERE account_id IN (" . (count($accounts)?implode(',', array_map(function($v){return (int)$v['account_id'];}, $accounts)):0) . ") AND transaction_type IN ('deposit','refund','interest') AND transaction_date >= DATE_SUB(NOW(), INTERVAL 30 DAY)");
+$incomeStmt->execute();
+$incomeRow = $incomeStmt->fetch(PDO::FETCH_ASSOC);
+$monthlyIncome = (float)($incomeRow['income'] ?? 0);
+
+$expenseStmt = $conn->prepare("SELECT COALESCE(SUM(amount),0) AS expense FROM transactions WHERE account_id IN (" . (count($accounts)?implode(',', array_map(function($v){return (int)$v['account_id'];}, $accounts)):0) . ") AND transaction_type IN ('withdrawal','payment','fee') AND transaction_date >= DATE_SUB(NOW(), INTERVAL 30 DAY)");
+$expenseStmt->execute();
+$expenseRow = $expenseStmt->fetch(PDO::FETCH_ASSOC);
+$monthlyExpenses = abs((float)($expenseRow['expense'] ?? 0));
+
+// Recent account activity (last 4 transactions)
+$recentTxStmt = $conn->prepare("SELECT t.*, a.account_number, a.account_type FROM transactions t JOIN accounts a ON t.account_id = a.account_id WHERE t.account_id IN (" . (count($accounts)?implode(',', array_map(function($v){return (int)$v['account_id'];}, $accounts)):0) . ") ORDER BY t.created_at DESC LIMIT 4");
+$recentTxStmt->execute();
+$recentActivity = $recentTxStmt->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,8 +104,8 @@
             <div class="user-profile">
                 <img src="" alt="User Avatar" class="avatar">
                 <div class="user-info">
-                    <span class="username">John Doe</span>
-                    <span class="user-type">Premium Member</span>
+                    <span class="username"><?php echo htmlspecialchars($displayName); ?></span>
+                    <span class="user-type"><?php echo htmlspecialchars($memberType); ?></span>
                 </div>
                 <i class="ri-arrow-down-s-line"></i>
             </div>
@@ -124,9 +186,9 @@
                     </div>
                     <div class="card-content">
                         <h3>Total Balance</h3>
-                        <div class="balance-amount">$47,582.50</div>
+                        <div class="balance-amount"><?php echo '$' . number_format($totalBalance,2); ?></div>
                         <div class="balance-change positive">
-                            <i class="ri-arrow-up-line"></i> +2.5% from last month
+                            <i class="ri-arrow-up-line"></i> <!-- dynamic change not implemented -->
                         </div>
                     </div>
                 </div>
@@ -137,7 +199,7 @@
                     </div>
                     <div class="card-content">
                         <h3>Total Accounts</h3>
-                        <div class="balance-amount">3</div>
+                        <div class="balance-amount"><?php echo $totalAccounts; ?></div>
                         <div class="balance-change neutral">
                             Active accounts
                         </div>
@@ -150,9 +212,9 @@
                     </div>
                     <div class="card-content">
                         <h3>Monthly Income</h3>
-                        <div class="balance-amount">$8,750.00</div>
+                        <div class="balance-amount"><?php echo '$' . number_format($monthlyIncome,2); ?></div>
                         <div class="balance-change positive">
-                            <i class="ri-arrow-up-line"></i> +12.3% this month
+                            <i class="ri-arrow-up-line"></i> <!-- dynamic percent not implemented -->
                         </div>
                     </div>
                 </div>
@@ -163,9 +225,9 @@
                     </div>
                     <div class="card-content">
                         <h3>Monthly Expenses</h3>
-                        <div class="balance-amount">$4,891.25</div>
+                        <div class="balance-amount"><?php echo '$' . number_format($monthlyExpenses,2); ?></div>
                         <div class="balance-change negative">
-                            <i class="ri-arrow-up-line"></i> +5.7% this month
+                            <i class="ri-arrow-up-line"></i> <!-- dynamic percent not implemented -->
                         </div>
                     </div>
                 </div>
@@ -192,148 +254,65 @@
 
             <!-- Account Cards Grid -->
             <div class="accounts-grid">
-                <!-- Checking Account -->
-                <div class="account-card checking" data-type="checking">
+                <?php foreach ($accounts as $a):
+                    $acctType = htmlspecialchars($a['account_type'] ?? 'account');
+                    $acctName = htmlspecialchars($a['account_name'] ?? ucfirst($acctType) . ' Account');
+                    $acctNumber = htmlspecialchars($a['account_number'] ?? '');
+                    $masked = $acctNumber ? '**** **** **** ' . substr($acctNumber, -4) : '';
+                    $balance = '$' . number_format((float)$a['balance'], 2);
+                    $dataType = strtolower($acctType);
+                    $accountId = htmlspecialchars($a['account_number'] ?: $a['account_id']);
+                ?>
+                <div class="account-card <?php echo $dataType; ?>" data-type="<?php echo $dataType; ?>">
                     <div class="account-header">
                         <div class="account-icon">
-                            <i class="ri-bank-card-line"></i>
+                            <?php if ($dataType === 'savings'): ?>
+                                <i class="ri-piggy-bank-line"></i>
+                            <?php elseif ($dataType === 'credit'): ?>
+                                <i class="ri-credit-card-line"></i>
+                            <?php else: ?>
+                                <i class="ri-bank-card-line"></i>
+                            <?php endif; ?>
                         </div>
                         <div class="account-menu">
                             <i class="ri-more-line" onclick="toggleAccountMenu(this)"></i>
                             <div class="account-dropdown">
-                                <div class="dropdown-item" onclick="viewAccountDetails('checking-001')">
+                                <div class="dropdown-item" onclick="viewAccountDetails('<?php echo $accountId; ?>')">
                                     <i class="ri-eye-line"></i> View Details
                                 </div>
-                                <div class="dropdown-item" onclick="downloadStatement('checking-001')">
+                                <div class="dropdown-item" onclick="downloadStatement('<?php echo $accountId; ?>')">
                                     <i class="ri-download-line"></i> Download Statement
                                 </div>
-                                <div class="dropdown-item" onclick="manageAccount('checking-001')">
+                                <div class="dropdown-item" onclick="manageAccount('<?php echo $accountId; ?>')">
                                     <i class="ri-settings-line"></i> Manage Account
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="account-content">
-                        <div class="account-type">Checking Account</div>
-                        <div class="account-name">Primary Checking</div>
-                        <div class="account-number">**** **** **** 4892</div>
-                        <div class="account-balance">$12,450.75</div>
+                        <div class="account-type"><?php echo $acctType; ?> Account</div>
+                        <div class="account-name"><?php echo $acctName; ?></div>
+                        <div class="account-number"><?php echo $masked; ?></div>
+                        <div class="account-balance"><?php echo $balance; ?></div>
                         <div class="account-status available">Available Balance</div>
                     </div>
                     <div class="account-footer">
                         <div class="account-actions">
-                            <button class="action-btn" onclick="initiateTransfer('checking-001')">
+                            <button class="action-btn" onclick="initiateTransfer('<?php echo $accountId; ?>')">
                 <i class="ri-send-plane-line"></i>
                 Transfer
               </button>
-                            <button class="action-btn" onclick="viewTransactions('checking-001')">
+                            <button class="action-btn" onclick="viewTransactions('<?php echo $accountId; ?>')">
                 <i class="ri-list-check-line"></i>
                 Transactions
               </button>
                         </div>
                         <div class="account-info">
-                            <span class="last-transaction">Last transaction: Today</span>
+                            <span class="last-transaction">Last transaction: --</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Savings Account -->
-                <div class="account-card savings" data-type="savings">
-                    <div class="account-header">
-                        <div class="account-icon">
-                            <i class="ri-piggy-bank-line"></i>
-                        </div>
-                        <div class="account-menu">
-                            <i class="ri-more-line" onclick="toggleAccountMenu(this)"></i>
-                            <div class="account-dropdown">
-                                <div class="dropdown-item" onclick="viewAccountDetails('savings-001')">
-                                    <i class="ri-eye-line"></i> View Details
-                                </div>
-                                <div class="dropdown-item" onclick="downloadStatement('savings-001')">
-                                    <i class="ri-download-line"></i> Download Statement
-                                </div>
-                                <div class="dropdown-item" onclick="manageAccount('savings-001')">
-                                    <i class="ri-settings-line"></i> Manage Account
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="account-content">
-                        <div class="account-type">Savings Account</div>
-                        <div class="account-name">High Yield Savings</div>
-                        <div class="account-number">**** **** **** 7321</div>
-                        <div class="account-balance">$28,750.00</div>
-                        <div class="account-status interest">2.5% APY</div>
-                    </div>
-                    <div class="account-footer">
-                        <div class="account-actions">
-                            <button class="action-btn" onclick="initiateTransfer('savings-001')">
-                <i class="ri-send-plane-line"></i>
-                Transfer
-              </button>
-                            <button class="action-btn" onclick="viewTransactions('savings-001')">
-                <i class="ri-list-check-line"></i>
-                Transactions
-              </button>
-                        </div>
-                        <div class="account-info">
-                            <span class="last-transaction">Last transaction: 2 days ago</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Credit Card -->
-                <div class="account-card credit" data-type="credit">
-                    <div class="account-header">
-                        <div class="account-icon">
-                            <i class="ri-credit-card-line"></i>
-                        </div>
-                        <div class="account-menu">
-                            <i class="ri-more-line" onclick="toggleAccountMenu(this)"></i>
-                            <div class="account-dropdown">
-                                <div class="dropdown-item" onclick="viewAccountDetails('credit-001')">
-                                    <i class="ri-eye-line"></i> View Details
-                                </div>
-                                <div class="dropdown-item" onclick="downloadStatement('credit-001')">
-                                    <i class="ri-download-line"></i> Download Statement
-                                </div>
-                                <div class="dropdown-item" onclick="payCredit('credit-001')">
-                                    <i class="ri-money-dollar-circle-line"></i> Make Payment
-                                </div>
-                                <div class="dropdown-item" onclick="manageAccount('credit-001')">
-                                    <i class="ri-settings-line"></i> Manage Account
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="account-content">
-                        <div class="account-type">Credit Card</div>
-                        <div class="account-name">Nexo Platinum Card</div>
-                        <div class="account-number">**** **** **** 9876</div>
-                        <div class="account-balance">$6,381.75</div>
-                        <div class="account-status limit">$15,000 limit</div>
-                    </div>
-                    <div class="account-footer">
-                        <div class="account-actions">
-                            <button class="action-btn" onclick="payCredit('credit-001')">
-                <i class="ri-money-dollar-circle-line"></i>
-                Pay Now
-              </button>
-                            <button class="action-btn" onclick="viewTransactions('credit-001')">
-                <i class="ri-list-check-line"></i>
-                Transactions
-              </button>
-                        </div>
-                        <div class="account-info">
-                            <div class="credit-utilization">
-                                <span>Utilization: 42.5%</span>
-                                <div class="utilization-bar">
-                                    <div class="utilization-fill" style="width: 42.5%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
 
             <!-- Recent Account Activity -->

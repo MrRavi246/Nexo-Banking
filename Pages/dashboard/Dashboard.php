@@ -29,6 +29,24 @@ if (!$user || $user['status'] !== 'active') {
     header('Location: ../auth/login.php');
     exit();
 }
+// Fetch display name and member type for navbar
+$userInfoStmt = $conn->prepare("SELECT * FROM users WHERE user_id = ? LIMIT 1");
+$userInfoStmt->execute([$_SESSION['user_id']]);
+$userInfo = $userInfoStmt->fetch(PDO::FETCH_ASSOC);
+$displayName = 'User';
+$memberType = '';
+if ($userInfo) {
+    $first = trim($userInfo['first_name'] ?? '');
+    $last = trim($userInfo['last_name'] ?? '');
+    if ($first || $last) {
+        $displayName = trim($first . ' ' . $last);
+    } elseif (!empty($userInfo['username'])) {
+        $displayName = $userInfo['username'];
+    } elseif (!empty($userInfo['email'])) {
+        $displayName = $userInfo['email'];
+    }
+    $memberType = $userInfo['member_type'] ?? ($userInfo['role'] ?? 'Member');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -164,8 +182,8 @@ if (!$user || $user['status'] !== 'active') {
             <div class="user-profile">
                 <img src="https://i.pravatar.cc/" alt="User Avatar" class="avatar">
                 <div class="user-info">
-                    <span class="username">John Doe</span>
-                    <span class="user-type">Premium Member</span>
+                    <span class="username"><?php echo htmlspecialchars($displayName); ?></span>
+                    <span class="user-type"><?php echo htmlspecialchars($memberType); ?></span>
                 </div>
                 <i class="ri-arrow-down-s-line"></i>
             </div>

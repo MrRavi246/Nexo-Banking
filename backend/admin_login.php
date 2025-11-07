@@ -81,6 +81,8 @@ try {
     $_SESSION['admin_last_name'] = $admin['last_name'];
     $_SESSION['admin_role'] = $admin['role'];
     $_SESSION['admin_session_token'] = $sessionToken;
+    // Mark admin as logged in for legacy admin pages
+    $_SESSION['admin_loggedin'] = true;
     
     sendResponse(true, 'Login successful', [
         'redirect_url' => ADMIN_DASHBOARD_URL,

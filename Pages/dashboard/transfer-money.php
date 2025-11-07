@@ -19,6 +19,25 @@ if (!validateSession($conn, $_SESSION['user_id'], $_SESSION['session_token'])) {
 
 $userId = $_SESSION['user_id'];
 
+// Fetch display name and member type for navbar
+$userInfoStmt = $conn->prepare("SELECT * FROM users WHERE user_id = ? LIMIT 1");
+$userInfoStmt->execute([$userId]);
+$userInfo = $userInfoStmt->fetch(PDO::FETCH_ASSOC);
+$displayName = 'User';
+$memberType = '';
+if ($userInfo) {
+    $first = trim($userInfo['first_name'] ?? '');
+    $last = trim($userInfo['last_name'] ?? '');
+    if ($first || $last) {
+        $displayName = trim($first . ' ' . $last);
+    } elseif (!empty($userInfo['username'])) {
+        $displayName = $userInfo['username'];
+    } elseif (!empty($userInfo['email'])) {
+        $displayName = $userInfo['email'];
+    }
+    $memberType = $userInfo['member_type'] ?? ($userInfo['role'] ?? 'Member');
+}
+
 // Get user's accounts for the dropdown
 $stmt = $conn->prepare("
     SELECT account_id, account_type, account_number, balance, currency
@@ -92,8 +111,8 @@ try {
             <div class="user-profile">
                 <img src="https://i.pravatar.cc/" alt="User Avatar" class="avatar">
                 <div class="user-info">
-                    <span class="username">John Doe</span>
-                    <span class="user-type">Premium Member</span>
+                    <span class="username"><?php echo htmlspecialchars($displayName); ?></span>
+                    <span class="user-type"><?php echo htmlspecialchars($memberType); ?></span>
                 </div>
                 <i class="ri-arrow-down-s-line"></i>
             </div>

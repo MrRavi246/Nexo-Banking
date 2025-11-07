@@ -4,15 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/assets/style/nav.css">
-    <link rel="stylesheet" href="/assets/style/accounts.css">
-    <link rel="stylesheet" href="/assets/style/support.css">
+    <link rel="stylesheet" href="../../assets/style/nav.css">
+    <link rel="stylesheet" href="../../assets/style/accounts.css">
+    <link rel="stylesheet" href="../../assets/style/support.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <title>NEXO Support</title>
 </head>
 
 <body>
+    <?php
+    // show logged-in user in navbar when available
+    require_once __DIR__ . '/../../backend/config.php';
+    require_once __DIR__ . '/../../backend/functions.php';
+    $displayName = 'User';
+    $memberType = '';
+    if (isLoggedIn()) {
+        $conn = getDBConnection();
+        if (validateSession($conn, $_SESSION['user_id'], $_SESSION['session_token'])) {
+            $uStmt = $conn->prepare("SELECT * FROM users WHERE user_id = ? LIMIT 1");
+            $uStmt->execute([$_SESSION['user_id']]);
+            $u = $uStmt->fetch(PDO::FETCH_ASSOC);
+            if ($u) {
+                $first = trim($u['first_name'] ?? '');
+                $last = trim($u['last_name'] ?? '');
+                if ($first || $last) {
+                    $displayName = trim($first . ' ' . $last);
+                } elseif (!empty($u['username'])) {
+                    $displayName = $u['username'];
+                } elseif (!empty($u['email'])) {
+                    $displayName = $u['email'];
+                }
+                $memberType = $u['member_type'] ?? ($u['role'] ?? 'Member');
+            }
+        }
+    }
+
+    ?>
     <nav class="dashboard-nav">
         <div class="nav-left">
             <div class="logo">
@@ -39,8 +67,8 @@
             <div class="user-profile">
                 <img src="" alt="User Avatar" class="avatar">
                 <div class="user-info">
-                    <span class="username">Jane Doe</span>
-                    <span class="user-type">Basic Member</span>
+                    <span class="username"><?php echo htmlspecialchars($displayName); ?></span>
+                    <span class="user-type"><?php echo htmlspecialchars($memberType); ?></span>
                 </div>
                 <i class="ri-arrow-down-s-line"></i>
             </div>
