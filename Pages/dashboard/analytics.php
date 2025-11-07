@@ -47,6 +47,10 @@ if ($userInfo) {
     <link rel="stylesheet" href="../../assets/style/nav.css">
     <link rel="stylesheet" href="../../assets/style/Dashboard.css">
     <link rel="stylesheet" href="../../assets/style/analytics.css">
+    <link
+        rel="shortcut icon"
+        href="../../assets/media/svgs/favicon-white-1.svg"
+        type="image/x-icon" />
 </head>
 
 <body>

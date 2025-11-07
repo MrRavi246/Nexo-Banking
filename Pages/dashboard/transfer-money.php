@@ -77,6 +77,10 @@ try {
     <link
         href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
         rel="stylesheet">
+    <link
+        rel="shortcut icon"
+        href="../../assets/media/svgs/favicon-white-1.svg"
+        type="image/x-icon" />
     <title>NEXO Transfer Money - Send & Receive Funds</title>
 </head>
 

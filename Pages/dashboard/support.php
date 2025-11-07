@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="../../assets/style/support.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link
+        rel="shortcut icon"
+        href="../../assets/media/svgs/favicon-white-1.svg"
+        type="image/x-icon" />
     <title>NEXO Support</title>
 </head>
 
@@ -120,23 +124,23 @@
             </div>
         </aside>
 
-    <main class="accounts-main">
+        <main class="accounts-main">
             <div class="content-wrapper">
                 <div class="page-hero">
                     <div class="hero-left">
                         <h1>Support</h1>
                         <p>Help center for account issues, payments and product questions</p>
                     </div>
-                                        <div class="hero-actions">
-                                                <button class="btn-secondary" onclick="window.print()">
+                    <div class="hero-actions">
+                        <button class="btn-secondary" onclick="window.print()">
                             <i class="ri-download-line"></i>
                             Print
                         </button>
-                                                <button class="btn-primary" onclick="document.getElementById('supportMessage').focus()">
+                        <button class="btn-primary" onclick="document.getElementById('supportMessage').focus()">
                             <i class="ri-add-line"></i>
                             New Ticket
                         </button>
-                                        </div>
+                    </div>
                 </div>
 
                 <div class="hero-stats">
@@ -203,12 +207,12 @@
                         <form id="supportForm" class="pay-form">
                             <label for="supportTopic">Topic</label>
                             <select id="supportTopic">
-                <option value="account">Account</option>
-                <option value="payments">Payments</option>
-                <option value="technical">Technical</option>
-                <option value="billing">Billing</option>
-                <option value="other">Other</option>
-              </select>
+                                <option value="account">Account</option>
+                                <option value="payments">Payments</option>
+                                <option value="technical">Technical</option>
+                                <option value="billing">Billing</option>
+                                <option value="other">Other</option>
+                            </select>
 
                             <label for="supportMessage">Message</label>
                             <textarea id="supportMessage" rows="5" placeholder="Describe your issue or question" style="width:100%; padding:0.8rem; border-radius:10px; background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); color:#fff;"></textarea>
@@ -250,7 +254,7 @@
 
     <script>
         // Minimal interactivity for support page (frontend demo)
-        document.getElementById('supportForm') ?.addEventListener('submit', function(e) {
+        document.getElementById('supportForm')?.addEventListener('submit', function(e) {
             e.preventDefault();
             const topic = document.getElementById('supportTopic').value;
             const msg = document.getElementById('supportMessage').value.trim();
