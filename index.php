@@ -39,7 +39,7 @@
         <nav>
           <div class="navLeft">
             <div class="navLeftHover">
-              <a href="/index.php"><span>N</span>exo</a>
+              <a href="index.php"><span>N</span>exo</a>
             </div>
           </div>
           <div class="navcenter">
@@ -64,6 +64,7 @@
             <button class="signin" onclick="location.href='pages/auth/login.php'">
               Sign In
             </button>
+
             <button class="acc_btn" onclick="location.href='pages/auth/signup.php'">
               Open an Account
             </button>
@@ -74,106 +75,106 @@
     </div>
 
 
-        <!-- page1 -->
-        <div class="page1">
-          <div class="gradient"></div>
-          <div class="content">
-            <div class="imgrow1">
-              <div class="imgcontainer">
-                <img src="./assets/media/card1.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card2.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card4.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card3.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card5.webp" alt="" />
-              </div>
-            </div>
-            <div class="imgrow2">
-              <div class="imgcontainer">
-                <img src="./assets/media/card4.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card5.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card2.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card3.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card6.webp" alt="" />
-              </div>
-            </div>
-            <div class="imgrow3">
-              <div class="imgcontainer">
-                <img src="./assets/media/card2.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card3.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card1.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card4.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card1.webp" alt="" />
-              </div>
-            </div>
-            <div class="imgrow4">
-              <div class="imgcontainer">
-                <img src="./assets/media/card5.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card3.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card4.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card1.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card2.webp" alt="" />
-              </div>
-            </div>
-            <div class="imgrow5">
-              <div class="imgcontainer">
-                <img src="./assets/media/card6.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card2.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card4.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card3.webp" alt="" />
-              </div>
-              <div class="imgcontainer">
-                <img src="./assets/media/card5.webp" alt="" />
-              </div>
-            </div>
+    <!-- page1 -->
+    <div class="page1">
+      <div class="gradient"></div>
+      <div class="content">
+        <div class="imgrow1">
+          <div class="imgcontainer">
+            <img src="./assets/media/card1.webp" alt="" />
           </div>
-          <div class="scroll-down">
-            <h4>SCROLL DOWN</h4>
-            <div class="scroll-p">
-              <div class="scrolling"></div>
-            </div>
+          <div class="imgcontainer">
+            <img src="./assets/media/card2.webp" alt="" />
           </div>
-          <div class="herotext">
-            <h3>Nexo</h3>
+          <div class="imgcontainer">
+            <img src="./assets/media/card4.webp" alt="" />
+          </div>
+          <div class="imgcontainer">
+            <img src="./assets/media/card3.webp" alt="" />
+          </div>
+          <div class="imgcontainer">
+            <img src="./assets/media/card5.webp" alt="" />
           </div>
         </div>
+        <div class="imgrow2">
+          <div class="imgcontainer">
+            <img src="./assets/media/card4.webp" alt="" />
+          </div>
+          <div class="imgcontainer">
+            <img src="./assets/media/card5.webp" alt="" />
+          </div>
+          <div class="imgcontainer">
+            <img src="./assets/media/card2.webp" alt="" />
+          </div>
+          <div class="imgcontainer">
+            <img src="./assets/media/card3.webp" alt="" />
+          </div>
+          <div class="imgcontainer">
+            <img src="./assets/media/card6.webp" alt="" />
+          </div>
+        </div>
+        <div class="imgrow3">
+          <div class="imgcontainer">
+            <img src="./assets/media/card2.webp" alt="" />
+          </div>
+          <div class="imgcontainer">
+            <img src="./assets/media/card3.webp" alt="" />
+          </div>
+          <div class="imgcontainer">
+            <img src="./assets/media/card1.webp" alt="" />
+          </div>
+          <div class="imgcontainer">
+            <img src="./assets/media/card4.webp" alt="" />
+          </div>
+          <div class="imgcontainer">
+            <img src="./assets/media/card1.webp" alt="" />
+          </div>
+        </div>
+        <div class="imgrow4">
+          <div class="imgcontainer">
+            <img src="./assets/media/card5.webp" alt="" />
+          </div>
+          <div class="imgcontainer">
+            <img src="./assets/media/card3.webp" alt="" />
+          </div>
+          <div class="imgcontainer">
+            <img src="./assets/media/card4.webp" alt="" />
+          </div>
+          <div class="imgcontainer">
+            <img src="./assets/media/card1.webp" alt="" />
+          </div>
+          <div class="imgcontainer">
+            <img src="./assets/media/card2.webp" alt="" />
+          </div>
+        </div>
+        <div class="imgrow5">
+          <div class="imgcontainer">
+            <img src="./assets/media/card6.webp" alt="" />
+          </div>
+          <div class="imgcontainer">
+            <img src="./assets/media/card2.webp" alt="" />
+          </div>
+          <div class="imgcontainer">
+            <img src="./assets/media/card4.webp" alt="" />
+          </div>
+          <div class="imgcontainer">
+            <img src="./assets/media/card3.webp" alt="" />
+          </div>
+          <div class="imgcontainer">
+            <img src="./assets/media/card5.webp" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="scroll-down">
+        <h4>SCROLL DOWN</h4>
+        <div class="scroll-p">
+          <div class="scrolling"></div>
+        </div>
+      </div>
+      <div class="herotext">
+        <h3>Nexo</h3>
+      </div>
+    </div>
 
     <!-- page2 -->
     <div class="page2">

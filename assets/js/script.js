@@ -40,7 +40,7 @@ window.addEventListener("load", () => {
 // );
 
 // to remove scrollbar
-// document.body.style.overflow = "hidden";
+document.body.style.overflow = "hidden";
 
 
 
