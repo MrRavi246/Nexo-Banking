@@ -16,40 +16,77 @@
 
 <body>
 
-    <!-- Navigation -->
+   <!-- navbar -->
     <nav>
-        <div class="navLeft">
-            <div class="navLeftHover">
-                <a href="../index.php"><span>N</span>exo</a>
-            </div>
-        </div>
-        <div class="navcenter">
-            <div class="navCenterHover">
-                <a href="../index.php">Home</a>
-                <a href="../index.php">Home</a>
-            </div>
-            <div class="navCenterHover">
-                <a href="feature.php">Feature</a>
-                <a href="feature.php">Feature</a>
-            </div>
-            <div class="navCenterHover">
-                <a href="about.php">About</a>
-                <a href="about.php">About</a>
-            </div>
-            <div class="navCenterHover">
-                <a href="services.php">Service</a>
-                <a href="services.php">Service</a>
-            </div>
-        </div>
-        <div class="navRight">
-            <button class="signin" onclick="location.href='auth/login.php'">
-                Sign In
-            </button>
-            <button class="acc_btn" onclick="location.href='auth/register.php'">
-                Open an Account
-            </button>
+      <div class="liquidGlassCotainer">
+        <div class="liquidGlass-wrapper ">
+          <div class="liquidGlass-effect"></div>
+          <div class="liquidGlass-tint">
+          </div>
+          <div class="liquidGlass-shine"></div>
+          <div class="liquidGlass-text">
 
+            <div class="navLeft">
+              <div class="navLeftHover">
+                <a href="/Nexo-Banking/index.php"><span>N</span>exo</a>
+              </div>
+            </div>
+            <div class="navcenter">
+              <div class="navCenterHover">
+                <a href="/Nexo-Banking/index.php">Home</a>
+                <a href="/Nexo-Banking/index.php">Home</a>
+              </div>
+              <div class="navCenterHover">
+                <a href="/Nexo-Banking/Pages/feature.php">Feature</a>
+                <a href="/Nexo-Banking/Pages/feature.php">Feature</a>
+              </div>
+              <div class="navCenterHover">
+                <a href="/Nexo-Banking/Pages/about.php">About</a>
+                <a href="/Nexo-Banking/Pages/about.php">About</a>
+              </div>
+              <div class="navCenterHover">
+                <a href="/Nexo-Banking/Pages/services.php">Service</a>
+                <a href="/Nexo-Banking/Pages/services.php">Service</a>
+              </div>
+            </div>
+            <div class="navRight">
+              <button class="signin" onclick="location.href='/Nexo-Banking/pages/auth/login.php'">
+                Sign In
+              </button>
+
+              <button class="acc_btn" onclick="location.href='/Nexo-Banking/pages/auth/register.php'">
+                Open an Account
+              </button>
+            </div>
+          </div>
         </div>
+
+
+
+        <svg style="display: none">
+          <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
+            <feTurbulence type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="1" seed="5" result="turbulence" />
+            <!-- Seeds: 14, 17,  -->
+
+            <feComponentTransfer in="turbulence" result="mapped">
+              <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+              <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+              <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+            </feComponentTransfer>
+
+            <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+
+            <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100"
+              lighting-color="white" result="specLight">
+              <fePointLight x="-200" y="-200" z="300" />
+            </feSpecularLighting>
+
+            <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
+
+            <feDisplacementMap in="SourceGraphic" in2="softMap" scale="150" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </svg>
+      </div>
     </nav>
 
     <main>

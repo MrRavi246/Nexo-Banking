@@ -41,33 +41,33 @@
 
             <div class="navLeft">
               <div class="navLeftHover">
-                <a href="index.php"><span>N</span>exo</a>
+                <a href="/Nexo-Banking/index.php"><span>N</span>exo</a>
               </div>
             </div>
             <div class="navcenter">
               <div class="navCenterHover">
-                <a href="index.php">Home</a>
-                <a href="index.php">Home</a>
+                <a href="/Nexo-Banking/index.php">Home</a>
+                <a href="/Nexo-Banking/index.php">Home</a>
               </div>
               <div class="navCenterHover">
-                <a href="Pages/feature.php">Feature</a>
-                <a href="Pages/feature.php">Feature</a>
+                <a href="/Nexo-Banking/Pages/feature.php">Feature</a>
+                <a href="/Nexo-Banking/Pages/feature.php">Feature</a>
               </div>
               <div class="navCenterHover">
-                <a href="Pages/about.php">About</a>
-                <a href="Pages/about.php">About</a>
+                <a href="/Nexo-Banking/Pages/about.php">About</a>
+                <a href="/Nexo-Banking/Pages/about.php">About</a>
               </div>
               <div class="navCenterHover">
-                <a href="Pages/services.php">Service</a>
-                <a href="Pages/services.php">Service</a>
+                <a href="/Nexo-Banking/Pages/services.php">Service</a>
+                <a href="/Nexo-Banking/Pages/services.php">Service</a>
               </div>
             </div>
             <div class="navRight">
-              <button class="signin" onclick="location.href='pages/auth/login.php'">
+              <button class="signin" onclick="location.href='/Nexo-Banking/pages/auth/login.php'">
                 Sign In
               </button>
 
-              <button class="acc_btn" onclick="location.href='pages/auth/signup.php'">
+              <button class="acc_btn" onclick="location.href='/Nexo-Banking/pages/auth/register.php'">
                 Open an Account
               </button>
             </div>
