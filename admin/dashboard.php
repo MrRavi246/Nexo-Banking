@@ -6,6 +6,7 @@ if (!isset($_SESSION['admin_loggedin']) || $_SESSION['admin_loggedin'] !== true)
 }
 include __DIR__ . '/_header.php';
 ?>
+<div id="errorContainer"></div>
 <div class="container">
     <div class="admin-header">
         <div class="header-content">
@@ -22,47 +23,82 @@ include __DIR__ . '/_header.php';
         <div class="overview-card users">
             <div class="card-icon"><i class="ri-group-line"></i></div>
             <div class="card-content">
-                <div class="card-number">12,485</div>
+                <div class="card-number" id="totalUsers">
+                    <div class="loading-spinner-small"></div>
+                </div>
                 <div class="card-label">Total Users</div>
-                <div class="card-change positive">+8.2% from last month</div>
+                <div class="card-change" id="userGrowth">--</div>
             </div>
         </div>
         <div class="overview-card transactions">
             <div class="card-icon"><i class="ri-exchange-line"></i></div>
             <div class="card-content">
-                <div class="card-number">$2.4M</div>
+                <div class="card-number" id="totalTransactions">
+                    <div class="loading-spinner-small"></div>
+                </div>
                 <div class="card-label">Total Transactions</div>
-                <div class="card-change positive">+12.5% from last month</div>
+                <div class="card-change" id="transactionGrowth">--</div>
             </div>
         </div>
         <div class="overview-card accounts">
             <div class="card-icon"><i class="ri-bank-card-line"></i></div>
             <div class="card-content">
-                <div class="card-number">8,927</div>
+                <div class="card-number" id="activeAccounts">
+                    <div class="loading-spinner-small"></div>
+                </div>
                 <div class="card-label">Active Accounts</div>
-                <div class="card-change positive">+5.7% from last month</div>
+                <div class="card-change" id="accountGrowth">--</div>
             </div>
         </div>
         <div class="overview-card revenue">
             <div class="card-icon"><i class="ri-money-dollar-circle-line"></i></div>
             <div class="card-content">
-                <div class="card-number">$48,920</div>
+                <div class="card-number" id="monthlyRevenue">
+                    <div class="loading-spinner-small"></div>
+                </div>
                 <div class="card-label">Monthly Revenue</div>
-                <div class="card-change positive">+15.3% from last month</div>
+                <div class="card-change" id="revenueGrowth">--</div>
             </div>
         </div>
     </div>
 
     <div class="admin-grid">
-        <!-- Recent Activity, System Health, etc. could be inserted here -->
+        <!-- Recent Activity -->
         <div class="admin-widget recent-activity">
             <div class="widget-header">
-                <h3>Recent Activity</h3><a href="audit-logs.php" class="view-all">View All</a>
+                <h3>Recent Activity</h3>
+                <a href="audit-logs.php" class="view-all">View All</a>
             </div>
-            <div class="activity-list">
-                <p>No live data in demo mode.</p>
+            <div class="activity-list" id="recentActivityList">
+                <div class="loading-spinner-small" style="margin: 20px auto;"></div>
+            </div>
+        </div>
+        
+        <!-- Quick Stats -->
+        <div class="admin-widget quick-stats">
+            <div class="widget-header">
+                <h3>Quick Stats</h3>
+            </div>
+            <div class="stats-list">
+                <div class="stat-item">
+                    <div class="stat-label">Pending Users</div>
+                    <div class="stat-value" id="pendingUsers">
+                        <div class="loading-spinner-small"></div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Pending Loans</div>
+                    <div class="stat-value" id="pendingLoans">
+                        <div class="loading-spinner-small"></div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Last Updated</div>
+                    <div class="stat-value" id="lastUpdated">--</div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script src="../assets/js/admin-dashboard.js"></script>
 <?php include __DIR__ . '/_footer.php';

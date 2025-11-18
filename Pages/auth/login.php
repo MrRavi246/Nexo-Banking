@@ -48,13 +48,13 @@
                     <div class="input-group">
                         <label for="account_number">
                             <i class="ri-user-line"></i>
-                            Account Number
+                            Account Number / Username
                         </label>
                         <input 
                             type="text" 
                             id="account_number" 
                             name="account_number" 
-                            placeholder="Enter your account number"
+                            placeholder="Enter your account number or username"
                             required>
                     </div>
 

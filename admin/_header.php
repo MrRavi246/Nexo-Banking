@@ -79,6 +79,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
             <div class="menu-item"><i class="ri-group-line"></i><a href="users.php">User Management</a></div>
             <div class="menu-item"><i class="ri-exchange-line"></i><a href="transactions.php">Transactions</a></div>
             <div class="menu-item"><i class="ri-bank-card-line"></i><a href="accounts.php">Account Management</a></div>
+            <div class="menu-item"><i class="ri-hand-coin-line"></i><a href="loan_applications.php">Loan Applications</a></div>
             <div class="menu-item"><i class="ri-pie-chart-line"></i><a href="analytics.php">Analytics & Reports</a></div>
             <div class="menu-item"><i class="ri-shield-check-line"></i><a href="security.php">Security & Compliance</a></div>
             <div class="menu-item"><i class="ri-settings-3-line"></i><a href="settings.php">System Settings</a></div>

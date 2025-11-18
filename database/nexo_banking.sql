@@ -47,11 +47,22 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`account_id`, `user_id`, `account_type`, `account_number`, `balance`, `currency`, `status`, `credit_limit`, `interest_rate`, `last_activity`, `created_at`, `updated_at`) VALUES
-(1, 1, 'checking', '1234567890', 16476.62, 'USD', 'active', NULL, NULL, '2025-10-30 18:38:23', '2025-11-06 11:59:08', '2025-11-06 20:00:23'),
-(2, 1, 'savings', '1234567891', 28750.00, 'USD', 'active', NULL, NULL, '2025-11-06 11:59:08', '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
-(3, 1, 'credit', '1234567892', 6381.75, 'USD', 'active', NULL, NULL, '2025-11-06 11:59:08', '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
-(4, 2, 'checking', '1070353153', 404850.00, 'USD', 'active', NULL, NULL, '2025-11-07 05:41:15', '2025-11-06 18:12:03', '2025-11-07 05:41:15'),
-(5, 2, 'savings', '1034686196', 19000.00, 'USD', 'active', NULL, 0.0250, '2025-11-06 18:12:03', '2025-11-06 18:12:03', '2025-11-07 03:07:30');
+(1, 1, 'checking', '1234567890', 185420.50, 'INR', 'active', NULL, NULL, '2025-11-07 18:38:23', '2025-11-06 11:59:08', '2025-11-07 20:00:23'),
+(2, 1, 'savings', '1234567891', 545000.00, 'INR', 'active', NULL, 0.0350, '2025-11-07 11:59:08', '2025-11-06 11:59:08', '2025-11-07 11:59:08'),
+(3, 1, 'credit', '1234567892', 125000.00, 'INR', 'active', 500000.00, NULL, '2025-11-07 11:59:08', '2025-11-06 11:59:08', '2025-11-07 11:59:08'),
+(4, 2, 'checking', '1070353153', 325680.00, 'INR', 'active', NULL, NULL, '2025-11-07 15:41:15', '2025-11-06 18:12:03', '2025-11-07 15:41:15'),
+(5, 2, 'savings', '1034686196', 892000.00, 'INR', 'active', NULL, 0.0400, '2025-11-07 18:12:03', '2025-11-06 18:12:03', '2025-11-07 13:07:30'),
+(6, 3, 'checking', '2345678901', 456789.25, 'INR', 'active', NULL, NULL, '2025-11-07 10:20:00', '2025-11-01 10:15:00', '2025-11-07 10:20:00'),
+(7, 3, 'savings', '2345678902', 1250000.00, 'INR', 'active', NULL, 0.0450, '2025-11-07 10:15:00', '2025-11-01 10:15:00', '2025-11-07 10:15:00'),
+(8, 3, 'credit', '2345678903', 85000.00, 'INR', 'active', 1000000.00, NULL, '2025-11-06 14:20:00', '2025-11-01 10:15:00', '2025-11-06 14:20:00'),
+(9, 4, 'checking', '3456789012', 78540.00, 'INR', 'active', NULL, NULL, '2025-11-05 16:30:00', '2025-11-02 10:45:00', '2025-11-05 16:30:00'),
+(10, 4, 'savings', '3456789013', 185000.00, 'INR', 'active', NULL, 0.0300, '2025-11-05 16:30:00', '2025-11-02 10:45:00', '2025-11-05 16:30:00'),
+(11, 5, 'checking', '4567890123', 542300.00, 'INR', 'active', NULL, NULL, '2025-11-07 10:15:00', '2025-10-28 08:45:00', '2025-11-07 10:15:00'),
+(12, 5, 'savings', '4567890124', 1850000.00, 'INR', 'active', NULL, 0.0400, '2025-11-07 10:15:00', '2025-10-28 08:45:00', '2025-11-07 10:15:00'),
+(13, 5, 'credit', '4567890125', 150000.00, 'INR', 'active', 750000.00, NULL, '2025-11-07 10:15:00', '2025-10-28 08:45:00', '2025-11-07 10:15:00'),
+(14, 7, 'checking', '5678901234', 895600.00, 'INR', 'active', NULL, NULL, '2025-11-06 09:45:00', '2025-10-25 13:45:00', '2025-11-06 09:45:00'),
+(15, 7, 'savings', '5678901235', 2450000.00, 'INR', 'active', NULL, 0.0500, '2025-11-06 09:45:00', '2025-10-25 13:45:00', '2025-11-06 09:45:00'),
+(16, 7, 'credit', '5678901236', 225000.00, 'INR', 'active', 1500000.00, NULL, '2025-11-06 09:45:00', '2025-10-25 13:45:00', '2025-11-06 09:45:00');
 
 -- --------------------------------------------------------
 
@@ -111,7 +122,9 @@ CREATE TABLE `admin_users` (
 --
 
 INSERT INTO `admin_users` (`admin_id`, `username`, `email`, `password_hash`, `first_name`, `last_name`, `role`, `status`, `created_at`, `updated_at`, `last_login`) VALUES
-(1, 'admin', 'admin@nexo.com', '$2y$10$U0Q22oeU1HyT/Wcgjft5weJ7qPKsu8nr3iW93bopunem2wFHkLmyu', 'System', 'Admin', 'super_admin', 'active', '2025-11-06 17:54:08', '2025-11-07 07:14:32', '2025-11-07 07:14:32');
+(1, 'admin', 'admin@nexo.com', '$2y$10$U0Q22oeU1HyT/Wcgjft5weJ7qPKsu8nr3iW93bopunem2wFHkLmyu', 'System', 'Admin', 'super_admin', 'active', '2025-11-06 17:54:08', '2025-11-07 07:14:32', '2025-11-07 07:14:32'),
+(2, 'suresh.kumar', 'suresh.kumar@nexo.com', '$2y$10$U0Q22oeU1HyT/Wcgjft5weJ7qPKsu8nr3iW93bopunem2wFHkLmyu', 'Suresh', 'Kumar', 'admin', 'active', '2025-10-15 10:00:00', '2025-11-07 09:30:00', '2025-11-07 09:30:00'),
+(3, 'meera.nair', 'meera.nair@nexo.com', '$2y$10$U0Q22oeU1HyT/Wcgjft5weJ7qPKsu8nr3iW93bopunem2wFHkLmyu', 'Meera', 'Nair', 'moderator', 'active', '2025-10-20 14:30:00', '2025-11-06 16:45:00', '2025-11-06 16:45:00');
 
 -- --------------------------------------------------------
 
@@ -191,8 +204,13 @@ CREATE TABLE `beneficiaries` (
 --
 
 INSERT INTO `beneficiaries` (`beneficiary_id`, `user_id`, `beneficiary_name`, `account_number`, `bank_name`, `routing_number`, `account_type`, `email`, `phone_number`, `status`, `created_at`, `updated_at`) VALUES
-(4, 2, 'john_doe', '1234567890', 'Nexo', '123', 'checking', 'john.doe@example.com', NULL, 'active', '2025-11-06 19:50:09', '2025-11-06 19:50:09'),
-(5, 2, 'John Doe', '1234567891', 'Nexo Banking', '123', 'savings', 'john.doe@example.com', NULL, 'active', '2025-11-06 20:00:23', '2025-11-06 20:00:23');
+(1, 1, 'Madhav Nair', '9876543210', 'HDFC Bank', 'HDFC0001234', 'checking', 'madhav.nair@example.com', '+91-98765-43211', 'active', '2025-11-05 10:30:00', '2025-11-05 10:30:00'),
+(2, 1, 'Pooja Agarwal', '8765432109', 'ICICI Bank', 'ICIC0002345', 'savings', 'pooja.agarwal@example.com', '+91-97654-32100', 'active', '2025-11-05 11:00:00', '2025-11-05 11:00:00'),
+(3, 2, 'Vivek Chopra', '7654321098', 'State Bank of India', 'SBIN0003456', 'checking', 'vivek.chopra@example.com', '+91-96543-21099', 'active', '2025-11-06 14:20:00', '2025-11-06 14:20:00'),
+(4, 2, 'Priya Sharma', '1234567890', 'Nexo Banking', 'NEXO0001234', 'checking', 'priya.sharma@example.com', '+91-98765-43210', 'active', '2025-11-06 19:50:09', '2025-11-06 19:50:09'),
+(5, 2, 'Rahul Khanna', '1234567891', 'Nexo Banking', 'NEXO0001235', 'savings', 'rahul.khanna@example.com', '+91-95432-10988', 'active', '2025-11-06 20:00:23', '2025-11-06 20:00:23'),
+(6, 3, 'Meera Jain', '6543210987', 'Axis Bank', 'UTIB0004567', 'savings', 'meera.jain@example.com', '+91-94321-09877', 'active', '2025-11-02 09:15:00', '2025-11-02 09:15:00'),
+(7, 5, 'Aditya Rao', '5432109876', 'Punjab National Bank', 'PUNB0005678', 'checking', 'aditya.rao@example.com', '+91-93210-98766', 'active', '2025-10-29 12:30:00', '2025-10-29 12:30:00');
 
 -- --------------------------------------------------------
 
@@ -219,7 +237,13 @@ CREATE TABLE `bill_payments` (
 --
 
 INSERT INTO `bill_payments` (`payment_id`, `user_id`, `account_id`, `biller_name`, `bill_type`, `amount`, `due_date`, `payment_date`, `status`, `reference_number`, `created_at`) VALUES
-(1, 1, 1, 'Minimal Test Biller', 'utilities', 99.99, '2025-11-13', '2025-11-12 18:30:00', 'scheduled', 'TEST1762460295', '2025-11-06 20:18:15');
+(1, 1, 1, 'Tata Power Mumbai', 'utilities', 3250.00, '2025-11-15', '2025-11-10 10:30:00', 'completed', 'TPOW1762460295', '2025-11-05 20:18:15'),
+(2, 1, 1, 'Airtel Postpaid', 'mobile_recharge', 899.00, '2025-11-20', '2025-11-15 14:20:00', 'scheduled', 'AIRT1762560400', '2025-11-07 15:30:00'),
+(3, 2, 4, 'Reliance Jio', 'mobile_recharge', 599.00, '2025-11-18', '2025-11-12 09:15:00', 'completed', 'RJIO1762470350', '2025-11-06 10:45:00'),
+(4, 2, 4, 'HDFC Credit Card', 'credit_card', 15750.00, '2025-11-25', '2025-11-20 18:30:00', 'scheduled', 'HDFC1762580450', '2025-11-07 12:00:00'),
+(5, 3, 6, 'Torrent Power Ahmedabad', 'utilities', 4120.00, '2025-11-12', '2025-11-08 11:00:00', 'completed', 'TRNT1762380200', '2025-11-03 09:30:00'),
+(6, 5, 11, 'CESC Kolkata', 'utilities', 5680.00, '2025-11-14', '2025-11-09 16:45:00', 'completed', 'CESC1762430180', '2025-11-04 14:20:00'),
+(7, 7, 14, 'LIC Premium', 'insurance', 12500.00, '2025-11-30', '2025-11-25 10:00:00', 'scheduled', 'LICP1762690500', '2025-11-07 08:15:00');
 
 -- --------------------------------------------------------
 
@@ -278,9 +302,13 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`contact_id`, `user_id`, `contact_name`, `phone_number`, `email`, `relationship`, `avatar_initials`, `is_favorite`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Sarah Johnson', '+1-555-123-4567', NULL, NULL, 'SJ', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
-(2, 1, 'Mike Chen', '+1-555-987-6543', NULL, NULL, 'MC', 0, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
-(3, 1, 'Emma Davis', '+1-555-456-7890', NULL, NULL, 'ED', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08');
+(1, 1, 'Arjun Verma', '+91-98765-12345', 'arjun.verma@example.com', 'Friend', 'AV', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
+(2, 1, 'Kavita Desai', '+91-97654-32198', 'kavita.desai@example.com', 'Colleague', 'KD', 0, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
+(3, 1, 'Rohit Malhotra', '+91-96543-21087', 'rohit.malhotra@example.com', 'Family', 'RM', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
+(4, 2, 'Neha Kapoor', '+91-95432-10987', 'neha.kapoor@example.com', 'Friend', 'NK', 1, '2025-11-06 12:00:00', '2025-11-06 12:00:00'),
+(5, 2, 'Sanjay Gupta', '+91-94321-09876', 'sanjay.gupta@example.com', 'Business Partner', 'SG', 1, '2025-11-06 12:00:00', '2025-11-06 12:00:00'),
+(6, 3, 'Divya Iyer', '+91-93210-98765', 'divya.iyer@example.com', 'Family', 'DI', 0, '2025-11-01 10:30:00', '2025-11-01 10:30:00'),
+(7, 3, 'Karan Bhatia', '+91-92109-87654', 'karan.bhatia@example.com', 'Friend', 'KB', 1, '2025-11-01 10:30:00', '2025-11-01 10:30:00');
 
 -- --------------------------------------------------------
 
@@ -326,10 +354,14 @@ CREATE TABLE `loans` (
 --
 
 INSERT INTO `loans` (`loan_id`, `user_id`, `loan_type`, `principal`, `outstanding`, `term_months`, `apr`, `monthly_payment`, `disbursed_account_id`, `disbursed_at`, `status`, `purpose`, `created_at`, `updated_at`) VALUES
-(1, 2, 'auto', 20000.00, 20000.00, 12, 0.00, 1666.67, NULL, NULL, 'approved', '', '2025-11-07 03:27:41', '2025-11-07 03:37:29'),
-(2, 2, 'business', 75000.00, 75000.00, 84, 0.00, 892.86, NULL, NULL, 'approved', '', '2025-11-07 03:29:54', '2025-11-07 03:37:25'),
-(3, 2, 'home', 200000.00, 0.00, 48, 0.00, 4166.67, 4, '2025-11-07 04:17:30', 'paid', '', '2025-11-07 03:48:35', '2025-11-07 05:28:34'),
-(4, 2, 'home', 450000.00, 400000.00, 12, 0.00, 37500.00, 4, '2025-11-07 05:29:13', 'active', '', '2025-11-07 05:29:00', '2025-11-07 05:41:15');
+(1, 1, 'home', 3500000.00, 3200000.00, 240, 8.50, 30456.78, 1, '2025-10-15 10:00:00', 'active', 'Purchase of 2BHK apartment in Andheri', '2025-10-10 09:30:00', '2025-11-07 10:00:00'),
+(2, 2, 'auto', 850000.00, 650000.00, 60, 9.25, 17890.50, 4, '2025-10-20 14:30:00', 'active', 'Purchase of Maruti Suzuki Swift', '2025-10-18 11:00:00', '2025-11-07 15:30:00'),
+(3, 2, 'business', 1500000.00, 1500000.00, 84, 11.00, 22450.00, NULL, NULL, 'approved', 'Expansion of retail electronics business', '2025-11-05 10:00:00', '2025-11-06 14:30:00'),
+(4, 3, 'home', 5000000.00, 4200000.00, 300, 8.25, 38725.60, 6, '2025-09-01 12:00:00', 'active', 'Purchase of 3BHK villa in Satellite', '2025-08-25 09:00:00', '2025-11-07 11:00:00'),
+(5, 3, 'personal', 500000.00, 0.00, 36, 12.50, 16789.45, 6, '2025-07-10 10:30:00', 'paid', 'Daughter wedding expenses', '2025-07-05 08:00:00', '2025-10-15 16:00:00'),
+(6, 5, 'business', 2500000.00, 2100000.00, 120, 10.75, 34560.25, 11, '2025-06-15 11:00:00', 'active', 'Purchase of commercial property in Kolkata', '2025-06-10 10:00:00', '2025-11-07 14:00:00'),
+(7, 7, 'auto', 1200000.00, 850000.00, 60, 9.00, 24850.00, 14, '2025-08-20 15:00:00', 'active', 'Purchase of Honda City', '2025-08-15 12:30:00', '2025-11-07 09:00:00'),
+(8, 4, 'personal', 300000.00, 180000.00, 24, 13.00, 14256.80, 9, '2025-09-10 13:00:00', 'active', 'Home renovation', '2025-09-05 11:00:00', '2025-11-05 17:00:00');
 
 -- --------------------------------------------------------
 
@@ -437,15 +469,18 @@ CREATE TABLE `savings_goals` (
 --
 
 INSERT INTO `savings_goals` (`goal_id`, `user_id`, `goal_name`, `target_amount`, `current_amount`, `target_date`, `category`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Vacation Fund', 5000.00, 3750.00, '2025-12-31', 'travel', 'active', '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
-(2, 1, 'Emergency Fund', 10000.00, 4500.00, '2026-06-30', 'emergency', 'active', '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
-(3, 1, 'New Car', 30000.00, 6000.00, '2026-12-31', 'vehicle', 'active', '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
-(7, 1, 'Vacation Fund', 5000.00, 3750.00, '2026-05-07', 'travel', 'active', '2025-11-06 18:38:23', '2025-11-06 18:38:23'),
-(8, 1, 'Emergency Fund', 10000.00, 4500.00, '2026-11-07', 'emergency', 'active', '2025-11-06 18:38:23', '2025-11-06 18:38:23'),
-(9, 1, 'New Car', 30000.00, 6000.00, '2027-11-07', 'vehicle', 'active', '2025-11-06 18:38:23', '2025-11-06 18:38:23'),
-(10, 2, 'Vacation Fund', 5000.00, 3750.00, '2026-05-07', 'travel', 'active', '2025-11-06 18:45:11', '2025-11-06 18:45:11'),
-(11, 2, 'Emergency Fund', 10000.00, 4500.00, '2026-11-07', 'emergency', 'active', '2025-11-06 18:45:11', '2025-11-06 18:45:11'),
-(12, 2, 'New Car', 30000.00, 6000.00, '2027-11-07', 'vehicle', 'active', '2025-11-06 18:45:11', '2025-11-06 18:45:11');
+(1, 1, 'Goa Trip 2026', 150000.00, 85000.00, '2026-03-15', 'travel', 'active', '2025-10-01 10:00:00', '2025-11-07 12:00:00'),
+(2, 1, 'Emergency Fund', 500000.00, 285000.00, '2026-12-31', 'emergency', 'active', '2025-09-15 09:00:00', '2025-11-07 12:00:00'),
+(3, 1, 'New Car Purchase', 1200000.00, 450000.00, '2027-06-30', 'vehicle', 'active', '2025-08-20 11:30:00', '2025-11-07 12:00:00'),
+(4, 2, 'Daughter Education', 800000.00, 320000.00, '2028-04-01', 'education', 'active', '2025-10-10 10:00:00', '2025-11-07 14:00:00'),
+(5, 2, 'Dubai Vacation', 250000.00, 180000.00, '2026-01-10', 'travel', 'active', '2025-09-05 11:00:00', '2025-11-07 14:00:00'),
+(6, 3, 'Home Renovation', 1500000.00, 650000.00, '2026-08-15', 'home', 'active', '2025-07-15 09:30:00', '2025-11-07 10:30:00'),
+(7, 3, 'Emergency Fund', 1000000.00, 1000000.00, '2025-11-30', 'emergency', 'completed', '2025-01-01 08:00:00', '2025-10-20 16:00:00'),
+(8, 4, 'Wedding Savings', 600000.00, 245000.00, '2026-11-30', 'event', 'active', '2025-10-01 12:00:00', '2025-11-05 15:00:00'),
+(9, 5, 'Retirement Fund', 2500000.00, 820000.00, '2030-12-31', 'retirement', 'active', '2025-06-01 10:00:00', '2025-11-07 11:00:00'),
+(10, 5, 'Singapore Trip', 300000.00, 165000.00, '2026-07-20', 'travel', 'active', '2025-09-20 11:00:00', '2025-11-07 11:00:00'),
+(11, 7, 'Son Higher Education', 1800000.00, 520000.00, '2027-06-01', 'education', 'active', '2025-08-10 09:00:00', '2025-11-06 10:00:00'),
+(12, 7, 'Gold Investment', 500000.00, 350000.00, '2026-02-15', 'investment', 'active', '2025-10-05 10:30:00', '2025-11-06 10:00:00');
 
 -- --------------------------------------------------------
 
@@ -520,14 +555,17 @@ CREATE TABLE `system_settings` (
 
 INSERT INTO `system_settings` (`setting_id`, `setting_key`, `setting_value`, `description`, `is_active`, `created_at`, `updated_at`) VALUES
 (1, 'transfer_fee_internal', '0.00', 'Fee for internal transfers between user accounts', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
-(2, 'transfer_fee_external', '2.50', 'Fee for external transfers to other users', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
-(3, 'min_transfer_amount', '1.00', 'Minimum transfer amount', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
-(4, 'max_transfer_amount', '10000.00', 'Maximum transfer amount per transaction', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
-(5, 'daily_transfer_limit', '25000.00', 'Daily transfer limit per user', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
-(6, 'low_balance_threshold', '100.00', 'Threshold for low balance notifications', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
-(7, 'currency_default', 'USD', 'Default currency for new accounts', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
-(8, 'interest_rate_savings', '2.50', 'Default interest rate for savings accounts', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
-(9, 'credit_score_update_interval', '30', 'Days between credit score updates', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08');
+(2, 'transfer_fee_external', '5.00', 'Fee for external transfers to other users (in INR)', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
+(3, 'min_transfer_amount', '10.00', 'Minimum transfer amount (in INR)', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
+(4, 'max_transfer_amount', '500000.00', 'Maximum transfer amount per transaction (in INR)', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
+(5, 'daily_transfer_limit', '1000000.00', 'Daily transfer limit per user (in INR)', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
+(6, 'low_balance_threshold', '5000.00', 'Threshold for low balance notifications (in INR)', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
+(7, 'currency_default', 'INR', 'Default currency for new accounts', 1, '2025-11-06 11:59:08', '2025-11-07 10:00:00'),
+(8, 'interest_rate_savings', '3.50', 'Default interest rate for savings accounts (%)', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
+(9, 'credit_score_update_interval', '30', 'Days between credit score updates', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
+(10, 'gst_percentage', '18.00', 'GST percentage applicable on services', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
+(11, 'upi_enabled', 'true', 'Enable UPI payment integration', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08'),
+(12, 'neft_rtgs_enabled', 'true', 'Enable NEFT/RTGS transfers', 1, '2025-11-06 11:59:08', '2025-11-06 11:59:08');
 
 -- --------------------------------------------------------
 
@@ -572,47 +610,51 @@ CREATE TABLE `transactions` (
 --
 
 INSERT INTO `transactions` (`transaction_id`, `account_id`, `transaction_type`, `amount`, `description`, `recipient_info`, `category`, `reference_id`, `status`, `transaction_date`, `created_at`, `updated_at`, `recipient_name`, `recipient_account`) VALUES
-(13, 1, 'deposit', 3500.00, 'Salary Deposit', NULL, 'salary', NULL, 'completed', '2025-11-04 18:38:23', '2025-11-06 18:38:23', '2025-11-06 18:38:23', NULL, NULL),
-(14, 1, 'payment', 89.99, 'Amazon Purchase', NULL, 'shopping', NULL, 'completed', '2025-11-06 18:38:23', '2025-11-06 18:38:23', '2025-11-06 18:38:23', NULL, NULL),
-(15, 1, 'payment', 45.20, 'Shell Gas Station', NULL, 'transport', NULL, 'completed', '2025-11-05 18:38:23', '2025-11-06 18:38:23', '2025-11-06 18:38:23', NULL, NULL),
-(16, 1, 'payment', 12.45, 'Starbucks Coffee', NULL, 'food', NULL, 'completed', '2025-11-03 18:38:23', '2025-11-06 18:38:23', '2025-11-06 18:38:23', NULL, NULL),
-(17, 1, 'transfer', 250.00, 'Transfer to Sarah', NULL, 'transfer', NULL, 'completed', '2025-11-02 18:38:23', '2025-11-06 18:38:23', '2025-11-06 18:38:23', NULL, NULL),
-(18, 1, 'payment', 15.99, 'Netflix Subscription', NULL, 'entertainment', NULL, 'completed', '2025-11-01 18:38:23', '2025-11-06 18:38:23', '2025-11-06 18:38:23', NULL, NULL),
-(19, 1, 'payment', 125.50, 'Walmart Groceries', NULL, 'groceries', NULL, 'completed', '2025-10-31 18:38:23', '2025-11-06 18:38:23', '2025-11-06 18:38:23', NULL, NULL),
-(20, 1, 'payment', 185.00, 'Electric Bill', NULL, 'utilities', NULL, 'completed', '2025-10-30 18:38:23', '2025-11-06 18:38:23', '2025-11-06 18:38:23', NULL, NULL),
-(21, 4, 'deposit', 3500.00, 'Salary Deposit', NULL, 'salary', NULL, 'completed', '2025-11-04 18:45:11', '2025-11-06 18:45:11', '2025-11-06 18:45:11', NULL, NULL),
-(22, 4, 'payment', 89.99, 'Amazon Purchase', NULL, 'shopping', NULL, 'completed', '2025-11-06 18:45:11', '2025-11-06 18:45:11', '2025-11-06 18:45:11', NULL, NULL),
-(23, 4, 'payment', 45.20, 'Shell Gas Station', NULL, 'transport', NULL, 'completed', '2025-11-05 18:45:11', '2025-11-06 18:45:11', '2025-11-06 18:45:11', NULL, NULL),
-(24, 4, 'payment', 12.45, 'Starbucks Coffee', NULL, 'food', NULL, 'completed', '2025-11-03 18:45:11', '2025-11-06 18:45:11', '2025-11-06 18:45:11', NULL, NULL),
-(25, 4, 'transfer', 250.00, 'Transfer to Sarah', NULL, 'transfer', NULL, 'completed', '2025-11-02 18:45:11', '2025-11-06 18:45:11', '2025-11-06 18:45:11', NULL, NULL),
-(26, 4, 'payment', 15.99, 'Netflix Subscription', NULL, 'entertainment', NULL, 'completed', '2025-11-01 18:45:11', '2025-11-06 18:45:11', '2025-11-06 18:45:11', NULL, NULL),
-(27, 4, 'payment', 125.50, 'Walmart Groceries', NULL, 'groceries', NULL, 'completed', '2025-10-31 18:45:11', '2025-11-06 18:45:11', '2025-11-06 18:45:11', NULL, NULL),
-(28, 4, 'payment', 185.00, 'Electric Bill', NULL, 'utilities', NULL, 'completed', '2025-10-30 18:45:11', '2025-11-06 18:45:11', '2025-11-06 18:45:11', NULL, NULL),
-(29, 4, 'payment', 450.00, 'Rent Payment', NULL, 'utilities', NULL, 'completed', '2025-10-27 18:45:11', '2025-11-06 18:45:11', '2025-11-06 18:45:11', NULL, NULL),
-(30, 4, 'payment', 65.00, 'Internet Bill', NULL, 'utilities', NULL, 'completed', '2025-10-25 18:45:11', '2025-11-06 18:45:11', '2025-11-06 18:45:11', NULL, NULL),
-(31, 4, 'payment', 35.75, 'Restaurant', NULL, 'food', NULL, 'completed', '2025-10-29 18:45:11', '2025-11-06 18:45:11', '2025-11-06 18:45:11', NULL, NULL),
-(32, 4, 'payment', 120.00, 'Clothing Store', NULL, 'shopping', NULL, 'completed', '2025-10-22 18:45:11', '2025-11-06 18:45:11', '2025-11-06 18:45:11', NULL, NULL),
-(33, 4, 'transfer', -52.99, 'Test transfer to new recipient', NULL, 'transfer', NULL, 'pending', '2025-11-05 18:30:00', '2025-11-06 19:30:34', '2025-11-06 19:30:34', 'Test Recipient', '9999888877776666'),
-(34, 4, 'fee', -2.99, 'External Transfer Fee', NULL, 'fees', NULL, 'completed', '2025-11-05 18:30:00', '2025-11-06 19:30:34', '2025-11-06 19:30:34', NULL, NULL),
-(35, 4, 'transfer', -1000.00, 'Transfer to Bhadani Tushal', NULL, 'transfer', NULL, 'completed', '2025-11-05 18:30:00', '2025-11-06 19:33:01', '2025-11-06 19:33:01', 'Bhadani Tushal', '1234567890'),
-(36, 4, 'transfer', -1000.00, 'Transfer to Bhadani Tushal', NULL, 'transfer', NULL, 'completed', '2025-11-05 18:30:00', '2025-11-06 19:36:21', '2025-11-06 19:36:21', 'Bhadani Tushal', '1234567890'),
-(37, 4, 'transfer', -52.99, 'Test transfer to new recipient', NULL, 'transfer', NULL, 'pending', '2025-11-05 18:30:00', '2025-11-06 19:40:07', '2025-11-06 19:40:07', 'Test Recipient', '9999888877776666'),
-(38, 4, 'fee', -2.99, 'External Transfer Fee', NULL, 'fees', NULL, 'completed', '2025-11-05 18:30:00', '2025-11-06 19:40:07', '2025-11-06 19:40:07', NULL, NULL),
-(39, 4, 'transfer', -52.99, 'Test transfer to new recipient', NULL, 'transfer', NULL, 'pending', '2025-11-05 18:30:00', '2025-11-06 19:40:15', '2025-11-06 19:40:15', 'Test Recipient', '9999888877776666'),
-(40, 4, 'fee', -2.99, 'External Transfer Fee', NULL, 'fees', NULL, 'completed', '2025-11-05 18:30:00', '2025-11-06 19:40:15', '2025-11-06 19:40:15', NULL, NULL),
-(41, 5, 'transfer', -1000.00, 'Transfer to john_doe', NULL, 'transfer', NULL, 'completed', '2025-11-05 18:30:00', '2025-11-06 19:50:09', '2025-11-06 19:50:09', 'john_doe', '1234567890'),
-(42, 4, 'transfer', -1000.00, 'Transfer to john_doe', NULL, 'transfer', NULL, 'completed', '2025-11-05 18:30:00', '2025-11-06 19:58:11', '2025-11-06 19:58:11', 'john_doe', '1234567890'),
-(43, 5, 'transfer', -2500.00, 'Transfer to john_doe', NULL, 'transfer', NULL, 'completed', '2025-11-05 18:30:00', '2025-11-06 19:58:39', '2025-11-06 19:58:39', 'john_doe', '1234567890'),
-(44, 4, 'transfer', -1000.00, 'Transfer to john_doe', NULL, 'transfer', NULL, 'completed', '2025-11-05 18:30:00', '2025-11-06 19:59:06', '2025-11-06 19:59:06', 'john_doe', '1234567890'),
-(45, 5, 'transfer', -1500.00, 'Transfer to john_doe', NULL, 'transfer', NULL, 'completed', '2025-11-05 18:30:00', '2025-11-06 19:59:32', '2025-11-06 19:59:32', 'john_doe', '1234567890'),
-(46, 4, 'transfer', -1000.00, 'Transfer to John Doe', NULL, 'transfer', NULL, 'completed', '2025-11-05 18:30:00', '2025-11-06 20:00:23', '2025-11-06 20:00:23', 'John Doe', '1234567891'),
-(47, 1, 'transfer', 1000.00, 'Transfer from Ravi Sardhara', NULL, 'transfer', NULL, 'completed', '2025-11-05 18:30:00', '2025-11-06 20:00:23', '2025-11-06 20:00:23', 'Ravi Sardhara', NULL),
-(48, 5, 'transfer', -1000.00, 'Transfer to John Doe', NULL, 'transfer', NULL, 'completed', '2025-11-06 18:30:00', '2025-11-07 03:07:30', '2025-11-07 03:07:30', 'John Doe', '1234567891'),
-(52, 4, 'deposit', 200000.00, 'Loan disbursement for loan #3', NULL, 'loan_disbursement', NULL, 'completed', '2025-11-07 04:17:30', '2025-11-07 04:17:30', '2025-11-07 04:17:30', NULL, NULL),
-(53, 4, 'payment', 200000.00, 'Loan payment for loan #3', NULL, 'loan_payment', NULL, 'completed', '2025-11-07 05:28:34', '2025-11-07 05:28:34', '2025-11-07 05:28:34', NULL, NULL),
-(54, 4, 'deposit', 450000.00, 'Loan disbursement for loan #4', NULL, 'loan_disbursement', NULL, 'completed', '2025-11-07 05:29:13', '2025-11-07 05:29:13', '2025-11-07 05:29:13', NULL, NULL),
-(55, 4, 'payment', 15000.00, 'Loan payment for loan #4', NULL, 'loan_payment', NULL, 'completed', '2025-11-07 05:34:41', '2025-11-07 05:34:41', '2025-11-07 05:34:41', NULL, NULL),
-(56, 4, 'payment', 35000.00, 'Loan payment for loan #4', NULL, 'loan_payment', NULL, 'completed', '2025-11-07 05:41:15', '2025-11-07 05:41:15', '2025-11-07 05:41:15', NULL, NULL);
+(1, 1, 'deposit', 85000.00, 'Salary Credit - TCS Ltd', NULL, 'salary', 'SAL202311001', 'completed', '2025-11-01 10:30:00', '2025-11-01 10:30:00', '2025-11-01 10:30:00', NULL, NULL),
+(2, 1, 'payment', 3250.00, 'Tata Power - Electricity Bill', NULL, 'utilities', 'TPOW1762460295', 'completed', '2025-11-02 14:20:00', '2025-11-02 14:20:00', '2025-11-02 14:20:00', NULL, NULL),
+(3, 1, 'payment', 2450.00, 'Amazon India - Electronics', NULL, 'shopping', 'AMZN2025110301', 'completed', '2025-11-03 16:45:00', '2025-11-03 16:45:00', '2025-11-03 16:45:00', NULL, NULL),
+(4, 1, 'payment', 1850.00, 'Indian Oil Petrol Pump', NULL, 'transport', 'IOCL2025110401', 'completed', '2025-11-04 11:30:00', '2025-11-04 11:30:00', '2025-11-04 11:30:00', NULL, NULL),
+(5, 1, 'payment', 650.00, 'Cafe Coffee Day - Andheri', NULL, 'food', 'CCD2025110501', 'completed', '2025-11-05 09:15:00', '2025-11-05 09:15:00', '2025-11-05 09:15:00', NULL, NULL),
+(6, 1, 'transfer', 15000.00, 'Transfer to Arjun Verma', NULL, 'transfer', 'TRF2025110601', 'completed', '2025-11-06 13:20:00', '2025-11-06 13:20:00', '2025-11-06 13:20:00', 'Arjun Verma', '9876543210'),
+(7, 1, 'payment', 799.00, 'Netflix Premium Subscription', NULL, 'entertainment', 'NFLX2025110701', 'completed', '2025-11-07 10:00:00', '2025-11-07 10:00:00', '2025-11-07 10:00:00', NULL, NULL),
+(8, 1, 'payment', 4850.00, 'Big Bazaar - Monthly Groceries', NULL, 'groceries', 'BBAZ2025110501', 'completed', '2025-11-05 18:30:00', '2025-11-05 18:30:00', '2025-11-05 18:30:00', NULL, NULL),
+(9, 1, 'payment', 30456.78, 'Home Loan EMI - November', NULL, 'loan_payment', 'HLOAN001NOV', 'completed', '2025-11-05 08:00:00', '2025-11-05 08:00:00', '2025-11-05 08:00:00', NULL, NULL),
+(10, 2, 'deposit', 2500.00, 'Interest Credit', NULL, 'interest', 'INT2025110101', 'completed', '2025-11-01 00:01:00', '2025-11-01 00:01:00', '2025-11-01 00:01:00', NULL, NULL),
+(11, 4, 'deposit', 95000.00, 'Salary Credit - Infosys Ltd', NULL, 'salary', 'SAL202311002', 'completed', '2025-11-01 11:00:00', '2025-11-01 11:00:00', '2025-11-01 11:00:00', NULL, NULL),
+(12, 4, 'payment', 3890.00, 'Flipkart - Clothing Purchase', NULL, 'shopping', 'FLKT2025110201', 'completed', '2025-11-02 15:30:00', '2025-11-02 15:30:00', '2025-11-02 15:30:00', NULL, NULL),
+(13, 4, 'payment', 2150.00, 'HP Petrol Pump - Noida', NULL, 'transport', 'HPET2025110301', 'completed', '2025-11-03 12:15:00', '2025-11-03 12:15:00', '2025-11-03 12:15:00', NULL, NULL),
+(14, 4, 'payment', 1250.00, 'Dominos Pizza - Sector 15', NULL, 'food', 'DOMZ2025110401', 'completed', '2025-11-04 20:30:00', '2025-11-04 20:30:00', '2025-11-04 20:30:00', NULL, NULL),
+(15, 4, 'transfer', 25000.00, 'Transfer to Neha Kapoor', NULL, 'transfer', 'TRF2025110501', 'completed', '2025-11-05 14:45:00', '2025-11-05 14:45:00', '2025-11-05 14:45:00', 'Neha Kapoor', '9543210987'),
+(16, 4, 'payment', 599.00, 'Jio Recharge - Postpaid', NULL, 'mobile_recharge', 'RJIO1762470350', 'completed', '2025-11-06 10:20:00', '2025-11-06 10:20:00', '2025-11-06 10:20:00', NULL, NULL),
+(17, 4, 'payment', 35000.00, 'Monthly Rent - Flat Owner', NULL, 'utilities', 'RENT202511', 'completed', '2025-11-01 09:00:00', '2025-11-01 09:00:00', '2025-11-01 09:00:00', NULL, NULL),
+(18, 4, 'payment', 1499.00, 'ACT Fibernet - Monthly Bill', NULL, 'utilities', 'ACTF2025110101', 'completed', '2025-11-01 08:30:00', '2025-11-01 08:30:00', '2025-11-01 08:30:00', NULL, NULL),
+(19, 4, 'payment', 1850.00, 'Barbeque Nation - Dinner', NULL, 'food', 'BBQN2025110601', 'completed', '2025-11-06 21:00:00', '2025-11-06 21:00:00', '2025-11-06 21:00:00', NULL, NULL),
+(20, 4, 'payment', 8500.00, 'Westside - Apparel Shopping', NULL, 'shopping', 'WSTD2025110701', 'completed', '2025-11-07 17:30:00', '2025-11-07 17:30:00', '2025-11-07 17:30:00', NULL, NULL),
+(21, 4, 'payment', 17890.50, 'Auto Loan EMI - November', NULL, 'loan_payment', 'ALOAN002NOV', 'completed', '2025-11-05 08:00:00', '2025-11-05 08:00:00', '2025-11-05 08:00:00', NULL, NULL),
+(22, 5, 'deposit', 3500.00, 'Interest Credit - Savings', NULL, 'interest', 'INT2025110102', 'completed', '2025-11-01 00:01:00', '2025-11-01 00:01:00', '2025-11-01 00:01:00', NULL, NULL),
+(23, 6, 'deposit', 185000.00, 'Salary Credit - Adani Group', NULL, 'salary', 'SAL202311003', 'completed', '2025-11-01 10:00:00', '2025-11-01 10:00:00', '2025-11-01 10:00:00', NULL, NULL),
+(24, 6, 'payment', 4120.00, 'Torrent Power - Electricity', NULL, 'utilities', 'TRNT1762380200', 'completed', '2025-11-03 11:00:00', '2025-11-03 11:00:00', '2025-11-03 11:00:00', NULL, NULL),
+(25, 6, 'payment', 5680.00, 'Reliance Digital - TV Purchase', NULL, 'shopping', 'RDIG2025110401', 'completed', '2025-11-04 16:20:00', '2025-11-04 16:20:00', '2025-11-04 16:20:00', NULL, NULL),
+(26, 6, 'transfer', 50000.00, 'Transfer to Divya Iyer', NULL, 'transfer', 'TRF2025110601', 'completed', '2025-11-06 12:30:00', '2025-11-06 12:30:00', '2025-11-06 12:30:00', 'Divya Iyer', '9321098765'),
+(27, 6, 'payment', 38725.60, 'Home Loan EMI - November', NULL, 'loan_payment', 'HLOAN004NOV', 'completed', '2025-11-05 08:00:00', '2025-11-05 08:00:00', '2025-11-05 08:00:00', NULL, NULL),
+(28, 9, 'deposit', 65000.00, 'Salary Credit - Wipro Ltd', NULL, 'salary', 'SAL202311004', 'completed', '2025-11-01 11:30:00', '2025-11-01 11:30:00', '2025-11-01 11:30:00', NULL, NULL),
+(29, 9, 'payment', 2850.00, 'More Megastore - Groceries', NULL, 'groceries', 'MORE2025110201', 'completed', '2025-11-02 19:00:00', '2025-11-02 19:00:00', '2025-11-02 19:00:00', NULL, NULL),
+(30, 9, 'payment', 1450.00, 'Uber - Monthly Rides', NULL, 'transport', 'UBER2025110401', 'completed', '2025-11-04 18:00:00', '2025-11-04 18:00:00', '2025-11-04 18:00:00', NULL, NULL),
+(31, 9, 'payment', 14256.80, 'Personal Loan EMI - November', NULL, 'loan_payment', 'PLOAN008NOV', 'completed', '2025-11-05 08:00:00', '2025-11-05 08:00:00', '2025-11-05 08:00:00', NULL, NULL),
+(32, 11, 'deposit', 142000.00, 'Salary Credit - Business Income', NULL, 'salary', 'SAL202311005', 'completed', '2025-11-01 09:30:00', '2025-11-01 09:30:00', '2025-11-01 09:30:00', NULL, NULL),
+(33, 11, 'payment', 5680.00, 'CESC - Electricity Bill', NULL, 'utilities', 'CESC1762430180', 'completed', '2025-11-04 14:20:00', '2025-11-04 14:20:00', '2025-11-04 14:20:00', NULL, NULL),
+(34, 11, 'transfer', 75000.00, 'Transfer to Aditya Rao', NULL, 'transfer', 'TRF2025110501', 'completed', '2025-11-05 15:30:00', '2025-11-05 15:30:00', '2025-11-05 15:30:00', 'Aditya Rao', '5432109876'),
+(35, 11, 'payment', 34560.25, 'Business Loan EMI - November', NULL, 'loan_payment', 'BLOAN006NOV', 'completed', '2025-11-05 08:00:00', '2025-11-05 08:00:00', '2025-11-05 08:00:00', NULL, NULL),
+(36, 12, 'deposit', 7500.00, 'Interest Credit - Savings', NULL, 'interest', 'INT2025110103', 'completed', '2025-11-01 00:01:00', '2025-11-01 00:01:00', '2025-11-01 00:01:00', NULL, NULL),
+(37, 14, 'deposit', 225000.00, 'Salary Credit - Oracle India', NULL, 'salary', 'SAL202311006', 'completed', '2025-11-01 10:45:00', '2025-11-01 10:45:00', '2025-11-01 10:45:00', NULL, NULL),
+(38, 14, 'payment', 12500.00, 'LIC Premium Payment', NULL, 'insurance', 'LICP1762690500', 'completed', '2025-11-03 10:00:00', '2025-11-03 10:00:00', '2025-11-03 10:00:00', NULL, NULL),
+(39, 14, 'payment', 8950.00, 'DMart - Monthly Shopping', NULL, 'shopping', 'DMAT2025110501', 'completed', '2025-11-05 19:30:00', '2025-11-05 19:30:00', '2025-11-05 19:30:00', NULL, NULL),
+(40, 14, 'payment', 24850.00, 'Auto Loan EMI - November', NULL, 'loan_payment', 'ALOAN007NOV', 'completed', '2025-11-05 08:00:00', '2025-11-05 08:00:00', '2025-11-05 08:00:00', NULL, NULL),
+(41, 15, 'deposit', 12000.00, 'Interest Credit - Savings', NULL, 'interest', 'INT2025110104', 'completed', '2025-11-01 00:01:00', '2025-11-01 00:01:00', '2025-11-01 00:01:00', NULL, NULL),
+(42, 1, 'payment', 899.00, 'Swiggy - Food Delivery', NULL, 'food', 'SWGY2025110701', 'completed', '2025-11-07 21:15:00', '2025-11-07 21:15:00', '2025-11-07 21:15:00', NULL, NULL),
+(43, 4, 'payment', 1599.00, 'BookMyShow - Movie Tickets', NULL, 'entertainment', 'BMS2025110701', 'completed', '2025-11-07 19:00:00', '2025-11-07 19:00:00', '2025-11-07 19:00:00', NULL, NULL),
+(44, 6, 'refund', 2340.00, 'Flipkart Order Refund', NULL, 'refund', 'RFLKT2025110601', 'completed', '2025-11-06 14:30:00', '2025-11-06 14:30:00', '2025-11-06 14:30:00', NULL, NULL),
+(45, 1, 'transfer', 10000.00, 'Transfer to Kavita Desai', NULL, 'transfer', 'TRF2025110801', 'completed', '2025-11-07 16:20:00', '2025-11-07 16:20:00', '2025-11-07 16:20:00', 'Kavita Desai', '7654321098');
 
 --
 -- Triggers `transactions`
@@ -725,8 +767,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `email`, `password_hash`, `first_name`, `last_name`, `phone_number`, `date_of_birth`, `address`, `profile_image`, `member_type`, `status`, `approved_by`, `approved_at`, `rejection_reason`, `created_at`, `updated_at`, `last_login`) VALUES
-(1, 'john_doe', 'john.doe@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'John', 'Doe', '+1-555-123-4567', NULL, NULL, NULL, 'premium', 'active', NULL, NULL, NULL, '2025-11-06 11:59:08', '2025-11-06 11:59:08', NULL),
-(2, '23241101140054', 'rsardhara451@rku.ac.in', '$2y$10$rq3Gh.eh5uYwR5WWbhGlAudkNiXV6Y/jpkGBEKkD11jiB4jcqjTZG', 'Ravi', 'Sardhara', '09662855314', '2005-11-28', 'Sandar Recedency - 6\r\nMadhav', NULL, 'premium', 'active', 1, '2025-11-06 18:22:35', NULL, '2025-11-06 18:12:03', '2025-11-07 07:02:08', '2025-11-07 07:02:08');
+(1, 'priya_sharma', 'priya.sharma@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Priya', 'Sharma', '+91-98765-43210', '1992-05-15', 'B-204, Maple Apartments, Andheri West, Mumbai, Maharashtra 400058', NULL, 'premium', 'active', NULL, NULL, NULL, '2025-11-06 11:59:08', '2025-11-06 11:59:08', NULL),
+(2, 'ravi_kumar', 'ravi.kumar@example.com', '$2y$10$rq3Gh.eh5uYwR5WWbhGlAudkNiXV6Y/jpkGBEKkD11jiB4jcqjTZG', 'Ravi', 'Kumar', '+91-96628-55314', '1995-11-28', 'Flat 601, Sunrise Tower, Sector 15, Noida, Uttar Pradesh 201301', NULL, 'premium', 'active', 1, '2025-11-06 18:22:35', NULL, '2025-11-06 18:12:03', '2025-11-07 07:02:08', '2025-11-07 07:02:08'),
+(3, 'amit_patel', 'amit.patel@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Amit', 'Patel', '+91-98234-56789', '1988-03-22', 'C-12, Satellite Road, Ahmedabad, Gujarat 380015', NULL, 'platinum', 'active', 1, '2025-11-01 10:30:00', NULL, '2025-11-01 10:15:00', '2025-11-06 14:20:00', '2025-11-06 14:20:00'),
+(4, 'sneha_reddy', 'sneha.reddy@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Sneha', 'Reddy', '+91-99876-54321', '1990-07-18', '45, Jubilee Hills, Hyderabad, Telangana 500033', NULL, 'basic', 'active', 1, '2025-11-02 11:00:00', NULL, '2025-11-02 10:45:00', '2025-11-05 16:30:00', '2025-11-05 16:30:00'),
+(5, 'rajesh_mehta', 'rajesh.mehta@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Rajesh', 'Mehta', '+91-97654-32109', '1985-12-10', '12/A, Park Street, Kolkata, West Bengal 700016', NULL, 'premium', 'active', 1, '2025-10-28 09:00:00', NULL, '2025-10-28 08:45:00', '2025-11-07 10:15:00', '2025-11-07 10:15:00'),
+(6, 'ananya_singh', 'ananya.singh@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Ananya', 'Singh', '+91-91234-56780', '1993-09-25', 'Plot 89, Banjara Hills, Hyderabad, Telangana 500034', NULL, 'basic', 'pending', NULL, NULL, NULL, '2025-11-07 12:30:00', '2025-11-07 12:30:00', NULL),
+(7, 'vikram_joshi', 'vikram.joshi@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Vikram', 'Joshi', '+91-98765-12340', '1987-06-14', 'E-305, Viman Nagar, Pune, Maharashtra 411014', NULL, 'platinum', 'active', 1, '2025-10-25 14:00:00', NULL, '2025-10-25 13:45:00', '2025-11-06 09:45:00', '2025-11-06 09:45:00');
 
 --
 -- Indexes for dumped tables
@@ -912,7 +959,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `admin_sessions`
@@ -924,7 +971,7 @@ ALTER TABLE `admin_sessions`
 -- AUTO_INCREMENT for table `admin_users`
 --
 ALTER TABLE `admin_users`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `audit_logs`
@@ -936,13 +983,13 @@ ALTER TABLE `audit_logs`
 -- AUTO_INCREMENT for table `beneficiaries`
 --
 ALTER TABLE `beneficiaries`
-  MODIFY `beneficiary_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `beneficiary_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `bill_payments`
 --
 ALTER TABLE `bill_payments`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `budgets`
@@ -960,7 +1007,7 @@ ALTER TABLE `budget_categories`
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `credit_scores`
@@ -972,7 +1019,7 @@ ALTER TABLE `credit_scores`
 -- AUTO_INCREMENT for table `loans`
 --
 ALTER TABLE `loans`
-  MODIFY `loan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `loan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `loan_payments`
@@ -1008,7 +1055,7 @@ ALTER TABLE `support_tickets`
 -- AUTO_INCREMENT for table `system_settings`
 --
 ALTER TABLE `system_settings`
-  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `ticket_replies`
@@ -1020,7 +1067,7 @@ ALTER TABLE `ticket_replies`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `transfers`
@@ -1032,7 +1079,7 @@ ALTER TABLE `transfers`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

@@ -24,7 +24,7 @@ define('BASE_URL', 'http://localhost/Nexo-Banking');
 define('DASHBOARD_URL', BASE_URL . '/Pages/dashboard/Dashboard.php');
 define('LOGIN_URL', BASE_URL . '/Pages/auth/login.php');
 define('ADMIN_DASHBOARD_URL', BASE_URL . '/admin/dashboard.php');
-define('ADMIN_LOGIN_URL', BASE_URL . '/admin/login.php');
+define('ADMIN_LOGIN_URL', BASE_URL . '/Pages/auth/login.php'); // Admins use the same login page
 
 // Create upload directory if it doesn't exist
 if (!file_exists(UPLOAD_DIR)) {
